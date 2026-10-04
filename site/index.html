@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>2026 Midterm Forecast</title>
+    <meta
+      name="description"
+      content="A polls-only Bayesian forecast of the 2026 US House, Senate, and governor elections."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>2026 Midterm Forecast</h1>
+        <p class="meta">
+          By <a href="https://christianjohnson.xyz">Christian Johnson</a><span id="updated"></span>
+        </p>
+      </header>
+
+      <nav class="tabs" role="tablist">
+        <button role="tab" data-office="house" aria-selected="true">House</button>
+        <button role="tab" data-office="senate" aria-selected="false">Senate</button>
+        <button role="tab" data-office="governor" aria-selected="false">Governor</button>
+        <a class="tab-end" href="about.html">About</a>
+      </nav>
+
+      <section aria-labelledby="seats-title">
+        <h2 id="seats-title">Control of the House</h2>
+        <p class="note" id="seats-note"></p>
+        <div id="seats"></div>
+      </section>
+
+      <section aria-labelledby="map-title">
+        <h2 id="map-title">Race by race</h2>
+        <div id="legend" class="legend"></div>
+        <div id="map"></div>
+      </section>
+
+      <section aria-labelledby="table-title">
+        <h2 id="table-title">All races</h2>
+        <input id="search" type="search" placeholder="Search by state, district, or candidate" />
+        <div class="table-wrap">
+          <table id="races">
+            <thead>
+              <tr>
+                <th data-key="label">Race</th>
+                <th data-key="d_name">Democrat</th>
+                <th data-key="r_name">Republican</th>
+                <th data-key="p_d" title="Sorted by Democratic win probability">Forecast</th>
+                <th data-key="closeness" title="Sorted by closeness">Projection</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          A polls-only model: every poll is fit jointly with pollster adjustments, incumbency, and
+          each race's partisan lean. Ranges are 80% intervals and allow for polls missing together.
+          <a href="about.html">About the model</a>. Polls from
+          <a href="https://votehub.com/polls/">VoteHub</a>; candidates and PVI from Wikipedia
+          (CC BY-SA). The House map is schematic: one hex per district.
+          <a href="https://github.com/christian-johnson/election-forecast">Code and data</a>.
+        </p>
+      </footer>
+    </main>
+    <dialog id="race-modal" aria-labelledby="modal-title">
+      <div class="modal-head">
+        <div>
+          <h2 id="modal-title"></h2>
+          <p class="modal-sub" id="modal-sub"></p>
+        </div>
+        <button class="close" id="modal-close" aria-label="Close">&times;</button>
+      </div>
+      <div id="modal-body"></div>
+    </dialog>
+    <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+    <script src="common.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

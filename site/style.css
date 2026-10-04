@@ -1,0 +1,560 @@
+:root {
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.1);
+  --dem: #2a78d6;
+  --rep: #e34948;
+  --ind: #898781;
+  --safe-d: #1b5cae;
+  --likely-d: #2a78d6;
+  --lean-d: #86b6ef;
+  --tossup: #ffffff;
+  --lean-r: #f2a3a2;
+  --likely-r: #e34948;
+  --safe-r: #a82a2a;
+  --none: #dcdbd5;
+  --truth: #eb6834;
+  --band: rgba(11, 11, 11, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.1);
+    --dem: #3987e5;
+    --rep: #e66767;
+    --safe-d: #1f5fb3;
+    --likely-d: #3987e5;
+    --lean-d: #8fbcf1;
+    --tossup: #ffffff;
+    --lean-r: #f2a9a8;
+    --likely-r: #e66767;
+    --safe-r: #b13a3a;
+    --none: #33332f;
+    --truth: #d95926;
+    --band: rgba(255, 255, 255, 0.16);
+  }
+}
+
+:root[data-theme="dark"] {
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --ink: #ffffff;
+  --ink-2: #c3c2b7;
+  --muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255, 255, 255, 0.1);
+  --dem: #3987e5;
+  --rep: #e66767;
+  --safe-d: #1f5fb3;
+  --likely-d: #3987e5;
+  --lean-d: #8fbcf1;
+  --tossup: #ffffff;
+  --lean-r: #f2a9a8;
+  --likely-r: #e66767;
+  --safe-r: #b13a3a;
+  --none: #33332f;
+  --truth: #d95926;
+  --band: rgba(255, 255, 255, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font:
+    15px/1.5 system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 28px;
+}
+
+h2 {
+  margin: 32px 0 8px;
+  font-size: 18px;
+}
+
+h3 {
+  margin: 28px 0 4px;
+  font-size: 16px;
+}
+
+.prose {
+  max-width: 68ch;
+}
+
+ul.prose {
+  padding-left: 20px;
+}
+
+ul.prose li {
+  margin-bottom: 8px;
+}
+
+.summary {
+  margin: 16px 0 0;
+  font-weight: 600;
+}
+
+.chart svg {
+  display: block;
+  overflow: visible;
+}
+
+.chart text {
+  font-family: inherit;
+}
+
+.key {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
+  vertical-align: baseline;
+}
+
+.key.truth {
+  background: var(--truth);
+  transform: rotate(45deg) scale(0.85);
+}
+
+.key.model {
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.key.band {
+  width: 16px;
+  border-radius: 3px;
+  background: var(--band);
+}
+
+.key.poll {
+  border: 2px solid var(--muted);
+  border-radius: 50%;
+}
+
+.meta,
+.note,
+footer {
+  color: var(--ink-2);
+}
+
+.note {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+
+a {
+  color: var(--dem);
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 20px;
+  border-bottom: 1px solid var(--axis);
+}
+
+.tabs button {
+  padding: 8px 16px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--ink-2);
+  font: inherit;
+  cursor: pointer;
+}
+
+.tabs a {
+  padding: 8px 16px;
+  border-bottom: 2px solid transparent;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.tabs .tab-end {
+  margin-left: auto;
+}
+
+.tabs a[aria-current="page"],
+.tabs button[aria-selected="true"] {
+  border-bottom-color: var(--ink);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+#seats svg,
+#map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.seat-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.seat-labels .party {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.seat-labels strong {
+  font-size: 22px;
+}
+
+.seat-labels .right {
+  text-align: right;
+}
+
+/* The 80% range as stacked +/- offsets, like a LaTeX superscript over a subscript. */
+.pm {
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 2px;
+  font-size: 11px;
+  line-height: 1.1;
+  text-align: left;
+  vertical-align: 8px;
+  color: var(--ink-2);
+}
+
+.swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
+  border-radius: 2px;
+  vertical-align: baseline;
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 14px;
+  margin-bottom: 8px;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.map-shape {
+  stroke: var(--surface);
+  stroke-width: 1;
+}
+
+.map-shape.hex {
+  stroke: none;
+}
+
+.map-shape.active {
+  cursor: pointer;
+}
+
+/* White toss-ups need an outline where they touch the page or other light shapes. */
+.map-shape.tossup {
+  stroke: var(--muted);
+  stroke-width: 1;
+}
+
+.hover-outline {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.hex-label {
+  fill: var(--ink-2);
+  font-size: 10px;
+  font-weight: 600;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+#search {
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--axis);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th,
+td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--grid);
+  text-align: left;
+}
+
+th,
+td.num {
+  white-space: nowrap;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+th[aria-sort="ascending"]::after {
+  content: " \2191";
+}
+
+th[aria-sort="descending"]::after {
+  content: " \2193";
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+td.race,
+td.forecast {
+  white-space: nowrap;
+}
+
+.projection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.projection .lead {
+  min-width: 6.5em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.projection .mini-hist svg {
+  display: block;
+}
+
+.range {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 10;
+  max-width: 380px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  color: var(--ink);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+.tooltip .title {
+  font-weight: 600;
+}
+
+.tooltip .rating {
+  margin-left: 8px;
+  font-weight: 400;
+}
+
+.tooltip .muted {
+  color: var(--ink-2);
+}
+
+.tooltip .mini-hist svg {
+  display: block;
+  margin: 6px 0 4px;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 13px;
+}
+
+#races tbody tr {
+  cursor: pointer;
+}
+
+#races tbody tr:hover,
+#races tbody tr:focus-visible {
+  background: var(--page);
+  outline: none;
+}
+
+dialog {
+  width: min(760px, calc(100% - 32px));
+  max-height: calc(100% - 32px);
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.modal-head h2 {
+  margin: 0;
+}
+
+.modal-sub {
+  margin: 4px 0 0;
+  color: var(--ink-2);
+}
+
+.close {
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.stepper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stepper button,
+.step-nav button {
+  padding: 5px 10px;
+  border: 1px solid var(--axis);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.stepper button.done {
+  border-color: var(--ink-2);
+  color: var(--ink);
+}
+
+.stepper button[aria-current="step"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--surface);
+}
+
+.step-text {
+  max-width: 68ch;
+  min-height: 4.5em;
+  margin: 4px 0 8px;
+}
+
+.step-stats {
+  margin: 0 0 4px;
+}
+
+.muted {
+  color: var(--ink-2);
+}
+
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0 16px;
+}
+
+.step-nav button {
+  padding: 6px 16px;
+  font-size: 14px;
+}
+
+.step-nav button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.step-table {
+  border: 1px solid var(--grid);
+}
+
+.step-table tbody tr {
+  cursor: pointer;
+}
+
+.step-table tr.current td {
+  background: var(--page);
+  font-weight: 600;
+}
+
+.modal-note {
+  margin: 12px 0 0;
+  color: var(--ink-2);
+  font-size: 13px;
+}

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About the Forecast</title>
+    <meta
+      name="description"
+      content="How the 2026 midterm forecast works, and a test on a made-up election with a known outcome."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>2026 Midterm Forecast</h1>
+        <p class="meta">By <a href="https://christianjohnson.xyz">Christian Johnson</a></p>
+      </header>
+
+      <nav class="tabs">
+        <a href="./#house">House</a>
+        <a href="./#senate">Senate</a>
+        <a href="./#governor">Governor</a>
+        <a class="tab-end" href="about.html" aria-current="page">About</a>
+      </nav>
+
+      <section aria-labelledby="model-title">
+        <h2 id="model-title">The model in brief</h2>
+        <ul class="prose">
+          <li>
+            <strong>Every poll goes into one fit.</strong> Generic ballot polls measure the national
+            mood. A poll of a single race measures the national mood plus how far that race leans
+            from it. Fitting them together lets a Michigan poll inform Wisconsin, and a burst of
+            national polls move every race at once.
+          </li>
+          <li>
+            <strong>The national mood drifts.</strong> It can move a little each week, so recent
+            polls count more than old ones, and the forecast for election day is less certain than
+            the estimate for today.
+          </li>
+          <li>
+            <strong>Each race starts from its partisan lean</strong> (Cook
+            <abbr title="Partisan Voter Index">PVI</abbr>) plus an incumbency bonus. Its polls then
+            pull it toward what voters say, which captures candidate quality. Races with no polls
+            stay close to where similar races sit.
+          </li>
+          <li>
+            <strong>Pollsters differ.</strong> Comparing pollsters on the same races and dates
+            reveals each one's consistent lean. The model also adjusts for likely-voter versus
+            registered-voter samples and for polls paid for by a party.
+          </li>
+          <li>
+            <strong>Crosstabs move races by who lives there.</strong> When a group (say, Hispanic or
+            non-college voters) swings differently from the nation since 2024, each state and
+            district moves in proportion to its share of that group, using Census data.
+          </li>
+          <li>
+            <strong>Polls can all miss together.</strong> No amount of polling reveals that, so each
+            simulated election adds a national miss, a miss shared within each state, a miss within
+            demographic groups, and a miss for each race. All ranges shown are 80% ranges.
+          </li>
+          <li>
+            Races where one party has no candidate are called for the other side outright.
+          </li>
+          <li>
+            On the forecast page, click any state, district or table row to see that race's
+            forecast built up one step at a time, from the national polls alone to the final
+            number.
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="test-title">
+        <h2 id="test-title">A test with a known answer</h2>
+        <p class="prose">
+          To check that the method works, we made up a state with five House districts and a Senate
+          seat and decided the truth ourselves: the national mood (Democrats +4 on election day),
+          every race's result, and four pollsters with known leans. We then drew 50 national and
+          21 race polls from that truth with ordinary sampling noise. Two districts get no polls at
+          all. In two of the versions below, every poll is also shifted by the same industry-wide
+          miss. The model sees only the polls, and is the same code that runs the real forecast.
+        </p>
+        <nav class="tabs" role="tablist" id="scenarios">
+          <button role="tab" data-scenario="none" aria-selected="true">No miss</button>
+          <button role="tab" data-scenario="dem" aria-selected="false">Polls 3 pts too D</button>
+          <button role="tab" data-scenario="rep" aria-selected="false">Polls 3 pts too R</button>
+        </nav>
+        <p class="summary" id="summary">Loading…</p>
+
+        <h3>National mood</h3>
+        <p class="note">Generic ballot margin. Each dot is one simulated poll.</p>
+        <div class="legend" id="national-legend"></div>
+        <div id="national" class="chart"></div>
+
+        <h3>Each race on election day</h3>
+        <p class="note" id="races-note"></p>
+        <div class="legend" id="races-legend"></div>
+        <div id="races" class="chart"></div>
+
+        <h3>Pollster leans</h3>
+        <p class="note">
+          How far each pollster leans toward Democrats (+) or Republicans (−), in margin points.
+          The model learns these only by comparing pollsters with each other, so a miss shared by
+          all of them stays hidden.
+        </p>
+        <div id="pollsters" class="chart"></div>
+
+        <p class="prose" id="takeaway"></p>
+      </section>
+
+      <section aria-labelledby="limits-title">
+        <h2 id="limits-title">Limitations</h2>
+        <ul class="prose">
+          <li>
+            The size of a possible shared polling miss is a judgment call, not yet checked against
+            past elections.
+          </li>
+          <li>
+            Georgia runoffs and ranked-choice voting in Maine and Alaska are not modeled; those
+            races are treated as plain two-way contests.
+          </li>
+          <li>
+            Each group's 2024 vote comes from Pew Research Center's validated-voter study. Pollsters'
+            own crosstabs may differ from it, and the model would read that difference as a swing.
+          </li>
+          <li>
+            Census data still describes the old district lines, so districts redrawn for 2026 use
+            their state's demographics instead.
+          </li>
+          <li>
+            Candidates and partisan lean are read from Wikipedia, so a change in its page layout can
+            break the daily update.
+          </li>
+        </ul>
+      </section>
+
+      <footer>
+        <p>
+          Polls from <a href="https://votehub.com/polls/">VoteHub</a>; candidates and PVI from
+          Wikipedia (CC BY-SA); group composition from the Census Bureau's 2024 American Community
+          Survey; 2024 group vote from the Pew Research Center.
+          <a href="https://github.com/christian-johnson/election-forecast">Code and data</a>.
+        </p>
+      </footer>
+    </main>
+    <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+    <script src="common.js"></script>
+    <script src="about.js"></script>
+  </body>
+</html>
