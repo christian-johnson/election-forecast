@@ -1,7 +1,7 @@
 race_id,name,party,party_label,incumbent
 H-AK-01,Nick Begich III,R,Republican,True
-H-AK-01,Bill Hill,O,Independent,False
 H-AK-01,Eric Hafner,D,Democratic,False
+H-AK-01,Bill Hill,O,Independent,False
 H-AK-01,Jim McDermott,O,Libertarian,False
 H-AL-01,Jerry Carl,R,Republican,False
 H-AL-01,Clyde Jones Jr.,D,Democratic,False
@@ -47,8 +47,8 @@ H-AZ-06,Jereme Peters,O,Libertarian,False
 H-AZ-06,Gary Swing,O,Green,False
 H-AZ-07,Daniel Butierez,R,Republican,False
 H-AZ-07,Adelita Grijalva,D,Democratic,True
-H-AZ-08,Abraham Hamadeh,R,Republican,True
 H-AZ-08,Bernadette Greene-Placentia,D,Democratic,False
+H-AZ-08,Abraham Hamadeh,R,Republican,True
 H-AZ-09,Paul Gosar,R,Republican,True
 H-AZ-09,Dani Sterbinsky,D,Democratic,False
 H-CA-01,James Gallagher,R,Republican,True
@@ -487,8 +487,8 @@ H-MD-04,George McDermott,R,Republican,False
 H-MD-05,Adrian Boafo,D,Democratic,False
 H-MD-05,Chris Chaffee,R,Republican,False
 H-MD-06,Robin Ficker,R,Republican,False
-H-MD-06,April McClain Delaney,D,Democratic,True
 H-MD-06,Moshe Landman,O,Green,False
+H-MD-06,April McClain Delaney,D,Democratic,True
 H-MD-07,Scott Collier,R,Republican,False
 H-MD-07,Kweisi Mfume,D,Democratic,True
 H-MD-08,Jamie Raskin,D,Democratic,True
@@ -516,8 +516,8 @@ H-MI-04,Shafina Che Barnett,O,Green,False
 H-MI-04,Bill Huizenga,R,Republican,True
 H-MI-04,Sean McCann,D,Democratic,False
 H-MI-05,Jim Bronke,O,Green,False
-H-MI-05,Sharon M. Renier,O,U.S. Taxpayers,False
 H-MI-05,Ronald A. Muszynski,O,Libertarian,False
+H-MI-05,Sharon M. Renier,O,U.S. Taxpayers,False
 H-MI-05,Christian Vukasovich,D,Democratic,False
 H-MI-05,Tim Walberg,R,Republican,True
 H-MI-06,Debbie Dingell,D,Democratic,True
@@ -794,8 +794,8 @@ H-NY-25,Joseph Morelle,D,Democratic,True
 H-NY-26,Dennis Hannon,R,Republican,False
 H-NY-26,Tim Kennedy,D,Democratic,True
 H-OH-01,Eric Conroy,R,Republican,False
-H-OH-01,Nathan Weise,O,Libertarian,False
 H-OH-01,Greg Landsman,D,Democratic,True
+H-OH-01,Nathan Weise,O,Libertarian,False
 H-OH-02,Jennifer Mazzuckelli,D,Democratic,False
 H-OH-02,David Taylor,R,Republican,True
 H-OH-03,Joyce Beatty,D,Democratic,True

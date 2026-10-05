@@ -2807,10 +2807,10 @@ us-202the7176ba8a,house,VA,1,The Washington Post/George Mason University Schar S
 us-202the7176ba8a,house,VA,1,The Washington Post/George Mason University Schar School of Policy and Government,2026-09-23,2026-09-28,609.0,lv,,Shannon Taylor,50.0
 us-202thec3b2cee5,house,VA,5,The Washington Post/George Mason University Schar School of Policy and Government,2026-09-23,2026-09-28,600.0,lv,,John McGuire,51.0
 us-202thec3b2cee5,house,VA,5,The Washington Post/George Mason University Schar School of Policy and Government,2026-09-23,2026-09-28,600.0,lv,,Tom Perriello,46.0
-us-202lig9eec2508,house,UT,1,Lighthouse Research,2026-08-31,2026-10-10,515.0,lv,,Ben McAdams,62.7
-us-202lig9eec2508,house,UT,1,Lighthouse Research,2026-08-31,2026-10-10,515.0,lv,,Riley Owen,21.2
-us-202lig9eec2508,house,UT,1,Lighthouse Research,2026-08-31,2026-10-10,515.0,lv,,Jesse West,4.7
-us-202lig9eec2508,house,UT,1,Lighthouse Research,2026-08-31,2026-10-10,515.0,lv,,Elias Henry Montgomery,3.3
+us-202lig9eec2508,house,UT,1,Lighthouse Research,2026-08-31,2026-09-10,515.0,lv,,Ben McAdams,62.7
+us-202lig9eec2508,house,UT,1,Lighthouse Research,2026-08-31,2026-09-10,515.0,lv,,Riley Owen,21.2
+us-202lig9eec2508,house,UT,1,Lighthouse Research,2026-08-31,2026-09-10,515.0,lv,,Jesse West,4.7
+us-202lig9eec2508,house,UT,1,Lighthouse Research,2026-08-31,2026-09-10,515.0,lv,,Elias Henry Montgomery,3.3
 us-202ligf6b1dc1d,house,UT,2,Lighthouse Research,2026-09-10,2026-09-24,515.0,lv,,Blake Moore,39.0
 us-202ligf6b1dc1d,house,UT,2,Lighthouse Research,2026-09-10,2026-09-24,515.0,lv,,Peter Crosby,34.0
 us-202ligf6b1dc1d,house,UT,2,Lighthouse Research,2026-09-10,2026-09-24,515.0,lv,,Carlton E. Bowen,4.1
@@ -2878,3 +2878,21 @@ us-202big7e4bf32f,senate,MN,0,Big Data Poll,2026-09-29,2026-09-30,622.0,lv,,Mich
 us-202big7e4bf32f,senate,MN,0,Big Data Poll,2026-09-29,2026-09-30,622.0,lv,,Rebecca Whiting,5.0
 us-202the4bdf33e1,house,AK,1,The Bullfinch Group,2026-09-01,2026-09-06,820.0,lv,,Nick Begich,50.3
 us-202the4bdf33e1,house,AK,1,The Bullfinch Group,2026-09-01,2026-09-06,820.0,lv,,Bill Hill,46.5
+us-202impbb787ecf,house,WI,1,Impact Research,2026-09-28,2026-10-01,500.0,lv,D,Bryan Steil,47.0
+us-202impbb787ecf,house,WI,1,Impact Research,2026-09-28,2026-10-01,500.0,lv,D,Mitchell Berman,48.0
+gov202the240fb48b,governor,OH,0,The New York Times/Siena University,2026-09-22,2026-10-01,616.0,lv,,Amy Acton,49.0
+gov202the240fb48b,governor,OH,0,The New York Times/Siena University,2026-09-22,2026-10-01,616.0,lv,,Vivek Ramaswamy,45.0
+gov202thefb920530,governor,IA,0,The New York Times/Siena University,2026-09-22,2026-10-01,606.0,lv,,Rob Sand,52.0
+gov202thefb920530,governor,IA,0,The New York Times/Siena University,2026-09-22,2026-10-01,606.0,lv,,Zach Lahn,41.0
+gov202theafe06bf1,governor,TX,0,The New York Times/Siena University,2026-09-22,2026-09-30,605.0,lv,,Greg Abbott,46.0
+gov202theafe06bf1,governor,TX,0,The New York Times/Siena University,2026-09-22,2026-09-30,605.0,lv,,Gina Hinojosa,49.0
+gov202thecdc40b4c,governor,KS,0,The New York Times/Siena University,2026-09-22,2026-09-30,605.0,lv,,Ty Masterson,49.0
+gov202thecdc40b4c,governor,KS,0,The New York Times/Siena University,2026-09-22,2026-09-30,605.0,lv,,Cindy Holscher,44.0
+gov202the33f8c9ea,governor,AK,0,The New York Times/Siena University,2026-09-24,2026-10-01,431.0,lv,,Jonathan Kreiss-Tomkins,52.0
+gov202the33f8c9ea,governor,AK,0,The New York Times/Siena University,2026-09-24,2026-10-01,431.0,lv,,Bernadette Wilson,48.0
+us-202wed7f897488,senate,GA,0,Wedgewood Polls,2026-10-02,2026-10-03,600.0,lv,,Jon Ossoff,55.0
+us-202wed7f897488,senate,GA,0,Wedgewood Polls,2026-10-02,2026-10-03,600.0,lv,,Mike Collins,45.0
+gov202wed3b9968cd,governor,GA,0,Wedgewood Polls,2026-10-02,2026-10-03,600.0,lv,,Rick Jackson,51.0
+gov202wed3b9968cd,governor,GA,0,Wedgewood Polls,2026-10-02,2026-10-03,600.0,lv,,Keisha Lance Bottoms,49.0
+gen202you9adbf42a,generic,US,0,YouGov - CBS News,2026-09-30,2026-10-02,1572.0,lv,,Dem,54.0
+gen202you9adbf42a,generic,US,0,YouGov - CBS News,2026-09-30,2026-10-02,1572.0,lv,,Rep,45.0
