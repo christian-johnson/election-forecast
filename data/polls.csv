@@ -2896,3 +2896,38 @@ gov202wed3b9968cd,governor,GA,0,Wedgewood Polls,2026-10-02,2026-10-03,600.0,lv,,
 gov202wed3b9968cd,governor,GA,0,Wedgewood Polls,2026-10-02,2026-10-03,600.0,lv,,Keisha Lance Bottoms,49.0
 gen202you9adbf42a,generic,US,0,YouGov - CBS News,2026-09-30,2026-10-02,1572.0,lv,,Dem,54.0
 gen202you9adbf42a,generic,US,0,YouGov - CBS News,2026-09-30,2026-10-02,1572.0,lv,,Rep,45.0
+us-202firaf458383,house,AZ,1,FirstStrategic,2026-10-01,2026-10-01,400.0,lv,,Amish Shah,44.4
+us-202firaf458383,house,AZ,1,FirstStrategic,2026-10-01,2026-10-01,400.0,lv,,Jay Feely,41.6
+us-202mit7960c973,senate,MI,0,Mitchell Research & Communications,2026-10-01,2026-10-01,682.0,lv,,Abdul El-Sayed,46.0
+us-202mit7960c973,senate,MI,0,Mitchell Research & Communications,2026-10-01,2026-10-01,682.0,lv,,Mike Rogers,41.0
+us-202mit7960c973,senate,MI,0,Mitchell Research & Communications,2026-10-01,2026-10-01,682.0,lv,,Lydia Christensen,3.0
+us-202mit7960c973,senate,MI,0,Mitchell Research & Communications,2026-10-01,2026-10-01,682.0,lv,,Tim Long,1.0
+us-202mit7960c973,senate,MI,0,Mitchell Research & Communications,2026-10-01,2026-10-01,682.0,lv,,Douglas P. Marsh,1.0
+us-202mit7960c973,senate,MI,0,Mitchell Research & Communications,2026-10-01,2026-10-01,682.0,lv,,Walter P. Kristy,2.0
+us-202pub0bd895c4,house,FL,16,Public Policy Polling,2026-10-01,2026-10-02,530.0,rv,D,Kelly Kirschner,39.0
+us-202pub0bd895c4,house,FL,16,Public Policy Polling,2026-10-01,2026-10-02,530.0,rv,D,Sydney Gruters,43.0
+us-202surae0ec3b2,senate,NM,0,SurveyUSA,2026-09-25,2026-09-30,576.0,lv,,Ben Ray Luján,54.0
+us-202surae0ec3b2,senate,NM,0,SurveyUSA,2026-09-25,2026-09-30,576.0,lv,,Larry Marker,36.0
+us-202pub12c802d5,senate,IL,0,Public Policy Polling,2026-09-30,2026-10-01,569.0,lv,D,Juliana Stratton,49.0
+us-202pub12c802d5,senate,IL,0,Public Policy Polling,2026-09-30,2026-10-01,569.0,lv,D,Don Tracy,36.0
+gov202pub5131a761,governor,IL,0,Public Policy Polling,2026-09-30,2026-10-01,569.0,lv,D,JB Pritzker,54.0
+gov202pub5131a761,governor,IL,0,Public Policy Polling,2026-09-30,2026-10-01,569.0,lv,D,Darren Bailey,34.0
+gov202pub5131a761,governor,IL,0,Public Policy Polling,2026-09-30,2026-10-01,569.0,lv,D,Collin Corbett,6.0
+gov202nob7ac2c1a0,governor,NV,0,Noble Predictive Insights,2026-09-22,2026-09-26,800.0,rv,,Joe Lombardo,38.0
+gov202nob7ac2c1a0,governor,NV,0,Noble Predictive Insights,2026-09-22,2026-09-26,800.0,rv,,Aaron Ford,37.0
+gov202nob7ac2c1a0,governor,NV,0,Noble Predictive Insights,2026-09-22,2026-09-26,800.0,rv,,Danielle Ford,7.0
+gov202uni1d47b8b4,governor,MD,0,University of Maryland Baltimore County Institute of Politics,2026-09-22,2026-09-27,776.0,lv,,Wes Moore,51.0
+gov202uni1d47b8b4,governor,MD,0,University of Maryland Baltimore County Institute of Politics,2026-09-22,2026-09-27,776.0,lv,,Dan Cox,24.0
+gov202uni1d47b8b4,governor,MD,0,University of Maryland Baltimore County Institute of Politics,2026-09-22,2026-09-27,776.0,lv,,Andy Ellis,3.0
+gov202uni1d47b8b4,governor,MD,0,University of Maryland Baltimore County Institute of Politics,2026-09-22,2026-09-27,776.0,lv,,Cathy White,3.0
+us-202mare89f317d,senate,ME,0,Marist University,2026-10-01,2026-10-04,1505.0,rv,,Troy Jackson,51.0
+us-202mare89f317d,senate,ME,0,Marist University,2026-10-01,2026-10-04,1505.0,rv,,Susan Collins,47.0
+gov202mar89bef491,governor,ME,0,Marist University,2026-10-01,2026-10-04,1505.0,rv,,Hannah Pingree,52.0
+gov202mar89bef491,governor,ME,0,Marist University,2026-10-01,2026-10-04,1505.0,rv,,Bobby Charles,40.0
+gov202mar89bef491,governor,ME,0,Marist University,2026-10-01,2026-10-04,1505.0,rv,,Rick Bennett,6.0
+gov202bsp579091db,governor,AZ,0,BSP Research,2026-08-18,2026-09-04,,lv,,Katie Hobbs,47.0
+gov202bsp579091db,governor,AZ,0,BSP Research,2026-08-18,2026-09-04,,lv,,Andy Biggs,34.0
+gov202bsp579091db,governor,AZ,0,BSP Research,2026-08-18,2026-09-04,,lv,,Teri Ann Hourihan,2.0
+gov202bsp579091db,governor,AZ,0,BSP Research,2026-08-18,2026-09-04,,lv,,Risa Lombardo,1.0
+gov202co/7ac95f4a,governor,NY,0,co/efficient,2026-09-23,2026-09-25,1046.0,lv,R,Kathy Hochul,48.0
+gov202co/7ac95f4a,governor,NY,0,co/efficient,2026-09-23,2026-09-25,1046.0,lv,R,Bruce Blakeman,41.0
