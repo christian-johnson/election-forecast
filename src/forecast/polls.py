@@ -23,6 +23,7 @@ COLUMNS = [
     "sample_size",
     "population",
     "partisan",
+    "url",
     "choice",
     "pct",
 ]
@@ -73,6 +74,7 @@ def flatten_polls(raw: list[dict]) -> pd.DataFrame:
                 "sample_size": poll["sample_size"],
                 "population": poll["population"] or "a",
                 "partisan": PARTISAN_SPONSOR.get(poll["partisan"]),
+                "url": poll.get("url"),
                 "choice": answer["choice"],
                 "pct": answer["pct"],
             }

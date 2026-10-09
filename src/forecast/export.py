@@ -29,7 +29,8 @@ def _margin(share: np.ndarray) -> np.ndarray:
     return (2 * share - 1) * 100
 
 
-def _label(row: pd.Series) -> str:
+def race_label(row: pd.Series) -> str:
+    """Short display name: "OH-01" for House districts, the state name otherwise."""
     if row["office"] == "house":
         return f"{row['state']}-{row['district']:02d}"
     return _STATE_NAMES[row["state"]]
@@ -67,7 +68,7 @@ def _race_records(races: pd.DataFrame, shares: np.ndarray, n_polls: pd.Series) -
     for idx, row in races.iterrows():
         record = {
             "id": row["race_id"],
-            "label": _label(row),
+            "label": race_label(row),
             "state": row["state"],
             "district": int(row["district"]),
             "d_name": row["d_name"],
@@ -106,7 +107,7 @@ def build_forecast(
         race_obs: Race poll observations used in the fit.
         posterior: Output of model.fit.
         shares: Output of simulate.simulate_shares.
-        n_polls: Number of observations of each kind ("race", "generic", "crosstab").
+        n_polls: Number of observations of each kind ("race", "generic").
 
     Returns:
         JSON-serializable dict with national, per-office seat, and per-race summaries.

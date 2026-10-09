@@ -41,41 +41,51 @@ CHAMBERS = {
 
 @dataclass(frozen=True)
 class Priors:
-    """Prior scales for the model, all on the logit scale of the Democratic two-party share.
+    """Prior scales for the model, on the logit scale of the Democratic two-party share.
 
-    A logit shift of 0.04 is about one point of two-party share near 50%.
+    A logit shift of 0.02 is about one point of margin near a 50-50 race.
     """
 
     walk_weekly: float = 0.02
-    office_shift: float = 0.10
-    incumbency_mean: float = 0.05
-    incumbency_sd: float = 0.04
-    race_scale: float = 0.15
     house_effect_scale: float = 0.05
-    population_effect: float = 0.03
-    partisan_sponsor_mean: float = 0.03
-    partisan_sponsor_sd: float = 0.03
     poll_extra_noise: float = 0.05
-    group_swing: float = 0.2
 
 
 @dataclass(frozen=True)
-class ElectionDayError:
-    """Polling error that the polls cannot reveal, added when simulating the election.
+class History:
+    """What past elections say, measured by scripts/calibrate_history.py, in margin points.
 
-    Same logit units as Priors. The national term moves every race together; the state term
-    moves every race in one state together. The group term is a miss within one demographic
-    group (e.g. non-college voters), which moves races according to their group mix.
+    Attributes:
+        incumbency: Edge of an incumbent running again, from 2022 and 2024 House races.
+        race_spread: Per office, how far 2022 and 2024 results landed from PVI + national vote +
+            incumbency (an SD, set so that 80% of races fell within 1.28 of it).
+        national_miss: Typical (root-mean-square) miss shared by every race's late polls in one
+            election, over `poll_elections`.
+        largest_national_miss: The largest such miss (+ means polls overstated Democrats).
+        largest_national_miss_year: The election it happened in.
+        state_miss: Typical further miss shared by every poll in one state.
+        race_miss: Typical further miss shared by every poll of one race.
+        pvi_elections: Elections behind incumbency and race_spread.
+        poll_elections: Elections behind the polling misses (FiveThirtyEight's poll archive).
     """
 
-    national: float = 0.06
-    state: float = 0.05
-    race: float = 0.03
-    group: float = 0.08
+    incumbency: float = 1.7
+    race_spread: dict[str, float] = field(
+        default_factory=lambda: {"house": 6.0, "senate": 6.4, "governor": 11.5}
+    )
+    national_miss: float = 3.0
+    largest_national_miss: float = 6.5
+    largest_national_miss_year: int = 2020
+    state_miss: float = 2.7
+    race_miss: float = 3.3
+    pvi_elections: str = "2022 and 2024"
+    poll_elections: str = "13 elections from 1998 to 2022"
 
 
 PRIORS = Priors()
-ELECTION_DAY_ERROR = ElectionDayError()
+HISTORY = History()
+# Logit units per point of margin near a 50-50 race, to turn HISTORY into model units.
+POINT = 0.02
 
 # Poll sample size assumed when a pollster does not report one.
 DEFAULT_SAMPLE_SIZE = 600

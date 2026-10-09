@@ -88,8 +88,6 @@ const state = {
 };
 const bin = (race) => BINS.find((b) => race.p_d >= b.min);
 const fill = (race) => css(bin(race).css);
-const esc = (s) =>
-  String(s).replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 function marginText(m, race) {
   const lead = m >= 0 ? race.d_party : race.r_party;
   return `${lead}+${Math.abs(m).toFixed(1)}`;
@@ -131,11 +129,6 @@ function raceTooltip(race) {
     ${body}
     <div class="muted">Click to see full analysis</div>`;
 }
-
-// Bins of a margin histogram stored as counts per bin, `width` points wide from `start`.
-const marginBins = (hist, start, width) =>
-  hist.map((v, i) => ({ i, v, x0: start + i * width, x1: start + (i + 1) * width }));
-const marginColor = (b) => css((b.x0 + b.x1) / 2 >= 0 ? "--dem" : "--rep");
 
 // Small margin histogram as markup; the axis is optional so table rows stay compact.
 function miniHistogram(info, race, { width = 220, height = 60, axis = true } = {}) {
@@ -379,7 +372,7 @@ function renderLegend() {
 
 const OFFICE_NAME = { house: "House", senate: "Senate", governor: "Governor" };
 const modal = document.getElementById("race-modal");
-const modalState = { race: null, step: 0 };
+const modalState = { race: null, step: 0, detail: null };
 let stepsData = null;
 // Loaded in the background: the map tooltips use it once it arrives.
 const stepsLoaded = d3.json("data/steps.json").then(
@@ -389,6 +382,13 @@ const stepsLoaded = d3.json("data/steps.json").then(
     throw err;
   },
 );
+// Every poll and the weekly estimates, for the pop-up's timeline; loaded on first open.
+let detailLoaded = null;
+const loadDetail = () =>
+  (detailLoaded ??= d3.json("data/timeline.json").then((timeline) => ({
+    timeline,
+    polls: timeline.polls,
+  })));
 // The first steps describe the national vote, before moving to this race.
 const NATIONAL_STEPS = 2;
 
@@ -397,67 +397,80 @@ const pviText = (pvi) =>
 const natText = (m) => (m >= 0 ? `D+${m.toFixed(1)}` : `R+${(-m).toFixed(1)}`);
 const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
 
-function stepText(key, race) {
-  const place = state.office === "house" ? "this district" : "this state";
-  const nat = stepsData.national;
-  const n = state.data.n_polls;
+function nationalText(nat, n) {
+  const spread = (nat.hi - nat.lo) / 2;
+  return (
+    `Start with the national environment. A national mood that drifts from week to week, ` +
+    `fit to ${n.generic} generic ballot polls and ${n.race} state and district polls (recent ` +
+    `ones count most), stands at ${natText(nat.mean)} on election day, plus or minus about ` +
+    `${spread.toFixed(1)} points (80% range). That range covers sampling noise, disagreement ` +
+    `between pollsters, and how far opinion can still move before November.`
+  );
+}
+
+function missText(h) {
+  const side = h.largest_national_miss > 0 ? "Democrats" : "Republicans";
+  return (
+    `Polls can all miss in the same direction, and no amount of polling reveals that ahead ` +
+    `of time. Over the ${h.poll_elections}, the late polls missed by about ` +
+    `${h.national_miss} points in a typical year, and by ` +
+    `${Math.abs(h.largest_national_miss)} in ${h.largest_national_miss_year} (overstating ` +
+    `${side}). So every race gets a shared miss of that size: the center stays put and the ` +
+    `range widens.`
+  );
+}
+
+const placeName = () => (state.office === "house" ? "this district" : "this state");
+
+function priorText(race, info) {
+  const h = stepsData.history;
+  const lean =
+    race.pvi === 0
+      ? `Its Cook PVI is EVEN: in the last two presidential elections it voted in line ` +
+        `with the nation.`
+      : `Its Cook PVI is ${pviText(race.pvi)}: in the last two presidential elections it ` +
+        `voted about ${Math.abs(race.pvi)} points more ` +
+        `${race.pvi > 0 ? "Democratic" : "Republican"} than the nation, worth about ` +
+        `${2 * Math.abs(race.pvi)} points of margin.`;
+  const incumbent = race.incumbent_running
+    ? ` ${race.incumbent} is running again, worth about ${h.incumbency} points.`
+    : " It is an open seat.";
+  return (
+    `Now move to ${placeName()}, before looking at its own polls. ${lean}${incumbent} Added ` +
+    `to the national picture, that puts it at ${marginText(info.expected, race)}. That is ` +
+    `only a starting point: in ${h.pvi_elections}, 80% of ${OFFICE_NAME[state.office]} ` +
+    `races landed within ${Math.round(Z80 * h.race_spread[state.office])} points of what ` +
+    `PVI, incumbency and the national vote predicted, so the range widens to match.`
+  );
+}
+
+function pollsText(race, step) {
+  const h = stepsData.history;
+  if (!race.n_polls)
+    return (
+      `Nobody has polled ${placeName()}, so its forecast stays at the starting point from ` +
+      `the last step. This is the published forecast.`
+    );
+  return (
+    `Now add ${placeName()}'s own ${plural(race.n_polls, "poll")}, each adjusted for its ` +
+    `pollster's lean. They move it to ${marginText(step.mean, race)}. They count for less ` +
+    `than their sample sizes suggest: ${OFFICE_NAME[state.office]} polls scatter by about ` +
+    `${stepsData.noise[state.office]} points beyond sampling error, and all of a race's ` +
+    `polls can miss together (by ${h.race_miss} points in a typical past race, plus ` +
+    `${h.state_miss} shared across a state). This is the published forecast.`
+  );
+}
+
+function stepText(key, race, info, step) {
   switch (key) {
+    case "national":
+      return nationalText(stepsData.national, state.data.n_polls);
+    case "national_miss":
+      return missText(stepsData.history);
+    case "prior":
+      return priorText(race, info);
     case "polls":
-      return (
-        `Start with the polls alone. ${n.generic} generic ballot polls, plus every race poll ` +
-        `in the country, put the national mood at ${natText(nat.mean)} on election day ` +
-        `(80%: ${natText(nat.lo)} to ${natText(nat.hi)}). This spread is the polls' own ` +
-        `statistical uncertainty: sampling noise, disagreement between pollsters, and how much ` +
-        `opinion can still drift before November.`
-      );
-    case "miss":
-      return (
-        `Polls can all miss in the same direction, as they did in 2016 and 2020. No amount of ` +
-        `polling reveals that kind of miss, so the model adds one of typical size, a few points ` +
-        `either way. The center stays put; the range widens.`
-      );
-    case "lean": {
-      if (race.pvi === 0)
-        return `Now move to ${place}. Its partisan lean is EVEN (Cook PVI): in the last two presidential elections it voted in line with the nation, so the estimate stays where it is.`;
-      const dir = race.pvi > 0 ? "Democratic" : "Republican";
-      return (
-        `Now move to ${place}. Its partisan lean is ${pviText(race.pvi)} (Cook PVI): in the ` +
-        `last two presidential elections it voted about ${Math.abs(race.pvi)} points more ` +
-        `${dir} than the nation, which shifts the margin about ${2 * Math.abs(race.pvi)} ` +
-        `points toward ${race.pvi > 0 ? "Democrats" : "Republicans"}.`
-      );
-    }
-    case "office": {
-      const inc = race.incumbent_running
-        ? `${race.incumbent} is running again, which is worth a little extra.`
-        : "It is an open seat, so neither side has an incumbent's edge.";
-      return (
-        `${OFFICE_NAME[state.office]} races don't track the generic ballot exactly, and ` +
-        `incumbents tend to run a bit ahead of their party. ${inc}`
-      );
-    }
-    case "groups":
-      return n.crosstab
-        ? `Adjust for who lives here. ${plural(n.crosstab, "crosstab row")} show how groups ` +
-            `(by race, education and age) have swung since 2024, and ${place} moves with ` +
-            `the groups it has more of than the nation.`
-        : `Adjust for who lives here, using Census data on race, education and age. No ` +
-            `crosstabs are loaded yet, so group swings can only be inferred from race polls ` +
-            `and this step changes little.`;
-    case "race":
-      return race.n_polls
-        ? `Add ${place}'s own ${plural(race.n_polls, "poll")}, each adjusted for its ` +
-            `pollster's known lean. This is where the candidates themselves show up: how far ` +
-            `this race runs ahead of or behind what the steps above imply.`
-        : `Nobody has polled ${place}, so the candidates can't be measured directly. The ` +
-            `model adds the typical race-to-race spread it learned from polled races, which ` +
-            `widens the range.`;
-    case "local":
-      return (
-        `Finally, polls can miss locally too: all of a state's polls can be off together, a ` +
-        `demographic group can be mismeasured, and any single race can surprise. This is ` +
-        `the published forecast.`
-      );
+      return pollsText(race, step);
     default:
       return "";
   }
@@ -474,15 +487,62 @@ function winLine(race, step) {
   return `${PARTY_NAME[fav.party]} ${pct(fav.p)} to win`;
 }
 
+// Horizontal margins shared by the histogram and the timeline below it, so they share one axis.
+const STEP_X = { left: 60, right: 18 };
+const stepScale = (info, width) =>
+  marginScale(
+    info.start,
+    info.start + info.width * info.steps[0].hist.length,
+    STEP_X.left,
+    width - STEP_X.right,
+  );
+
+/**
+ * From the race's step on, an arrow from the national center to where PVI and incumbency move
+ * this race. It grows out of the national center when the race first comes in.
+ */
+function renderLeanArrow(svg, race, info, k, x, arrowY) {
+  const arrow = svg.select(".lean-arrow");
+  const shown = arrow.attr("visibility") === "visible";
+  if (k < 2) {
+    arrow.attr("visibility", "hidden");
+    return;
+  }
+  const from = x(info.steps[1].mean);
+  const to = x(info.steps[2].mean);
+  const label =
+    `PVI ${pviText(race.pvi)}` + (race.incumbent_running ? " + incumbent" : "");
+  arrow.attr("visibility", "visible");
+  const line = arrow
+    .select("line")
+    .attr("x1", from)
+    .attr("y1", arrowY)
+    .attr("y2", arrowY)
+    .interrupt();
+  const text = arrow
+    .select("text")
+    .attr("y", arrowY - 6)
+    .text(label)
+    .interrupt();
+  if (shown) {
+    line.attr("x2", to);
+    text.attr("x", (from + to) / 2);
+  } else {
+    line.attr("x2", from).transition().duration(600).attr("x2", to);
+    text.attr("x", from).transition().duration(600).attr("x", (from + to) / 2);
+  }
+}
+
 function renderStepChart(race, info, k) {
   const el = document.getElementById("step-chart");
   const step = info.steps[k];
   const width = el.clientWidth || 600;
   const height = 200;
-  const m = { top: 24, right: 18, bottom: 26, left: 18 };
+  const m = { top: 24, bottom: 26, ...STEP_X };
   const n = step.hist.length;
-  const x = marginScale(info.start, info.start + info.width * n, m.left, width - m.right);
-  const yMax = d3.max(info.steps, (s) => d3.max(s.hist));
+  const x = stepScale(info, width);
+  // Fit the taller of this step and the previous one's outline, so wide steps stay readable.
+  const yMax = 1.2 * d3.max([...step.hist, ...(k > 0 ? info.steps[k - 1].hist : [])]);
   const y = d3
     .scaleLinear()
     .domain([0, yMax])
@@ -523,25 +583,29 @@ function renderStepChart(race, info, k) {
     .attr("y", (b) => y(b.v))
     .attr("height", (b) => y(0) - y(b.v));
 
-  // Outline of the previous step, so the change is visible.
+  // Outline of the previous step, so the change is visible. It starts on the old vertical scale
+  // (where the bars just were) and rescales along with the bars.
   const prev = k > 0 ? info.steps[k - 1].hist : null;
-  const ghost = prev
-    ? d3
-        .line()
-        .curve(d3.curveStepAfter)
-        .x((d) => x(d[0]))
-        .y((d) => y(d[1]))([
-        ...prev.map((v, i) => [info.start + i * info.width, v]),
-        [info.start + n * info.width, prev.at(-1)],
-      ])
-    : null;
-  svg
+  const outline = (scale) =>
+    d3
+      .line()
+      .curve(d3.curveStepAfter)
+      .x((d) => x(d[0]))
+      .y((d) => scale(d[1]))([
+      ...prev.map((v, i) => [info.start + i * info.width, v]),
+      [info.start + n * info.width, prev.at(-1)],
+    ]);
+  const oldY = y.copy().domain([0, svg.property("yMax") ?? yMax]);
+  svg.property("yMax", yMax);
+  const ghost = svg
     .select(".ghost")
     .attr("fill", "none")
     .attr("stroke", css("--ink"))
     .attr("stroke-width", 1.5)
     .attr("stroke-dasharray", "4 3")
-    .attr("d", ghost);
+    .interrupt();
+  if (prev) ghost.attr("d", outline(oldY)).transition().duration(600).attr("d", outline(y));
+  else ghost.attr("d", null);
 
   const zeroX = x(0);
   svg
@@ -583,11 +647,284 @@ function renderStepChart(race, info, k) {
     .text((d) => d.text);
 }
 
+/** Weekly estimate shown under step k: national mood, or this race before or after its polls. */
+function timeSeries(race, k) {
+  const tl = modalState.detail.timeline;
+  const nat = tl.national;
+  let { mean, sd } = nat;
+  const own = tl.races[race.id];
+  if (k === 3 && own) ({ mean, sd } = own);
+  else if (k >= 2) {
+    const [lean, spread] = tl.prior[race.id];
+    mean = nat.mean.map((v) => v + lean);
+    sd = nat.sd.map((v) => Math.hypot(v, spread));
+  }
+  // From step 2 on, a polling miss shared by every poll would shift every week's reading alike.
+  if (k >= 1) {
+    const miss = stepsData.history.national_miss * POINT;
+    sd = sd.map((v) => Math.hypot(v, miss));
+  }
+  const start = new Date(`${tl.start}T12:00`).getTime();
+  const electionDay = new Date(`${state.data.election_date}T12:00`);
+  return mean.map((v, i) => ({
+    // The last week runs up to Election Day, at the top of the chart.
+    t: i === mean.length - 1 ? electionDay : new Date(start + i * WEEK_MS),
+    mid: logitMargin(v),
+    lo: logitMargin(v - Z80 * sd[i]),
+    hi: logitMargin(v + Z80 * sd[i]),
+  }));
+}
+
+function stepPolls(race, k) {
+  const { polls } = modalState.detail;
+  if (k < 2) return polls.generic.map((p, i) => ({ ...p, key: `g${i}` }));
+  if (k === 3) return (polls.races[race.id] ?? []).map((p, i) => ({ ...p, key: `r${i}` }));
+  return [];
+}
+
+function timeNote(race, k) {
+  const miss = k >= 1 ? " The band includes the national polling miss from step 2." : "";
+  if (k < 2)
+    return (
+      "Below: each bubble is a generic ballot poll, sized by its sample. The line and band " +
+      `are the national mood each week, up to Election Day at the top.${miss}`
+    );
+  if (k === 2 || !race.n_polls)
+    return `Below: where PVI and incumbency put this race each week, given the national mood.${miss}`;
+  return (
+    "Below: each bubble is a poll of this race, sized by its sample. The line and band are " +
+    `the model's estimate each week.${miss}`
+  );
+}
+
+/** Key for the line and band, in the bottom right corner of the timeline. */
+function timeLegend(svg, right, bottom) {
+  const w = 132;
+  const g = svg.append("g").attr("transform", `translate(${right - w - 4},${bottom - 44})`);
+  g.append("rect")
+    .attr("width", w)
+    .attr("height", 40)
+    .attr("rx", 4)
+    .attr("fill", css("--surface"))
+    .attr("fill-opacity", 0.85);
+  g.append("line")
+    .attr("x1", 8)
+    .attr("x2", 26)
+    .attr("y1", 13)
+    .attr("y2", 13)
+    .attr("stroke", css("--ink"))
+    .attr("stroke-width", 2);
+  g.append("rect").attr("x", 8).attr("y", 23).attr("width", 18).attr("height", 10).attr("fill", css("--band"));
+  g.selectAll("text")
+    .data([
+      ["Estimate", 17],
+      ["80% range", 32],
+    ])
+    .join("text")
+    .attr("x", 34)
+    .attr("y", (d) => d[1])
+    .attr("font-size", 11)
+    .attr("fill", css("--ink-2"))
+    .text((d) => d[0]);
+}
+
+function renderTimeChart(race, info, k) {
+  const el = document.getElementById("step-time");
+  const width = el.clientWidth || 600;
+  const narrow = width < 500;
+  const height = narrow ? 214 : 264;
+  // Room at the top for the lean arrow, between the histogram's axis and Election Day.
+  const m = { top: 34, bottom: 6, ...STEP_X };
+  const x = stepScale(info, width);
+  const series = timeSeries(race, k);
+  const today = new Date(state.data.updated);
+  const y = d3
+    .scaleTime()
+    .domain([series.at(-1).t, series[0].t])
+    .range([m.top, height - m.bottom]);
+  const r = d3
+    .scaleSqrt()
+    .domain([0, MAX_N])
+    .range([0, narrow ? 4 : 5])
+    .clamp(true);
+
+  let svg = d3.select(el).select("svg");
+  if (svg.empty() || +svg.attr("width") !== width || svg.attr("data-race") !== race.id) {
+    el.innerHTML = "";
+    svg = d3
+      .select(el)
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("data-race", race.id)
+      .attr("role", "img");
+    svg
+      .append("clipPath")
+      .attr("id", "step-time-clip")
+      .append("rect")
+      .attr("x", m.left)
+      .attr("width", width - m.left - m.right)
+      .attr("height", height);
+    const plot = svg.append("g").attr("clip-path", "url(#step-time-clip)");
+    // Bubbles go underneath, so the estimate stays visible through crowded national polls.
+    plot.append("g").attr("class", "bubbles");
+    // Everything drawn after the bubbles is for looking only, so clicks reach the polls below.
+    const overlay = svg.append("g").attr("pointer-events", "none");
+    plot.append("path").attr("class", "band").attr("fill", css("--band")).attr("pointer-events", "none");
+    svg
+      .append("marker")
+      .attr("id", "lean-arrowhead")
+      .attr("viewBox", "0 0 10 10")
+      .attr("refX", 9)
+      .attr("refY", 5)
+      .attr("markerWidth", 4)
+      .attr("markerHeight", 4)
+      .attr("orient", "auto")
+      .append("path")
+      .attr("d", "M0,0L10,5L0,10Z")
+      .attr("fill", css("--ink"));
+    const lean = overlay.append("g").attr("class", "lean-arrow").attr("visibility", "hidden");
+    lean
+      .append("line")
+      .attr("stroke", css("--ink"))
+      .attr("stroke-width", 1.5)
+      .attr("marker-end", "url(#lean-arrowhead)");
+    lean
+      .append("text")
+      .attr("text-anchor", "middle")
+      .attr("font-size", 11)
+      .attr("fill", css("--ink"));
+    timeLegend(overlay, width - m.right, height - m.bottom);
+    plot
+      .append("path")
+      .attr("class", "line")
+      .attr("pointer-events", "none")
+      .attr("fill", "none")
+      .attr("stroke", css("--ink"))
+      .attr("stroke-width", 2);
+    const zeroX = x(0);
+    if (zeroX > m.left && zeroX < width - m.right)
+      overlay
+        .append("line")
+        .attr("x1", zeroX)
+        .attr("x2", zeroX)
+        .attr("y1", m.top)
+        .attr("y2", height - m.bottom)
+        .attr("stroke", css("--axis"));
+    overlay
+      .append("line")
+      .attr("x1", m.left)
+      .attr("x2", width - m.right)
+      .attr("y1", y(today))
+      .attr("y2", y(today))
+      .attr("stroke", css("--ink-2"))
+      .attr("stroke-dasharray", "3 3");
+    overlay
+      .append("text")
+      .attr("x", width - m.right - 4)
+      .attr("y", y(today) - 4)
+      .attr("text-anchor", "end")
+      .attr("font-size", 11)
+      .attr("fill", css("--ink-2"))
+      .text("Today");
+    svg
+      .append("g")
+      .attr("transform", `translate(${m.left},0)`)
+      .call(
+        d3
+          .axisLeft(y)
+          .tickValues([series.at(-1).t, ...y.ticks(narrow ? 3 : 5).filter((t) => y(t) > y(today) + 14)])
+          .tickFormat((t) => d3.timeFormat(+t === +series.at(-1).t ? "%b %-d" : "%b %Y")(t))
+          .tickSizeOuter(0),
+      )
+      .call(styleAxis)
+      .call((g) => g.select(".tick text").attr("font-weight", 700));
+  }
+  svg.attr("aria-label", timeNote(race, k));
+
+  // Smoothed, since each week is estimated on its own and the raw edges are jagged.
+  const area = d3
+    .area()
+    .curve(d3.curveBasis)
+    .x0((d) => x(d.lo))
+    .x1((d) => x(d.hi))
+    .y((d) => y(d.t));
+  const line = d3
+    .line()
+    .curve(d3.curveBasis)
+    .x((d) => x(d.mid))
+    .y((d) => y(d.t));
+  svg.select(".band").transition().duration(600).attr("d", area(series));
+  renderLeanArrow(svg, race, info, k, x, 20);
+  svg.select(".line").transition().duration(600).attr("d", line(series));
+
+  const rows = stepPolls(race, k).map((p) => ({ ...p, size: Math.min(p.n ?? ASSUMED_N, MAX_N) }));
+  svg
+    .select(".bubbles")
+    .selectAll("a")
+    .data(
+      rows.toSorted((a, b) => b.size - a.size),
+      (p) => p.key,
+    )
+    .join(
+      (enter) => {
+        const a = enter
+          .append("a")
+          .attr("class", "bubble")
+          .attr("target", "_blank")
+          .attr("rel", "noopener")
+          .attr("opacity", 0);
+        a.append("circle");
+        a.transition().duration(600).attr("opacity", 1);
+        return a;
+      },
+      (update) => update,
+      (exit) => exit.transition().duration(400).attr("opacity", 0).remove(),
+    )
+    .attr("href", (p) => safeUrl(p.url))
+    .on("mousemove", (e, p) => showTooltip(e, pollTooltip(p)))
+    .on("mouseleave", hideTooltip)
+    .select("circle")
+    .attr("cx", (p) => x(p.margin))
+    .attr("cy", (p) => y(new Date(`${p.date}T12:00`)))
+    .attr("r", (p) => Math.max(1.5, r(p.size)))
+    .attr("fill", (p) => css(p.margin >= 0 ? "--dem" : "--rep"))
+    .attr("fill-opacity", 0.25)
+    .attr("stroke", (p) => css(p.margin >= 0 ? "--dem" : "--rep"));
+}
+
+function statsHtml(race, info, k) {
+  const step = info.steps[k];
+  const prevP = k > 0 ? info.steps[k - 1].p_d : null;
+  const change =
+    prevP === null
+      ? ""
+      : `<br><span class="muted">${race.d_party} win chance was ${pct(prevP)} before this ` +
+        `step${pointChange(step.p_d - prevP)})</span>`;
+  return (
+    `<strong>${winLine(race, step)}${k < NATIONAL_STEPS ? " the national vote" : ""}</strong> · ` +
+    `projected margin ${marginText(step.mean, race)} ` +
+    `<span class="muted">(80%: ${marginText(step.lo, race)} to ${marginText(step.hi, race)})</span>` +
+    change
+  );
+}
+
+/** Show versions[k] in el, with el's height fixed to the tallest of all versions. */
+function reserveHeight(el, versions, k) {
+  el.style.minHeight = "";
+  let tallest = 0;
+  for (const html of versions) {
+    el.innerHTML = html;
+    tallest = Math.max(tallest, el.offsetHeight);
+  }
+  el.style.minHeight = `${tallest}px`;
+  el.innerHTML = versions[k];
+}
+
 function renderStep() {
   const race = modalState.race;
   const info = stepsData.races[race.id];
   const k = modalState.step;
-  const step = info.steps[k];
   const meta = stepsData.steps;
   const body = document.getElementById("modal-body");
   if (!body.querySelector(".stepper")) {
@@ -599,16 +936,14 @@ function renderStep() {
       <p id="step-text" class="step-text"></p>
       <p id="step-stats" class="step-stats"></p>
       <div id="step-chart"></div>
+      <div id="step-time"></div>
+      <p id="time-note" class="modal-note"></p>
       <div class="step-nav">
         <button id="step-prev">Back</button>
         <button id="step-next">Next</button>
       </div>
-      <table class="step-table">
-        <thead><tr><th>Step</th><th class="num">Estimate</th><th class="num">Win probability</th></tr></thead>
-        <tbody></tbody>
-      </table>
-      <p class="modal-note">Each chart is 4,000 simulated elections. Each step adds one piece
-      to the one before; the dashed outline is the previous step.</p>`;
+      <p class="modal-note">Each histogram is 4,000 simulated elections, going from the national
+      picture down to this race; the dashed outline is the previous step.</p>`;
     body.querySelectorAll("[data-step]").forEach((b) =>
       b.addEventListener("click", () => goToStep(+b.dataset.step)),
     );
@@ -621,32 +956,16 @@ function renderStep() {
     b.classList.toggle("done", i < k);
   });
   body.querySelector("#step-title").textContent = `Step ${k + 1} of ${meta.length}: ${meta[k].label}`;
-  body.querySelector("#step-text").textContent = stepText(meta[k].key, race);
-  const prevP = k > 0 ? info.steps[k - 1].p_d : null;
-  const change =
-    prevP === null
-      ? ""
-      : `<br><span class="muted">${race.d_party} win chance was ${pct(prevP)} before this ` +
-        `step${pointChange(step.p_d - prevP)})</span>`;
-  body.querySelector("#step-stats").innerHTML =
-    `<strong>${winLine(race, step)}${k < NATIONAL_STEPS ? " the national vote" : ""}</strong> · ` +
-    `projected margin ${marginText(step.mean, race)} ` +
-    `<span class="muted">(80%: ${marginText(step.lo, race)} to ${marginText(step.hi, race)})</span>` +
-    change;
+  const texts = meta.map((s, i) => esc(stepText(s.key, race, info, info.steps[i])));
+  const stats = meta.map((_, i) => statsHtml(race, info, i));
+  // Keep the charts still: each block is as tall as its longest version across the steps.
+  reserveHeight(body.querySelector("#step-text"), texts, k);
+  reserveHeight(body.querySelector("#step-stats"), stats, k);
   body.querySelector("#step-prev").disabled = k === 0;
   body.querySelector("#step-next").disabled = k === meta.length - 1;
-  body.querySelector(".step-table tbody").innerHTML = info.steps
-    .map(
-      (st, i) => `<tr class="${i === k ? "current" : ""}" data-step="${i}">
-        <td>${i + 1}. ${meta[i].label}</td>
-        <td class="num">${marginText(st.mean, race)}</td>
-        <td class="num">${pct(st.p_d)} ${race.d_party}</td></tr>`,
-    )
-    .join("");
-  body.querySelectorAll(".step-table tbody tr").forEach((tr) =>
-    tr.addEventListener("click", () => goToStep(+tr.dataset.step)),
-  );
   renderStepChart(race, info, k);
+  renderTimeChart(race, info, k);
+  body.querySelector("#time-note").textContent = timeNote(race, k);
 }
 
 function goToStep(k) {
@@ -664,22 +983,25 @@ async function openRace(race) {
     `${candidate(race.d_name, race.d_party, "D")} vs ${candidate(race.r_name, race.r_party, "R")}`;
   const body = document.getElementById("modal-body");
   body.innerHTML = "";
+  // The dialog sits in the browser's top layer, so the tooltip must live inside it to show.
+  modal.append(tooltip);
   modal.showModal();
   if (race.rule !== "model") {
     body.innerHTML = `<p>${decidedText(race)}, so this race is called for the
       ${PARTY_NAME[race.rule]} without modeling.</p>`;
     return;
   }
-  if (!stepsData) {
-    body.innerHTML = "<p>Loading…</p>";
-    try {
-      await stepsLoaded;
-    } catch {
-      body.innerHTML = "<p>Could not load the step-by-step data.</p>";
-      return;
-    }
-    body.innerHTML = "";
+  body.innerHTML = "<p>Loading…</p>";
+  try {
+    [, modalState.detail] = await Promise.all([stepsLoaded, loadDetail()]);
+  } catch (err) {
+    console.error(err);
+    detailLoaded = null;
+    body.innerHTML = "<p>Could not load the step-by-step data.</p>";
+    return;
   }
+  if (modalState.race !== race) return;
+  body.innerHTML = "";
   renderStep();
 }
 
@@ -871,6 +1193,10 @@ function bindControls() {
     }
   });
   document.getElementById("modal-close").addEventListener("click", () => modal.close());
+  modal.addEventListener("close", () => {
+    hideTooltip();
+    document.body.append(tooltip);
+  });
   modal.addEventListener("click", (e) => {
     if (e.target === modal) modal.close();
   });

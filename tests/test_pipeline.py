@@ -5,46 +5,43 @@ import pandas as pd
 import pytest
 
 from forecast import cli, fetch
-from forecast.crosstabs import crosstab_observations
-from forecast.demo import RACES, run_scenario
-from forecast.demographics import composition
+from forecast.config import HISTORY
+from forecast.model import week_index
 from forecast.races import name_key, parse_pvi, parse_races
 
-_CSV_NAMES = ("RACES_CSV", "CANDIDATES_CSV", "POLLS_CSV", "CROSSTABS_CSV", "COMPOSITION_CSV")
+_CSV_NAMES = ("RACES_CSV", "CANDIDATES_CSV", "POLLS_CSV")
 
 
 @pytest.fixture
-def run_pipeline(tmp_path, monkeypatch, raw_polls, wiki_pages, acs_tables):
-    """Run fetch + model against synthetic sources in a temp directory, with optional crosstabs."""
+def forecast_doc(tmp_path, monkeypatch, raw_polls, wiki_pages):
+    """Run fetch + model against synthetic sources in a temp directory."""
     monkeypatch.setattr(fetch, "fetch_polls", lambda: raw_polls)
     monkeypatch.setattr(fetch, "fetch_wikipedia", wiki_pages.__getitem__)
-    monkeypatch.setattr(fetch, "fetch_acs", acs_tables.__getitem__)
     monkeypatch.setattr(cli, "DATA_DIR", tmp_path / "data")
     for name in _CSV_NAMES:
         monkeypatch.setattr(cli, name, tmp_path / "data" / getattr(cli, name).name)
     monkeypatch.setattr(cli, "FORECAST_JSON", tmp_path / "site" / "forecast.json")
     monkeypatch.setattr(cli, "STEPS_JSON", tmp_path / "site" / "steps.json")
-    cli.run_demographics()
+    monkeypatch.setattr(cli, "TIMELINE_JSON", tmp_path / "site" / "timeline.json")
+    monkeypatch.setattr(cli, "LIKELIHOOD_JSON", tmp_path / "site" / "likelihood.json")
     cli.run_fetch()
-
-    def run(crosstab_rows=None):
-        cli.CROSSTABS_CSV.unlink(missing_ok=True)
-        if crosstab_rows is not None:
-            pd.DataFrame(crosstab_rows).to_csv(cli.CROSSTABS_CSV, index=False)
-        cli.run_model(warmup=300, samples=300, chains=1, seed=0)
-        return orjson.loads(cli.FORECAST_JSON.read_bytes())
-
-    return run
-
-
-@pytest.fixture
-def forecast_doc(run_pipeline):
-    return run_pipeline()
+    cli.run_model(warmup=300, samples=300, chains=1, seed=0)
+    return orjson.loads(cli.FORECAST_JSON.read_bytes())
 
 
 @pytest.fixture
 def steps_doc(forecast_doc):  # noqa: ARG001 - the pipeline must run first
     return orjson.loads(cli.STEPS_JSON.read_bytes())
+
+
+@pytest.fixture
+def timeline_doc(forecast_doc):  # noqa: ARG001 - the pipeline must run first
+    return orjson.loads(cli.TIMELINE_JSON.read_bytes())
+
+
+@pytest.fixture
+def likelihood_doc(forecast_doc):  # noqa: ARG001 - the pipeline must run first
+    return orjson.loads(cli.LIKELIHOOD_JSON.read_bytes())
 
 
 def _race(doc, office, race_id):
@@ -62,7 +59,7 @@ def test_pipeline_writes_complete_forecast(forecast_doc):
     senate_dist = senate["dem_seat_dist"]
 
     # Assert
-    assert forecast_doc["n_polls"] == {"race": 34, "generic": 18, "crosstab": 0}
+    assert forecast_doc["n_polls"] == {"race": 34, "generic": 18}
     assert {len(forecast_doc["offices"][o]["races"]) for o in ("senate", "governor")} == {1, 2}
     assert house_seats == pytest.approx(5, abs=0.2)
     # Two synthetic races plus the 65 real seats not up this cycle; means are rounded.
@@ -126,67 +123,6 @@ def test_name_key_ignores_initials_suffixes_and_accents():
     assert name_key("María Elvira Salazar") == "maria salazar"
 
 
-def test_crosstab_swing_moves_races_by_group_mix(run_pipeline):
-    # Arrange: crosstabs show Hispanic voters swinging hard to Republicans since 2024 (51-48).
-    rows = [
-        {
-            "pollster": "Acme Polling",
-            "start_date": f"2026-08-{d:02d}",
-            "end_date": f"2026-08-{d + 2:02d}",
-            "population": "lv",
-            "partisan": None,
-            "dimension": "race",
-            "group": "hispanic",
-            "dem": 30,
-            "rep": 65,
-            "n": 300,
-        }
-        for d in range(1, 21)
-    ]
-
-    # Act
-    without = _race(run_pipeline(), "house", "H-MN-02")
-    with_crosstabs = run_pipeline(rows)
-
-    # Assert: MN-02 is unpolled and, in the synthetic Census data, mostly Hispanic.
-    assert with_crosstabs["n_polls"]["crosstab"] == 20
-    shift = _race(with_crosstabs, "house", "H-MN-02")["margin"]["mean"] - without["margin"]["mean"]
-    assert shift < -1.5
-
-
-def test_composition_maps_census_geographies(acs_tables):
-    shares = composition(acs_tables).pivot_table(index="geo", columns="group", values="share")
-
-    assert {"US", "MN", "MN-02", "AK-01"} <= set(shares.index)
-    assert shares.loc["MN-02", "race:hispanic"] == pytest.approx(0.6)
-    # Black adults are suppressed in the synthetic data, so they fall into "other".
-    assert shares.loc["MN-02", "race:other"] == pytest.approx(0.1)
-    assert shares.filter(like="age:").sum(axis=1).to_numpy() == pytest.approx(1.0, abs=1e-3)
-
-
-def test_crosstabs_reject_unknown_groups():
-    row = {"pollster": "A", "start_date": "2026-08-01", "end_date": "2026-08-02",
-           "population": "lv", "partisan": None, "dimension": "race", "group": "martian",
-           "dem": 50, "rep": 40, "n": 100}  # fmt: skip
-
-    with pytest.raises(ValueError, match="race:martian"):
-        crosstab_observations(pd.DataFrame([row]))
-
-
-def test_demo_recovers_known_truth_without_polling_miss():
-    # Act
-    result = run_scenario(0.0, warmup=300, samples=300, chains=1)
-
-    # Assert
-    covered = [r["lo"] <= r["truth"] <= r["hi"] for r in result["races"]]
-    assert len(covered) == len(RACES)
-    assert sum(covered) >= 5
-    election_day = result["national"][-1]
-    assert election_day["lo"] <= election_day["truth"] <= election_day["hi"]
-    effects = {p["name"]: p["mean"] for p in result["pollsters"]}
-    assert effects["Pollster A"] > effects["Pollster B"]
-
-
 def test_steps_end_at_the_published_forecast(forecast_doc, steps_doc):
     # Arrange
     modeled = [
@@ -205,13 +141,94 @@ def test_steps_end_at_the_published_forecast(forecast_doc, steps_doc):
 
 
 def test_steps_build_from_national_polls_to_race(steps_doc):
-    polls, miss, lean, *_, race_polls, _ = steps_doc["races"]["H-OH-01"]["steps"]
-    national = steps_doc["national"]
+    # Arrange
+    oh01 = steps_doc["races"]["H-OH-01"]
+    oh02 = steps_doc["races"]["H-OH-02"]
 
-    # Step 1 is the national mood alone; the shared miss widens it without moving it.
-    assert polls["mean"] == pytest.approx(national["mean"], abs=0.1)
+    # Act
+    polls, miss, prior, after = oh01["steps"]
+    *_, unpolled_prior, unpolled_after = oh02["steps"]
+
+    # Assert: step 1 is the national mood alone; the national miss widens it without moving it.
+    assert [s["key"] for s in steps_doc["steps"]] == ["national", "national_miss", "prior", "polls"]
+    assert polls["mean"] == pytest.approx(steps_doc["national"]["mean"], abs=0.1)
     assert miss["hi"] - miss["lo"] > polls["hi"] - polls["lo"]
     assert miss["mean"] == pytest.approx(polls["mean"], abs=1)
-    # OH-01 (D+3) polls far ahead of its lean, and its polls step says so.
-    assert lean["mean"] > polls["mean"]
-    assert race_polls["p_d"] > lean["p_d"]
+    # OH-01 (D+3, Democratic incumbent) polls far ahead of what PVI and incumbency expect.
+    assert prior["mean"] == pytest.approx(oh01["expected"], abs=1)
+    assert after["mean"] > prior["mean"] > polls["mean"]
+    assert after["p_d"] > prior["p_d"]
+    # OH-02 has no polls, so its polls step barely moves from its R+20 starting point.
+    assert unpolled_after["mean"] == pytest.approx(unpolled_prior["mean"], abs=1.5)
+    assert steps_doc["history"]["race_spread"] == HISTORY.race_spread
+    assert set(steps_doc["noise"]) == {"house", "senate", "governor"}
+
+
+def test_timeline_covers_every_week_and_polled_race(forecast_doc, timeline_doc):
+    # Arrange
+    modeled = {
+        r["id"]: r
+        for o in forecast_doc["offices"].values()
+        for r in o["races"]
+        if r["rule"] == "model"
+    }
+    n_weeks = len(timeline_doc["national"]["mean"])
+
+    polls = timeline_doc["polls"]
+
+    # Act
+    polled = {race_id for race_id, race in modeled.items() if race["n_polls"]}
+    every_poll = polls["generic"] + [p for race in polls["races"].values() for p in race]
+
+    # Assert
+    assert set(timeline_doc["prior"]) == set(modeled)
+    assert set(timeline_doc["races"]) == polled
+    # Every poll the model saw is listed once, with a link to its source.
+    assert len(polls["generic"]) == forecast_doc["n_polls"]["generic"]
+    assert {r: len(p) for r, p in polls["races"].items()} == {
+        r: modeled[r]["n_polls"] for r in polled
+    }
+    assert all(p["url"].startswith("https://example.com/polls/") for p in every_poll)
+    assert {len(r["sd"]) for r in timeline_doc["races"].values()} == {n_weeks}
+    # After this week the mood holds its value and only grows less certain toward election day.
+    now = int(week_index(pd.Series([pd.Timestamp.now()]))[0])
+    mean, sd = timeline_doc["national"]["mean"], timeline_doc["national"]["sd"]
+    assert len(set(mean[now:])) == 1
+    assert sd[now:] == sorted(sd[now:])
+    assert sd[-1] > min(sd)
+
+
+def test_walkthrough_shows_polls_and_replays_the_fit(forecast_doc, likelihood_doc):
+    # Arrange
+    national = likelihood_doc["national"]
+    races = likelihood_doc["races"]
+    draws = likelihood_doc["draws"]
+    modeled = {
+        r["id"]: r
+        for o in forecast_doc["offices"].values()
+        for r in o["races"]
+        if r["rule"] == "model"
+    }
+
+    # Act
+    n_weeks = len(national["weekly"]["mean"])
+    house_d = draws["house_d"]
+    p_d = sum(seats >= likelihood_doc["house"]["majority"] for seats in house_d) / len(house_d)
+
+    offices = [r["office"] for r in races]
+
+    # Assert: every generic poll is shown, and races alternate offices, the most polled first.
+    assert len(national["polls"]) == forecast_doc["n_polls"]["generic"]
+    assert [len(r["polls"]) for r in races] == [modeled[r["id"]]["n_polls"] for r in races]
+    assert len(races[0]["polls"]) == max(len(r["polls"]) for r in races)
+    assert len(set(offices[: len(set(offices))])) == len(set(offices))
+    assert all(len(r["weekly"]["sd"]) == n_weeks for r in races)
+    # Each draw holds the whole path, one lean per shown race, and the House it implies.
+    assert {len(path) for path in draws["nat"]} == {n_weeks}
+    assert {len(leans) for leans in draws["lean"]} == {len(races)}
+    assert len(draws["miss"]) == len(draws["nat"])
+    assert len(house_d) == len(draws["nat"])
+    assert all(0 <= seats <= 5 for seats in house_d)
+    assert p_d == pytest.approx(likelihood_doc["house"]["p_d"], abs=0.15)
+    assert likelihood_doc["history"]["national_miss"] == HISTORY.national_miss
+    assert {p["name"] for p in likelihood_doc["pollsters"]} >= {"Acme Polling", "Beta Research"}

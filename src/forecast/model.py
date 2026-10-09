@@ -3,9 +3,9 @@
 All quantities are on the logit scale of the Democratic-side two-party share. A shared set of
 latent parameters (the national environment over time, each race's lean, pollster house
 effects) is defined once in `forecast_model`; each data source is a `Component` that adds its
-own likelihood term on top of them. Adding a data source (crosstabs, approval, ...) means
-writing a new Component and appending it to `ModelInputs.components` - the latent core and the
-rest of the pipeline stay unchanged.
+own likelihood term on top of them. Adding a data source (approval, ...) means writing a new
+Component and appending it to `ModelInputs.components` - the latent core and the rest of the
+pipeline stay unchanged.
 """
 
 import logging
@@ -20,26 +20,16 @@ import pandas as pd
 from jax import random
 from numpyro.infer import MCMC, NUTS
 
-from forecast.config import ELECTION_DATE, OFFICES, PRIORS, START_DATE, Priors
-from forecast.demographics import GROUP_KEYS, GROUPS
+from forecast.config import ELECTION_DATE, HISTORY, OFFICES, POINT, PRIORS, START_DATE, Priors
 
 logger = logging.getLogger(__name__)
 
-POPULATIONS = ("lv", "rv", "v", "a")
 _SHARE_CLIP = 0.02
-
-
-def _centering_matrix() -> np.ndarray:
-    """Matrix that subtracts, within each dimension, the 2024-voter-weighted mean swing."""
-    dims = np.array([g.dimension for g in GROUPS])
-    shares = np.array([g.voter_share for g in GROUPS], float)
-    same = dims[:, None] == dims[None, :]
-    weights = same * shares[None, :] / (same * shares[None, :]).sum(axis=1, keepdims=True)
-    return np.eye(len(GROUPS)) - weights
-
-
-_CENTER = _centering_matrix()
-_GROUP_OFFSET = np.array([g.offset for g in GROUPS])
+# Fixed by past elections (config.HISTORY), in logit units.
+INCUMBENCY = HISTORY.incumbency * POINT
+RACE_SPREAD = np.array([HISTORY.race_spread[office] for office in OFFICES]) * POINT
+STATE_MISS = HISTORY.state_miss * POINT
+RACE_MISS = HISTORY.race_miss * POINT
 
 
 @dataclass(frozen=True)
@@ -49,20 +39,15 @@ class Latent:
     Attributes:
         nat: National environment by week, i.e. the generic ballot (n_weeks,).
         lean: Each modeled race's lean relative to the national environment (n_races,).
+        poll_bias: Miss shared by every poll of each race, beyond the national one (n_races,).
         house: Pollster house effects (n_pollsters,).
-        population: Offset for each poll population in POPULATIONS; likely voters are 0.
-        partisan: Shift toward the sponsor's party in partisan-sponsored polls.
-        group_shift: Each demographic group's lean relative to the national environment: its
-            2024 lean plus its swing since (len(GROUPS),).
         priors: Prior scales, for components that sample their own parameters.
     """
 
     nat: jnp.ndarray
     lean: jnp.ndarray
+    poll_bias: jnp.ndarray
     house: jnp.ndarray
-    population: jnp.ndarray
-    partisan: jnp.ndarray
-    group_shift: jnp.ndarray
     priors: Priors
 
 
@@ -80,33 +65,35 @@ class RaceSet:
     Attributes:
         baseline: logit of the PVI-implied D two-party share in a tied national environment.
         office: Index into config.OFFICES.
+        state: Index of each race's state, for misses shared within a state.
         incumbency: +1 if the D-side candidate is the incumbent, -1 for the R side, else 0.
-        composition: Group mix relative to the nation, from demographics.race_composition
-            (n_races, len(GROUPS)); zeros when unknown.
     """
 
     baseline: np.ndarray
     office: np.ndarray
+    state: np.ndarray
     incumbency: np.ndarray
-    composition: np.ndarray
+
+    @property
+    def expected(self) -> np.ndarray:
+        """Each race's lean before its polls: PVI baseline plus the incumbency edge."""
+        return self.baseline + INCUMBENCY * self.incumbency
 
     @classmethod
-    def from_races(cls, races: pd.DataFrame, composition: np.ndarray | None = None) -> "RaceSet":
+    def from_races(cls, races: pd.DataFrame) -> "RaceSet":
         """Build from the modeled rows of the races table (rule == "model")."""
         share = np.clip(0.5 + races["pvi"].to_numpy(float) / 100, _SHARE_CLIP, 1 - _SHARE_CLIP)
         return cls(
             baseline=np.log(share / (1 - share)),
             office=races["office"].map(OFFICES.index).to_numpy(int),
+            state=np.unique(races["state"].to_numpy(), return_inverse=True)[1],
             incumbency=races["incumbent_side"].map({"D": 1, "R": -1}).fillna(0).to_numpy(float),
-            composition=(
-                np.zeros((len(races), len(GROUPS))) if composition is None else composition
-            ),
         )
 
 
 @dataclass(frozen=True)
 class TwoPartyPolls:
-    """Polls of the D side vs the R side: of one race, the generic ballot, or one group.
+    """Polls of the D side vs the R side: of one race, or the generic ballot.
 
     Attributes:
         name: Prefix for this component's numpyro sites.
@@ -114,10 +101,7 @@ class TwoPartyPolls:
         sampling_var: Binomial sampling variance of y.
         week: Week index of each poll's midpoint.
         pollster: Pollster index.
-        population: Index into POPULATIONS.
-        partisan: +1 for Democratic sponsors, -1 for Republican, 0 otherwise.
         race: Index into the modeled races, or None for generic ballot polls.
-        group: Index into GROUPS for generic ballot crosstabs, else None.
     """
 
     name: str
@@ -125,23 +109,13 @@ class TwoPartyPolls:
     sampling_var: np.ndarray
     week: np.ndarray
     pollster: np.ndarray
-    population: np.ndarray
-    partisan: np.ndarray
     race: np.ndarray | None = None
-    group: np.ndarray | None = None
 
     def observe(self, latent: Latent) -> None:
-        """Each poll measures the national environment (plus race lean) and pollster biases."""
-        mu = (
-            latent.nat[self.week]
-            + latent.house[self.pollster]
-            + latent.population[self.population]
-            + latent.partisan * self.partisan
-        )
+        """Each poll measures the national environment (plus race lean) and its biases."""
+        mu = latent.nat[self.week] + latent.house[self.pollster]
         if self.race is not None:
-            mu = mu + latent.lean[self.race]
-        if self.group is not None:
-            mu = mu + latent.group_shift[self.group]
+            mu = mu + latent.lean[self.race] + latent.poll_bias[self.race]
         extra = numpyro.sample(
             f"{self.name}_noise", dist.HalfNormal(latent.priors.poll_extra_noise)
         )
@@ -170,7 +144,7 @@ def election_week() -> int:
     return (ELECTION_DATE - START_DATE).days // 7
 
 
-def _two_party_polls(name, obs, pollster_index, race_index=None, *, groups=False) -> TwoPartyPolls:
+def _two_party_polls(name, obs, pollster_index, race_index=None) -> TwoPartyPolls:
     share = (obs["dem"] / (obs["dem"] + obs["rep"])).to_numpy(float)
     n = obs["n_two_party"].to_numpy(float)
     return TwoPartyPolls(
@@ -179,19 +153,19 @@ def _two_party_polls(name, obs, pollster_index, race_index=None, *, groups=False
         sampling_var=1 / (n * share * (1 - share)),
         week=week_index(obs["date"]),
         pollster=obs["pollster"].map(pollster_index).to_numpy(int),
-        population=obs["population"].map(POPULATIONS.index).to_numpy(int),
-        partisan=obs["partisan_sign"].to_numpy(float),
         race=None if race_index is None else obs["race_id"].map(race_index).to_numpy(int),
-        group=obs["group"].map(GROUP_KEYS.index).to_numpy(int) if groups else None,
     )
+
+
+def pollster_names(race_obs: pd.DataFrame, generic_obs: pd.DataFrame) -> list[str]:
+    """Every pollster in the fit, in the order of its house effect."""
+    return sorted(set(race_obs["pollster"]) | set(generic_obs["pollster"]))
 
 
 def build_inputs(
     modeled_races: pd.DataFrame,
     race_obs: pd.DataFrame,
     generic_obs: pd.DataFrame,
-    crosstab_obs: pd.DataFrame | None = None,
-    composition: np.ndarray | None = None,
 ) -> ModelInputs:
     """Index the data and assemble the model's components.
 
@@ -199,18 +173,13 @@ def build_inputs(
         modeled_races: Races with rule == "model", in the order the model should index them.
         race_obs: Output of matchups.race_poll_observations.
         generic_obs: Output of matchups.generic_poll_observations.
-        crosstab_obs: Output of crosstabs.crosstab_observations, if any.
-        composition: Output of demographics.race_composition for modeled_races, if known.
 
     Returns:
         ModelInputs ready for `fit`.
     """
     race_index = {r: i for i, r in enumerate(modeled_races["race_id"])}
     race_obs = race_obs[race_obs["race_id"].isin(race_index)]
-    crosstab_obs = crosstab_obs if crosstab_obs is not None else generic_obs.iloc[:0]
-    pollsters = sorted(
-        set(race_obs["pollster"]) | set(generic_obs["pollster"]) | set(crosstab_obs["pollster"])
-    )
+    pollsters = pollster_names(race_obs, generic_obs)
     pollster_index = {p: i for i, p in enumerate(pollsters)}
     office_of = dict(zip(modeled_races["race_id"], modeled_races["office"], strict=True))
     race_office = race_obs["race_id"].map(office_of)
@@ -223,10 +192,8 @@ def build_inputs(
             if (race_office == office).any()
         ),
     ]
-    if len(crosstab_obs):
-        components.append(_two_party_polls("crosstab", crosstab_obs, pollster_index, groups=True))
     return ModelInputs(
-        races=RaceSet.from_races(modeled_races, composition),
+        races=RaceSet.from_races(modeled_races),
         n_weeks=election_week() + 1,
         pollsters=pollsters,
         components=components,
@@ -235,7 +202,6 @@ def build_inputs(
 
 def forecast_model(inputs: ModelInputs, priors: Priors = PRIORS) -> None:
     """Numpyro model: the shared latent core, then every component's likelihood."""
-    n_offices = len(OFFICES)
     races = inputs.races
 
     walk_sd = numpyro.sample("walk_sd", dist.HalfNormal(priors.walk_weekly))
@@ -245,46 +211,20 @@ def forecast_model(inputs: ModelInputs, priors: Priors = PRIORS) -> None:
         "nat", nat_start + jnp.concatenate([jnp.zeros(1), jnp.cumsum(steps * walk_sd)])
     )
 
-    office_shift = numpyro.sample(
-        "office_shift", dist.Normal(0.0, priors.office_shift).expand([n_offices])
-    )
-    incumbency = numpyro.sample(
-        "incumbency",
-        dist.Normal(priors.incumbency_mean, priors.incumbency_sd).expand([n_offices]),
-    )
-    race_sd = numpyro.sample("race_sd", dist.HalfNormal(priors.race_scale).expand([n_offices]))
+    # How far each race runs from its PVI and incumbency, as wide as past races ran from theirs.
     race_z = numpyro.sample("race_z", dist.Normal(0.0, 1.0).expand([len(races.baseline)]))
-    swing_raw = numpyro.sample(
-        "group_swing_raw", dist.Normal(0.0, priors.group_swing).expand([len(GROUPS)])
-    )
-    # Swings are relative to the national shift, so each dimension's weighted mean is zero.
-    group_swing = numpyro.deterministic("group_swing", _CENTER @ swing_raw)
-    # Each piece of the lean is recorded so the site can show how it builds up the forecast.
-    lean_office = numpyro.deterministic(
-        "lean_office",
-        office_shift[races.office] + incumbency[races.office] * races.incumbency,
-    )
-    lean_groups = numpyro.deterministic("lean_groups", races.composition @ group_swing)
-    lean_race = numpyro.deterministic("lean_race", race_sd[races.office] * race_z)
-    lean = numpyro.deterministic("lean", races.baseline + lean_office + lean_groups + lean_race)
+    lean_race = numpyro.deterministic("lean_race", RACE_SPREAD[races.office] * race_z)
+    lean = numpyro.deterministic("lean", races.expected + lean_race)
+    # Polls of one state, and of one race, can miss together, as much as they have in the past.
+    n_states = len(np.unique(races.state))
+    state_z = numpyro.sample("state_bias_z", dist.Normal(0.0, 1.0).expand([n_states]))
+    race_bias_z = numpyro.sample("race_bias_z", dist.Normal(0.0, 1.0).expand([len(races.state)]))
+    poll_bias = STATE_MISS * state_z[races.state] + RACE_MISS * race_bias_z
 
     house_sd = numpyro.sample("house_sd", dist.HalfNormal(priors.house_effect_scale))
     house_z = numpyro.sample("house_z", dist.Normal(0.0, 1.0).expand([len(inputs.pollsters)]))
-    population_raw = numpyro.sample(
-        "population_effect",
-        dist.Normal(0.0, priors.population_effect).expand([len(POPULATIONS) - 1]),
-    )
-    partisan = numpyro.sample(
-        "partisan_effect", dist.Normal(priors.partisan_sponsor_mean, priors.partisan_sponsor_sd)
-    )
     latent = Latent(
-        nat=nat,
-        lean=lean,
-        house=house_sd * house_z,
-        population=jnp.concatenate([jnp.zeros(1), population_raw]),
-        partisan=partisan,
-        group_shift=_GROUP_OFFSET + group_swing,
-        priors=priors,
+        nat=nat, lean=lean, poll_bias=poll_bias, house=house_sd * house_z, priors=priors
     )
     for component in inputs.components:
         component.observe(latent)

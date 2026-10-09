@@ -10,8 +10,6 @@ GitHub Pages.
 uv run forecast fetch    # download polls + race tables into data/
 uv run forecast run      # fit the model, write site/data/forecast.json
 uv run forecast update   # both
-uv run forecast demographics  # Census group mix per state/district (rarely needed)
-uv run forecast demo     # refit the About page's made-up election (after model changes)
 uv run poe test
 ```
 
@@ -24,21 +22,11 @@ To preview locally: `python -m http.server -d site`.
 - **Polls**: [VoteHub](https://votehub.com/polls/) API, no key needed (`fetch.py`, `polls.py`).
 - **Races, candidates, incumbents, Cook PVI**: the Wikipedia 2026 House, Senate, and
   gubernatorial election pages (`races.py`). For redistricted states the 2026-map PVI is used.
-- **Group composition**: Census ACS 2024 1-year tables, no key needed (`demographics.py`), saved
-  to `data/composition.csv`. Race uses adult citizens; districts redrawn for 2026 use their
-  state's mix because the ACS still has the old lines.
-- **2024 group vote**: Pew Research Center validated voters (`demographics.GROUPS`).
-- **Crosstabs**: `data/crosstabs.csv`, kept by hand from pollsters' national generic ballot
-  crosstabs. One row per poll and group:
-
-  | column | meaning |
-  |---|---|
-  | `pollster`, `start_date`, `end_date` | as in the topline poll |
-  | `population` | `lv`, `rv`, `v` or `a` |
-  | `partisan` | `D`, `R`, or blank for nonpartisan sponsors |
-  | `dimension`, `group` | one of `race`: white/black/hispanic/asian/other, `education`: college/noncollege, `age`: 18-29/30-44/45-64/65+ |
-  | `dem`, `rep` | percent for each party within the group |
-  | `n` | respondents in the group (groups under 30 are skipped) |
+- **Past elections** (`scripts/calibrate_history.py`, run once; results pasted into
+  `config.HISTORY`, and the misses behind them saved to `site/data/history.json`): 2022 and 2024 results and PVI from Wikipedia set the incumbency edge and how
+  far races stray from PVI; FiveThirtyEight's
+  [poll archive](https://github.com/fivethirtyeight/data/tree/master/pollster-ratings)
+  (1998-2022) sets the size of national, state and race polling misses.
 - **House hex map**: `scripts/build_house_hex.py`, run once (needs the dev dependencies).
 
 ## Model
@@ -46,24 +34,22 @@ To preview locally: `python -m http.server -d site`.
 Everything is on the logit scale of the Democratic-side two-party share (`model.py`):
 
 - **National environment**: a weekly random walk, measured directly by generic ballot polls.
-- **Race lean**: PVI baseline + office offset + incumbency + a partially pooled race effect
-  (candidate quality). Unpolled races fall back to the pooled prior.
-- **Group swing**: each demographic group's swing since 2024, relative to the national shift.
-  Crosstabs measure it directly; each race moves by its group mix minus the nation's, averaged
-  over the race, education and age dimensions.
-- **Poll biases**: pollster house effects shared across all poll types, population (LV/RV/A),
-  and partisan sponsorship, plus extra noise per office.
-- **Election day** (`simulate.py`): national, state, demographic-group, and race-level polling
-  error the polls cannot reveal (scales in `config.py`).
+- **Race lean**: PVI baseline + incumbency + the race's own effect (candidate quality). The
+  incumbency edge and the spread of race effects are fixed from past elections, not fitted.
+- **Poll biases**: pollster house effects shared across all poll types, extra noise per poll type,
+  and a miss shared by all polls of one state and of one race (sized from past elections).
+- **Election day** (`simulate.py`): a national polling miss the polls cannot reveal, sized from
+  past elections.
 
-Clicking a race on the site opens its forecast built up step by step (`breakdown.py`,
-`site/data/steps.json`). The election-day logit is a sum of terms, added one at a time: the
-national mood from polls, a shared polling miss, the PVI baseline, office and incumbency,
-demographics, the race's own effect, and local (state, group, race) misses. The last step is the
-published forecast.
+Clicking a race on the site opens its forecast built up in four steps (`breakdown.py`,
+`site/data/steps.json`, with the weekly estimates and polls in `site/data/timeline.json`): the
+national mood from polls, plus the national polling miss, the race before its polls, and after.
+The last step is the published forecast.
 
-The About page (`site/about.html`) shows the model fit to a made-up election with a known
-answer (`demo.py`), with and without an industry-wide polling miss.
+The About page (`site/about.html`, `site/walkthrough.js`) builds the model up as you scroll
+(`likelihood.py`, `site/data/likelihood.json`): a pinned one-line equation highlights each term
+while a pinned chart shows the data behind it, ending with a replay of the fit's draws across the
+most-polled races and the House.
 
 Races are decided by rule when one side has no candidate (`matchups.assign_sides`). A polled
 independent who outpolls a party's strongest candidate takes that party's side (e.g. Nebraska
@@ -72,7 +58,7 @@ Senate); races with several candidates per party are modeled on party vote share
 ## Adding a data source
 
 Each data source is a `Component` with an `observe(latent)` method that adds its likelihood on
-top of the shared `Latent` parameters. To add one (crosstabs, approval, ...):
+top of the shared `Latent` parameters. To add one (approval, ...):
 
 1. Parse the data into a tidy table.
 2. Write a component class in `model.py` (it may sample its own parameters inside `observe`).

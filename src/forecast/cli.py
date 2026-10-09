@@ -1,8 +1,7 @@
 """Command line entry point.
 
-`forecast fetch` downloads polls and races, `forecast run` fits the model, `forecast update` does
-both, `forecast demographics` downloads the (rarely changing) Census group composition, and
-`forecast demo` refits the made-up election shown on the About page.
+`forecast fetch` downloads polls and races, `forecast run` fits the model, and `forecast update`
+does both.
 """
 
 import argparse
@@ -18,11 +17,9 @@ import pandas as pd
 
 from forecast import (
     breakdown,
-    crosstabs,
-    demo,
-    demographics,
     export,
     fetch,
+    likelihood,
     matchups,
     model,
     polls,
@@ -36,11 +33,10 @@ logger = logging.getLogger("forecast")
 RACES_CSV = DATA_DIR / "races.csv"
 CANDIDATES_CSV = DATA_DIR / "candidates.csv"
 POLLS_CSV = DATA_DIR / "polls.csv"
-CROSSTABS_CSV = DATA_DIR / "crosstabs.csv"
-COMPOSITION_CSV = DATA_DIR / "composition.csv"
 FORECAST_JSON = SITE_DATA_DIR / "forecast.json"
-DEMO_JSON = SITE_DATA_DIR / "demo.json"
 STEPS_JSON = SITE_DATA_DIR / "steps.json"
+TIMELINE_JSON = SITE_DATA_DIR / "timeline.json"
+LIKELIHOOD_JSON = SITE_DATA_DIR / "likelihood.json"
 
 
 def run_fetch() -> None:
@@ -58,21 +54,12 @@ def run_fetch() -> None:
     logger.info("Saved %d races and %d poll answers", sum(map(len, race_tables)), len(poll_rows))
 
 
-def run_demographics() -> None:
-    """Download Census ACS tables and save each state's and district's group mix."""
-    tables = {table: fetch.fetch_acs(table) for table in demographics.ACS_TABLES}
-    shares = demographics.composition(tables)
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    shares.to_csv(COMPOSITION_CSV, index=False)
-    logger.info("Saved group composition for %d places", shares["geo"].nunique())
-
-
 def _read_csv(path):
     return pd.read_csv(path, keep_default_na=False, na_values=[""])
 
 
 def run_model(*, warmup: int, samples: int, chains: int, seed: int) -> dict:
-    """Fit the model to the saved CSVs and write the site's forecast and step-by-step JSON.
+    """Fit the model to the saved CSVs and write every JSON file the site reads.
 
     Args:
         warmup: NUTS warmup iterations per chain.
@@ -86,11 +73,6 @@ def run_model(*, warmup: int, samples: int, chains: int, seed: int) -> dict:
     race_table = _read_csv(RACES_CSV)
     candidates = _read_csv(CANDIDATES_CSV)
     poll_rows = _read_csv(POLLS_CSV)
-    crosstab_obs = (
-        crosstabs.crosstab_observations(_read_csv(CROSSTABS_CSV))
-        if CROSSTABS_CSV.exists()
-        else None
-    )
 
     matched = matchups.match_answers(poll_rows, race_table, candidates)
     race_table, candidates = matchups.assign_sides(race_table, candidates, matched)
@@ -98,29 +80,29 @@ def run_model(*, warmup: int, samples: int, chains: int, seed: int) -> dict:
     generic_obs = matchups.generic_poll_observations(poll_rows)
     modeled = race_table[race_table["rule"] == "model"]
 
-    composition = None
-    if COMPOSITION_CSV.exists():
-        composition = demographics.race_composition(modeled, pd.read_csv(COMPOSITION_CSV))
-    else:
-        logger.warning("No %s; run `forecast demographics` first", COMPOSITION_CSV.name)
-
-    inputs = model.build_inputs(modeled, race_obs, generic_obs, crosstab_obs, composition)
-    n_polls = {
-        "race": len(race_obs),
-        "generic": len(generic_obs),
-        "crosstab": 0 if crosstab_obs is None else len(crosstab_obs),
-    }
+    inputs = model.build_inputs(modeled, race_obs, generic_obs)
+    n_polls = {"race": len(race_obs), "generic": len(generic_obs)}
     logger.info("Fitting %d races with observations %s", len(modeled), n_polls)
     posterior = model.fit(inputs, warmup=warmup, samples=samples, chains=chains, seed=seed)
 
     rng = np.random.default_rng(seed)
-    errors = simulate.election_day_errors(
-        modeled, len(posterior["lean"]), rng, composition=composition
-    )
-    shares = simulate.simulate_shares(posterior, errors)
+    miss = simulate.national_miss(len(posterior["lean"]), rng)
+    shares = simulate.simulate_shares(posterior, miss)
     document = export.build_forecast(race_table, race_obs, posterior, shares, n_polls)
     _write_json(FORECAST_JSON, document)
-    _write_json(STEPS_JSON, breakdown.build_steps(modeled, posterior, errors))
+    _write_json(STEPS_JSON, breakdown.build_steps(modeled, posterior, miss, rng))
+    _write_json(
+        TIMELINE_JSON,
+        breakdown.build_timeline(modeled, posterior, race_obs, generic_obs),
+    )
+    house = (race_table["office"] == "house").to_numpy()
+    house_seats = (simulate.winners(race_table, shares)[:, house] == "D").sum(axis=1)
+    _write_json(
+        LIKELIHOOD_JSON,
+        likelihood.build_likelihood(
+            modeled, race_obs, generic_obs, posterior, likelihood.Elections(miss, house_seats)
+        ),
+    )
     return document
 
 
@@ -132,27 +114,10 @@ def _write_json(path, document) -> None:
     logger.info("Wrote %s", path)
 
 
-def run_demo(*, warmup: int, samples: int, chains: int, seed: int) -> dict:
-    """Fit the About page's made-up election under each polling-error scenario.
-
-    Args:
-        warmup: NUTS warmup iterations per chain.
-        samples: NUTS draws kept per chain.
-        chains: Number of chains.
-        seed: Random seed for the made-up truth, the polls, and the fit.
-
-    Returns:
-        The demo document that was written.
-    """
-    document = demo.build_demo(warmup=warmup, samples=samples, chains=chains, seed=seed)
-    _write_json(DEMO_JSON, document)
-    return document
-
-
 def main() -> None:
     """Parse arguments and run the requested stage."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("stage", choices=["fetch", "run", "update", "demographics", "demo"])
+    parser.add_argument("stage", choices=["fetch", "run", "update"])
     parser.add_argument("--warmup", type=int, default=1000)
     parser.add_argument("--samples", type=int, default=1000)
     parser.add_argument("--chains", type=int, default=4)
@@ -165,10 +130,6 @@ def main() -> None:
         "chains": args.chains,
         "seed": args.seed,
     }
-    if args.stage == "demographics":
-        run_demographics()
-    if args.stage == "demo":
-        run_demo(**fit_args)
     if args.stage in {"fetch", "update"}:
         run_fetch()
     if args.stage in {"run", "update"}:

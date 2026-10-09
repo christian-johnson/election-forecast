@@ -84,14 +84,15 @@ def parse_candidates(cell: str) -> list[tuple[str, str]]:
     return out
 
 
-def _flatten_columns(table: pd.DataFrame) -> pd.DataFrame:
+def flatten_columns(table: pd.DataFrame) -> pd.DataFrame:
+    """Keep the last header row of a Wikipedia table, without footnote marks or repeats."""
     cols = table.columns.get_level_values(-1) if table.columns.nlevels > 1 else table.columns
     table = table.copy()
     table.columns = [_FOOTNOTE.sub("", str(c)).strip() for c in cols]
     return table.loc[:, ~table.columns.duplicated()]
 
 
-def _locate(office: str, place: str) -> tuple[str, int] | None:
+def locate(office: str, place: str) -> tuple[str, int] | None:
     """Return (state abbreviation, district number) for a table's first column, if valid."""
     place = re.sub(r"\s+", " ", _FOOTNOTE.sub("", str(place)))
     place = re.sub(r" ?\(Class \d\)", "", place).strip()
@@ -121,7 +122,7 @@ def _collect_rows(office: str, tables: list[pd.DataFrame]):
         pvi_cols = sorted((c for c in table.columns if "PVI" in c), key=lambda c: "2026" not in c)
         current = bool(pvi_cols) and "2026" in pvi_cols[0]
         for _, row in table.iterrows():
-            loc = _locate(office, row[place_col])
+            loc = locate(office, row[place_col])
             if loc is None:
                 continue
             if len(pvi_cols) > 1:
@@ -150,7 +151,7 @@ def parse_races(office: str, html: str) -> tuple[pd.DataFrame, pd.DataFrame]:
         ValueError: If no race tables are found on the page.
     """
     rows, pvi, redistricted = _collect_rows(
-        office, [_flatten_columns(t) for t in pd.read_html(StringIO(html))]
+        office, [flatten_columns(t) for t in pd.read_html(StringIO(html))]
     )
     if not rows:
         msg = f"No {office} race tables found"

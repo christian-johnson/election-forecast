@@ -145,7 +145,6 @@ def _finish(obs: pd.DataFrame) -> pd.DataFrame:
     total = obs["dem"] + obs["rep"]
     n = obs["sample_size"].fillna(DEFAULT_SAMPLE_SIZE).clip(upper=MAX_SAMPLE_SIZE)
     obs["n_two_party"] = np.maximum(n * total / 100, 50)
-    obs["partisan_sign"] = obs["partisan"].map({"D": 1, "R": -1}).fillna(0).astype(int)
     return _dedupe(obs).reset_index(drop=True)
 
 
@@ -157,8 +156,9 @@ def race_poll_observations(matched: pd.DataFrame, candidates: pd.DataFrame) -> p
         candidates: Candidate table with the "side" column from assign_sides.
 
     Returns:
-        One row per usable poll with race_id, pollster, dates, population, partisan_sign,
-        dem and rep (side totals in percent), n_two_party and midpoint date.
+        One row per usable poll with poll_id, race_id, pollster, dates, population,
+        partisan (sponsor), url, dem and rep (side totals in percent), n_two_party and midpoint
+        date.
     """
     valid = _valid_polls(matched)
     valid = valid.assign(side=candidates.loc[valid["candidate"].astype(int), "side"].to_numpy())
@@ -167,7 +167,7 @@ def race_poll_observations(matched: pd.DataFrame, candidates: pd.DataFrame) -> p
     ).reindex(columns=["D", "R"], fill_value=0.0)
     shares = shares[(shares["D"] > 0) & (shares["R"] > 0)]
     meta_cols = ["race_id", "pollster", "start_date", "end_date", "sample_size", "population"]
-    meta = valid.groupby("poll_id")[[*meta_cols, "partisan"]].first()
+    meta = valid.groupby("poll_id")[[*meta_cols, "partisan", "url"]].first()
     obs = meta.join(shares.rename(columns={"D": "dem", "R": "rep"}), how="inner").reset_index()
     return _finish(obs)
 
@@ -184,7 +184,15 @@ def generic_poll_observations(polls: pd.DataFrame) -> pd.DataFrame:
     generic = polls[polls["office"] == "generic"]
     shares = generic.pivot_table(index="poll_id", columns="choice", values="pct", aggfunc="sum")
     shares = shares.rename(columns={"Dem": "dem", "Rep": "rep"})[["dem", "rep"]].dropna()
-    meta_cols = ["pollster", "start_date", "end_date", "sample_size", "population", "partisan"]
+    meta_cols = [
+        "pollster",
+        "start_date",
+        "end_date",
+        "sample_size",
+        "population",
+        "partisan",
+        "url",
+    ]
     meta = generic.groupby("poll_id")[meta_cols].first()
     obs = meta.join(shares, how="inner").reset_index().assign(race_id=None)
     return _finish(obs)

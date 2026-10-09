@@ -147,6 +147,7 @@ def _poll(poll_id, poll_type, subject, answers, *, end="2026-09-15", **extra):
         "sample_size": 1000,
         "population": extra.get("population", "lv"),
         "partisan": None,
+        "url": f"https://example.com/polls/{poll_id}.pdf",
         "answers": [{"choice": c, "pct": p} for c, p in answers],
     }
 
@@ -197,41 +198,3 @@ def raw_polls() -> list[dict]:
 def wiki_pages() -> dict[str, str]:
     """Synthetic Wikipedia HTML for each office."""
     return {"house": HOUSE_HTML, "senate": SENATE_HTML, "governor": GOVERNOR_HTML}
-
-
-def _acs_table(code: str, n_lines: int, values: dict[str, dict[int, float | None]]) -> str:
-    """Pipe-delimited ACS summary file; every line not given in values defaults to 10."""
-    header = "|".join(["GEO_ID", *(f"{code}_E{i:03d}" for i in range(1, n_lines + 1))])
-    rows = [
-        "|".join(
-            [
-                geo,
-                *("" if (v := lines.get(i, 10)) is None else str(v) for i in range(1, n_lines + 1)),
-            ]
-        )
-        for geo, lines in values.items()
-    ]
-    return "\n".join([header, *rows]) + "\n"
-
-
-@pytest.fixture
-def acs_tables() -> dict[str, str]:
-    """Synthetic Census tables: MN-02 is 60% Hispanic, Black adults there are suppressed."""
-    geos = ["0100000US", "0400000US27", "5001900US2702", "0400000US02", "5001900US0200"]
-    county = "0500000US27001"  # Counties and other geographies must be ignored.
-    citizen_lines = (9, 11, 20, 22)
-
-    def race_table(code, default, mn02):
-        values = {g: dict.fromkeys(citizen_lines, default) for g in [*geos, county]}
-        values["5001900US2702"] = dict.fromkeys(citizen_lines, mn02)
-        return _acs_table(code, 23, values)
-
-    return {
-        "b05003": race_table("B05003", 100, 100),
-        "b05003h": race_table("B05003H", 70, 30),
-        "b05003b": race_table("B05003B", 10, None),
-        "b05003i": race_table("B05003I", 10, 60),
-        "b05003d": race_table("B05003D", 5, 0),
-        "b15003": _acs_table("B15003", 25, {g: {1: 100} for g in geos}),
-        "b01001": _acs_table("B01001", 49, {g: {} for g in geos}),
-    }

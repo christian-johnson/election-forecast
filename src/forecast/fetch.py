@@ -1,13 +1,9 @@
-"""Download raw inputs: polls (VoteHub), race tables (Wikipedia), demographics (Census ACS)."""
+"""Download raw inputs: polls (VoteHub) and race tables (Wikipedia)."""
 
 import httpx
 import orjson
 
 VOTEHUB_URL = "https://api.votehub.com/polls"
-ACS_URL = (
-    "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/"
-    "1YRData/acsdt1y2024-{table}.dat"
-)
 WIKIPEDIA_URL = "https://en.wikipedia.org/api/rest_v1/page/html/{title}"
 # Wikipedia asks API clients to identify themselves with a contact URL.
 USER_AGENT = "midterm-forecast/0.1 (https://github.com/christian-johnson/election-forecast)"
@@ -52,18 +48,3 @@ def fetch_wikipedia(office: str) -> str:
         httpx.HTTPError: If the request fails.
     """
     return _get(WIKIPEDIA_URL.format(title=WIKIPEDIA_PAGES[office])).decode()
-
-
-def fetch_acs(table: str) -> str:
-    """Download one ACS 2024 1-year detailed table for every geography (no API key needed).
-
-    Args:
-        table: Lowercase table id, e.g. "b15003".
-
-    Returns:
-        Pipe-delimited table text.
-
-    Raises:
-        httpx.HTTPError: If the request fails.
-    """
-    return _get(ACS_URL.format(table=table)).decode()

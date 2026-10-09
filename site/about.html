@@ -6,10 +6,13 @@
     <title>About the Forecast</title>
     <meta
       name="description"
-      content="How the 2026 midterm forecast works, and a test on a made-up election with a known outcome."
+      content="How the 2026 midterm forecast works, built up one piece at a time from its real data."
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
   </head>
   <body>
     <main>
@@ -25,127 +28,242 @@
         <a class="tab-end" href="about.html" aria-current="page">About</a>
       </nav>
 
-      <section aria-labelledby="model-title">
-        <h2 id="model-title">The model in brief</h2>
-        <ul class="prose">
-          <li>
-            <strong>Every poll goes into one fit.</strong> Generic ballot polls measure the national
-            mood. A poll of a single race measures the national mood plus how far that race leans
-            from it. Fitting them together lets a Michigan poll inform Wisconsin, and a burst of
-            national polls move every race at once.
-          </li>
-          <li>
-            <strong>The national mood drifts.</strong> It can move a little each week, so recent
-            polls count more than old ones, and the forecast for election day is less certain than
-            the estimate for today.
-          </li>
-          <li>
-            <strong>Each race starts from its partisan lean</strong> (Cook
-            <abbr title="Partisan Voter Index">PVI</abbr>) plus an incumbency bonus. Its polls then
-            pull it toward what voters say, which captures candidate quality. Races with no polls
-            stay close to where similar races sit.
-          </li>
-          <li>
-            <strong>Pollsters differ.</strong> Comparing pollsters on the same races and dates
-            reveals each one's consistent lean. The model also adjusts for likely-voter versus
-            registered-voter samples and for polls paid for by a party.
-          </li>
-          <li>
-            <strong>Crosstabs move races by who lives there.</strong> When a group (say, Hispanic or
-            non-college voters) swings differently from the nation since 2024, each state and
-            district moves in proportion to its share of that group, using Census data.
-          </li>
-          <li>
-            <strong>Polls can all miss together.</strong> No amount of polling reveals that, so each
-            simulated election adds a national miss, a miss shared within each state, a miss within
-            demographic groups, and a miss for each race. All ranges shown are 80% ranges.
-          </li>
-          <li>
-            Races where one party has no candidate are called for the other side outright.
-          </li>
-          <li>
-            On the forecast page, click any state, district or table row to see that race's
-            forecast built up one step at a time, from the national polls alone to the final
-            number.
-          </li>
-        </ul>
+      <section aria-label="Introduction">
+        <p class="prose lead">
+          This forecast gives the odds in every House, Senate and governor race on November 3,
+          2026, from polls and each race's partisan lean alone. Every poll, national and local,
+          goes into one statistical model, which works out what they say together about the
+          national mood and about each race. The forecast then simulates the election thousands of
+          times, allowing the polls to miss by as much as they have in past elections. Races where
+          one party has no candidate are called outright. Below, the model is built up one piece at
+          a time from its real data, ending with the full fit. On the forecast page, click any race
+          to see its own forecast built up the same way.
+        </p>
       </section>
 
-      <section aria-labelledby="test-title">
-        <h2 id="test-title">A test with a known answer</h2>
+      <section aria-labelledby="model-title" id="walkthrough">
+        <h2 id="model-title">The model</h2>
         <p class="prose">
-          To check that the method works, we made up a state with five House districts and a Senate
-          seat and decided the truth ourselves: the national mood (Democrats +4 on election day),
-          every race's result, and four pollsters with known leans. We then drew 50 national and
-          21 race polls from that truth with ordinary sampling noise. Two districts get no polls at
-          all. In two of the versions below, every poll is also shifted by the same industry-wide
-          miss. The model sees only the polls, and is the same code that runs the real forecast.
+          The whole model is one line. It gives the probability of every unknown \(\theta\) (each
+          week's national mood, each race's lean, each pollster's house effect, and so on) given
+          every poll \(y\): the product, over all the polls, of how likely each poll's result is,
+          times what is assumed before any polls. The fit does not pick the single most likely
+          \(\theta\). It draws thousands of them in proportion to this probability, so the spread
+          among the draws is the uncertainty. Each draw then becomes one simulated election.
+          Charts show margins in points; the model itself works with the logit of the Democratic
+          share of the two-party vote, which moves almost exactly with the margin in close races.
         </p>
-        <nav class="tabs" role="tablist" id="scenarios">
-          <button role="tab" data-scenario="none" aria-selected="true">No miss</button>
-          <button role="tab" data-scenario="dem" aria-selected="false">Polls 3 pts too D</button>
-          <button role="tab" data-scenario="rep" aria-selected="false">Polls 3 pts too R</button>
-        </nav>
-        <p class="summary" id="summary">Loading…</p>
+        <div class="equation-bar">
+          <div class="equation" id="equation" aria-label="The model"></div>
+          <p class="equation-note" id="equation-note"></p>
+        </div>
+        <div class="glossary" id="glossary">
+          <div class="gloss"><span class="sym">\(y_i\)</span><span>one poll's Democratic margin</span></div>
+          <div class="gloss"><span class="sym">\(\eta_t\)</span><span>the national mood in week \(t\) (\(E\) is election day)</span></div>
+          <div class="gloss"><span class="sym">\(\lambda_r\)</span><span>how far race \(r\) leans from the national mood</span></div>
+          <div class="gloss"><span class="sym">\(\delta_r\)</span><span>a miss shared by every poll of race \(r\), part of it statewide (none for national polls)</span></div>
+          <div class="gloss"><span class="sym">\(h_p\)</span><span>pollster \(p\)'s house effect</span></div>
+          <div class="gloss"><span class="sym">\(v_i\)</span><span>the poll's sampling error, from its sample size</span></div>
+          <div class="gloss"><span class="sym">\(\tau_o\)</span><span>extra spread for each kind of poll \(o\): national, House, Senate or governor</span></div>
+          <div class="gloss"><span class="sym">\(p(\theta)\)</span><span>what is assumed before any polls, mostly from past elections</span></div>
+          <div class="gloss"><span class="sym">\(M_r\)</span><span>race \(r\)'s margin on election day, in one simulated election</span></div>
+          <div class="gloss"><span class="sym">\(\varepsilon\)</span><span>a polling miss shared by every race, within ±<span data-fill="miss-half"></span> points 80% of the time</span></div>
+        </div>
 
-        <h3>National mood</h3>
-        <p class="note">Generic ballot margin. Each dot is one simulated poll.</p>
-        <div class="legend" id="national-legend"></div>
-        <div id="national" class="chart"></div>
-
-        <h3>Each race on election day</h3>
-        <p class="note" id="races-note"></p>
-        <div class="legend" id="races-legend"></div>
-        <div id="races" class="chart"></div>
-
-        <h3>Pollster leans</h3>
-        <p class="note">
-          How far each pollster leans toward Democrats (+) or Republicans (−), in margin points.
-          The model learns these only by comparing pollsters with each other, so a miss shared by
-          all of them stays hidden.
-        </p>
-        <div id="pollsters" class="chart"></div>
-
-        <p class="prose" id="takeaway"></p>
-      </section>
-
-      <section aria-labelledby="limits-title">
-        <h2 id="limits-title">Limitations</h2>
-        <ul class="prose">
-          <li>
-            The size of a possible shared polling miss is a judgment call, not yet checked against
-            past elections.
-          </li>
-          <li>
-            Georgia runoffs and ranked-choice voting in Maine and Alaska are not modeled; those
-            races are treated as plain two-way contests.
-          </li>
-          <li>
-            Each group's 2024 vote comes from Pew Research Center's validated-voter study. Pollsters'
-            own crosstabs may differ from it, and the model would read that difference as a swing.
-          </li>
-          <li>
-            Census data still describes the old district lines, so districts redrawn for 2026 use
-            their state's demographics instead.
-          </li>
-          <li>
-            Candidates and partisan lean are read from Wikipedia, so a change in its page layout can
-            break the daily update.
-          </li>
-        </ul>
+        <div class="walk" id="walk">
+          <div class="stage" id="stage" aria-hidden="true">
+            <div class="scene" data-scene="national"></div>
+            <div class="scene" data-scene="years"></div>
+            <div class="scene" data-scene="pvi"></div>
+            <div class="scene" data-scene="race"></div>
+            <div class="scene" data-scene="local"></div>
+            <div class="scene" data-scene="finale"></div>
+          </div>
+          <div class="walk-nav">
+            <div class="walk-back">
+              <button id="walk-prev" type="button">Previous</button>
+              <span id="walk-count" aria-live="polite"></span>
+            </div>
+            <button id="walk-replay" type="button" hidden>
+              <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+                <path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="currentColor"
+                  stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Replay
+            </button>
+            <button id="walk-next" type="button">Next</button>
+          </div>
+          <div class="walk-text">
+            <article class="walk-step" data-scene="national" data-step="polls" data-term="y eta">
+              <h3>National polls</h3>
+              <p>
+                Start with the <span data-fill="n-generic"></span> generic ballot polls since
+                January 2025, which ask which party voters want in Congress. Each poll \(y_i\)
+                measures the national mood \(\eta_t\) in the week it was taken. Bubbles are sized
+                by sample; hover for details, or click one to open it.
+              </p>
+            </article>
+            <article class="walk-step" data-scene="national" data-step="mood" data-term="eta prior" hidden>
+              <h3>The national mood</h3>
+              <p>
+                Before any polls, the model assumes only that the mood drifts from week to week.
+                The fit puts the drift at about <span data-fill="walk"></span> points a week. So
+                each new poll nudges the estimate, and older polls count for less. The line
+                follows the polls week by week, as a running average would. After today there are
+                no polls, so the range widens until election day: the mood can still drift.
+              </p>
+            </article>
+            <article class="walk-step" data-scene="national" data-step="sampling" data-term="v tau" hidden>
+              <h3>Sampling error, and a bit more</h3>
+              <p>
+                Even a perfect poll is off by chance. Each poll's whisker is its 80% range from
+                sampling alone, \(v_i\), set by its sample size. The line is now the full fit.
+                <span data-fill="outside-raw"></span> of the polls miss it by more than their
+                whiskers allow, where chance alone would give 20%. Part of the excess is that
+                pollsters differ.
+              </p>
+            </article>
+            <article class="walk-step" data-scene="national" data-step="house" data-term="h tau" hidden>
+              <h3>Pollster house effects</h3>
+              <p>
+                Some pollsters consistently lean one way. Comparing pollsters on the same weeks and
+                races shows each one's house effect \(h_p\):
+                among regular pollsters, <span data-fill="most-d"></span> leans furthest toward
+                Democrats (<span data-fill="most-d-lean"></span>) and
+                <span data-fill="most-r"></span> toward Republicans
+                (<span data-fill="most-r-lean"></span>). Here each poll moves by its pollster's
+                house effect. Then <span data-fill="outside-adj"></span> of polls miss the line by
+                more than their whiskers, widened by a small extra spread \(\tau\)
+                (<span data-fill="tau-generic"></span> points for national polls). House effects
+                are measured against the average pollster, so a miss that every pollster shares
+                cannot show up here.
+              </p>
+            </article>
+            <article class="walk-step" data-scene="years" data-step="years" data-term="eps m" hidden>
+              <h3>When every poll misses together</h3>
+              <p>
+                That shared miss is real. Each bar is how far the average late poll missed in one
+                election, from FiveThirtyEight's archive of polls since 1998. The biggest, in
+                <span data-fill="largest-year"></span>, overstated
+                <span data-fill="largest-side"></span> by <span data-fill="largest-miss"></span>
+                points.
+              </p>
+              <p>
+                No amount of polling can reveal this miss, so it is not in the fit. Instead, each
+                simulated election adds a national miss \(\varepsilon\), drawn so that 80% of the
+                time it is within ±<span data-fill="miss-half"></span> points (shaded), as
+                <span data-fill="miss-inside"></span> of these elections were.
+              </p>
+            </article>
+            <article class="walk-step" data-scene="national" data-step="widen" data-term="eta eps" hidden>
+              <h3>The national mood, with the miss</h3>
+              <p>
+                Back to the national mood. Adding the national miss \(\varepsilon\) to the fit's
+                own uncertainty widens its range: in 80% of simulated elections the national vote
+                lands between <span data-fill="nat-day-lo"></span> and
+                <span data-fill="nat-day-hi"></span>. Every race carries this same miss.
+              </p>
+            </article>
+            <article class="walk-step" data-scene="race" data-step="prior" data-term="lambda prior" hidden>
+              <h3>From the nation to one race</h3>
+              <p>
+                Each race leans away from the national mood by \(\lambda_r\). Before its own
+                polls, the best guess for that lean is the race's Cook PVI, plus
+                <span data-fill="incumbency"></span> points for an incumbent running again. Take
+                the <span data-fill="race-name"></span> race: its PVI of
+                <span data-fill="race-pvi"></span><span data-fill="race-incumbent"></span> moves
+                the national mood's line <span data-fill="race-direction"></span> to where the race
+                should land.
+              </p>
+              <p>
+                The next steps turn to how wrong that guess could be.
+              </p>
+            </article>
+            <article class="walk-step" data-scene="pvi" data-step="pvi" data-term="lambda prior" hidden>
+              <h3>Local uncertainty, part 1: the race itself</h3>
+              <p>
+                How good is the PVI guess? Against the 2022 and 2024 results, 80% of races landed
+                within <span data-fill="spread-house"></span> points of it for the House,
+                <span data-fill="spread-senate"></span> for the Senate and
+                <span data-fill="spread-governor"></span> for governor.
+              </p>
+              <p>
+                This is uncertainty about the race itself: its candidates, its local issues. It is
+                exactly what a race's own polls can reveal.
+              </p>
+            </article>
+            <article class="walk-step" data-scene="local" data-step="local" data-term="delta prior" hidden>
+              <h3>Local uncertainty, part 2: the race's polls</h3>
+              <p>
+                A race's polls can also all be wrong together, beyond the national miss: a likely
+                voter screen that is off in one state, say. Comparing the late polls of
+                <span data-fill="local-n"></span> past races with their results, and setting aside
+                each year's national miss and the polls' own sampling error, the polls of a race
+                missed by less than <span data-fill="local-half"></span> points 80% of the time.
+                That is \(\delta_r\), part of it shared statewide.
+              </p>
+              <p>
+                This is uncertainty about the polls, not the race. More polls of the same race do
+                not shrink it, because they all share it.
+              </p>
+            </article>
+            <article class="walk-step" data-scene="race" data-step="race-polls" data-term="y lambda delta tau" hidden>
+              <h3>The race after its polls</h3>
+              <p>
+                Back to <span data-fill="race-name"></span>. The faded band is its PVI guess with
+                the range from part 1. Its <span data-fill="race-n-polls"></span> polls measure the
+                same national mood plus the race's lean and its shared miss,
+                \(\eta_t + \lambda_r + \delta_r\), with the same house effects.
+              </p>
+              <p>
+                The fit weighs the two kinds of local uncertainty: the race may really differ from
+                its PVI guess (part 1), but its polls may all be off together (part 2). So it lands
+                between the guess and the polls, with a range that stays wide however many polls
+                there are.
+              </p>
+              <p>
+                Every race poll also measures the national mood, so race polls inform the national
+                line too, and national polls move every race.
+              </p>
+            </article>
+            <article class="walk-step" data-scene="finale" data-step="finale" data-term="y eta lambda delta h v tau prior m eps" hidden>
+              <h3>All at once</h3>
+              <p>
+                The real model does not go step by step: it fits every piece to every poll at the
+                same time. Each line is one draw of all the unknowns together, kept in proportion
+                to how well it explains all <span data-fill="n-polls"></span> polls. Past today the
+                mood keeps drifting at its fitted pace. The highlighted draw moves every race
+                together, because they share the national mood.
+              </p>
+              <p>
+                Here each line is also shifted up or down by its draw's national miss
+                \(\varepsilon\), so the lines spread wider than the polls do: that is the miss the
+                polls cannot see. Where a line ends on Nov 3 is one simulated election, and the
+                histogram counts each one's House seats. Shown are
+                <span data-fill="shown-draws"></span> of the fit's
+                <span data-fill="n-draws"></span> draws and
+                <span data-fill="shown-races"></span> of its <span data-fill="n-races"></span>
+                races; over every draw, Democrats win the House <span data-fill="p-house"></span>
+                of the time.
+              </p>
+            </article>
+          </div>
+        </div>
       </section>
 
       <footer>
         <p>
-          Polls from <a href="https://votehub.com/polls/">VoteHub</a>; candidates and PVI from
-          Wikipedia (CC BY-SA); group composition from the Census Bureau's 2024 American Community
-          Survey; 2024 group vote from the Pew Research Center.
+          Polls from <a href="https://votehub.com/polls/">VoteHub</a>; candidates, PVI and past
+          results from Wikipedia (CC BY-SA); past polling accuracy from
+          <a href="https://github.com/fivethirtyeight/data/tree/master/pollster-ratings"
+            >FiveThirtyEight's poll archive</a
+          >.
           <a href="https://github.com/christian-johnson/election-forecast">Code and data</a>.
         </p>
       </footer>
     </main>
     <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
     <script src="common.js"></script>
-    <script src="about.js"></script>
+    <script src="walkthrough.js"></script>
   </body>
 </html>

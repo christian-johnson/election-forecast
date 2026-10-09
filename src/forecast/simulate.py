@@ -3,59 +3,39 @@
 import numpy as np
 import pandas as pd
 
-from forecast.config import ELECTION_DAY_ERROR, ElectionDayError
+from forecast.config import HISTORY, POINT, History
 from forecast.model import election_week
 
 # A side wins with more than half of the two-party vote.
 WIN_SHARE = 0.5
 
 
-def election_day_errors(
-    modeled_races: pd.DataFrame,
-    n_draws: int,
-    rng: np.random.Generator,
-    error: ElectionDayError = ELECTION_DAY_ERROR,
-    composition: np.ndarray | None = None,
-) -> dict[str, np.ndarray]:
-    """Draw the polling error that the polls cannot reveal, as logit shifts.
+def national_miss(n_draws: int, rng: np.random.Generator, history: History = HISTORY) -> np.ndarray:
+    """Draw the polling miss shared by every race, which the polls cannot reveal.
 
     Args:
-        modeled_races: The races passed to model.build_inputs, in the same order.
         n_draws: Number of simulated elections.
         rng: Random generator.
-        error: Scales of the election-day error terms.
-        composition: Group mix of each race (see demographics.race_composition), if known.
+        history: Typical polling misses in past elections.
 
     Returns:
-        Arrays (draws, n_modeled_races) keyed by source: "national" (one shift shared by every
-        race), "state" (shared within each state), "group" (a miss per demographic group,
-        applied by each race's group mix) and "race" (independent per race).
+        Logit shift for each simulated election, shape (draws, 1).
     """
-    n_races = len(modeled_races)
-    states, state_idx = np.unique(modeled_races["state"].to_numpy(), return_inverse=True)
-    group = np.zeros((n_draws, n_races))
-    if composition is not None:
-        group = rng.normal(0, error.group, (n_draws, composition.shape[1])) @ composition.T
-    return {
-        "national": np.repeat(rng.normal(0, error.national, (n_draws, 1)), n_races, axis=1),
-        "state": rng.normal(0, error.state, (n_draws, len(states)))[:, state_idx],
-        "group": group,
-        "race": rng.normal(0, error.race, (n_draws, n_races)),
-    }
+    return rng.normal(0, history.national_miss * POINT, (n_draws, 1))
 
 
-def simulate_shares(posterior: dict[str, np.ndarray], errors: dict[str, np.ndarray]) -> np.ndarray:
+def simulate_shares(posterior: dict[str, np.ndarray], miss: np.ndarray) -> np.ndarray:
     """Simulate the D-side two-party share in every modeled race on election day.
 
     Args:
         posterior: Output of model.fit.
-        errors: Output of election_day_errors, with as many draws as the posterior.
+        miss: Output of national_miss, with as many draws as the posterior.
 
     Returns:
         Array (draws, n_modeled_races) of D-side two-party vote shares.
     """
     nat = posterior["nat"][:, election_week()]
-    logit = posterior["lean"] + nat[:, None] + sum(errors.values())
+    logit = posterior["lean"] + nat[:, None] + miss
     return 1 / (1 + np.exp(-logit))
 
 
