@@ -4,7 +4,7 @@ name: Update forecast
 
 on:
   schedule:
-    - cron: "17 11 * * *"
+    - cron: "0 0,6,12,18 * * *"
   workflow_dispatch:
   push:
     branches: ["main"]
