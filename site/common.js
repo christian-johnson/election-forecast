@@ -57,7 +57,7 @@ function pollTooltip(p) {
     <div>${POPULATION_NAME[p.population] ?? esc(p.population)}, n = ${n}</div>
     ${sponsor}
     <div>D ${p.dem}% · R ${p.rep}% (two-party ${fmt(p.margin)})</div>
-    ${safeUrl(p.url) ? '<div class="muted">Click to open the poll</div>' : ""}`;
+    ${safeUrl(p.url) ? `<div class="muted">${tapOrClick()} to open the poll</div>` : ""}`;
 }
 
 /**
@@ -78,18 +78,95 @@ function styleAxis(axis) {
   axis.selectAll(".tick text").attr("fill", css("--ink-2"));
 }
 
-function showTooltip(event, html) {
+// Touch screens have no hover: the first tap on an item shows its tooltip, a second tap acts on
+// it, and a tap elsewhere or a scroll clears it.
+let pointerType = "mouse";
+let tooltipOwner = null;
+let onTooltipHide = null;
+const isTouch = () => pointerType === "touch";
+const tapOrClick = () => (isTouch() ? "Tap again" : "Click");
+document.addEventListener(
+  "pointerdown",
+  (e) => {
+    pointerType = e.pointerType;
+    if (isTouch() && tooltipOwner && !tooltipOwner.contains(e.target)) hideTooltip();
+  },
+  true,
+);
+document.addEventListener("scroll", () => isTouch() && hideTooltip(), {
+  capture: true,
+  passive: true,
+});
+
+/** Show the tooltip by the pointer; `onHide` undoes any highlight when it goes away. */
+function showTooltip(event, html, onHide = null) {
   tooltip.innerHTML = html;
   tooltip.hidden = false;
-  const pad = 14;
+  tooltipOwner = event.currentTarget;
+  onTooltipHide = onHide;
+  // Above a finger, so it isn't covered; below a mouse pointer unless that runs off the screen.
+  const pad = isTouch() ? 28 : 14;
   const { width, height } = tooltip.getBoundingClientRect();
-  const x = Math.min(event.clientX + pad, window.innerWidth - width - 4);
+  const x = Math.min(event.clientX + (isTouch() ? -width / 2 : pad), window.innerWidth - width - 4);
+  const above = event.clientY - height - pad;
+  const below = event.clientY + pad;
   const y =
-    event.clientY + pad + height > window.innerHeight
-      ? event.clientY - height - pad
-      : event.clientY + pad;
+    (isTouch() && above >= 4) || below + height > window.innerHeight ? Math.max(4, above) : below;
   tooltip.style.left = `${Math.max(4, x)}px`;
   tooltip.style.top = `${y}px`;
 }
 
-const hideTooltip = () => (tooltip.hidden = true);
+function hideTooltip() {
+  tooltip.hidden = true;
+  const undo = onTooltipHide;
+  tooltipOwner = onTooltipHide = null;
+  undo?.();
+}
+
+/**
+ * Give each element of a d3 selection a tooltip: on hover with a mouse, or on the first tap with
+ * touch. A click, or a second tap, goes through to `onClick` and to any link.
+ *
+ * Args:
+ *   selection: d3 selection of the elements, bound to their data.
+ *   html: Function from a datum to the tooltip's markup.
+ *   options.onShow: Called with (event, datum) as the tooltip shows, to highlight the element.
+ *   options.onHide: Called when the tooltip goes away, to undo the highlight.
+ *   options.onClick: Called with (event, datum) on a click or a second tap.
+ */
+function bindTooltip(selection, html, { onShow, onHide, onClick } = {}) {
+  const show = (e, d) => {
+    onShow?.(e, d);
+    showTooltip(e, html(d), onHide);
+  };
+  selection
+    .on("pointermove", (e, d) => e.pointerType === "mouse" && show(e, d))
+    .on("pointerleave", (e) => e.pointerType === "mouse" && hideTooltip())
+    .on("click", (e, d) => {
+      if (isTouch() && (tooltip.hidden || tooltipOwner !== e.currentTarget)) {
+        e.preventDefault();
+        show(e, d);
+      } else onClick?.(e, d);
+    });
+}
+
+/** Call `step(+1)` on a swipe left across `el` and `step(-1)` on a swipe right. */
+function onSwipe(el, step) {
+  let start = null;
+  el.addEventListener(
+    "touchstart",
+    (e) => {
+      start = e.touches.length === 1 ? e.touches[0] : null;
+    },
+    { passive: true },
+  );
+  el.addEventListener("touchend", (e) => {
+    if (!start) return;
+    const end = e.changedTouches[0];
+    const dx = end.clientX - start.clientX;
+    const dy = end.clientY - start.clientY;
+    start = null;
+    // Mostly sideways, so a vertical scroll that drifts doesn't change the step.
+    if (Math.abs(dx) > 50 && Math.abs(dx) > 2 * Math.abs(dy)) step(dx < 0 ? 1 : -1);
+  });
+}

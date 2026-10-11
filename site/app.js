@@ -127,7 +127,7 @@ function raceTooltip(race) {
       <span class="rating"><span class="swatch" style="background:var(${bin(race).css})"></span>${ratingText(bin(race), race)}</span></div>
     <div>Forecast: ${pct(fav.p)} ${fav.party}</div>
     ${body}
-    <div class="muted">Click to see full analysis</div>`;
+    <div class="muted">${tapOrClick()} to see the full analysis</div>`;
 }
 
 // Small margin histogram as markup; the axis is optional so table rows stay compact.
@@ -292,30 +292,27 @@ function renderSeats() {
     .attr("y", (b) => y(b.v))
     .attr("height", (b) => y(0) - y(b.v))
     .attr("fill", color);
-  // Invisible full-width columns take the hover, so the gaps between bars don't flicker.
+  // One overlay finds the nearest bar, so the gaps don't flicker and a finger can scrub sideways.
+  const highlight = (e) => {
+    const i = Math.round(x.invert(d3.pointer(e)[0])) - dist.start;
+    const hovered = bins[Math.max(0, Math.min(bins.length - 1, i))];
+    bars.attr("opacity", (b) => (inTail(hovered, b) ? 1 : 0.3));
+    showTooltip(
+      e,
+      `<div>${pct(hovered.p)} chance of at least ${hovered.count} ${hovered.party === "D" ? "Democratic" : "Republican"} ${unit}</div>`,
+      () => bars.attr("opacity", 1),
+    );
+  };
   svg
-    .selectAll("rect.hit")
-    .data(bins)
-    .join("rect")
-    .attr("class", "hit")
-    .attr("x", (b) => x(b.seats + 0.5))
-    .attr("width", x(0) - x(1))
+    .append("rect")
+    .attr("x", m.left)
+    .attr("width", width - m.left - m.right)
     .attr("y", m.top)
     .attr("height", height - m.bottom - m.top)
     .attr("fill", "transparent")
-    .on("mouseenter", (e, hovered) =>
-      bars.attr("opacity", (b) => (inTail(hovered, b) ? 1 : 0.3)),
-    )
-    .on("mousemove", (e, b) =>
-      showTooltip(
-        e,
-        `<div>${pct(b.p)} chance of at least ${b.count} ${b.party === "D" ? "Democratic" : "Republican"} ${unit}</div>`,
-      ),
-    )
-    .on("mouseleave", () => {
-      bars.attr("opacity", 1);
-      hideTooltip();
-    });
+    .style("touch-action", "pan-y")
+    .on("pointerdown pointermove", highlight)
+    .on("pointerleave", (e) => e.pointerType === "mouse" && hideTooltip());
 
   svg
     .append("g")
@@ -487,6 +484,9 @@ function winLine(race, step) {
   return `${PARTY_NAME[fav.party]} ${pct(fav.p)} to win`;
 }
 
+const CHEVRON = (d) =>
+  `<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
 // Horizontal margins shared by the histogram and the timeline below it, so they share one axis.
 const STEP_X = { left: 60, right: 18 };
 const stepScale = (info, width) =>
@@ -537,7 +537,7 @@ function renderStepChart(race, info, k) {
   const el = document.getElementById("step-chart");
   const step = info.steps[k];
   const width = el.clientWidth || 600;
-  const height = 200;
+  const height = width < 500 ? 160 : 200;
   const m = { top: 24, bottom: 26, ...STEP_X };
   const n = step.hist.length;
   const x = stepScale(info, width);
@@ -630,21 +630,24 @@ function renderStepChart(race, info, k) {
     .call(styleAxis);
 
   const labels = [
-    { text: `${race.d_party} wins ${pct(step.p_d)}`, x: Math.max(m.left, Math.min(zeroX, width - m.right)) - 6, anchor: "end" },
-    { text: `${race.r_party} wins ${pct(1 - step.p_d)}`, x: Math.max(m.left, Math.min(zeroX, width - m.right)) + 6, anchor: "start" },
+    { text: `${race.d_party} wins ${pct(step.p_d)}`, dx: -6, anchor: "end" },
+    { text: `${race.r_party} wins ${pct(1 - step.p_d)}`, dx: 6, anchor: "start" },
   ];
-  svg
+  const text = svg
     .select(".side-labels")
     .selectAll("text")
     .data(labels)
     .join("text")
-    .attr("x", (d) => d.x)
     .attr("y", m.top - 10)
     .attr("text-anchor", (d) => d.anchor)
     .attr("fill", css("--ink"))
     .attr("font-size", 12)
     .attr("font-weight", 600)
     .text((d) => d.text);
+  // Either side of Even, but slid inward so neither label runs off a lopsided race's chart.
+  const [left, right] = text.nodes().map((t) => t.getComputedTextLength() + 6);
+  const mid = Math.max(left, Math.min(zeroX, width - right));
+  text.attr("x", (d) => mid + d.dx);
 }
 
 /** Weekly estimate shown under step k: national mood, or this race before or after its polls. */
@@ -732,7 +735,7 @@ function renderTimeChart(race, info, k) {
   const el = document.getElementById("step-time");
   const width = el.clientWidth || 600;
   const narrow = width < 500;
-  const height = narrow ? 214 : 264;
+  const height = narrow ? 180 : 264;
   // Room at the top for the lean arrow, between the histogram's axis and Election Day.
   const m = { top: 34, bottom: 6, ...STEP_X };
   const x = stepScale(info, width);
@@ -882,8 +885,7 @@ function renderTimeChart(race, info, k) {
       (exit) => exit.transition().duration(400).attr("opacity", 0).remove(),
     )
     .attr("href", (p) => safeUrl(p.url))
-    .on("mousemove", (e, p) => showTooltip(e, pollTooltip(p)))
-    .on("mouseleave", hideTooltip)
+    .call(bindTooltip, pollTooltip)
     .select("circle")
     .attr("cx", (p) => x(p.margin))
     .attr("cy", (p) => y(new Date(`${p.date}T12:00`)))
@@ -927,35 +929,37 @@ function renderStep() {
   const k = modalState.step;
   const meta = stepsData.steps;
   const body = document.getElementById("modal-body");
-  if (!body.querySelector(".stepper")) {
+  if (!body.querySelector(".step-nav")) {
     body.innerHTML = `
-      <ol class="stepper">${meta
-        .map((s, i) => `<li><button data-step="${i}">${i + 1}. ${s.label}</button></li>`)
-        .join("")}</ol>
-      <h3 id="step-title"></h3>
-      <p id="step-text" class="step-text"></p>
-      <p id="step-stats" class="step-stats"></p>
-      <div id="step-chart"></div>
-      <div id="step-time"></div>
-      <p id="time-note" class="modal-note"></p>
       <div class="step-nav">
-        <button id="step-prev">Back</button>
-        <button id="step-next">Next</button>
+        <button id="step-prev" class="arrow" aria-label="Previous step">${CHEVRON("M15 5l-7 7 7 7")}</button>
+        <div class="step-head">
+          <h3 id="step-title"></h3>
+          <ol class="step-dots">${meta
+            .map((s, i) => `<li><button data-step="${i}" aria-label="Step ${i + 1}: ${s.label}"></button></li>`)
+            .join("")}</ol>
+        </div>
+        <button id="step-next" class="arrow" aria-label="Next step">${CHEVRON("M9 5l7 7-7 7")}</button>
       </div>
-      <p class="modal-note">Each histogram is 4,000 simulated elections, going from the national
-      picture down to this race; the dashed outline is the previous step.</p>`;
+      <div class="step-body">
+        <p id="step-text" class="step-text"></p>
+        <p id="step-stats" class="step-stats"></p>
+        <div id="step-chart" class="step-chart"></div>
+        <div id="step-time" class="step-chart"></div>
+        <p id="time-note" class="modal-note"></p>
+        <p class="modal-note">Each histogram is 4,000 simulated elections, going from the
+        national picture down to this race; the dashed outline is the previous step.</p>
+      </div>`;
     body.querySelectorAll("[data-step]").forEach((b) =>
       b.addEventListener("click", () => goToStep(+b.dataset.step)),
     );
     body.querySelector("#step-prev").addEventListener("click", () => goToStep(modalState.step - 1));
     body.querySelector("#step-next").addEventListener("click", () => goToStep(modalState.step + 1));
   }
-  body.querySelectorAll(".stepper button").forEach((b) => {
-    const i = +b.dataset.step;
-    b.setAttribute("aria-current", i === k ? "step" : "false");
-    b.classList.toggle("done", i < k);
+  body.querySelectorAll(".step-dots button").forEach((b) => {
+    b.setAttribute("aria-current", +b.dataset.step === k ? "step" : "false");
   });
-  body.querySelector("#step-title").textContent = `Step ${k + 1} of ${meta.length}: ${meta[k].label}`;
+  body.querySelector("#step-title").textContent = `${k + 1}. ${meta[k].label}`;
   const texts = meta.map((s, i) => esc(stepText(s.key, race, info, info.steps[i])));
   const stats = meta.map((_, i) => statsHtml(race, info, i));
   // Keep the charts still: each block is as tall as its longest version across the steps.
@@ -969,6 +973,8 @@ function renderStep() {
 }
 
 function goToStep(k) {
+  // Races called without modeling have no steps to move through.
+  if (!document.querySelector("#modal-body .step-nav")) return;
   modalState.step = Math.max(0, Math.min(k, stepsData.steps.length - 1));
   renderStep();
 }
@@ -1012,15 +1018,11 @@ function bindHover(selection, svg) {
     .filter((d) => d.race)
     .classed("active", true)
     .classed("tossup", (d) => bin(d.race).css === "--tossup")
-    .on("mouseenter", function () {
-      outline.attr("d", this.getAttribute("d")).attr("visibility", "visible");
-    })
-    .on("mousemove", (e, d) => showTooltip(e, raceTooltip(d.race)))
-    .on("mouseleave", () => {
-      outline.attr("visibility", "hidden");
-      hideTooltip();
-    })
-    .on("click", (e, d) => openRace(d.race));
+    .call(bindTooltip, (d) => raceTooltip(d.race), {
+      onShow: (e) => outline.attr("d", e.currentTarget.getAttribute("d")).attr("visibility", "visible"),
+      onHide: () => outline.attr("visibility", "hidden"),
+      onClick: (e, d) => openRace(d.race),
+    });
 }
 
 function renderStateMap(races) {
@@ -1200,6 +1202,7 @@ function bindControls() {
   modal.addEventListener("click", (e) => {
     if (e.target === modal) modal.close();
   });
+  onSwipe(modal, (dir) => goToStep(modalState.step + dir));
   modal.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") goToStep(modalState.step + 1);
     if (e.key === "ArrowLeft") goToStep(modalState.step - 1);
@@ -1211,7 +1214,10 @@ function bindControls() {
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", render);
-  window.addEventListener("resize", renderSeats);
+  window.addEventListener("resize", () => {
+    renderSeats();
+    if (modal.open) goToStep(modalState.step);
+  });
 }
 
 Promise.all([

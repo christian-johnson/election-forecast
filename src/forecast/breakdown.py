@@ -26,13 +26,23 @@ _RANGE_PERCENTILES = (0.5, 99.5)
 
 
 def _steps_logit(
-    races: RaceSet, posterior: dict[str, np.ndarray], miss: np.ndarray, rng: np.random.Generator
+    races: RaceSet,
+    posterior: dict[str, np.ndarray],
+    polled: np.ndarray,
+    miss: np.ndarray,
+    rng: np.random.Generator,
 ) -> np.ndarray:
     """Each step's election-day logit, shape (len(STEPS), draws, n_races)."""
     shape = posterior["lean"].shape
     nat = np.broadcast_to(posterior["nat"][:, election_week(), None], shape)
     national = nat + miss
-    prior = races.expected + RACE_SPREAD[races.office] * rng.standard_normal(shape)
+    # An unpolled race's fitted lean is already a draw from its prior, so reusing those draws
+    # keeps its chart still when the polls step adds nothing.
+    prior = np.where(
+        polled,
+        races.expected + RACE_SPREAD[races.office] * rng.standard_normal(shape),
+        posterior["lean"],
+    )
     return np.stack([nat, national, national + prior, national + posterior["lean"]])
 
 
@@ -63,6 +73,7 @@ def _summary(margins: np.ndarray, start: float, width: float) -> dict:
 def build_steps(
     modeled_races: pd.DataFrame,
     posterior: dict[str, np.ndarray],
+    race_obs: pd.DataFrame,
     miss: np.ndarray,
     rng: np.random.Generator,
 ) -> dict:
@@ -71,6 +82,7 @@ def build_steps(
     Args:
         modeled_races: Races passed to model.build_inputs, in the same order.
         posterior: Output of model.fit.
+        race_obs: Race poll observations, to tell which races have polls of their own.
         miss: Output of simulate.national_miss, as used for the published forecast.
         rng: Random generator for the before-polls draws.
 
@@ -81,7 +93,8 @@ def build_steps(
         race's margin on election day from the national mood, PVI and incumbency alone.
     """
     races = RaceSet.from_races(modeled_races)
-    margins = _margin(_steps_logit(races, posterior, miss, rng))
+    polled = modeled_races["race_id"].isin(set(race_obs["race_id"])).to_numpy()
+    margins = _margin(_steps_logit(races, posterior, polled, miss, rng))
     # One set of bins per race, wide enough for the middle 99% of every step.
     lo = np.percentile(margins, _RANGE_PERCENTILES[0], axis=1).min(axis=0)
     hi = np.percentile(margins, _RANGE_PERCENTILES[1], axis=1).max(axis=0)

@@ -8,7 +8,7 @@ const EQUATION = [
   String.raw`p(\theta \mid y) \propto \prod_i \mathcal{N}\big(`,
   term("y", "y_i"),
   String.raw`\,\big|\,`,
-  term("eta", String.raw`\eta_{t_i}`),
+  term("n", "n_{t_i}"),
   "+",
   term("lambda", String.raw`\lambda_{r_i}`),
   "+",
@@ -25,11 +25,11 @@ const EQUATION = [
 const ELECTION = [
   term("m", "M_r"),
   "=",
-  term("eta", String.raw`\eta_E`),
+  term("n", "n_E"),
   "+",
   term("lambda", String.raw`\lambda_r`),
   "+",
-  term("eps", String.raw`\varepsilon`),
+  term("eps", String.raw`\epsilon`),
 ].join(" ");
 
 
@@ -45,6 +45,7 @@ const PARTY_ADJ = { D: "Democratic", R: "Republican" };
 const ANIMATION_MS = 700;
 const DURATION = {
   mood: ANIMATION_MS * 1.3,
+  sampling: ANIMATION_MS,
   house: ANIMATION_MS,
   widen: ANIMATION_MS,
   prior: ANIMATION_MS,
@@ -74,20 +75,34 @@ const raceName = (r) => (r.office === "house" ? r.label : `${r.label} ${OFFICE_L
 const fade = (sel, opacity) =>
   sel.interrupt().transition().duration(400).attr("opacity", +opacity);
 
-/** Week-by-week estimate from only the polls up to each week, as a running (Kalman) filter. */
-function runningEstimate(polls, weeks, step, extra) {
+/**
+ * The random walk fit to the polls alone, each poll with SD noise(p): a Kalman filter forward
+ * through the weeks, then a smoothing pass back so each week also learns from later polls.
+ */
+function walkFit(polls, weeks, step, noise) {
   const byWeek = d3.group(polls, (p) => p.week);
+  const filtered = [];
   let mean = 0;
   let variance = START_SD ** 2;
-  return weeks.map((t, i) => {
+  weeks.forEach((t, i) => {
     if (i > 0) variance += step ** 2;
     for (const p of byWeek.get(i) ?? []) {
-      const gain = variance / (variance + p.sd ** 2 + extra ** 2);
+      const gain = variance / (variance + noise(p) ** 2);
       mean += gain * (p.margin - mean);
       variance *= 1 - gain;
     }
+    filtered.push({ mean, variance });
+  });
+  for (let i = weeks.length - 2; i >= 0; i--) {
+    const f = filtered[i];
+    const next = filtered[i + 1];
+    const gain = f.variance / (f.variance + step ** 2);
+    f.mean += gain * (next.mean - f.mean);
+    f.variance += gain ** 2 * (next.variance - f.variance - step ** 2);
+  }
+  return filtered.map(({ mean, variance }, i) => {
     const half = Z80 * Math.sqrt(variance);
-    return { t, mid: mean, lo: mean - half, hi: mean + half };
+    return { t: weeks[i], mid: mean, lo: mean - half, hi: mean + half };
   });
 }
 
@@ -145,7 +160,10 @@ function prepare(data) {
       mean: nat.mean,
       sd: nat.sd.map((v) => Math.hypot(v, data.history.national_miss * POINT)),
     }),
-    running: runningEstimate(nationalPolls, weeks, data.walk, data.noise.generic),
+    // The walk's line as the national slides build it: every poll counting the same, then each
+    // weighed by its sampling error. House effects then bring it to the model's fit.
+    equal: walkFit(nationalPolls, weeks, data.walk, () => Math.sqrt(d3.mean(nationalPolls, (p) => p.sd ** 2))),
+    weighted: walkFit(nationalPolls, weeks, data.walk, (p) => p.sd),
     race: races[0],
     races,
     // For the finale each draw's whole line carries its national polling miss, so the lines show
@@ -161,11 +179,10 @@ function prepare(data) {
   };
 }
 
-/** Share of polls that miss the fitted mood by more than their own 80% range. */
-function shareOutside(prep, shift, extra) {
-  const { nationalPolls: polls, national } = prep;
+/** Share of polls that miss a line by more than their own 80% range. */
+function shareOutside(polls, line, shift, extra) {
   const out = polls.filter(
-    (p) => Math.abs(p.margin - shift(p) - national[p.week].mid) > Z80 * Math.hypot(p.sd, extra),
+    (p) => Math.abs(p.margin - shift(p) - line[p.week].mid) > Z80 * Math.hypot(p.sd, extra),
   );
   return pct(out.length / polls.length);
 }
@@ -184,8 +201,8 @@ function fills(data, prep, history) {
     "nat-day-lo": fmt(prep.nationalWide.at(-1).lo),
     "nat-day-hi": fmt(prep.nationalWide.at(-1).hi),
     walk: data.walk.toFixed(2),
-    "outside-raw": shareOutside(prep, () => 0, 0),
-    "outside-adj": shareOutside(prep, (p) => p.house, data.noise.generic),
+    "outside-raw": shareOutside(prep.nationalPolls, prep.weighted, () => 0, 0),
+    "outside-adj": shareOutside(prep.nationalPolls, prep.national, (p) => p.house, data.noise.generic),
     "most-d": mostD.name,
     "most-d-lean": fmt(mostD.mean),
     "most-r": mostR.name,
@@ -349,14 +366,15 @@ function pollBubbles(g, polls, x, maxR) {
     .attr("href", (p) => safeUrl(p.url))
     .attr("target", "_blank")
     .attr("rel", "noopener")
-    .on("mousemove", (e, p) => showTooltip(e, pollTooltip(p)))
-    .on("mouseleave", hideTooltip);
+    .call(bindTooltip, pollTooltip);
   a.append("line")
     .attr("x1", (p) => x(p.t))
     .attr("x2", (p) => x(p.t))
     .attr("stroke", (p) => partyColor(p.margin))
     .attr("stroke-opacity", 0.2)
-    .attr("opacity", 0);
+    .attr("opacity", 0)
+    // Only the circle picks out a poll; the tall whisker would catch the pointer far from it.
+    .attr("pointer-events", "none");
   a.append("circle")
     .attr("cx", (p) => x(p.t))
     .attr("r", (p) => Math.max(1.5, r(p.size)))
@@ -400,45 +418,64 @@ function bandLegend(g, x, y, label = "Estimate") {
     .text((d) => d[0]);
 }
 
-/** A band partway (p from 0 to 1) from one series' 80% range to another's. */
+/** A series partway (p from 0 to 1) from one to another, line and 80% range alike. */
 const between = (from, to, p) =>
-  from.map((d, i) => ({ t: d.t, lo: d.lo + p * (to[i].lo - d.lo), hi: d.hi + p * (to[i].hi - d.hi) }));
+  from.map((d, i) => ({
+    t: d.t,
+    mid: d.mid + p * (to[i].mid - d.mid),
+    lo: d.lo + p * (to[i].lo - d.lo),
+    hi: d.hi + p * (to[i].hi - d.hi),
+  }));
 
 scenes.national = {
   render(el) {
-    const { nationalPolls, national, running } = walk.prep;
+    const { nationalPolls, equal } = walk.prep;
     const values = nationalPolls.map((p) => p.margin);
     const c = timeChart(el, [d3.quantile(values, 0.01), d3.quantile(values, 0.99)]);
     const polls = pollBubbles(c.plot.append("g"), nationalPolls, c.x, walk.narrow ? 4 : 5);
-    const traced = estimate(c.plot.append("g").attr("clip-path", `url(#${c.clip})`), running, c.x, c.y);
-    // Behind the fit's own band: the range once the national miss is added.
+    // Behind the line's own band: the range once the national miss is added.
     const wide = c.plot
       .append("path")
       .attr("pointer-events", "none")
       .attr("fill", css("--band"))
       .attr("opacity", 0);
-    const fit = estimate(c.plot.append("g").attr("opacity", 0), national, c.x, c.y);
+    const line = estimate(c.plot.append("g").attr("clip-path", `url(#${c.clip})`), equal, c.x, c.y);
     bandLegend(c.overlay, c.m.left + 8, c.m.top + 4);
-    Object.assign(this, { c, polls, traced, wide, fit });
+    Object.assign(this, { c, polls, wide, line });
   },
   update(step, p, entered) {
-    const { c, polls, traced, wide, fit } = this;
-    const { national, nationalWide } = walk.prep;
+    const { c, polls, wide, line } = this;
+    const { equal, weighted, national, nationalWide } = walk.prep;
     const tracing = step === "mood";
     const widening = step === "widen";
     const whiskers = step === "sampling" || step === "house";
     if (entered) {
-      fade(traced, tracing);
-      fade(fit, whiskers || widening);
+      fade(line, step !== "polls");
       fade(wide, widening);
       fade(polls.selectAll("line"), whiskers);
-      if (!tracing) fade(polls, 1);
+      if (!tracing) {
+        fade(polls, 1);
+        c.trace.attr("width", c.width);
+      }
     }
     if (tracing) {
       const t = cursorAt(p);
       c.trace.attr("width", c.x(t));
       polls.interrupt().attr("opacity", (d) => (d.t <= t ? 1 : 0.12));
     }
+    // Each step changes one thing about the line: sampling error weighs the polls, then house
+    // effects bring it to the model's fit.
+    const series =
+      step === "sampling"
+        ? between(equal, weighted, p)
+        : step === "house"
+          ? between(weighted, national, p)
+          : widening
+            ? national
+            : equal;
+    const [band, mid] = line.selectAll("path").nodes();
+    d3.select(band).attr("d", areaPath(c.x, c.y)(series));
+    d3.select(mid).attr("d", linePath(c.x, c.y)(series));
     if (widening) wide.attr("d", areaPath(c.x, c.y)(between(national, nationalWide, p)));
     // Polls move by their house effects in that step, and stay moved afterwards.
     const move = step === "house" ? p : widening ? 1 : 0;
@@ -701,7 +738,7 @@ scenes.years = {
       .attr("font-size", 11)
       .attr("fill", css("--ink-2"))
       .text(
-        `Shaded: ε's 80% range, ±${half.toFixed(1)} · ` +
+        `Shaded: ϵ's 80% range, ±${half.toFixed(1)} · ` +
           `${misses.filter((d) => Math.abs(d.miss) <= half).length} of ${misses.length} elections inside`,
       );
     svg
@@ -743,13 +780,11 @@ scenes.years = {
       .attr("y", (d) => Math.min(y(0), y(d.miss)))
       .attr("height", (d) => Math.abs(y(d.miss) - y(0)))
       .attr("fill", (d) => partyColor(d.miss))
-      .on("mousemove", (e, d) =>
-        showTooltip(
-          e,
+      .call(
+        bindTooltip,
+        (d) =>
           `<div class="title">${d.year}</div><div>Late polls overstated ${d.miss > 0 ? "Democrats" : "Republicans"} by ${Math.abs(d.miss).toFixed(1)} pts on average</div>`,
-        ),
-      )
-      .on("mouseleave", hideTooltip);
+      );
     svg
       .append("g")
       .selectAll("text")
@@ -1129,7 +1164,11 @@ function renderText() {
     el.textContent = values[el.dataset.fill];
   });
   renderMathInElement(document.getElementById("walkthrough"), {
-    delimiters: [{ left: "\\(", right: "\\)", display: false }],
+    delimiters: [
+      { left: "\\begin{equation}", right: "\\end{equation}", display: true },
+      { left: "$", right: "$", display: false },
+      { left: "\\(", right: "\\)", display: false },
+    ],
     ignoredClasses: ["equation", "equation-note"],
   });
 }
@@ -1145,6 +1184,10 @@ walk.steps = [...document.querySelectorAll(".walk-step")];
 document.getElementById("walk-prev").addEventListener("click", () => goTo(walk.step - 1));
 document.getElementById("walk-next").addEventListener("click", () => goTo(walk.step + 1));
 document.getElementById("walk-replay").addEventListener("click", () => goTo(walk.step));
+onSwipe(document.getElementById("stage"), (dir) => {
+  const k = walk.step + dir;
+  if (walk.prep && k >= 0 && k < walk.steps.length) goTo(k);
+});
 // Arrow keys step through the walkthrough while it is on screen.
 document.addEventListener("keydown", (e) => {
   const box = document.getElementById("walk").getBoundingClientRect();
@@ -1173,5 +1216,6 @@ Promise.all([d3.json("data/likelihood.json"), d3.json("data/history.json")])
   })
   .catch((err) => {
     document.getElementById("glossary").textContent = "Could not load the model data.";
+    document.getElementById("glossary").closest("details").open = true;
     console.error(err);
   });

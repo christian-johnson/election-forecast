@@ -4,7 +4,7 @@ import orjson
 import pandas as pd
 import pytest
 
-from forecast import cli, fetch
+from forecast import cli, fetch, likelihood
 from forecast.config import HISTORY
 from forecast.model import week_index
 from forecast.races import name_key, parse_pvi, parse_races
@@ -17,6 +17,8 @@ def forecast_doc(tmp_path, monkeypatch, raw_polls, wiki_pages):
     """Run fetch + model against synthetic sources in a temp directory."""
     monkeypatch.setattr(fetch, "fetch_polls", lambda: raw_polls)
     monkeypatch.setattr(fetch, "fetch_wikipedia", wiki_pages.__getitem__)
+    # The least-polled race, so leading with it can't happen by chance.
+    monkeypatch.setattr(likelihood, "FEATURED_RACE", "S-NE")
     monkeypatch.setattr(cli, "DATA_DIR", tmp_path / "data")
     for name in _CSV_NAMES:
         monkeypatch.setattr(cli, name, tmp_path / "data" / getattr(cli, name).name)
@@ -158,8 +160,8 @@ def test_steps_build_from_national_polls_to_race(steps_doc):
     assert prior["mean"] == pytest.approx(oh01["expected"], abs=1)
     assert after["mean"] > prior["mean"] > polls["mean"]
     assert after["p_d"] > prior["p_d"]
-    # OH-02 has no polls, so its polls step barely moves from its R+20 starting point.
-    assert unpolled_after["mean"] == pytest.approx(unpolled_prior["mean"], abs=1.5)
+    # OH-02 has no polls, so its polls step is its R+20 starting point, draw for draw.
+    assert unpolled_after == unpolled_prior
     assert steps_doc["history"]["race_spread"] == HISTORY.race_spread
     assert set(steps_doc["noise"]) == {"house", "senate", "governor"}
 
@@ -217,10 +219,10 @@ def test_walkthrough_shows_polls_and_replays_the_fit(forecast_doc, likelihood_do
 
     offices = [r["office"] for r in races]
 
-    # Assert: every generic poll is shown, and races alternate offices, the most polled first.
+    # Assert: every generic poll is shown, and races alternate offices, the featured one first.
     assert len(national["polls"]) == forecast_doc["n_polls"]["generic"]
     assert [len(r["polls"]) for r in races] == [modeled[r["id"]]["n_polls"] for r in races]
-    assert len(races[0]["polls"]) == max(len(r["polls"]) for r in races)
+    assert races[0]["id"] == "S-NE"
     assert len(set(offices[: len(set(offices))])) == len(set(offices))
     assert all(len(r["weekly"]["sd"]) == n_weeks for r in races)
     # Each draw holds the whole path, one lean per shown race, and the House it implies.

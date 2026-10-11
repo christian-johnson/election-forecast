@@ -150,3 +150,4 @@ def build_likelihood(
             "p_d": round(float((elections.house_d >= majority).mean()), 3),
         },
     }
+FEATURED_RACE = "S-TX"

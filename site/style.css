@@ -355,7 +355,7 @@ td.forecast {
 .tooltip {
   position: fixed;
   z-index: 10;
-  max-width: 380px;
+  max-width: min(380px, calc(100vw - 8px));
   padding: 8px 10px;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -411,6 +411,10 @@ dialog {
   scrollbar-gutter: stable;
 }
 
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.45);
 }
@@ -432,6 +436,10 @@ dialog::backdrop {
 }
 
 .close {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  margin: -8px -8px 0 0;
   border: 0;
   background: none;
   color: var(--ink-2);
@@ -440,36 +448,70 @@ dialog::backdrop {
   cursor: pointer;
 }
 
-.stepper {
+/* Arrows either side of the step's title, with a dot per step underneath. */
+.step-nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 16px 0 0;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 4px;
+  padding: 6px 0;
+  border-top: 1px solid var(--grid);
+  border-bottom: 1px solid var(--grid);
+}
+
+.step-head {
+  flex: 1;
+  text-align: center;
+}
+
+.step-head h3 {
+  margin: 0;
+}
+
+.step-dots {
+  display: flex;
+  justify-content: center;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.stepper button,
-.step-nav button {
-  padding: 5px 10px;
-  border: 1px solid var(--axis);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink-2);
-  font: inherit;
-  font-size: 13px;
+/* A small dot inside a larger tap target. */
+.step-dots button {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: radial-gradient(circle, var(--axis) 3.5px, transparent 4px);
   cursor: pointer;
 }
 
-.stepper button.done {
-  border-color: var(--ink-2);
-  color: var(--ink);
+.step-dots button[aria-current="step"] {
+  background: radial-gradient(circle, var(--ink) 3.5px, transparent 4px);
 }
 
-.stepper button[aria-current="step"] {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--surface);
+.arrow {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--axis);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.step-body {
+  display: flex;
+  flex-direction: column;
 }
 
 .step-text {
@@ -484,22 +526,6 @@ dialog::backdrop {
 
 .muted {
   color: var(--ink-2);
-}
-
-.step-nav {
-  display: flex;
-  justify-content: space-between;
-  margin: 8px 0 16px;
-}
-
-.step-nav button {
-  padding: 6px 16px;
-  font-size: 14px;
-}
-
-.step-nav button:disabled {
-  opacity: 0.4;
-  cursor: default;
 }
 
 .modal-note {
@@ -519,14 +545,18 @@ dialog::backdrop {
   position: sticky;
   top: 0;
   z-index: 3;
-  margin: 16px -16px 0;
+  margin: 16px -16px 20px;
   padding: 0 16px 6px;
   border-bottom: 1px solid var(--grid);
   background: var(--page);
 }
 
 .equation {
+  /* Wide equations scroll sideways on phones; KaTeX's invisible spacers poke a few pixels below,
+     which would otherwise add a vertical scrollbar. The padding keeps subscripts unclipped. */
   overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
   font-size: 17px;
 }
 
@@ -554,11 +584,54 @@ dialog::backdrop {
   color: var(--truth);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 16px;
+}
+
+.jump {
+  padding: 4px 12px;
+  border: 1px solid var(--axis);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.jump:hover {
+  border-color: var(--ink);
+}
+
+.glossary-toggle {
+  margin: 4px 0 0;
+}
+
+.glossary-toggle summary {
+  color: var(--ink-2);
+  font-size: 13px;
+  text-align: right;
+  cursor: pointer;
+}
+
+/* The list opens inside the pinned bar, so it scrolls rather than covering the chart below. */
+.glossary-toggle[open] .glossary {
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
 .glossary {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 4px 24px;
-  margin: 12px 0 24px;
+  margin: 8px 0 0;
   color: var(--ink-2);
   font-size: 13px;
 }
@@ -596,6 +669,8 @@ dialog::backdrop {
 
 .stage {
   position: relative;
+  /* Redrawing charts mustn't nudge the page: the browser shouldn't anchor scrolling to them. */
+  overflow-anchor: none;
   grid-row: 1;
   grid-column: 2;
   /* Short enough that the pinned equation, the chart and the buttons fit on one screen. */
@@ -750,5 +825,72 @@ dialog::backdrop {
 
   .walk-text {
     grid-row: 3;
+  }
+}
+
+/* Phones: a full-screen pop-up with the charts ahead of the text, and a slimmer table. */
+@media (max-width: 599px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  .tabs button,
+  .tabs a {
+    padding: 8px 10px;
+  }
+
+  /* 16px stops iOS zooming in when the box is focused. */
+  #search {
+    font-size: 16px;
+  }
+
+  #races th:nth-child(2),
+  #races th:nth-child(3),
+  #races td:nth-child(2),
+  #races td:nth-child(3),
+  #races .mini-hist {
+    display: none;
+  }
+
+  #races .projection .lead {
+    min-width: 0;
+  }
+
+  dialog {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 12px 12px 24px;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .modal-head h2 {
+    font-size: 17px;
+  }
+
+  .modal-sub {
+    margin-top: 2px;
+    font-size: 14px;
+  }
+
+  .step-head h3 {
+    font-size: 15px;
+  }
+
+  .step-stats {
+    order: -1;
+    font-size: 14px;
+  }
+
+  .step-text {
+    order: 1;
+    margin-top: 12px;
+  }
+
+  .step-body .modal-note:last-child {
+    order: 2;
   }
 }
