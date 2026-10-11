@@ -231,6 +231,20 @@ a {
   font-size: 13px;
 }
 
+/* Narrow screens: each state is its own picture, wrapping to fill the width. */
+#map.flow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px 8px;
+}
+
+#map.flow svg {
+  width: auto;
+  overflow: visible;
+}
+
 .map-shape {
   stroke: var(--surface);
   stroke-width: 1;
@@ -364,6 +378,12 @@ td.forecast {
   color: var(--ink);
   font-size: 13px;
   pointer-events: none;
+}
+
+/* On touch, tapping the tooltip acts on the item it describes. */
+.tooltip.tappable {
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .tooltip .title {
@@ -517,11 +537,7 @@ dialog::backdrop {
 .step-text {
   max-width: 68ch;
   min-height: 4.5em;
-  margin: 4px 0 8px;
-}
-
-.step-stats {
-  margin: 0 0 4px;
+  margin: 12px 0 0;
 }
 
 .muted {
@@ -878,19 +894,5 @@ dialog::backdrop {
 
   .step-head h3 {
     font-size: 15px;
-  }
-
-  .step-stats {
-    order: -1;
-    font-size: 14px;
-  }
-
-  .step-text {
-    order: 1;
-    margin-top: 12px;
-  }
-
-  .step-body .modal-note:last-child {
-    order: 2;
   }
 }

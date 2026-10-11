@@ -335,7 +335,7 @@ function renderSeats() {
       .append("line")
       .attr("x1", lineX)
       .attr("x2", lineX)
-      .attr("y1", m.top - 8)
+      .attr("y1", m.top)
       .attr("y2", height - m.bottom)
       .attr("stroke", css("--ink"))
       .attr("stroke-width", 1.5)
@@ -473,12 +473,6 @@ function stepText(key, race, info, step) {
   }
 }
 
-function pointChange(delta) {
-  const points = Math.round(100 * delta);
-  if (points === 0) return " (no change";
-  return ` (${points > 0 ? "+" : "−"}${Math.abs(points)} points`;
-}
-
 function winLine(race, step) {
   const fav = favorite({ ...race, p_d: step.p_d });
   return `${PARTY_NAME[fav.party]} ${pct(fav.p)} to win`;
@@ -560,7 +554,7 @@ function renderStepChart(race, info, k) {
     svg.append("path").attr("class", "ghost");
     svg.append("line").attr("class", "zero");
     svg.append("g").attr("class", "x-axis");
-    svg.append("g").attr("class", "side-labels");
+    svg.append("text").attr("class", "win-label");
   }
   svg.attr("aria-label", `Simulated margins: ${winLine(race, step)}`).attr("role", "img");
   const bins = marginBins(step.hist, info.start, info.width);
@@ -612,7 +606,7 @@ function renderStepChart(race, info, k) {
     .select(".zero")
     .attr("x1", zeroX)
     .attr("x2", zeroX)
-    .attr("y1", m.top - 8)
+    .attr("y1", m.top)
     .attr("y2", height - m.bottom)
     .attr("stroke", css("--ink"))
     .attr("stroke-width", 1)
@@ -629,25 +623,15 @@ function renderStepChart(race, info, k) {
     )
     .call(styleAxis);
 
-  const labels = [
-    { text: `${race.d_party} wins ${pct(step.p_d)}`, dx: -6, anchor: "end" },
-    { text: `${race.r_party} wins ${pct(1 - step.p_d)}`, dx: 6, anchor: "start" },
-  ];
-  const text = svg
-    .select(".side-labels")
-    .selectAll("text")
-    .data(labels)
-    .join("text")
+  const fav = favorite({ ...race, p_d: step.p_d });
+  svg
+    .select(".win-label")
+    .attr("x", m.left)
     .attr("y", m.top - 10)
-    .attr("text-anchor", (d) => d.anchor)
     .attr("fill", css("--ink"))
     .attr("font-size", 12)
     .attr("font-weight", 600)
-    .text((d) => d.text);
-  // Either side of Even, but slid inward so neither label runs off a lopsided race's chart.
-  const [left, right] = text.nodes().map((t) => t.getComputedTextLength() + 6);
-  const mid = Math.max(left, Math.min(zeroX, width - right));
-  text.attr("x", (d) => mid + d.dx);
+    .text(`Win probability: ${pct(fav.p)} ${PARTY_NAME[fav.party].slice(0, -1)}`);
 }
 
 /** Weekly estimate shown under step k: national mood, or this race before or after its polls. */
@@ -895,22 +879,6 @@ function renderTimeChart(race, info, k) {
     .attr("stroke", (p) => css(p.margin >= 0 ? "--dem" : "--rep"));
 }
 
-function statsHtml(race, info, k) {
-  const step = info.steps[k];
-  const prevP = k > 0 ? info.steps[k - 1].p_d : null;
-  const change =
-    prevP === null
-      ? ""
-      : `<br><span class="muted">${race.d_party} win chance was ${pct(prevP)} before this ` +
-        `step${pointChange(step.p_d - prevP)})</span>`;
-  return (
-    `<strong>${winLine(race, step)}${k < NATIONAL_STEPS ? " the national vote" : ""}</strong> · ` +
-    `projected margin ${marginText(step.mean, race)} ` +
-    `<span class="muted">(80%: ${marginText(step.lo, race)} to ${marginText(step.hi, race)})</span>` +
-    change
-  );
-}
-
 /** Show versions[k] in el, with el's height fixed to the tallest of all versions. */
 function reserveHeight(el, versions, k) {
   el.style.minHeight = "";
@@ -942,11 +910,10 @@ function renderStep() {
         <button id="step-next" class="arrow" aria-label="Next step">${CHEVRON("M9 5l7 7-7 7")}</button>
       </div>
       <div class="step-body">
-        <p id="step-text" class="step-text"></p>
-        <p id="step-stats" class="step-stats"></p>
         <div id="step-chart" class="step-chart"></div>
         <div id="step-time" class="step-chart"></div>
         <p id="time-note" class="modal-note"></p>
+        <p id="step-text" class="step-text"></p>
         <p class="modal-note">Each histogram is 4,000 simulated elections, going from the
         national picture down to this race; the dashed outline is the previous step.</p>
       </div>`;
@@ -961,10 +928,8 @@ function renderStep() {
   });
   body.querySelector("#step-title").textContent = `${k + 1}. ${meta[k].label}`;
   const texts = meta.map((s, i) => esc(stepText(s.key, race, info, info.steps[i])));
-  const stats = meta.map((_, i) => statsHtml(race, info, i));
-  // Keep the charts still: each block is as tall as its longest version across the steps.
+  // Keep the note below still: the text is as tall as its longest version across the steps.
   reserveHeight(body.querySelector("#step-text"), texts, k);
-  reserveHeight(body.querySelector("#step-stats"), stats, k);
   body.querySelector("#step-prev").disabled = k === 0;
   body.querySelector("#step-next").disabled = k === meta.length - 1;
   renderStepChart(race, info, k);
@@ -1041,52 +1006,73 @@ function renderStateMap(races) {
     .call(bindHover, svg);
 }
 
-function renderHexMap(races) {
-  const byId = new Map(races.map((r) => [r.label, r]));
-  // Layout coordinates are in hex radii; hexes are drawn slightly small to leave a gap.
-  const R = 10,
-    drawn = R - 0.8;
-  const hexes = state.hexes.map((h) => ({
-    ...h,
-    c: [h.x * R, h.y * R],
-    race: byId.get(h.id),
-  }));
-  const width = d3.max(hexes, (h) => h.c[0]) + R;
-  const height = d3.max(hexes, (h) => h.c[1]) + R;
+// Hex radius in pixels, the smallest that is easy to tap. Where the US shape would draw hexes
+// smaller than this, each state is drawn on its own and the states wrap to fill the width.
+const HEX_R = 10;
+const HEX_LABEL = 14;
+
+/** Draw hexes in `svg`, in pixels, with the layout's `[x0, y0]` at the top left. */
+function drawHexes(svg, hexes, [x0, y0]) {
+  // Hexes are drawn slightly small to leave a gap.
+  const drawn = HEX_R - 0.8;
   const corners = d3.range(6).map((i) => {
     const a = (Math.PI / 180) * (60 * i - 30);
     return [drawn * Math.cos(a), drawn * Math.sin(a)];
   });
-  const svg = d3
-    .select("#map")
-    .append("svg")
-    .attr("viewBox", `0 0 ${width} ${height}`);
+  const at = (h) => [h.x * HEX_R - x0, h.y * HEX_R - y0];
   svg
     .selectAll("text")
     .data(d3.group(hexes, (h) => h.state))
     .join("text")
     .attr("class", "hex-label")
-    .attr("x", ([, hs]) => (d3.min(hs, (h) => h.c[0]) + d3.max(hs, (h) => h.c[0])) / 2)
-    .attr("y", ([, hs]) => d3.min(hs, (h) => h.c[1]) - R - 3)
+    .attr("x", ([, hs]) => (d3.min(hs, (h) => at(h)[0]) + d3.max(hs, (h) => at(h)[0])) / 2)
+    .attr("y", ([, hs]) => d3.min(hs, (h) => at(h)[1]) - HEX_R - 3)
     .text(([s]) => s);
   svg
     .selectAll("path")
     .data(hexes)
     .join("path")
     .attr("class", "map-shape hex")
-    .attr(
-      "d",
-      (h) =>
-        "M" +
-        corners.map(([dx, dy]) => [h.c[0] + dx, h.c[1] + dy]).join("L") +
-        "Z",
-    )
+    .attr("d", (h) => {
+      const [cx, cy] = at(h);
+      return "M" + corners.map(([dx, dy]) => [cx + dx, cy + dy]).join("L") + "Z";
+    })
     .attr("fill", (h) => (h.race ? fill(h.race) : css("--none")))
     .call(bindHover, svg);
 }
 
+// Layout coordinates are in hex radii, with room for labels already left above each state.
+const hexMapWidth = () => (d3.max(state.hexes, (h) => h.x) + 1) * HEX_R;
+
+function renderHexMap(races) {
+  const byId = new Map(races.map((r) => [r.label, r]));
+  const hexes = state.hexes.map((h) => ({ ...h, race: byId.get(h.id) }));
+  const map = document.getElementById("map");
+  const width = hexMapWidth();
+  const height = (d3.max(hexes, (h) => h.y) + 1) * HEX_R;
+  const flow = map.clientWidth < width;
+  map.classList.toggle("flow", flow);
+  if (!flow) {
+    const svg = d3.select(map).append("svg").attr("viewBox", `0 0 ${width} ${height}`);
+    drawHexes(svg, hexes, [0, 0]);
+    return;
+  }
+  const halfW = (Math.sqrt(3) / 2) * HEX_R;
+  for (const hs of d3.group(hexes, (h) => h.state).values()) {
+    const [xMin, xMax] = d3.extent(hs, (h) => h.x * HEX_R);
+    const yMin = d3.min(hs, (h) => h.y * HEX_R);
+    // Wide enough for the label above a one-hex state.
+    const w = Math.max(xMax - xMin + 2 * halfW, 2 * HEX_LABEL);
+    const h = d3.max(hs, (d) => d.y * HEX_R) - yMin + 2 * HEX_R + HEX_LABEL;
+    const svg = d3.select(map).append("svg").attr("width", w).attr("height", h);
+    drawHexes(svg, hs, [(xMin + xMax - w) / 2, yMin - HEX_R - HEX_LABEL]);
+  }
+}
+
 function renderMap() {
-  document.getElementById("map").innerHTML = "";
+  const map = document.getElementById("map");
+  map.innerHTML = "";
+  map.classList.remove("flow");
   const races = state.data.offices[state.office].races;
   if (state.office === "house") renderHexMap(races);
   else renderStateMap(races);
@@ -1216,6 +1202,10 @@ function bindControls() {
     .addEventListener("change", render);
   window.addEventListener("resize", () => {
     renderSeats();
+    // The House map only redraws when it switches between the US shape and wrapped states.
+    const map = document.getElementById("map");
+    const flow = map.clientWidth < hexMapWidth();
+    if (state.office === "house" && map.classList.contains("flow") !== flow) renderMap();
     if (modal.open) goToStep(modalState.step);
   });
 }

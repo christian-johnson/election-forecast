@@ -78,18 +78,25 @@ function styleAxis(axis) {
   axis.selectAll(".tick text").attr("fill", css("--ink-2"));
 }
 
-// Touch screens have no hover: the first tap on an item shows its tooltip, a second tap acts on
-// it, and a tap elsewhere or a scroll clears it.
+// Touch screens have no hover: the first tap on an item shows its tooltip, a tap on the tooltip
+// (or the item again) acts on it, and a tap elsewhere or a scroll clears it.
 let pointerType = "mouse";
 let tooltipOwner = null;
 let onTooltipHide = null;
+let onTooltipTap = null;
 const isTouch = () => pointerType === "touch";
-const tapOrClick = () => (isTouch() ? "Tap again" : "Click");
+const tapOrClick = () => (isTouch() ? "Tap here" : "Click");
 document.addEventListener(
   "pointerdown",
   (e) => {
     pointerType = e.pointerType;
-    if (isTouch() && tooltipOwner && !tooltipOwner.contains(e.target)) hideTooltip();
+    if (
+      isTouch() &&
+      tooltipOwner &&
+      !tooltipOwner.contains(e.target) &&
+      !tooltip.contains(e.target)
+    )
+      hideTooltip();
   },
   true,
 );
@@ -97,13 +104,22 @@ document.addEventListener("scroll", () => isTouch() && hideTooltip(), {
   capture: true,
   passive: true,
 });
+tooltip.addEventListener("click", () => {
+  onTooltipTap?.();
+  hideTooltip();
+});
 
-/** Show the tooltip by the pointer; `onHide` undoes any highlight when it goes away. */
-function showTooltip(event, html, onHide = null) {
+/**
+ * Show the tooltip by the pointer; `onHide` undoes any highlight when it goes away, and `onTap`
+ * runs when the tooltip is tapped on a touch screen.
+ */
+function showTooltip(event, html, onHide = null, onTap = null) {
   tooltip.innerHTML = html;
   tooltip.hidden = false;
   tooltipOwner = event.currentTarget;
   onTooltipHide = onHide;
+  onTooltipTap = onTap;
+  tooltip.classList.toggle("tappable", isTouch() && onTap !== null);
   // Above a finger, so it isn't covered; below a mouse pointer unless that runs off the screen.
   const pad = isTouch() ? 28 : 14;
   const { width, height } = tooltip.getBoundingClientRect();
@@ -119,13 +135,13 @@ function showTooltip(event, html, onHide = null) {
 function hideTooltip() {
   tooltip.hidden = true;
   const undo = onTooltipHide;
-  tooltipOwner = onTooltipHide = null;
+  tooltipOwner = onTooltipHide = onTooltipTap = null;
   undo?.();
 }
 
 /**
  * Give each element of a d3 selection a tooltip: on hover with a mouse, or on the first tap with
- * touch. A click, or a second tap, goes through to `onClick` and to any link.
+ * touch. A click, a tap on the tooltip, or a second tap goes through to `onClick` and to any link.
  *
  * Args:
  *   selection: d3 selection of the elements, bound to their data.
@@ -136,8 +152,12 @@ function hideTooltip() {
  */
 function bindTooltip(selection, html, { onShow, onHide, onClick } = {}) {
   const show = (e, d) => {
+    const target = e.currentTarget;
     onShow?.(e, d);
-    showTooltip(e, html(d), onHide);
+    // Replaying the click on the item reaches `onClick` and follows any link.
+    showTooltip(e, html(d), onHide, () =>
+      target.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true })),
+    );
   };
   selection
     .on("pointermove", (e, d) => e.pointerType === "mouse" && show(e, d))
