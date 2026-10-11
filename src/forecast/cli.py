@@ -90,7 +90,9 @@ def run_model(*, warmup: int, samples: int, chains: int, seed: int) -> dict:
     shares = simulate.simulate_shares(posterior, miss)
     document = export.build_forecast(race_table, race_obs, posterior, shares, n_polls)
     _write_json(FORECAST_JSON, document)
-    _write_json(STEPS_JSON, breakdown.build_steps(modeled, posterior, race_obs, miss, rng))
+    _write_json(
+        STEPS_JSON, breakdown.build_steps(modeled, posterior, race_obs, generic_obs, miss, rng)
+    )
     _write_json(
         TIMELINE_JSON,
         breakdown.build_timeline(modeled, posterior, race_obs, generic_obs),

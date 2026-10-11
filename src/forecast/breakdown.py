@@ -70,10 +70,16 @@ def _summary(margins: np.ndarray, start: float, width: float) -> dict:
     }
 
 
-def build_steps(
+def poll_margins(obs: pd.DataFrame) -> pd.Series:
+    """Each poll's two-party margin in D-side points, as the site shows it."""
+    return (100 * (obs["dem"] - obs["rep"]) / (obs["dem"] + obs["rep"])).round(1)
+
+
+def build_steps(  # noqa: PLR0913, PLR0917 - both poll tables and the simulation's draws
     modeled_races: pd.DataFrame,
     posterior: dict[str, np.ndarray],
     race_obs: pd.DataFrame,
+    generic_obs: pd.DataFrame,
     miss: np.ndarray,
     rng: np.random.Generator,
 ) -> dict:
@@ -83,6 +89,7 @@ def build_steps(
         modeled_races: Races passed to model.build_inputs, in the same order.
         posterior: Output of model.fit.
         race_obs: Race poll observations, to tell which races have polls of their own.
+        generic_obs: Generic ballot poll observations, shown on every race's national steps.
         miss: Output of simulate.national_miss, as used for the published forecast.
         rng: Random generator for the before-polls draws.
 
@@ -98,8 +105,15 @@ def build_steps(
     # One set of bins per race, wide enough for the middle 99% of every step.
     lo = np.percentile(margins, _RANGE_PERCENTILES[0], axis=1).min(axis=0)
     hi = np.percentile(margins, _RANGE_PERCENTILES[1], axis=1).max(axis=0)
+    # Wide enough too for every poll the race's chart shows, since the chart clips at its edges.
+    generic = poll_margins(generic_obs)
+    own = poll_margins(race_obs).groupby(race_obs["race_id"]).agg(["min", "max"])
+    own = own.reindex(modeled_races["race_id"])
+    lo = np.fmin(np.minimum(lo, generic.min()), own["min"].to_numpy())
+    hi = np.fmax(np.maximum(hi, generic.max()), own["max"].to_numpy())
     start = np.floor(lo)
-    width = np.round(np.maximum((hi - start) / _BINS, 0.25), 3)
+    # Rounded up, so the last bin still reaches hi.
+    width = np.maximum(np.ceil(1000 * (hi - start) / _BINS) / 1000, 0.25)
     expected = _margin(posterior["nat"][:, election_week()].mean() + races.expected)
     by_race = {
         race_id: {
@@ -164,7 +178,6 @@ def poll_records(obs: pd.DataFrame) -> list[dict]:
     Returns:
         One dict per poll, with its pollster, dates, sample, result and link.
     """
-    margin = 100 * (obs["dem"] - obs["rep"]) / (obs["dem"] + obs["rep"])
     return [
         {
             "pollster": row.pollster,
@@ -177,10 +190,10 @@ def poll_records(obs: pd.DataFrame) -> list[dict]:
             "partisan": optional(row.partisan),
             "dem": row.dem,
             "rep": row.rep,
-            "margin": round(float(m), 1),
+            "margin": float(m),
             "url": optional(row.url),
         }
-        for row, m in zip(obs.itertuples(index=False), margin, strict=True)
+        for row, m in zip(obs.itertuples(index=False), poll_margins(obs), strict=True)
     ]
 
 

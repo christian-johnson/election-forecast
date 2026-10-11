@@ -183,7 +183,10 @@ def raw_polls() -> list[dict]:
             ("Abdul El-Sayed", 49), ("Mike Rogers", 47)]),
         *_repeat(4, "ne-", "us-senator", "2026 Nebraska", [
             ("Dan Osborn", 46), ("Pete Ricketts", 48)]),
-        *_repeat(8, "ia-", "governor", "2026 Iowa", [("Rob Sand", 58), ("Zach Lahn", 38)]),
+        *_repeat(7, "ia-", "governor", "2026 Iowa", [("Rob Sand", 58), ("Zach Lahn", 38)]),
+        # An outlier far past the model's range, which the race's chart must still show.
+        _poll("ia-out", "governor", "2026 Iowa", [
+            ("Rob Sand", 85), ("Zach Lahn", 12)], end="2026-09-25"),
         # Primary and hypothetical polls must not be used.
         _poll("prim", "us-senator", "2026 Michigan Democratic", [
             ("Abdul El-Sayed", 30), ("Haley Stevens", 40)]),

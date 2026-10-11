@@ -234,3 +234,23 @@ def test_walkthrough_shows_polls_and_replays_the_fit(forecast_doc, likelihood_do
     assert p_d == pytest.approx(likelihood_doc["house"]["p_d"], abs=0.15)
     assert likelihood_doc["history"]["national_miss"] == HISTORY.national_miss
     assert {p["name"] for p in likelihood_doc["pollsters"]} >= {"Acme Polling", "Beta Research"}
+
+
+def test_every_poll_fits_on_its_races_chart(steps_doc, timeline_doc):
+    # Arrange
+    polls = timeline_doc["polls"]
+
+    # Act
+    ranges = {
+        race_id: (race["start"], race["start"] + race["width"] * len(race["steps"][0]["hist"]))
+        for race_id, race in steps_doc["races"].items()
+    }
+    off_chart = [
+        (race_id, p["margin"])
+        for race_id, (lo, hi) in ranges.items()
+        for p in polls["generic"] + polls["races"].get(race_id, [])
+        if not lo <= p["margin"] <= hi
+    ]
+
+    # Assert: the chart clips at its edges, so a poll outside the range would be hidden.
+    assert off_chart == []
