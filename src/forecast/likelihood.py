@@ -20,6 +20,8 @@ from forecast.model import RACE_SPREAD, RaceSet, pollster_names
 # Races shown with their polls (the most polled of each office) and draws replayed in the final fit.
 SHOWN_PER_OFFICE = 4
 SHOWN_DRAWS = 200
+# The race the page's text walks through; it leads the shown races whenever it has polls.
+FEATURED_RACE = "S-TX"
 # Draws are stored as logits in thousandths, so the file stays small.
 _LOGIT_SCALE = 1000
 
@@ -55,10 +57,11 @@ class Elections:
 
 
 def _shown_races(race_obs: pd.DataFrame, office: dict[str, str]) -> list[str]:
-    """The most-polled races of each office, alternating offices, with the most polled first."""
+    """The most-polled races of each office, alternating offices, led by the featured race."""
     counts = race_obs["race_id"].value_counts()
-    offices = counts.index.map(office)
-    ranked = [counts.index[offices == o][:SHOWN_PER_OFFICE] for o in dict.fromkeys(offices)]
+    ids = pd.Index(sorted(counts.index, key=lambda race_id: race_id != FEATURED_RACE))
+    offices = ids.map(office)
+    ranked = [ids[offices == o][:SHOWN_PER_OFFICE] for o in dict.fromkeys(offices)]
     return [race_id for race_id in chain(*zip_longest(*ranked)) if race_id is not None]
 
 
