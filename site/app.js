@@ -354,6 +354,183 @@ function renderSeats() {
   }
 }
 
+// The forecast as it stood on past dates, refit on only the polls finished by then.
+let trendData = null;
+const trendLoaded = d3.json("data/trend.json").then((data) => (trendData = data));
+
+const TREND_NOTE = {
+  house:
+    "Each party's chance of winning the House, as the model would have forecast it on each " +
+    "date using only the polls finished by then.",
+  senate:
+    "Each party's chance of winning the Senate, as the model would have forecast it on each " +
+    "date using only the polls finished by then.",
+  governor:
+    "Each party's expected number of governorships, as the model would have forecast it on " +
+    "each date using only the polls finished by then.",
+};
+
+function renderTrend() {
+  const container = document.getElementById("trend");
+  container.innerHTML = "";
+  if (!trendData) return;
+  document.getElementById("trend-section").hidden = false;
+  const office = state.office;
+  const series = trendData.offices[office];
+  const control = Boolean(series.p_control);
+  const values = control ? series.p_control : series.seats;
+  const unit = office === "governor" ? "governorships" : "seats";
+  document.getElementById("trend-note").textContent = TREND_NOTE[office];
+  document.getElementById("trend-legend").innerHTML = ["D", "R"]
+    .map(
+      (p) =>
+        `<span><span class="swatch" style="background:var(--${p === "D" ? "dem" : "rep"})"></span>${PARTY_NAME[p]}</span>`,
+    )
+    .join("");
+
+  const dates = trendData.dates.map((d) => new Date(`${d}T12:00`));
+  const electionDay = new Date(`${state.data.election_date}T12:00`);
+  const width = container.clientWidth || 600;
+  const narrow = width < 500;
+  const height = narrow ? 200 : 240;
+  const m = { top: 12, right: 16, bottom: 28, left: control ? 40 : 32 };
+  const x = d3.scaleTime().domain([dates[0], electionDay]).range([m.left, width - m.right]);
+  const y = control
+    ? d3.scaleLinear().domain([0, 1])
+    : d3.scaleLinear().domain(d3.extent([...values.D, ...values.R])).nice();
+  y.range([height - m.bottom, m.top]);
+  if (!control && y.domain()[1] - y.domain()[0] < 4)
+    y.domain([y.domain()[0] - 2, y.domain()[1] + 2]);
+  const valueText = (v) => (control ? pct(v) : v.toFixed(1));
+  const svg = d3
+    .select(container)
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("role", "img")
+    .attr(
+      "aria-label",
+      `${TREND_NOTE[office]} Today: Democrats ${valueText(values.D.at(-1))}, ` +
+        `Republicans ${valueText(values.R.at(-1))}.`,
+    );
+
+  const yTicks = control ? [0, 0.25, 0.5, 0.75, 1] : y.ticks(4);
+  svg
+    .append("g")
+    .selectAll("line")
+    .data(yTicks)
+    .join("line")
+    .attr("x1", m.left)
+    .attr("x2", width - m.right)
+    .attr("y1", y)
+    .attr("y2", y)
+    .attr("stroke", (t) => css(control && t === 0.5 ? "--axis" : "--grid"))
+    .attr("stroke-dasharray", (t) => (control && t === 0.5 ? "3 3" : null));
+  svg
+    .append("g")
+    .attr("transform", `translate(${m.left},0)`)
+    .call(
+      d3
+        .axisLeft(y)
+        .tickValues(yTicks)
+        .tickFormat(control ? d3.format(".0%") : d3.format("d"))
+        .tickSize(0)
+        .tickPadding(6),
+    )
+    .call(styleAxis)
+    .call((g) => g.select(".domain").remove());
+  svg
+    .append("g")
+    .attr("transform", `translate(0,${height - m.bottom})`)
+    .call(
+      d3
+        .axisBottom(x)
+        .ticks(d3.timeMonth.every(narrow ? 2 : 1))
+        .tickFormat(d3.timeFormat("%b"))
+        .tickSizeOuter(0),
+    )
+    .call(styleAxis);
+
+  const today = dates.at(-1);
+  svg
+    .append("line")
+    .attr("x1", x(today))
+    .attr("x2", x(today))
+    .attr("y1", m.top)
+    .attr("y2", height - m.bottom)
+    .attr("stroke", css("--ink-2"))
+    .attr("stroke-dasharray", "3 3");
+  svg
+    .append("text")
+    .attr("x", x(today) + 4)
+    .attr("y", m.top + 10)
+    .attr("font-size", 11)
+    .attr("fill", css("--ink-2"))
+    .text("Today");
+
+  const line = d3
+    .line()
+    .curve(d3.curveMonotoneX)
+    .x((_, i) => x(dates[i]))
+    .y((v) => y(v));
+  for (const p of ["D", "R"])
+    svg
+      .append("path")
+      .attr("d", line(values[p]))
+      .attr("fill", "none")
+      .attr("stroke", css(p === "D" ? "--dem" : "--rep"))
+      .attr("stroke-width", 2);
+
+  // Crosshair and dots for the hovered date, on top of the lines.
+  const hover = svg.append("g").attr("visibility", "hidden").attr("pointer-events", "none");
+  const rule = hover
+    .append("line")
+    .attr("y1", m.top)
+    .attr("y2", height - m.bottom)
+    .attr("stroke", css("--ink"));
+  const dots = new Map(
+    ["D", "R"].map((p) => [
+      p,
+      hover
+        .append("circle")
+        .attr("r", 4)
+        .attr("fill", css(p === "D" ? "--dem" : "--rep"))
+        .attr("stroke", css("--surface"))
+        .attr("stroke-width", 2),
+    ]),
+  );
+  const nearest = d3.bisector((d) => d).center;
+  const show = (e) => {
+    const i = nearest(dates, x.invert(d3.pointer(e)[0]));
+    const t = x(dates[i]);
+    rule.attr("x1", t).attr("x2", t);
+    dots.forEach((dot, p) => dot.attr("cx", t).attr("cy", y(values[p][i])));
+    hover.attr("visibility", "visible");
+    const row = (p) => {
+      const seats = series.seats[p][i];
+      const expected = `${seats.toFixed(1)} ${unit} expected`;
+      const detail = control
+        ? `${pct(series.p_control[p][i])} chance of control, ${expected}`
+        : expected;
+      return `<div><span class="swatch" style="background:var(--${p === "D" ? "dem" : "rep"})"></span>${PARTY_NAME[p]}: ${detail}</div>`;
+    };
+    const day = i === dates.length - 1 ? "Today" : shortDate(trendData.dates[i]);
+    showTooltip(e, `<div class="title">${day}</div>${row("D")}${row("R")}`, () =>
+      hover.attr("visibility", "hidden"),
+    );
+  };
+  svg
+    .append("rect")
+    .attr("x", m.left)
+    .attr("width", x(today) - m.left)
+    .attr("y", m.top)
+    .attr("height", height - m.bottom - m.top)
+    .attr("fill", "transparent")
+    .style("touch-action", "pan-y")
+    .on("pointerdown pointermove", show)
+    .on("pointerleave", (e) => e.pointerType === "mouse" && hideTooltip());
+}
+
 function renderLegend() {
   const items = BINS.map(
     (b) =>
@@ -1144,6 +1321,7 @@ function render() {
       b.setAttribute("aria-selected", b.dataset.office === state.office),
     );
   renderSeats();
+  renderTrend();
   renderLegend();
   renderMap();
   renderTable();
@@ -1202,6 +1380,7 @@ function bindControls() {
     .addEventListener("change", render);
   window.addEventListener("resize", () => {
     renderSeats();
+    renderTrend();
     // The House map only redraws when it switches between the US shape and wrapped states.
     const map = document.getElementById("map");
     const flow = map.clientWidth < hexMapWidth();
@@ -1222,6 +1401,7 @@ Promise.all([
     render();
     // The table's histograms appear once the step data arrives; a failure is already logged.
     stepsLoaded.then(renderTable, () => {});
+    trendLoaded.then(renderTrend, (err) => console.error(err));
   })
   .catch((err) => {
     document.getElementById("updated").textContent =

@@ -55,6 +55,7 @@ dependencies = [
     { name = "numpyro" },
     { name = "orjson" },
     { name = "pandas" },
+    { name = "tqdm" },
 ]
 
 [package.dev-dependencies]
@@ -73,6 +74,7 @@ requires-dist = [
     { name = "numpyro" },
     { name = "orjson" },
     { name = "pandas" },
+    { name = "tqdm", specifier = ">=4.70.1" },
 ]
 
 [package.metadata.requires-dev]

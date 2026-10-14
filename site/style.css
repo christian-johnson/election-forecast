@@ -172,6 +172,7 @@ a {
 }
 
 #seats svg,
+#trend svg,
 #map svg {
   display: block;
   width: 100%;

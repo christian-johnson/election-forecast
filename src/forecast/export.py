@@ -43,7 +43,17 @@ def _seat_dist(seats: np.ndarray) -> dict:
     return {"start": int(lo), "counts": np.round(1000 * counts / len(seats)).astype(int).tolist()}
 
 
-def _seat_summary(office: str, wins: np.ndarray) -> dict:
+def seat_summary(office: str, wins: np.ndarray) -> dict:
+    """Seats each party holds after the election, and each party's chance of control.
+
+    Args:
+        office: Key into config.CHAMBERS.
+        wins: Party codes (draws, n_races) for this office's races, from simulate.winners.
+
+    Returns:
+        Dict with the seat total, seats not up, 80% intervals of seats per party, the Democratic
+        seat histogram, and, for chambers with a majority, "majority" and "p_control".
+    """
     chamber = CHAMBERS[office]
     parties = sorted({str(p) for p in np.unique(wins)} | {"D", "R"})
     seats = {p: (wins == p).sum(axis=1) + chamber.not_up.get(p, 0) for p in parties}
@@ -123,7 +133,7 @@ def build_forecast(
         subset = races[mask]
         modeled_cols = (races.loc[races["rule"] == "model", "office"] == office).to_numpy()
         offices[office] = {
-            **_seat_summary(office, wins[:, mask]),
+            **seat_summary(office, wins[:, mask]),
             "races": _race_records(subset, shares[:, modeled_cols], polls_per_race),
         }
     return {

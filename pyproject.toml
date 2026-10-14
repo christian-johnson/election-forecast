@@ -10,6 +10,7 @@ dependencies = [
     "numpyro",
     "orjson",
     "pandas",
+    "tqdm>=4.70.1",
 ]
 
 [project.scripts]

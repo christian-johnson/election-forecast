@@ -1,19 +1,39 @@
 """End-to-end: mocked downloads -> tidy CSVs -> model fit -> site JSON."""
 
+from datetime import UTC, date, datetime, timedelta
+
+import numpy as np
 import orjson
 import pandas as pd
 import pytest
 
-from forecast import cli, fetch, likelihood
-from forecast.config import HISTORY
+from forecast import cli, fetch, likelihood, model
+from forecast.config import ELECTION_DATE, HISTORY
 from forecast.model import week_index
 from forecast.races import name_key, parse_pvi, parse_races
 
 _CSV_NAMES = ("RACES_CSV", "CANDIDATES_CSV", "POLLS_CSV")
+# The synthetic race polls end from Sep 11, so every past forecast has some to fit.
+_TREND_DAYS = 52
 
 
 @pytest.fixture
-def forecast_doc(tmp_path, monkeypatch, raw_polls, wiki_pages):
+def fit_calls(monkeypatch):
+    """Record (number of polls, latest poll week) for every model fit."""
+    calls = []
+    real_fit = model.fit
+
+    def spy(inputs, **kwargs):
+        weeks = np.concatenate([c.week for c in inputs.components])
+        calls.append((weeks.size, int(weeks.max())))
+        return real_fit(inputs, **kwargs)
+
+    monkeypatch.setattr(model, "fit", spy)
+    return calls
+
+
+@pytest.fixture
+def forecast_doc(tmp_path, monkeypatch, raw_polls, wiki_pages, fit_calls):  # noqa: ARG001
     """Run fetch + model against synthetic sources in a temp directory."""
     monkeypatch.setattr(fetch, "fetch_polls", lambda: raw_polls)
     monkeypatch.setattr(fetch, "fetch_wikipedia", wiki_pages.__getitem__)
@@ -26,6 +46,9 @@ def forecast_doc(tmp_path, monkeypatch, raw_polls, wiki_pages):
     monkeypatch.setattr(cli, "STEPS_JSON", tmp_path / "site" / "steps.json")
     monkeypatch.setattr(cli, "TIMELINE_JSON", tmp_path / "site" / "timeline.json")
     monkeypatch.setattr(cli, "LIKELIHOOD_JSON", tmp_path / "site" / "likelihood.json")
+    monkeypatch.setattr(cli, "TREND_JSON", tmp_path / "site" / "trend.json")
+    monkeypatch.setattr(cli, "TREND_DAYS", _TREND_DAYS)
+    monkeypatch.setattr(cli, "TREND_STEP_DAYS", 10)
     cli.run_fetch()
     cli.run_model(warmup=300, samples=300, chains=1, seed=0)
     return orjson.loads(cli.FORECAST_JSON.read_bytes())
@@ -39,6 +62,11 @@ def steps_doc(forecast_doc):  # noqa: ARG001 - the pipeline must run first
 @pytest.fixture
 def timeline_doc(forecast_doc):  # noqa: ARG001 - the pipeline must run first
     return orjson.loads(cli.TIMELINE_JSON.read_bytes())
+
+
+@pytest.fixture
+def trend_doc(forecast_doc):  # noqa: ARG001 - the pipeline must run first
+    return orjson.loads(cli.TREND_JSON.read_bytes())
 
 
 @pytest.fixture
@@ -254,3 +282,38 @@ def test_every_poll_fits_on_its_races_chart(steps_doc, timeline_doc):
 
     # Assert: the chart clips at its edges, so a poll outside the range would be hidden.
     assert off_chart == []
+
+
+def test_trend_refits_blind_to_later_polls_and_ends_at_the_forecast(
+    forecast_doc, trend_doc, fit_calls
+):
+    # Arrange
+    dates = [date.fromisoformat(d) for d in trend_doc["dates"]]
+    today = datetime.now(UTC).date()
+    _, *past_fits = fit_calls
+
+    # Act
+    latest_allowed = week_index(pd.Series(dates[:-1]))
+    polls_seen = [n for n, _ in past_fits]
+
+    # Assert: one refit per past date, each seeing only the polls finished by then.
+    assert dates[0] == ELECTION_DATE - timedelta(days=_TREND_DAYS)
+    assert dates[-1] == today
+    assert dates == sorted(set(dates))
+    assert len(past_fits) == len(dates) - 1
+    assert all(
+        week <= allowed for (_, week), allowed in zip(past_fits, latest_allowed, strict=True)
+    )
+    assert polls_seen == sorted(polls_seen)
+    assert polls_seen[0] < fit_calls[0][0]
+    # Every office has a point per date, and today's point is the published forecast.
+    for office, series in trend_doc["offices"].items():
+        published = forecast_doc["offices"][office]
+        assert {len(v) for s in series.values() for v in s.values()} == {len(dates)}
+        assert series["seats"]["D"][-1] == published["seats"]["D"]["mean"]
+        assert series["seats"]["R"][-1] == published["seats"]["R"]["mean"]
+        if office == "governor":
+            assert "p_control" not in series
+        else:
+            assert series["p_control"]["D"][-1] == published["p_control"]["D"]
+            assert series["p_control"]["R"][-1] == published["p_control"]["R"]

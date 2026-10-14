@@ -46,6 +46,11 @@ Clicking a race on the site opens its forecast built up in four steps (`breakdow
 national mood from polls, plus the national polling miss, the race before its polls, and after.
 The last step is the published forecast.
 
+Between the map and the races table, a trend shows how the forecast has moved since 180 days
+before the election (`trend.py`, `site/data/trend.json`). Nothing is archived: each run refits the
+model once a week back to then, hiding polls that had not finished by that date
+(`config.TREND_DAYS`, `config.TREND_STEP_DAYS`). Today's point is the published forecast.
+
 The About page (`site/about.html`, `site/walkthrough.js`) builds the model up as you scroll
 (`likelihood.py`, `site/data/likelihood.json`): a pinned one-line equation highlights each term
 while a pinned chart shows the data behind it, ending with a replay of the fit's draws across the

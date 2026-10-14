@@ -7,6 +7,10 @@ from pathlib import Path
 ELECTION_DATE = date(2026, 11, 3)
 # Polls earlier than this are ignored; the national random walk starts here.
 START_DATE = date(2025, 1, 6)
+# The trend chart refits the model as of every TREND_STEP_DAYS days from TREND_DAYS before the
+# election; each refit takes about as long as the main fit.
+TREND_DAYS = 180
+TREND_STEP_DAYS = 7
 
 OFFICES = ("house", "senate", "governor")
 

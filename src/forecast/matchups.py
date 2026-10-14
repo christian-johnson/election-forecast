@@ -7,6 +7,8 @@ candidate (e.g. Nebraska Senate, Alaska at-large), that independent takes the pa
 """
 
 import re
+from dataclasses import dataclass
+from datetime import date
 
 import numpy as np
 import pandas as pd
@@ -196,3 +198,58 @@ def generic_poll_observations(polls: pd.DataFrame) -> pd.DataFrame:
     meta = generic.groupby("poll_id")[meta_cols].first()
     obs = meta.join(shares, how="inner").reset_index().assign(race_id=None)
     return _finish(obs)
+
+
+@dataclass(frozen=True)
+class Observations:
+    """Races with their sides decided, and the polls of them the model fits.
+
+    Attributes:
+        races: Full races table, with the columns from assign_sides.
+        race_obs: Output of race_poll_observations.
+        generic_obs: Output of generic_poll_observations.
+    """
+
+    races: pd.DataFrame
+    race_obs: pd.DataFrame
+    generic_obs: pd.DataFrame
+
+    @property
+    def modeled(self) -> pd.DataFrame:
+        """Races decided by the model rather than by rule."""
+        return self.races[self.races["rule"] == "model"]
+
+
+@dataclass(frozen=True)
+class Sources:
+    """The fetched tables, before polls are matched to races.
+
+    Attributes:
+        races: Races table from races.parse_races.
+        candidates: Candidates table from races.parse_races.
+        polls: Answer rows from polls.flatten_polls.
+    """
+
+    races: pd.DataFrame
+    candidates: pd.DataFrame
+    polls: pd.DataFrame
+
+    def observations(self, as_of: date | None = None) -> Observations:
+        """Match poll answers to candidates, decide each race's sides, and build observations.
+
+        Args:
+            as_of: If given, only polls that finished by this date are used.
+
+        Returns:
+            Observations ready for model.build_inputs.
+        """
+        polls = self.polls
+        if as_of is not None:
+            polls = polls[polls["end_date"] <= as_of.isoformat()]
+        matched = match_answers(polls, self.races, self.candidates)
+        races, candidates = assign_sides(self.races, self.candidates, matched)
+        return Observations(
+            races=races,
+            race_obs=race_poll_observations(matched, candidates),
+            generic_obs=generic_poll_observations(polls),
+        )

@@ -7,6 +7,7 @@ does both.
 import argparse
 import logging
 import os
+from datetime import UTC, datetime
 
 # Must be set before JAX initializes so MCMC chains run in parallel on CPU cores.
 os.environ.setdefault("XLA_FLAGS", f"--xla_force_host_platform_device_count={os.cpu_count()}")
@@ -25,8 +26,9 @@ from forecast import (
     polls,
     races,
     simulate,
+    trend,
 )
-from forecast.config import DATA_DIR, OFFICES, SITE_DATA_DIR
+from forecast.config import DATA_DIR, OFFICES, SITE_DATA_DIR, TREND_DAYS, TREND_STEP_DAYS
 
 logger = logging.getLogger("forecast")
 
@@ -37,6 +39,7 @@ FORECAST_JSON = SITE_DATA_DIR / "forecast.json"
 STEPS_JSON = SITE_DATA_DIR / "steps.json"
 TIMELINE_JSON = SITE_DATA_DIR / "timeline.json"
 LIKELIHOOD_JSON = SITE_DATA_DIR / "likelihood.json"
+TREND_JSON = SITE_DATA_DIR / "trend.json"
 
 
 def run_fetch() -> None:
@@ -70,20 +73,18 @@ def run_model(*, warmup: int, samples: int, chains: int, seed: int) -> dict:
     Returns:
         The forecast document that was written.
     """
-    race_table = _read_csv(RACES_CSV)
-    candidates = _read_csv(CANDIDATES_CSV)
-    poll_rows = _read_csv(POLLS_CSV)
-
-    matched = matchups.match_answers(poll_rows, race_table, candidates)
-    race_table, candidates = matchups.assign_sides(race_table, candidates, matched)
-    race_obs = matchups.race_poll_observations(matched, candidates)
-    generic_obs = matchups.generic_poll_observations(poll_rows)
-    modeled = race_table[race_table["rule"] == "model"]
+    sources = matchups.Sources(
+        _read_csv(RACES_CSV), _read_csv(CANDIDATES_CSV), _read_csv(POLLS_CSV)
+    )
+    obs = sources.observations()
+    race_table, race_obs, generic_obs = obs.races, obs.race_obs, obs.generic_obs
+    modeled = obs.modeled
 
     inputs = model.build_inputs(modeled, race_obs, generic_obs)
     n_polls = {"race": len(race_obs), "generic": len(generic_obs)}
     logger.info("Fitting %d races with observations %s", len(modeled), n_polls)
-    posterior = model.fit(inputs, warmup=warmup, samples=samples, chains=chains, seed=seed)
+    fit_args = {"warmup": warmup, "samples": samples, "chains": chains, "seed": seed}
+    posterior = model.fit(inputs, **fit_args)
 
     rng = np.random.default_rng(seed)
     miss = simulate.national_miss(len(posterior["lean"]), rng)
@@ -105,6 +106,8 @@ def run_model(*, warmup: int, samples: int, chains: int, seed: int) -> dict:
             modeled, race_obs, generic_obs, posterior, likelihood.Elections(miss, house_seats)
         ),
     )
+    dates = trend.past_dates(datetime.now(UTC).date(), TREND_DAYS, TREND_STEP_DAYS)
+    _write_json(TREND_JSON, trend.build_trend(sources, document, dates, fit_args))
     return document
 
 
