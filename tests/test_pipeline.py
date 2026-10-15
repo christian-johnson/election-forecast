@@ -2,6 +2,7 @@
 
 from datetime import UTC, date, datetime, timedelta
 
+import httpx
 import numpy as np
 import orjson
 import pandas as pd
@@ -13,6 +14,7 @@ from forecast.model import week_index
 from forecast.races import name_key, parse_pvi, parse_races
 
 _CSV_NAMES = ("RACES_CSV", "CANDIDATES_CSV", "POLLS_CSV")
+VOTEHUB_SITE_URL = "https://polling.votehub.com/site/polls"
 # The synthetic race polls end from Sep 11, so every past forecast has some to fit.
 _TREND_DAYS = 52
 
@@ -33,9 +35,25 @@ def fit_calls(monkeypatch):
 
 
 @pytest.fixture
-def forecast_doc(tmp_path, monkeypatch, raw_polls, wiki_pages, fit_calls):  # noqa: ARG001
+def votehub(monkeypatch, raw_polls):
+    """Serve raw_polls like VoteHub's site endpoint: filtered by poll type, a few per page."""
+
+    def get(url, *, params=None, **_):
+        request = httpx.Request("GET", url, params=params)
+        if url != VOTEHUB_SITE_URL:
+            return httpx.Response(404, request=request)
+        matching = [p for p in raw_polls if p["poll_type"] == params["poll_type"]]
+        offset = int(params["offset"])
+        # Fewer than the generic ballot's 18 polls per page, so fetching must page.
+        page = matching[offset : offset + min(int(params["limit"]), 5)]
+        return httpx.Response(200, json={"items": page, "total": len(matching)}, request=request)
+
+    monkeypatch.setattr(httpx, "get", get)
+
+
+@pytest.fixture
+def forecast_doc(tmp_path, monkeypatch, votehub, wiki_pages, fit_calls):  # noqa: ARG001
     """Run fetch + model against synthetic sources in a temp directory."""
-    monkeypatch.setattr(fetch, "fetch_polls", lambda: raw_polls)
     monkeypatch.setattr(fetch, "fetch_wikipedia", wiki_pages.__getitem__)
     # The least-polled race, so leading with it can't happen by chance.
     monkeypatch.setattr(likelihood, "FEATURED_RACE", "S-NE")

@@ -3,7 +3,11 @@
 import httpx
 import orjson
 
-VOTEHUB_URL = "https://api.votehub.com/polls"
+from forecast.polls import POLL_TYPES
+
+# The endpoint behind votehub.com/polls; the public api.votehub.com/polls stopped updating in 2026.
+VOTEHUB_URL = "https://polling.votehub.com/site/polls"
+PAGE_SIZE = 500
 WIKIPEDIA_URL = "https://en.wikipedia.org/api/rest_v1/page/html/{title}"
 # Wikipedia asks API clients to identify themselves with a contact URL.
 USER_AGENT = "midterm-forecast/0.1 (https://github.com/christian-johnson/election-forecast)"
@@ -15,24 +19,43 @@ WIKIPEDIA_PAGES = {
 }
 
 
-def _get(url: str) -> bytes:
+def _get(url: str, params: dict | None = None) -> bytes:
     response = httpx.get(
-        url, headers={"User-Agent": USER_AGENT}, timeout=120, follow_redirects=True
+        url,
+        params=params,
+        headers={"User-Agent": USER_AGENT},
+        timeout=120,
+        follow_redirects=True,
     )
     response.raise_for_status()
     return response.content
 
 
 def fetch_polls() -> list[dict]:
-    """Download every poll VoteHub tracks.
+    """Download every VoteHub poll of the types in polls.POLL_TYPES, a page at a time.
 
     Returns:
-        Raw poll records as returned by the VoteHub API.
+        Raw poll records as returned by VoteHub.
 
     Raises:
-        httpx.HTTPError: If the request fails.
+        httpx.HTTPError: If a request fails.
     """
-    return orjson.loads(_get(VOTEHUB_URL))
+    records = []
+    for poll_type in POLL_TYPES:
+        offset, total = 0, 1
+        while offset < total:
+            params = {
+                "poll_type": poll_type,
+                "in_averages_only": "false",
+                "limit": PAGE_SIZE,
+                "offset": offset,
+            }
+            page = orjson.loads(_get(VOTEHUB_URL, params))
+            if not page["items"]:
+                break
+            records.extend(page["items"])
+            offset, total = offset + len(page["items"]), page["total"]
+    return records
 
 
 def fetch_wikipedia(office: str) -> str:

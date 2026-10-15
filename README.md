@@ -19,7 +19,7 @@ To preview locally: `python -m http.server -d site`.
 
 ## Data
 
-- **Polls**: [VoteHub](https://votehub.com/polls/) API, no key needed (`fetch.py`, `polls.py`).
+- **Polls**: [VoteHub](https://votehub.com/polls/), from the endpoint its site uses (`polling.votehub.com/site/polls`; the public `api.votehub.com` stopped updating mid-2026), no key needed (`fetch.py`, `polls.py`).
 - **Races, candidates, incumbents, Cook PVI**: the Wikipedia 2026 House, Senate, and
   gubernatorial election pages (`races.py`). For redistricted states the 2026-map PVI is used.
 - **Past elections** (`scripts/calibrate_history.py`, run once; results pasted into
