@@ -1,8 +1,8 @@
 poll_id,office,state,district,pollster,start_date,end_date,sample_size,population,partisan,url,choice,pct
-gen202johcfd0a8af,generic,US,0,John Zogby Strategies,2026-11-01,2026-11-02,1001.0,lv,,https://johnzogbystrategies.com/democrats-lead-republicans-53-47-in-congressional-generic-ballot-new-john-zogby-strategies-election-day-eve-of-election-poll/,Dem,53.0
-gen202johcfd0a8af,generic,US,0,John Zogby Strategies,2026-11-01,2026-11-02,1001.0,lv,,https://johnzogbystrategies.com/democrats-lead-republicans-53-47-in-congressional-generic-ballot-new-john-zogby-strategies-election-day-eve-of-election-poll/,Rep,47.0
 gen202ips86625ab0,generic,US,0,Ipsos,2026-10-29,2026-11-02,1212.0,lv,,https://www.ipsos.com/en-us/reutersipsos-early-november-survey,Dem,52.0
 gen202ips86625ab0,generic,US,0,Ipsos,2026-10-29,2026-11-02,1212.0,lv,,https://www.ipsos.com/en-us/reutersipsos-early-november-survey,Rep,44.0
+gen202johcfd0a8af,generic,US,0,John Zogby Strategies,2026-11-01,2026-11-02,1001.0,lv,,https://johnzogbystrategies.com/democrats-lead-republicans-53-47-in-congressional-generic-ballot-new-john-zogby-strategies-election-day-eve-of-election-poll/,Dem,53.0
+gen202johcfd0a8af,generic,US,0,John Zogby Strategies,2026-11-01,2026-11-02,1001.0,lv,,https://johnzogbystrategies.com/democrats-lead-republicans-53-47-in-congressional-generic-ballot-new-john-zogby-strategies-election-day-eve-of-election-poll/,Rep,47.0
 gen202foc10d869f1,generic,US,0,Focaldata,2026-10-30,2026-11-01,2090.0,lv,,https://www.focaldata.com/blog/democrats-lead-by-7-points-in-final-focaldata-ft-midterms-poll,Dem,52.0
 gen202foc10d869f1,generic,US,0,Focaldata,2026-10-30,2026-11-01,2090.0,lv,,https://www.focaldata.com/blog/democrats-lead-by-7-points-in-final-focaldata-ft-midterms-poll,Rep,45.0
 gen202atlf2ae4de2,generic,US,0,AtlasIntel,2026-10-28,2026-11-01,3566.0,a,,https://www.atlasintel.org/poll/usa-national-2026-11-01,Rep,41.4
@@ -25,10 +25,10 @@ gen202emecbebe9de,generic,US,0,Emerson College,2026-10-24,2026-10-26,1000.0,lv,,
 gen202emecbebe9de,generic,US,0,Emerson College,2026-10-24,2026-10-26,1000.0,lv,,https://emersoncollegepolling.com/october-2026-national-poll-democrats-hold-10-point-midterm-advantage/,Rep,42.4
 gen202har1d8529e7,generic,US,0,HarrisX/Harris Poll,2026-10-24,2026-10-26,,lv,,https://x.com/HarrisXdata/status/2115206285541179625?a=5G2hPridfyHnynqE-fQ&s=20,Dem,52.0
 gen202har1d8529e7,generic,US,0,HarrisX/Harris Poll,2026-10-24,2026-10-26,,lv,,https://x.com/HarrisXdata/status/2115206285541179625?a=5G2hPridfyHnynqE-fQ&s=20,Rep,48.0
-gen202ipsc251c001,generic,US,0,Ipsos,2026-10-22,2026-10-26,1164.0,lv,,https://www.ipsos.com/en-us/democrats-hold-9-point-edge-midterm-congressional-ballot,Dem,53.0
-gen202ipsc251c001,generic,US,0,Ipsos,2026-10-22,2026-10-26,1164.0,lv,,https://www.ipsos.com/en-us/democrats-hold-9-point-edge-midterm-congressional-ballot,Rep,44.0
 gen202you62ef65e3,generic,US,0,YouGov,2026-10-23,2026-10-26,1263.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_nJaupnc.pdf#page=17,Dem,50.0
 gen202you62ef65e3,generic,US,0,YouGov,2026-10-23,2026-10-26,1263.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_nJaupnc.pdf#page=17,Rep,41.0
+gen202ipsc251c001,generic,US,0,Ipsos,2026-10-22,2026-10-26,1164.0,lv,,https://www.ipsos.com/en-us/democrats-hold-9-point-edge-midterm-congressional-ballot,Dem,53.0
+gen202ipsc251c001,generic,US,0,Ipsos,2026-10-22,2026-10-26,1164.0,lv,,https://www.ipsos.com/en-us/democrats-hold-9-point-edge-midterm-congressional-ballot,Rep,44.0
 gen202leg9ac8e953,generic,US,0,Leger,2026-10-23,2026-10-25,897.0,lv,,https://documents.leger360.com/hubfs/%C3%89tudes%20M%C3%A9diatiques/%C3%89tudes%20M%C3%A9diatiques%20-%202026/10.%20October%202026/LEGER_US_Midterm_Election_October_2026_VF.pdf,Dem,52.0
 gen202leg9ac8e953,generic,US,0,Leger,2026-10-23,2026-10-25,897.0,lv,,https://documents.leger360.com/hubfs/%C3%89tudes%20M%C3%A9diatiques/%C3%89tudes%20M%C3%A9diatiques%20-%202026/10.%20October%202026/LEGER_US_Midterm_Election_October_2026_VF.pdf,Rep,45.0
 gen202mora85318fd,generic,US,0,Morning Consult,2026-10-19,2026-10-25,17491.0,lv,,https://pro-assets.morningconsult.com/wp-uploads/2026/09/MCPI-Midterm-Ballot.html,Dem,50.0
@@ -69,8 +69,8 @@ gen202echd2efd87c,generic,US,0,Echelon Insights,2026-10-15,2026-10-19,1010.0,lv,
 gen202echd2efd87c,generic,US,0,Echelon Insights,2026-10-15,2026-10-19,1010.0,lv,,https://echeloninsights.com/insights/october-2026-verified-voter-omnibus,Rep,45.0
 gen202ips3dc0c5ec,generic,US,0,Ipsos,2026-10-16,2026-10-19,1279.0,rv,,https://www.ipsos.com/en-us/reutersipsos-mid-october-survey,Dem,47.0
 gen202ips3dc0c5ec,generic,US,0,Ipsos,2026-10-16,2026-10-19,1279.0,rv,,https://www.ipsos.com/en-us/reutersipsos-mid-october-survey,Rep,35.0
-gen202chae05f92b9,generic,US,0,Change,2026-10-12,2026-10-18,2240.0,rv,,https://www.youtube.com/watch?v=vZbEeRGWi6A,Dem,50.0
-gen202chae05f92b9,generic,US,0,Change,2026-10-12,2026-10-18,2240.0,rv,,https://www.youtube.com/watch?v=vZbEeRGWi6A,Rep,39.0
+gen202chae05f92b9,generic,US,0,Change Research,2026-10-12,2026-10-18,2240.0,rv,,https://www.youtube.com/watch?v=vZbEeRGWi6A,Dem,50.0
+gen202chae05f92b9,generic,US,0,Change Research,2026-10-12,2026-10-18,2240.0,rv,,https://www.youtube.com/watch?v=vZbEeRGWi6A,Rep,39.0
 gen202harde632e50,generic,US,0,Hart Research Associates/Public Opinion Strategies,2026-10-14,2026-10-18,1000.0,rv,,https://www.cnbc.com/2026/10/22/trump-economic-approval-rating-midterms-poll.html,Dem,52.0
 gen202harde632e50,generic,US,0,Hart Research Associates/Public Opinion Strategies,2026-10-14,2026-10-18,1000.0,rv,,https://www.cnbc.com/2026/10/22/trump-economic-approval-rating-midterms-poll.html,Rep,45.0
 gen202cnna3be9262,generic,US,0,CNN/SSRS,2026-10-15,2026-10-18,1206.0,rv,,https://edition.cnn.com/2026/10/21/politics/cnn-poll-trump-democrats-republicans-midterms,Dem,49.0
@@ -87,10 +87,10 @@ gen202rmgac19bdcd,generic,US,0,RMG Research,2026-10-05,2026-10-13,,lv,,https://n
 gen202rmgac19bdcd,generic,US,0,RMG Research,2026-10-05,2026-10-13,,lv,,https://napolitannews.org/posts/generic-ballot-likely-voters-dem-54-gop-43,Rep,43.0
 gen202sur7f716ffc,generic,US,0,SurveyMonkey,2026-09-28,2026-10-12,17649.0,rv,,https://www.nbcnews.com/politics/2026-election/poll-americans-anxious-pessimistic-deeply-unhappy-trump-ahead-midterms-rcna603064,Dem,55.0
 gen202sur7f716ffc,generic,US,0,SurveyMonkey,2026-09-28,2026-10-12,17649.0,rv,,https://www.nbcnews.com/politics/2026-election/poll-americans-anxious-pessimistic-deeply-unhappy-trump-ahead-midterms-rcna603064,Rep,45.0
-gen202bea5fe890ec,generic,US,0,Beacon Research/Shaw & Co. Research,2026-10-09,2026-10-12,1202.0,rv,,https://www.foxnews.com/politics/fox-news-poll-cost-living-concerns-weigh-gop-midterms,Dem,54.0
-gen202bea5fe890ec,generic,US,0,Beacon Research/Shaw & Co. Research,2026-10-09,2026-10-12,1202.0,rv,,https://www.foxnews.com/politics/fox-news-poll-cost-living-concerns-weigh-gop-midterms,Rep,45.0
 gen202ap-aa521793,generic,US,0,AP-NORC,2026-10-08,2026-10-12,925.0,rv,,https://apnorc.org/projects/ahead-of-the-midterms-most-voters-cite-the-economy-and-cost-of-living-as-top-issues-and-favor-political-change/,Dem,47.0
 gen202ap-aa521793,generic,US,0,AP-NORC,2026-10-08,2026-10-12,925.0,rv,,https://apnorc.org/projects/ahead-of-the-midterms-most-voters-cite-the-economy-and-cost-of-living-as-top-issues-and-favor-political-change/,Rep,38.0
+gen202bea5fe890ec,generic,US,0,Beacon Research/Shaw & Co. Research,2026-10-09,2026-10-12,1202.0,rv,,https://www.foxnews.com/politics/fox-news-poll-cost-living-concerns-weigh-gop-midterms,Dem,54.0
+gen202bea5fe890ec,generic,US,0,Beacon Research/Shaw & Co. Research,2026-10-09,2026-10-12,1202.0,rv,,https://www.foxnews.com/politics/fox-news-poll-cost-living-concerns-weigh-gop-midterms,Rep,45.0
 gen202youb8668875,generic,US,0,YouGov,2026-10-10,2026-10-12,1176.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_q6HleZL.pdf,Dem,49.0
 gen202youb8668875,generic,US,0,YouGov,2026-10-10,2026-10-12,1176.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_q6HleZL.pdf,Rep,41.0
 gen202morc08c1bf1,generic,US,0,Morning Consult,2026-10-05,2026-10-11,17654.0,lv,,https://pro-assets.morningconsult.com/wp-uploads/2026/09/MCPI-Midterm-Ballot.html,Dem,50.0
@@ -109,18 +109,18 @@ gen202ipsda4fd7d6,generic,US,0,Ipsos,2026-09-30,2026-10-05,3526.0,rv,,https://ww
 gen202ipsda4fd7d6,generic,US,0,Ipsos,2026-09-30,2026-10-05,3526.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-10/Reuters%20Ipsos%20October%20Large%20Issue%20Topline%2010.5%20release.pdf,Rep,37.0
 gen202unibcf3b15a,generic,US,0,University of Massachusetts Lowell Center for Public Opinion/YouGov,2026-10-02,2026-10-04,1000.0,lv,,https://www.uml.edu/Research/public-opinion/polls/default.aspx,Dem,52.0
 gen202unibcf3b15a,generic,US,0,University of Massachusetts Lowell Center for Public Opinion/YouGov,2026-10-02,2026-10-04,1000.0,lv,,https://www.uml.edu/Research/public-opinion/polls/default.aspx,Rep,43.0
-gen202pew7314f461,generic,US,0,Pew Research Center,2026-09-30,2026-10-04,3917.0,rv,,https://www.pewresearch.org/politics/2026/10/08/with-americans-in-a-sour-mood-democratic-voters-are-more-engaged-in-midterms,Dem,44.0
-gen202pew7314f461,generic,US,0,Pew Research Center,2026-09-30,2026-10-04,3917.0,rv,,https://www.pewresearch.org/politics/2026/10/08/with-americans-in-a-sour-mood-democratic-voters-are-more-engaged-in-midterms,Rep,36.0
 gen202pewf93bb70d,generic,US,0,Pew Research Center,2026-09-30,2026-10-04,3917.0,rv,,https://www.pewresearch.org/politics/2026/10/08/with-americans-in-a-sour-mood-democratic-voters-are-more-engaged-in-midterms/,Rep,36.0
 gen202pewf93bb70d,generic,US,0,Pew Research Center,2026-09-30,2026-10-04,3917.0,rv,,https://www.pewresearch.org/politics/2026/10/08/with-americans-in-a-sour-mood-democratic-voters-are-more-engaged-in-midterms/,Dem,44.0
+gen202pew7314f461,generic,US,0,Pew Research Center,2026-09-30,2026-10-04,3917.0,rv,,https://www.pewresearch.org/politics/2026/10/08/with-americans-in-a-sour-mood-democratic-voters-are-more-engaged-in-midterms,Dem,44.0
+gen202pew7314f461,generic,US,0,Pew Research Center,2026-09-30,2026-10-04,3917.0,rv,,https://www.pewresearch.org/politics/2026/10/08/with-americans-in-a-sour-mood-democratic-voters-are-more-engaged-in-midterms,Rep,36.0
 gen202mor8441d893,generic,US,0,Morning Consult ,2026-09-28,2026-10-04,17659.0,lv,,https://pro-assets.morningconsult.com/wp-uploads/2026/09/MCPI-Midterm-Ballot.html,Dem,50.0
 gen202mor8441d893,generic,US,0,Morning Consult ,2026-09-28,2026-10-04,17659.0,lv,,https://pro-assets.morningconsult.com/wp-uploads/2026/09/MCPI-Midterm-Ballot.html,Rep,43.0
 gen202cyge1c2f892,generic,US,0,Cygnal,2026-10-01,2026-10-02,1500.0,lv,,https://www.cygn.al/polls/october-2026-national-voter-trends-nvt-poll/,Dem,52.0
 gen202cyge1c2f892,generic,US,0,Cygnal,2026-10-01,2026-10-02,1500.0,lv,,https://www.cygn.al/polls/october-2026-national-voter-trends-nvt-poll/,Rep,43.0
-gen202you34f9a087,generic,US,0,YouGov - CBS News,2026-09-30,2026-10-02,1582.0,lv,,https://www.cbsnews.com/news/midterm-poll-battleground-tracker-democrats-house-advantage/,Dem,54.0
-gen202you34f9a087,generic,US,0,YouGov - CBS News,2026-09-30,2026-10-02,1582.0,lv,,https://www.cbsnews.com/news/midterm-poll-battleground-tracker-democrats-house-advantage/,Rep,45.0
 gen202act983a6aa4,generic,US,0,ActiVote,2026-09-22,2026-10-02,1000.0,lv,,https://www.activote.net/polls/generic-ballot/2026-10-03/,Dem,52.0
 gen202act983a6aa4,generic,US,0,ActiVote,2026-09-22,2026-10-02,1000.0,lv,,https://www.activote.net/polls/generic-ballot/2026-10-03/,Rep,48.0
+gen202you34f9a087,generic,US,0,YouGov - CBS News,2026-09-30,2026-10-02,1582.0,lv,,https://www.cbsnews.com/news/midterm-poll-battleground-tracker-democrats-house-advantage/,Dem,54.0
+gen202you34f9a087,generic,US,0,YouGov - CBS News,2026-09-30,2026-10-02,1582.0,lv,,https://www.cbsnews.com/news/midterm-poll-battleground-tracker-democrats-house-advantage/,Rep,45.0
 gen202you9adbf42a,generic,US,0,YouGov - CBS News,2026-09-30,2026-10-02,1572.0,lv,,https://assets1.cbsnewsstatic.com/hub/cms/prod_cms_alt/file/2026/10/04/0957ee32-a848-4872-b659-14303d3d3734/cbsnews_20261004_sun.pdf,Dem,54.0
 gen202you9adbf42a,generic,US,0,YouGov - CBS News,2026-09-30,2026-10-02,1572.0,lv,,https://assets1.cbsnewsstatic.com/hub/cms/prod_cms_alt/file/2026/10/04/0957ee32-a848-4872-b659-14303d3d3734/cbsnews_20261004_sun.pdf,Rep,45.0
 gen202tip082e1c45,generic,US,0,TIP Insights,2026-09-29,2026-10-01,1328.0,rv,,https://issuesinsights.com/2026/10/19/dems-hold-slim-lead-over-gop-in-midterm-vote-but-can-they-keep-it-ii-tipp-poll/,Dem,46.0
@@ -133,10 +133,10 @@ gen202har55021d5f,generic,US,0,HarrisX/Harris,2026-09-26,2026-09-28,,lv,,https:/
 gen202har55021d5f,generic,US,0,HarrisX/Harris,2026-09-26,2026-09-28,,lv,,https://harvardharrispoll.com/assets/uploads/2026/09/HHP_Sep2026_KeyResults.pdf,Rep,49.0
 gen202hard822a165,generic,US,0,HarrisX/Harris Poll,2026-09-26,2026-09-28,2200.0,rv,,https://harvardharrispoll.com/assets/uploads/2026/09/HHP_Sep2026_KeyResults.pdf,Dem,50.0
 gen202hard822a165,generic,US,0,HarrisX/Harris Poll,2026-09-26,2026-09-28,2200.0,rv,,https://harvardharrispoll.com/assets/uploads/2026/09/HHP_Sep2026_KeyResults.pdf,Rep,50.0
-gen202you01e71647,generic,US,0,YouGov,2026-09-25,2026-09-28,1423.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_3BbPNx2.pdf#page=65,Dem,45.0
-gen202you01e71647,generic,US,0,YouGov,2026-09-25,2026-09-28,1423.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_3BbPNx2.pdf#page=65,Rep,37.0
 gen202youdb75a379,generic,US,0,YouGov,2026-09-25,2026-09-28,1003.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_3BbPNx2.pdf#page=65,Dem,53.0
 gen202youdb75a379,generic,US,0,YouGov,2026-09-25,2026-09-28,1003.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_3BbPNx2.pdf#page=65,Rep,38.0
+gen202you01e71647,generic,US,0,YouGov,2026-09-25,2026-09-28,1423.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_3BbPNx2.pdf#page=65,Dem,45.0
+gen202you01e71647,generic,US,0,YouGov,2026-09-25,2026-09-28,1423.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_3BbPNx2.pdf#page=65,Rep,37.0
 gen202quifef81309,generic,US,0,Quinnipiac University,2026-09-24,2026-09-27,1032.0,rv,,https://poll.qu.edu/poll-release?releaseid=3968,Dem,51.0
 gen202quifef81309,generic,US,0,Quinnipiac University,2026-09-24,2026-09-27,1032.0,rv,,https://poll.qu.edu/poll-release?releaseid=3968,Rep,39.0
 gen202mor6490c444,generic,US,0,Morning Consult ,2026-09-21,2026-09-27,18786.0,lv,,https://intel.morningconsult.com/mc-content/trackers/2026-midterm-election-generic-ballot-polls,Dem,50.0
@@ -149,10 +149,10 @@ gen202gba179b0310,generic,US,0,GBAO Strategies,2026-09-17,2026-09-24,2000.0,rv,,
 gen202gba179b0310,generic,US,0,GBAO Strategies,2026-09-17,2026-09-24,2000.0,rv,,https://www.thirdway.org/memo/voters-are-clear-costs-are-the-signal,Rep,41.0
 gen202cha2283fa5c,generic,US,0,Change Research,2026-09-15,2026-09-24,2021.0,rv,,https://changeresearch.com/research/2026/2026-10-07-what-voter-motivation-reveals-about-2026,Dem,46.0
 gen202cha2283fa5c,generic,US,0,Change Research,2026-09-15,2026-09-24,2021.0,rv,,https://changeresearch.com/research/2026/2026-10-07-what-voter-motivation-reveals-about-2026,Rep,39.0
-gen202the3dd565a7,generic,US,0,The Argument/Verasight,2026-09-16,2026-09-22,1533.0,rv,,https://www.theargumentmag.com/p/the-least-popular-war-since-vietnam,Dem,53.0
-gen202the3dd565a7,generic,US,0,The Argument/Verasight,2026-09-16,2026-09-22,1533.0,rv,,https://www.theargumentmag.com/p/the-least-popular-war-since-vietnam,Rep,47.0
 gen202theeb8b068f,generic,US,0,The Argument/Verasight,2026-09-16,2026-09-22,,lv,,https://www.theargumentmag.com/p/the-least-popular-war-since-vietnam,Dem,55.0
 gen202theeb8b068f,generic,US,0,The Argument/Verasight,2026-09-16,2026-09-22,,lv,,https://www.theargumentmag.com/p/the-least-popular-war-since-vietnam,Rep,45.0
+gen202the3dd565a7,generic,US,0,The Argument/Verasight,2026-09-16,2026-09-22,1533.0,rv,,https://www.theargumentmag.com/p/the-least-popular-war-since-vietnam,Dem,53.0
+gen202the3dd565a7,generic,US,0,The Argument/Verasight,2026-09-16,2026-09-22,1533.0,rv,,https://www.theargumentmag.com/p/the-least-popular-war-since-vietnam,Rep,47.0
 gen202mcl20d14588,generic,US,0,McLaughlin & Associates,2026-09-16,2026-09-22,1000.0,lv,,https://mclaughlinonline.com/2026/09/24/national-monthly-september-2026,Dem,48.0
 gen202mcl20d14588,generic,US,0,McLaughlin & Associates,2026-09-16,2026-09-22,1000.0,lv,,https://mclaughlinonline.com/2026/09/24/national-monthly-september-2026,Rep,43.0
 gen202eme7183845d,generic,US,0,Emerson College,2026-09-21,2026-09-22,1000.0,lv,,https://emersoncollegepolling.com/september-2026-national-poll-democrats/,Dem,53.0
@@ -161,12 +161,12 @@ gen202kff444917df,generic,US,0,KFF,2026-09-16,2026-09-21,1013.0,rv,,https://www.
 gen202kff444917df,generic,US,0,KFF,2026-09-16,2026-09-21,1013.0,rv,,https://www.kff.org/public-opinion/kff-health-tracking-poll-health-care-issues-in-the-lead-up-to-the-2026-midterm-election/?utm_campaign=KFF-Polling-Surveys&utm_medium=email&_hsenc=p2ANqtz-8burhfr0jGfgyEv1ATt2apldUXaaC9Dopnahv8ZBZ60dOvynUJcZojE7fequ1HleS4WVS-34L9H_2NHRiqSSj9sRrx5g&_hsmi=442764587&utm_content=442764587&utm_source=hs_email,Rep,35.0
 gen202impc76e3674,generic,US,0,Impact Research/National Research,2026-09-16,2026-09-21,1500.0,rv,,https://www.wsj.com/politics/policy/americans-want-populist-policies-that-defy-traditional-political-labels-119b29b9,Dem,50.0
 gen202impc76e3674,generic,US,0,Impact Research/National Research,2026-09-16,2026-09-21,1500.0,rv,,https://www.wsj.com/politics/policy/americans-want-populist-policies-that-defy-traditional-political-labels-119b29b9,Rep,42.0
-gen202ech3f652f47,generic,US,0,Echelon Insights,2026-09-17,2026-09-21,1002.0,lv,,https://echeloninsights.com/insights/september-2026-verified-voter-omnibus,Dem,51.0
-gen202ech3f652f47,generic,US,0,Echelon Insights,2026-09-17,2026-09-21,1002.0,lv,,https://echeloninsights.com/insights/september-2026-verified-voter-omnibus,Rep,43.0
 gen202vere346f84b,generic,US,0,Verasight,2026-09-16,2026-09-21,1374.0,rv,,https://www.gelliottmorris.com/p/2026-09-23-september-strength-in-numbers-verasight-poll-release,Dem,50.0
 gen202vere346f84b,generic,US,0,Verasight,2026-09-16,2026-09-21,1374.0,rv,,https://www.gelliottmorris.com/p/2026-09-23-september-strength-in-numbers-verasight-poll-release,Rep,42.0
 gen202actc871101e,generic,US,0,ActiVote,2026-09-11,2026-09-21,1000.0,lv,,https://www.activote.net/polls/generic-ballot/2026-09-22/,Dem,53.0
 gen202actc871101e,generic,US,0,ActiVote,2026-09-11,2026-09-21,1000.0,lv,,https://www.activote.net/polls/generic-ballot/2026-09-22/,Rep,47.0
+gen202ech3f652f47,generic,US,0,Echelon Insights,2026-09-17,2026-09-21,1002.0,lv,,https://echeloninsights.com/insights/september-2026-verified-voter-omnibus,Dem,51.0
+gen202ech3f652f47,generic,US,0,Echelon Insights,2026-09-17,2026-09-21,1002.0,lv,,https://echeloninsights.com/insights/september-2026-verified-voter-omnibus,Rep,43.0
 gen202you1a0ee4dc,generic,US,0,YouGov,2026-09-18,2026-09-21,975.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_5WiMaRX.pdf#page=43,Dem,52.0
 gen202you1a0ee4dc,generic,US,0,YouGov,2026-09-18,2026-09-21,975.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_5WiMaRX.pdf#page=43,Rep,38.0
 gen202morfbd3445e,generic,US,0,Morning Consult,2026-09-18,2026-09-20,18336.0,lv,,https://pro-assets.morningconsult.com/wp-uploads/2026/09/MCPI-Midterm-Ballot.html,Dem,50.0
@@ -199,18 +199,18 @@ gen202the25b82ac8,generic,US,0,The Rainey Center,2026-09-10,2026-09-14,1004.0,rv
 gen202the25b82ac8,generic,US,0,The Rainey Center,2026-09-10,2026-09-14,1004.0,rv,,https://www.raineycenter.org/polling/september-policy-survey-summary-of-findings,Rep,42.0
 gen202bea2eb7f714,generic,US,0,Beacon Research/Shaw & Co. Research,2026-09-11,2026-09-14,1211.0,rv,,https://www.foxnews.com/politics/fox-news-poll-squeezed-costs-frustrated-voters-turn-democrats,Dem,51.0
 gen202bea2eb7f714,generic,US,0,Beacon Research/Shaw & Co. Research,2026-09-11,2026-09-14,1211.0,rv,,https://www.foxnews.com/politics/fox-news-poll-squeezed-costs-frustrated-voters-turn-democrats,Rep,44.0
+gen202you8f0c2e52,generic,US,0,YouGov,2026-09-11,2026-09-14,1455.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ZmVljW6.pdf#page=92,Dem,44.0
+gen202you8f0c2e52,generic,US,0,YouGov,2026-09-11,2026-09-14,1455.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ZmVljW6.pdf#page=92,Rep,39.0
 gen202you417e2ee5,generic,US,0,YouGov,2026-09-11,2026-09-14,1051.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ZmVljW6.pdf#page=92,Dem,51.0
 gen202you417e2ee5,generic,US,0,YouGov,2026-09-11,2026-09-14,1051.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ZmVljW6.pdf#page=92,Rep,39.0
 gen202ipsbb7a3eb2,generic,US,0,Ipsos,2026-09-11,2026-09-14,896.0,rv,,https://www.ipsos.com/en-us/reutersipsos-september-2026-survey,Dem,44.0
 gen202ipsbb7a3eb2,generic,US,0,Ipsos,2026-09-11,2026-09-14,896.0,rv,,https://www.ipsos.com/en-us/reutersipsos-september-2026-survey,Rep,37.0
 gen202ips7c18fbf8,generic,US,0,Ipsos,2026-09-11,2026-09-14,1143.0,a,,https://www.ipsos.com/en-us/reutersipsos-september-2026-survey,Dem,39.0
 gen202ips7c18fbf8,generic,US,0,Ipsos,2026-09-11,2026-09-14,1143.0,a,,https://www.ipsos.com/en-us/reutersipsos-september-2026-survey,Rep,31.0
-gen202you8f0c2e52,generic,US,0,YouGov,2026-09-11,2026-09-14,1455.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ZmVljW6.pdf#page=92,Dem,44.0
-gen202you8f0c2e52,generic,US,0,YouGov,2026-09-11,2026-09-14,1455.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ZmVljW6.pdf#page=92,Rep,39.0
-gen202mor98bd5927,generic,US,0,Morning Consult,2026-09-07,2026-09-13,,lv,,https://data.ddhq.io/polls/2026/09/14/Morning-Consult-National,Dem,49.0
-gen202mor98bd5927,generic,US,0,Morning Consult,2026-09-07,2026-09-13,,lv,,https://data.ddhq.io/polls/2026/09/14/Morning-Consult-National,Rep,43.0
 gen202the7d28c4cd,generic,US,0,The New York Times/Siena University,2026-09-08,2026-09-13,1503.0,lv,,https://www.nytimes.com/2026/09/15/us/politics/trump-midterm-election-poll.html,Dem,51.3
 gen202the7d28c4cd,generic,US,0,The New York Times/Siena University,2026-09-08,2026-09-13,1503.0,lv,,https://www.nytimes.com/2026/09/15/us/politics/trump-midterm-election-poll.html,Rep,42.7
+gen202mor98bd5927,generic,US,0,Morning Consult,2026-09-07,2026-09-13,,lv,,https://data.ddhq.io/polls/2026/09/14/Morning-Consult-National,Dem,49.0
+gen202mor98bd5927,generic,US,0,Morning Consult,2026-09-07,2026-09-13,,lv,,https://data.ddhq.io/polls/2026/09/14/Morning-Consult-National,Rep,43.0
 gen202you6efafedd,generic,US,0,YouGov - CBS News,2026-09-08,2026-09-11,1750.0,lv,,https://www.cbsnews.com/news/poll-trump-battleground-tracker-house-control-2026-midterm-elections/,Dem,54.0
 gen202you6efafedd,generic,US,0,YouGov - CBS News,2026-09-08,2026-09-11,1750.0,lv,,https://www.cbsnews.com/news/poll-trump-battleground-tracker-house-control-2026-midterm-elections/,Rep,46.0
 gen202actd7f40db9,generic,US,0,ActiVote,2026-08-31,2026-09-10,1000.0,lv,,https://www.activote.net/polls/generic-ballot/2026-09-11/,Dem,52.0
@@ -235,24 +235,28 @@ gen202focd0a307ec,generic,US,0,Focaldata,2026-08-28,2026-09-02,1837.0,lv,,https:
 gen202focd0a307ec,generic,US,0,Focaldata,2026-08-28,2026-09-02,1837.0,lv,,https://www.focaldata.com/blog/trump-approval-hits-record-low-as-democrats-extend-house-lead,Dem,52.0
 gen202bow06bb72b5,generic,US,0,Bowling Green State University Democracy and Public Policy Research,2026-08-25,2026-09-01,1200.0,lv,,https://napolitannews.org/posts/new-favorability-ratings-for-congressional-leaders,Rep,44.0
 gen202bow06bb72b5,generic,US,0,Bowling Green State University Democracy and Public Policy Research,2026-08-25,2026-09-01,1200.0,lv,,https://napolitannews.org/posts/new-favorability-ratings-for-congressional-leaders,Dem,51.0
-gen202ipsaa6903bb,generic,US,0,Ipsos,2026-08-28,2026-08-31,924.0,rv,,https://www.ipsos.com/en-us/cost-living-remains-top-mind-voters-heading-2026-midterms,Dem,43.0
-gen202ipsaa6903bb,generic,US,0,Ipsos,2026-08-28,2026-08-31,924.0,rv,,https://www.ipsos.com/en-us/cost-living-remains-top-mind-voters-heading-2026-midterms,Rep,38.0
 gen202ipsae6c158b,generic,US,0,Ipsos,2026-08-28,2026-08-31,1167.0,a,,https://www.ipsos.com/en-us/cost-living-remains-top-mind-voters-heading-2026-midterms,Dem,38.0
 gen202ipsae6c158b,generic,US,0,Ipsos,2026-08-28,2026-08-31,1167.0,a,,https://www.ipsos.com/en-us/cost-living-remains-top-mind-voters-heading-2026-midterms,Rep,31.0
+gen202ipsaa6903bb,generic,US,0,Ipsos,2026-08-28,2026-08-31,924.0,rv,,https://www.ipsos.com/en-us/cost-living-remains-top-mind-voters-heading-2026-midterms,Dem,43.0
+gen202ipsaa6903bb,generic,US,0,Ipsos,2026-08-28,2026-08-31,924.0,rv,,https://www.ipsos.com/en-us/cost-living-remains-top-mind-voters-heading-2026-midterms,Rep,38.0
 gen202youa10823da,generic,US,0,YouGov,2026-08-28,2026-08-31,1589.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_yVe1kKt.pdf#page=25,Dem,36.0
 gen202youa10823da,generic,US,0,YouGov,2026-08-28,2026-08-31,1589.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_yVe1kKt.pdf#page=25,Rep,31.0
 gen202you961700c6,generic,US,0,YouGov,2026-08-28,2026-08-31,1434.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_yVe1kKt.pdf#page=25,Dem,46.0
 gen202you961700c6,generic,US,0,YouGov,2026-08-28,2026-08-31,1434.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_yVe1kKt.pdf#page=25,Rep,40.0
-gen202har3a98fa6e,generic,US,0,HarrisX/Harris,2026-08-28,2026-08-30,2100.0,rv,,https://harvardharrispoll.com/assets/uploads/2026/08/HHP_Aug2026_KeyResults.pdf,Dem,51.0
-gen202har3a98fa6e,generic,US,0,HarrisX/Harris,2026-08-28,2026-08-30,2100.0,rv,,https://harvardharrispoll.com/assets/uploads/2026/08/HHP_Aug2026_KeyResults.pdf,Rep,49.0
 gen202har571b29b7,generic,US,0,HarrisX/Harris,2026-08-28,2026-08-30,,lv,,https://harvardharrispoll.com/assets/uploads/2026/08/HHP_Aug2026_KeyResults.pdf,Dem,49.0
 gen202har571b29b7,generic,US,0,HarrisX/Harris,2026-08-28,2026-08-30,,lv,,https://harvardharrispoll.com/assets/uploads/2026/08/HHP_Aug2026_KeyResults.pdf,Rep,51.0
+gen202har3a98fa6e,generic,US,0,HarrisX/Harris,2026-08-28,2026-08-30,2100.0,rv,,https://harvardharrispoll.com/assets/uploads/2026/08/HHP_Aug2026_KeyResults.pdf,Dem,51.0
+gen202har3a98fa6e,generic,US,0,HarrisX/Harris,2026-08-28,2026-08-30,2100.0,rv,,https://harvardharrispoll.com/assets/uploads/2026/08/HHP_Aug2026_KeyResults.pdf,Rep,49.0
 gen202mor0b5c96be,generic,US,0,Morning Consult,2026-08-24,2026-08-30,24000.0,rv,,https://drive.google.com/file/d/1mz53nbxVmkDaSt2l6gfcGff3hiOikKPJ/view,Dem,47.0
 gen202mor0b5c96be,generic,US,0,Morning Consult,2026-08-24,2026-08-30,24000.0,rv,,https://drive.google.com/file/d/1mz53nbxVmkDaSt2l6gfcGff3hiOikKPJ/view,Rep,42.0
 gen202qua93617904,generic,US,0,Quantus Insights,2026-08-26,2026-08-28,1200.0,lv,,https://quantusinsights.org/polling/f/new-survey-democrats-hold-the-midterm-advantage,Dem,49.7
 gen202qua93617904,generic,US,0,Quantus Insights,2026-08-26,2026-08-28,1200.0,lv,,https://quantusinsights.org/polling/f/new-survey-democrats-hold-the-midterm-advantage,Rep,42.8
 gen202uni6e48fca0,generic,US,0,University of Massachusetts Department of Political Science/YouGov,2026-08-21,2026-08-26,1000.0,a,,https://www.umass.edu/poll/about/reports/2026-09-national-public-opinion-poll-0,Dem,42.0
 gen202uni6e48fca0,generic,US,0,University of Massachusetts Department of Political Science/YouGov,2026-08-21,2026-08-26,1000.0,a,,https://www.umass.edu/poll/about/reports/2026-09-national-public-opinion-poll-0,Rep,34.0
+gen202youc1d6d31f,generic,US,0,YouGov,2026-08-21,2026-08-24,1534.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_v7iliA1.pdf#page=17,Dem,37.0
+gen202youc1d6d31f,generic,US,0,YouGov,2026-08-21,2026-08-24,1534.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_v7iliA1.pdf#page=17,Rep,31.0
+gen202mcl15785e32,generic,US,0,McLaughlin & Associates,2026-08-14,2026-08-24,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2026/08/National-August-Presentation-RELEASE.pdf,Dem,48.0
+gen202mcl15785e32,generic,US,0,McLaughlin & Associates,2026-08-14,2026-08-24,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2026/08/National-August-Presentation-RELEASE.pdf,Rep,43.0
 gen202ipsc06cf7d6,generic,US,0,Ipsos,2026-08-21,2026-08-24,951.0,rv,,https://www.ipsos.com/en-us/americans-continue-expect-extended-us-military-involvement-iran,Dem,41.0
 gen202ipsc06cf7d6,generic,US,0,Ipsos,2026-08-21,2026-08-24,951.0,rv,,https://www.ipsos.com/en-us/americans-continue-expect-extended-us-military-involvement-iran,Rep,35.0
 gen202ips32a4331e,generic,US,0,Ipsos,2026-08-21,2026-08-24,1215.0,a,,https://www.ipsos.com/en-us/americans-continue-expect-extended-us-military-involvement-iran,Dem,35.0
@@ -261,26 +265,22 @@ gen202you3f6356b0,generic,US,0,YouGov,2026-08-21,2026-08-24,1377.0,rv,,https://d
 gen202you3f6356b0,generic,US,0,YouGov,2026-08-21,2026-08-24,1377.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_v7iliA1.pdf#page=17,Rep,40.0
 gen202act4bbc7af7,generic,US,0,ActiVote,2026-08-10,2026-08-24,1000.0,lv,,https://www.activote.net/democratic-lead-narrows-in-generic-congressional-ballot/,Dem,51.7
 gen202act4bbc7af7,generic,US,0,ActiVote,2026-08-10,2026-08-24,1000.0,lv,,https://www.activote.net/democratic-lead-narrows-in-generic-congressional-ballot/,Rep,48.3
-gen202youc1d6d31f,generic,US,0,YouGov,2026-08-21,2026-08-24,1534.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_v7iliA1.pdf#page=17,Dem,37.0
-gen202youc1d6d31f,generic,US,0,YouGov,2026-08-21,2026-08-24,1534.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_v7iliA1.pdf#page=17,Rep,31.0
-gen202mcl15785e32,generic,US,0,McLaughlin & Associates,2026-08-14,2026-08-24,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2026/08/National-August-Presentation-RELEASE.pdf,Dem,48.0
-gen202mcl15785e32,generic,US,0,McLaughlin & Associates,2026-08-14,2026-08-24,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2026/08/National-August-Presentation-RELEASE.pdf,Rep,43.0
-gen202verdcae13b6,generic,US,0,Verasight,2026-08-14,2026-08-19,1378.0,rv,,https://www.gelliottmorris.com/p/2026-08-25-august-strength-in-numbers-verasight-poll-release,Dem,49.0
-gen202verdcae13b6,generic,US,0,Verasight,2026-08-14,2026-08-19,1378.0,rv,,https://www.gelliottmorris.com/p/2026-08-25-august-strength-in-numbers-verasight-poll-release,Rep,43.0
 gen202ver724137c6,generic,US,0,Verasight,2026-08-14,2026-08-19,1514.0,a,,https://www.gelliottmorris.com/p/2026-08-25-august-strength-in-numbers-verasight-poll-release,Dem,48.0
 gen202ver724137c6,generic,US,0,Verasight,2026-08-14,2026-08-19,1514.0,a,,https://www.gelliottmorris.com/p/2026-08-25-august-strength-in-numbers-verasight-poll-release,Rep,41.0
-gen202you252bd8c6,generic,US,0,YouGov,2026-08-14,2026-08-17,1449.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jNjXIL6.pdf#page=69,Dem,46.0
-gen202you252bd8c6,generic,US,0,YouGov,2026-08-14,2026-08-17,1449.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jNjXIL6.pdf#page=69,Rep,39.0
-gen202eme58dd6040,generic,US,0,Emerson College,2026-08-16,2026-08-17,1000.0,lv,,https://emersoncollegepolling.com/august-2026-national-poll/,Dem,50.7
-gen202eme58dd6040,generic,US,0,Emerson College,2026-08-16,2026-08-17,1000.0,lv,,https://emersoncollegepolling.com/august-2026-national-poll/,Rep,43.0
+gen202verdcae13b6,generic,US,0,Verasight,2026-08-14,2026-08-19,1378.0,rv,,https://www.gelliottmorris.com/p/2026-08-25-august-strength-in-numbers-verasight-poll-release,Dem,49.0
+gen202verdcae13b6,generic,US,0,Verasight,2026-08-14,2026-08-19,1378.0,rv,,https://www.gelliottmorris.com/p/2026-08-25-august-strength-in-numbers-verasight-poll-release,Rep,43.0
 gen202you70ecb1a0,generic,US,0,YouGov,2026-08-14,2026-08-17,1611.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jNjXIL6.pdf#page=69,Dem,39.0
 gen202you70ecb1a0,generic,US,0,YouGov,2026-08-14,2026-08-17,1611.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jNjXIL6.pdf#page=69,Rep,32.0
-gen202ech7b33e5d3,generic,US,0,Echelon Insights,2026-08-13,2026-08-17,1002.0,lv,,https://echeloninsights.com/insights/august-2026-verified-voter-omnibus,Dem,50.0
-gen202ech7b33e5d3,generic,US,0,Echelon Insights,2026-08-13,2026-08-17,1002.0,lv,,https://echeloninsights.com/insights/august-2026-verified-voter-omnibus,Rep,45.0
-gen202the0fc8e929,generic,US,0,The Bullfinch Group,2026-08-14,2026-08-17,1000.0,rv,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q3-nationwide-survey-4,Dem,42.0
-gen202the0fc8e929,generic,US,0,The Bullfinch Group,2026-08-14,2026-08-17,1000.0,rv,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q3-nationwide-survey-4,Rep,37.0
 gen202thedd313f36,generic,US,0,The Bullfinch Group,2026-08-14,2026-08-17,1200.0,a,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q3-nationwide-survey-4,Dem,40.0
 gen202thedd313f36,generic,US,0,The Bullfinch Group,2026-08-14,2026-08-17,1200.0,a,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q3-nationwide-survey-4,Rep,35.0
+gen202the0fc8e929,generic,US,0,The Bullfinch Group,2026-08-14,2026-08-17,1000.0,rv,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q3-nationwide-survey-4,Dem,42.0
+gen202the0fc8e929,generic,US,0,The Bullfinch Group,2026-08-14,2026-08-17,1000.0,rv,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q3-nationwide-survey-4,Rep,37.0
+gen202eme58dd6040,generic,US,0,Emerson College,2026-08-16,2026-08-17,1000.0,lv,,https://emersoncollegepolling.com/august-2026-national-poll/,Dem,50.7
+gen202eme58dd6040,generic,US,0,Emerson College,2026-08-16,2026-08-17,1000.0,lv,,https://emersoncollegepolling.com/august-2026-national-poll/,Rep,43.0
+gen202you252bd8c6,generic,US,0,YouGov,2026-08-14,2026-08-17,1449.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jNjXIL6.pdf#page=69,Dem,46.0
+gen202you252bd8c6,generic,US,0,YouGov,2026-08-14,2026-08-17,1449.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jNjXIL6.pdf#page=69,Rep,39.0
+gen202ech7b33e5d3,generic,US,0,Echelon Insights,2026-08-13,2026-08-17,1002.0,lv,,https://echeloninsights.com/insights/august-2026-verified-voter-omnibus,Dem,50.0
+gen202ech7b33e5d3,generic,US,0,Echelon Insights,2026-08-13,2026-08-17,1002.0,lv,,https://echeloninsights.com/insights/august-2026-verified-voter-omnibus,Rep,45.0
 gen202ips1a520e34,generic,US,0,Ipsos,2026-08-14,2026-08-17,876.0,rv,,https://www.reuters.com/data/trumps-approval-rating-2025-01-21/,Dem,41.0
 gen202ips1a520e34,generic,US,0,Ipsos,2026-08-14,2026-08-17,876.0,rv,,https://www.reuters.com/data/trumps-approval-rating-2025-01-21/,Rep,36.0
 gen202mor971ef55e,generic,US,0,Morning Consult ,2026-08-13,2026-08-16,4150.0,rv,,https://www.cato.org/blog/75-americans-say-tariffs-will-be-important-their-vote-midterms,Dem,47.0
@@ -291,10 +291,10 @@ gen202morda35e359,generic,US,0,Morning Consult,2026-08-10,2026-08-16,29719.0,rv,
 gen202morda35e359,generic,US,0,Morning Consult,2026-08-10,2026-08-16,29719.0,rv,,https://intel.morningconsult.com/mc-content/trackers/2026-midterm-election-generic-ballot-polls?_gl=1*l6phpd*_gcl_au*MjAyNDI1NjI0LjE3ODI4MzYzNTE.*_ga*NjE4MjUxOTY1LjE3ODI4MzYzNTI.*_ga_ZFMSZ1EZ8Y*czE3ODcwNTkzODYkbzMkZzAkdDE3ODcwNTkzODYkajYwJGwwJGgxMzk4MDI3MjU2JGQ3WGVaUnpSZlBIaXl6MjNuR0NQV0tycHVjNUx6dTFaMVln,Rep,42.0
 gen202cha2a730991,generic,US,0,Change Research,2026-08-08,2026-08-13,2045.0,rv,,https://portal.changeresearch.com/portal/projects/ad428f27-5089-4ecb-92b8-4720d909efaa,Dem,45.0
 gen202cha2a730991,generic,US,0,Change Research,2026-08-08,2026-08-13,2045.0,rv,,https://portal.changeresearch.com/portal/projects/ad428f27-5089-4ecb-92b8-4720d909efaa,Rep,40.0
-gen202wav6630e87f,generic,US,0,Wave Polling and Research/Verasight,2026-08-07,2026-08-11,1591.0,rv,,https://wavepolling.com/results/2026-08-17-economic-costs-deportations/,Dem,48.0
-gen202wav6630e87f,generic,US,0,Wave Polling and Research/Verasight,2026-08-07,2026-08-11,1591.0,rv,,https://wavepolling.com/results/2026-08-17-economic-costs-deportations/,Rep,40.0
 gen202veraa867d7e,generic,US,0,Verasight,2026-08-07,2026-08-11,1591.0,rv,,https://wavepolling.com/results/2026-08-17-economic-costs-deportations/,Dem,48.0
 gen202veraa867d7e,generic,US,0,Verasight,2026-08-07,2026-08-11,1591.0,rv,,https://wavepolling.com/results/2026-08-17-economic-costs-deportations/,Rep,40.0
+gen202wav6630e87f,generic,US,0,Wave Polling and Research/Verasight,2026-08-07,2026-08-11,1591.0,rv,,https://wavepolling.com/results/2026-08-17-economic-costs-deportations/,Dem,48.0
+gen202wav6630e87f,generic,US,0,Wave Polling and Research/Verasight,2026-08-07,2026-08-11,1591.0,rv,,https://wavepolling.com/results/2026-08-17-economic-costs-deportations/,Rep,40.0
 gen202ang23631366,generic,US,0,Angus Reid Global,2026-08-08,2026-08-11,1525.0,a,,https://angusreid.us/congressional-generic-ballot-democrats-lead-53-43/,Dem,45.0
 gen202ang23631366,generic,US,0,Angus Reid Global,2026-08-08,2026-08-11,1525.0,a,,https://angusreid.us/congressional-generic-ballot-democrats-lead-53-43/,Rep,36.0
 gen202foc9c3b132a,generic,US,0,Focaldata,2026-08-07,2026-08-11,1857.0,lv,,https://www.focaldata.com/blog/democrats-maintain-lead-three-months-out-from-midterms,Dem,51.0
@@ -317,20 +317,20 @@ gen202rmg8c4f015f,generic,US,0,RMG Research,2026-08-03,2026-08-04,2000.0,rv,,htt
 gen202rmg8c4f015f,generic,US,0,RMG Research,2026-08-03,2026-08-04,2000.0,rv,,https://napolitannews.org/posts/dems-continue-to-lead-on-generic-ballot-strong-enthusiasm-edge,Rep,45.0
 gen202qua33c2cf68,generic,US,0,Quantus Insights,2026-08-03,2026-08-04,1048.0,lv,,https://quantusinsights.org/polling/f/latest-survey-democrats-hold-the-midterm-edge,Dem,49.0
 gen202qua33c2cf68,generic,US,0,Quantus Insights,2026-08-03,2026-08-04,1048.0,lv,,https://quantusinsights.org/polling/f/latest-survey-democrats-hold-the-midterm-edge,Rep,42.6
-gen202ips7e2b9f42,generic,US,0,Ipsos,2026-07-29,2026-08-03,4505.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-08/Reuters%20Ipsos%20August%20Large%20Sample%20Topline%208.3.26_0.pdf,Dem,36.0
-gen202ips7e2b9f42,generic,US,0,Ipsos,2026-07-29,2026-08-03,4505.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-08/Reuters%20Ipsos%20August%20Large%20Sample%20Topline%208.3.26_0.pdf,Rep,30.0
 gen202ipsbd224a25,generic,US,0,Ipsos,2026-07-29,2026-08-03,3542.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-08/Reuters%20Ipsos%20August%20Large%20Sample%20Topline%208.3.26_0.pdf,Dem,42.0
 gen202ipsbd224a25,generic,US,0,Ipsos,2026-07-29,2026-08-03,3542.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-08/Reuters%20Ipsos%20August%20Large%20Sample%20Topline%208.3.26_0.pdf,Rep,37.0
-gen202you66eda853,generic,US,0,YouGov,2026-07-31,2026-08-03,1472.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_mjKhx0z.pdf#page=28,Dem,46.0
-gen202you66eda853,generic,US,0,YouGov,2026-07-31,2026-08-03,1472.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_mjKhx0z.pdf#page=28,Rep,42.0
 gen202you59daef2c,generic,US,0,YouGov,2026-07-31,2026-08-03,1609.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_mjKhx0z.pdf#page=28,Dem,41.0
 gen202you59daef2c,generic,US,0,YouGov,2026-07-31,2026-08-03,1609.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_mjKhx0z.pdf#page=28,Rep,33.0
+gen202you66eda853,generic,US,0,YouGov,2026-07-31,2026-08-03,1472.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_mjKhx0z.pdf#page=28,Dem,46.0
+gen202you66eda853,generic,US,0,YouGov,2026-07-31,2026-08-03,1472.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_mjKhx0z.pdf#page=28,Rep,42.0
+gen202ips7e2b9f42,generic,US,0,Ipsos,2026-07-29,2026-08-03,4505.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-08/Reuters%20Ipsos%20August%20Large%20Sample%20Topline%208.3.26_0.pdf,Dem,36.0
+gen202ips7e2b9f42,generic,US,0,Ipsos,2026-07-29,2026-08-03,4505.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-08/Reuters%20Ipsos%20August%20Large%20Sample%20Topline%208.3.26_0.pdf,Rep,30.0
 gen202mor2bc22885,generic,US,0,Morning Consult,2026-07-27,2026-08-02,24000.0,rv,,https://pro-assets.morningconsult.com/wp-uploads/2026/08/MCPI-Midterm-Ballot.html,Dem,46.2
 gen202mor2bc22885,generic,US,0,Morning Consult,2026-07-27,2026-08-02,24000.0,rv,,https://pro-assets.morningconsult.com/wp-uploads/2026/08/MCPI-Midterm-Ballot.html,Rep,42.1
-gen202mare1cf358b,generic,US,0,Marquette University Law School,2026-07-22,2026-07-29,572.0,lv,,https://law.marquette.edu/poll/2026/08/05/detailed-results-of-the-marquette-law-school-supreme-court-poll-july-22-29-2026/,Dem,51.0
-gen202mare1cf358b,generic,US,0,Marquette University Law School,2026-07-22,2026-07-29,572.0,lv,,https://law.marquette.edu/poll/2026/08/05/detailed-results-of-the-marquette-law-school-supreme-court-poll-july-22-29-2026/,Rep,45.0
 gen202mar57efe969,generic,US,0,Marquette University Law School,2026-07-22,2026-07-29,886.0,rv,,https://law.marquette.edu/poll/2026/08/05/detailed-results-of-the-marquette-law-school-supreme-court-poll-july-22-29-2026/,Dem,46.0
 gen202mar57efe969,generic,US,0,Marquette University Law School,2026-07-22,2026-07-29,886.0,rv,,https://law.marquette.edu/poll/2026/08/05/detailed-results-of-the-marquette-law-school-supreme-court-poll-july-22-29-2026/,Rep,44.0
+gen202mare1cf358b,generic,US,0,Marquette University Law School,2026-07-22,2026-07-29,572.0,lv,,https://law.marquette.edu/poll/2026/08/05/detailed-results-of-the-marquette-law-school-supreme-court-poll-july-22-29-2026/,Dem,51.0
+gen202mare1cf358b,generic,US,0,Marquette University Law School,2026-07-22,2026-07-29,572.0,lv,,https://law.marquette.edu/poll/2026/08/05/detailed-results-of-the-marquette-law-school-supreme-court-poll-july-22-29-2026/,Rep,45.0
 gen202bigc23d930b,generic,US,0,Big Data Poll,2026-07-27,2026-07-29,2617.0,lv,,https://www.bigdatapoll.com/blog/trumps-approval-hits-new-low-amid-iran-war-restart-higher-gas-prices/,Dem,50.0
 gen202bigc23d930b,generic,US,0,Big Data Poll,2026-07-27,2026-07-29,2617.0,lv,,https://www.bigdatapoll.com/blog/trumps-approval-hits-new-low-amid-iran-war-restart-higher-gas-prices/,Rep,39.0
 gen202cnn0cf67e35,generic,US,0,CNN/SSRS,2026-07-23,2026-07-27,914.0,rv,,https://www.cnn.com/2026/07/30/politics/cnn-poll-midterm-generic-ballot-democrats-republicans-change,Dem,47.0
@@ -341,10 +341,10 @@ gen202you8e8286a2,generic,US,0,YouGov,2026-07-25,2026-07-27,1559.0,a,,https://d3
 gen202you8e8286a2,generic,US,0,YouGov,2026-07-25,2026-07-27,1559.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_0t0YpHo.pdf#page=57,Rep,34.0
 gen202you2ec9d79c,generic,US,0,YouGov,2026-07-25,2026-07-27,1407.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_0t0YpHo.pdf#page=57,Dem,46.0
 gen202you2ec9d79c,generic,US,0,YouGov,2026-07-25,2026-07-27,1407.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_0t0YpHo.pdf#page=57,Rep,42.0
-gen202mor85c4635f,generic,US,0,Morning Consult,2026-07-20,2026-07-26,24000.0,rv,,https://pro-assets.morningconsult.com/wp-uploads/2026/07/MCPI-Midterm-Ballot_260727.html,Dem,45.7
-gen202mor85c4635f,generic,US,0,Morning Consult,2026-07-20,2026-07-26,24000.0,rv,,https://pro-assets.morningconsult.com/wp-uploads/2026/07/MCPI-Midterm-Ballot_260727.html,Rep,42.7
 gen202the7e357de3,generic,US,0,The Argument/Verasight,2026-07-20,2026-07-26,3000.0,rv,,https://www.theargumentmag.com/p/americans-know-who-the-real-elite,Dem,54.0
 gen202the7e357de3,generic,US,0,The Argument/Verasight,2026-07-20,2026-07-26,3000.0,rv,,https://www.theargumentmag.com/p/americans-know-who-the-real-elite,Rep,46.0
+gen202mor85c4635f,generic,US,0,Morning Consult,2026-07-20,2026-07-26,24000.0,rv,,https://pro-assets.morningconsult.com/wp-uploads/2026/07/MCPI-Midterm-Ballot_260727.html,Dem,45.7
+gen202mor85c4635f,generic,US,0,Morning Consult,2026-07-20,2026-07-26,24000.0,rv,,https://pro-assets.morningconsult.com/wp-uploads/2026/07/MCPI-Midterm-Ballot_260727.html,Rep,42.7
 gen202ips6755bd3b,generic,US,0,Ipsos,2026-07-24,2026-07-26,1003.0,rv,,https://www.ipsos.com/en-us/americans-unimpressed-ideas-both-major-parties,Dem,40.0
 gen202ips6755bd3b,generic,US,0,Ipsos,2026-07-24,2026-07-26,1003.0,rv,,https://www.ipsos.com/en-us/americans-unimpressed-ideas-both-major-parties,Rep,38.0
 gen202ipsbb85903c,generic,US,0,Ipsos,2026-07-24,2026-07-26,1248.0,a,,https://www.ipsos.com/en-us/americans-unimpressed-ideas-both-major-parties,Dem,36.0
@@ -361,24 +361,24 @@ gen202foc222c1ce2,generic,US,0,Focaldata,2026-07-14,2026-07-20,2064.0,a,,https:/
 gen202foc222c1ce2,generic,US,0,Focaldata,2026-07-14,2026-07-20,2064.0,a,,https://www.focaldata.com/blog/focaldata---coinbase---clarity-act-and-crypto-attitudes-poll---july-2026,Rep,36.0
 gen202j.lbb6420cd,generic,US,0,J.L. Partners,2026-07-17,2026-07-20,626.0,lv,,https://docs.google.com/spreadsheets/d/17EY7rP9bl-OMCnbCjPyIw3W1LOOvJ3mc/edit?gid=519438713#gid=519438713,Dem,50.0
 gen202j.lbb6420cd,generic,US,0,J.L. Partners,2026-07-17,2026-07-20,626.0,lv,,https://docs.google.com/spreadsheets/d/17EY7rP9bl-OMCnbCjPyIw3W1LOOvJ3mc/edit?gid=519438713#gid=519438713,Rep,41.0
-gen202eme43eb9294,generic,US,0,Emerson College,2026-07-19,2026-07-20,1100.0,lv,,https://emersoncollegepolling.com/july-2026-national-poll-democrats-with-11-point-generic-ballot-advantage/,Dem,53.0
-gen202eme43eb9294,generic,US,0,Emerson College,2026-07-19,2026-07-20,1100.0,lv,,https://emersoncollegepolling.com/july-2026-national-poll-democrats-with-11-point-generic-ballot-advantage/,Rep,42.0
 gen202bea9a0767cc,generic,US,0,Beacon Research/Shaw & Co. Research,2026-07-17,2026-07-20,1003.0,rv,,https://www.foxnews.com/politics/fox-news-poll-voters-want-major-change-amid-economic-political-discontent,Dem,53.0
 gen202bea9a0767cc,generic,US,0,Beacon Research/Shaw & Co. Research,2026-07-17,2026-07-20,1003.0,rv,,https://www.foxnews.com/politics/fox-news-poll-voters-want-major-change-amid-economic-political-discontent,Rep,46.0
-gen202you52e7c118,generic,US,0,YouGov,2026-07-17,2026-07-20,1432.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ESdiNMa.pdf#page=9,Dem,46.0
-gen202you52e7c118,generic,US,0,YouGov,2026-07-17,2026-07-20,1432.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ESdiNMa.pdf#page=9,Rep,41.0
+gen202eme43eb9294,generic,US,0,Emerson College,2026-07-19,2026-07-20,1100.0,lv,,https://emersoncollegepolling.com/july-2026-national-poll-democrats-with-11-point-generic-ballot-advantage/,Dem,53.0
+gen202eme43eb9294,generic,US,0,Emerson College,2026-07-19,2026-07-20,1100.0,lv,,https://emersoncollegepolling.com/july-2026-national-poll-democrats-with-11-point-generic-ballot-advantage/,Rep,42.0
 gen202youab498df0,generic,US,0,YouGov,2026-07-17,2026-07-20,1602.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ESdiNMa.pdf#page=9,Dem,39.0
 gen202youab498df0,generic,US,0,YouGov,2026-07-17,2026-07-20,1602.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ESdiNMa.pdf#page=9,Rep,33.0
+gen202you52e7c118,generic,US,0,YouGov,2026-07-17,2026-07-20,1432.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ESdiNMa.pdf#page=9,Dem,46.0
+gen202you52e7c118,generic,US,0,YouGov,2026-07-17,2026-07-20,1432.0,lv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_ESdiNMa.pdf#page=9,Rep,41.0
 gen202mor0ca104de,generic,US,0,Morning Consult,2026-07-17,2026-07-19,2200.0,rv,,https://drive.google.com/file/d/1ScxP9BFh2WgpxNaL2PSkQcHn4I877sXi/view,Dem,46.0
 gen202mor0ca104de,generic,US,0,Morning Consult,2026-07-17,2026-07-19,2200.0,rv,,https://drive.google.com/file/d/1ScxP9BFh2WgpxNaL2PSkQcHn4I877sXi/view,Rep,43.0
 gen202sur182e8381,generic,US,0,Survey 160,2026-07-14,2026-07-17,1518.0,rv,,https://www.survey160.com/methodological-research-blog/july-2026-survey-160-tracking-poll,Dem,48.0
 gen202sur182e8381,generic,US,0,Survey 160,2026-07-14,2026-07-17,1518.0,rv,,https://www.survey160.com/methodological-research-blog/july-2026-survey-160-tracking-poll,Rep,38.0
 gen202cha32abf8a7,generic,US,0,Change Research,2026-07-13,2026-07-17,2006.0,rv,,https://portal.changeresearch.com/portal/projects/0bc92362-5cbd-4cb3-9ec4-8690c0780aad,Dem,46.0
 gen202cha32abf8a7,generic,US,0,Change Research,2026-07-13,2026-07-17,2006.0,rv,,https://portal.changeresearch.com/portal/projects/0bc92362-5cbd-4cb3-9ec4-8690c0780aad,Rep,38.0
-gen202verab050187,generic,US,0,Verasight,2026-07-14,2026-07-17,1364.0,rv,,https://www.gelliottmorris.com/p/2026-07-21-july-strength-in-numbers-verasight-poll,Dem,50.0
-gen202verab050187,generic,US,0,Verasight,2026-07-14,2026-07-17,1364.0,rv,,https://www.gelliottmorris.com/p/2026-07-21-july-strength-in-numbers-verasight-poll,Rep,43.0
 gen202ver3b263960,generic,US,0,Verasight,2026-07-14,2026-07-17,1514.0,a,,https://www.gelliottmorris.com/p/2026-07-21-july-strength-in-numbers-verasight-poll,Dem,48.0
 gen202ver3b263960,generic,US,0,Verasight,2026-07-14,2026-07-17,1514.0,a,,https://www.gelliottmorris.com/p/2026-07-21-july-strength-in-numbers-verasight-poll,Rep,42.0
+gen202verab050187,generic,US,0,Verasight,2026-07-14,2026-07-17,1364.0,rv,,https://www.gelliottmorris.com/p/2026-07-21-july-strength-in-numbers-verasight-poll,Dem,50.0
+gen202verab050187,generic,US,0,Verasight,2026-07-14,2026-07-17,1364.0,rv,,https://www.gelliottmorris.com/p/2026-07-21-july-strength-in-numbers-verasight-poll,Rep,43.0
 gen202alpd6b2e193,generic,US,0,AlphaROC,2026-07-13,2026-07-14,1000.0,a,,https://cdn.prod.website-files.com/68f64c3625044325e169d107/6a57c2c3ad28dd5ee3466d0b_ICV_Toplines_July2026.pdf,Dem,42.1
 gen202alpd6b2e193,generic,US,0,AlphaROC,2026-07-13,2026-07-14,1000.0,a,,https://cdn.prod.website-files.com/68f64c3625044325e169d107/6a57c2c3ad28dd5ee3466d0b_ICV_Toplines_July2026.pdf,Rep,37.3
 gen202rmg493c9c50,generic,US,0,RMG Research,2026-07-13,2026-07-14,2000.0,rv,,https://napolitannews.org/posts/generic-ballot-dem-47-percent-gop-45-dems-still-have-healthy-enthusiasm-edge,Dem,47.0
@@ -437,10 +437,10 @@ genconmor6c6e87b1,generic,US,0,Morning Consult,2026-06-19,2026-06-22,,rv,,https:
 genconmor6c6e87b1,generic,US,0,Morning Consult,2026-06-19,2026-06-22,,rv,,https://pro-assets.morningconsult.com/wp-uploads/2026/06/MCPI-PI-Weekly_260622.html,Rep,42.0
 genconver13f348b3,generic,US,0,Verasight,2026-06-17,2026-06-22,1896.0,rv,,https://www.gelliottmorris.com/p/poll,Dem,50.0
 genconver13f348b3,generic,US,0,Verasight,2026-06-17,2026-06-22,1896.0,rv,,https://www.gelliottmorris.com/p/poll,Rep,43.0
-genconechc98db130,generic,US,0,Echelon Insights,2026-06-18,2026-06-22,1003.0,lv,,https://echeloninsights.com/insights/june-2026-america-250-verified-voter-omnibus,Dem,51.0
-genconechc98db130,generic,US,0,Echelon Insights,2026-06-18,2026-06-22,1003.0,lv,,https://echeloninsights.com/insights/june-2026-america-250-verified-voter-omnibus,Rep,45.0
 genconips46ba18f1,generic,US,0,Ipsos,2026-06-18,2026-06-22,978.0,rv,,https://www.reuters.com/data/trumps-approval-rating-2025-01-21/,Dem,41.0
 genconips46ba18f1,generic,US,0,Ipsos,2026-06-18,2026-06-22,978.0,rv,,https://www.reuters.com/data/trumps-approval-rating-2025-01-21/,Rep,36.0
+genconechc98db130,generic,US,0,Echelon Insights,2026-06-18,2026-06-22,1003.0,lv,,https://echeloninsights.com/insights/june-2026-america-250-verified-voter-omnibus,Dem,51.0
+genconechc98db130,generic,US,0,Echelon Insights,2026-06-18,2026-06-22,1003.0,lv,,https://echeloninsights.com/insights/june-2026-america-250-verified-voter-omnibus,Rep,45.0
 genconyou0df1e8df,generic,US,0,YouGov,2026-06-19,2026-06-22,1679.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_v8p0Pe8.pdf#page=58,Rep,35.0
 genconyou0df1e8df,generic,US,0,YouGov,2026-06-19,2026-06-22,1679.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_v8p0Pe8.pdf#page=58,Dem,38.0
 genconyouc499c5b3,generic,US,0,YouGov,2026-06-19,2026-06-22,1517.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_v8p0Pe8.pdf#page=58,Dem,45.0
@@ -457,10 +457,10 @@ gen202the175e2ddd,generic,US,0,The Bullfinch Group,2026-06-12,2026-06-16,1000.0,
 gen202the175e2ddd,generic,US,0,The Bullfinch Group,2026-06-12,2026-06-16,1000.0,rv,,https://cdn.prod.website-files.com/68f64c3625044325e169d107/6a3583631f77734f69af70c8_2026%20IC%20Nationwide%20News%20Survey%20Toplines%20(1).pdf,Rep,36.0
 genconmar0fdfbf72,generic,US,0,Marquette University Law School,2026-06-09,2026-06-15,827.0,lv,,https://law.marquette.edu/assets/community/poll/MLSPSC33/PressRelease_America250pt2.pdf,Dem,53.0
 genconmar0fdfbf72,generic,US,0,Marquette University Law School,2026-06-09,2026-06-15,827.0,lv,,https://law.marquette.edu/assets/community/poll/MLSPSC33/PressRelease_America250pt2.pdf,Rep,45.0
-gen202ipsc3892df0,generic,US,0,Ipsos,2026-06-12,2026-06-15,1537.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20America%20250%20Poll%20Topline%20June%202026_0.pdf,Dem,35.0
-gen202ipsc3892df0,generic,US,0,Ipsos,2026-06-12,2026-06-15,1537.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20America%20250%20Poll%20Topline%20June%202026_0.pdf,Rep,31.0
 gen202youda6c5c1c,generic,US,0,YouGov,2026-06-13,2026-06-15,1402.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_GpnDRNm.pdf#page=74,Dem,46.0
 gen202youda6c5c1c,generic,US,0,YouGov,2026-06-13,2026-06-15,1402.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_GpnDRNm.pdf#page=74,Rep,44.0
+gen202ipsc3892df0,generic,US,0,Ipsos,2026-06-12,2026-06-15,1537.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20America%20250%20Poll%20Topline%20June%202026_0.pdf,Dem,35.0
+gen202ipsc3892df0,generic,US,0,Ipsos,2026-06-12,2026-06-15,1537.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20America%20250%20Poll%20Topline%20June%202026_0.pdf,Rep,31.0
 gen202ips6e1b4a09,generic,US,0,Ipsos,2026-06-12,2026-06-15,1195.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20America%20250%20Poll%20Topline%20June%202026_0.pdf,Dem,41.0
 gen202ips6e1b4a09,generic,US,0,Ipsos,2026-06-12,2026-06-15,1195.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20America%20250%20Poll%20Topline%20June%202026_0.pdf,Rep,38.0
 gen202you92365a96,generic,US,0,YouGov,2026-06-13,2026-06-15,1547.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_GpnDRNm.pdf#page=74,Dem,39.0
@@ -469,28 +469,28 @@ genconmor4f257b9c,generic,US,0,Morning Consult,2026-06-08,2026-06-14,24000.0,rv,
 genconmor4f257b9c,generic,US,0,Morning Consult,2026-06-08,2026-06-14,24000.0,rv,,https://pro-assets.morningconsult.com/wp-uploads/2026/06/MCPI-Midterm-Ballot_260622.html,Rep,41.9
 gen202ech6ea2c23e,generic,US,0,Echelon Insights,2026-06-11,2026-06-14,1012.0,lv,,https://echeloninsights.com/hubfs/_Media%20for%20Insights%20Blog/June%202026%20Voter%20Omnibus%20Topline%20-%20External.pdf,Dem,50.0
 gen202ech6ea2c23e,generic,US,0,Echelon Insights,2026-06-11,2026-06-14,1012.0,lv,,https://echeloninsights.com/hubfs/_Media%20for%20Insights%20Blog/June%202026%20Voter%20Omnibus%20Topline%20-%20External.pdf,Rep,44.0
-gen202the289bae57,generic,US,0,The Public Sentiment Institute,2026-06-12,2026-06-13,1023.0,lv,,https://tpsiofficial.substack.com/p/tpsi-junes-national-benchmark-poll,Dem,50.0
-gen202the289bae57,generic,US,0,The Public Sentiment Institute,2026-06-12,2026-06-13,1023.0,lv,,https://tpsiofficial.substack.com/p/tpsi-junes-national-benchmark-poll,Rep,41.0
 gen202thecaa1c332,generic,US,0,The Public Sentiment Institute,2026-06-12,2026-06-13,1042.0,rv,,https://tpsiofficial.substack.com/p/tpsi-junes-national-benchmark-poll,Dem,43.0
 gen202thecaa1c332,generic,US,0,The Public Sentiment Institute,2026-06-12,2026-06-13,1042.0,rv,,https://tpsiofficial.substack.com/p/tpsi-junes-national-benchmark-poll,Rep,34.0
+gen202the289bae57,generic,US,0,The Public Sentiment Institute,2026-06-12,2026-06-13,1023.0,lv,,https://tpsiofficial.substack.com/p/tpsi-junes-national-benchmark-poll,Dem,50.0
+gen202the289bae57,generic,US,0,The Public Sentiment Institute,2026-06-12,2026-06-13,1023.0,lv,,https://tpsiofficial.substack.com/p/tpsi-junes-national-benchmark-poll,Rep,41.0
 gen202eme29000092,generic,US,0,Emerson College,2026-06-07,2026-06-08,1200.0,lv,,https://docs.google.com/spreadsheets/d/1OdhDSPbsk575neEvXB2v103QdfEAE8l-/edit?gid=1710999602#gid=1710999602,Dem,50.3
 gen202eme29000092,generic,US,0,Emerson College,2026-06-07,2026-06-08,1200.0,lv,,https://docs.google.com/spreadsheets/d/1OdhDSPbsk575neEvXB2v103QdfEAE8l-/edit?gid=1710999602#gid=1710999602,Rep,39.5
-gen202ips094ac646,generic,US,0,Ipsos,2026-06-03,2026-06-08,3578.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20Large%20Issue%20Topline%20June%202026%206.8%20release.pdf,Dem,41.0
-gen202ips094ac646,generic,US,0,Ipsos,2026-06-03,2026-06-08,3578.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20Large%20Issue%20Topline%20June%202026%206.8%20release.pdf,Rep,37.0
-gen202you7e155176,generic,US,0,YouGov,2026-06-05,2026-06-08,1437.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_nvajahp.pdf#page=31,Dem,45.0
-gen202you7e155176,generic,US,0,YouGov,2026-06-05,2026-06-08,1437.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_nvajahp.pdf#page=31,Rep,41.0
 gen202you2ea3a450,generic,US,0,YouGov,2026-06-05,2026-06-08,1567.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_nvajahp.pdf#page=31,Dem,37.0
 gen202you2ea3a450,generic,US,0,YouGov,2026-06-05,2026-06-08,1567.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_nvajahp.pdf#page=31,Rep,33.0
+gen202you7e155176,generic,US,0,YouGov,2026-06-05,2026-06-08,1437.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_nvajahp.pdf#page=31,Dem,45.0
+gen202you7e155176,generic,US,0,YouGov,2026-06-05,2026-06-08,1437.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_nvajahp.pdf#page=31,Rep,41.0
+gen202ips094ac646,generic,US,0,Ipsos,2026-06-03,2026-06-08,3578.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20Large%20Issue%20Topline%20June%202026%206.8%20release.pdf,Dem,41.0
+gen202ips094ac646,generic,US,0,Ipsos,2026-06-03,2026-06-08,3578.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20Large%20Issue%20Topline%20June%202026%206.8%20release.pdf,Rep,37.0
 gen202ipsc03e0960,generic,US,0,Ipsos,2026-06-03,2026-06-08,4531.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20Large%20Issue%20Topline%20June%202026%206.8%20release.pdf,Dem,35.0
 gen202ipsc03e0960,generic,US,0,Ipsos,2026-06-03,2026-06-08,4531.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Reuters%20Ipsos%20Large%20Issue%20Topline%20June%202026%206.8%20release.pdf,Rep,31.0
 gen202har3b4dc744,generic,US,0,Hart Research Associates/Public Opinion Strategies,2026-05-29,2026-06-07,2400.0,rv,,https://www.documentcloud.org/documents/28246606-260216-nbc-june-2026-poll-61426-release,Dem,49.0
 gen202har3b4dc744,generic,US,0,Hart Research Associates/Public Opinion Strategies,2026-05-29,2026-06-07,2400.0,rv,,https://www.documentcloud.org/documents/28246606-260216-nbc-june-2026-poll-61426-release,Rep,44.0
-gen202har8f24bc9e,generic,US,0,HarrisX,2026-05-20,2026-06-07,1392.0,rv,,https://www.harrisx.com/content/forbes-harrisx-american-confidence-tracker-june-2026#06-07-2026,Dem,44.0
-gen202har8f24bc9e,generic,US,0,HarrisX,2026-05-20,2026-06-07,1392.0,rv,,https://www.harrisx.com/content/forbes-harrisx-american-confidence-tracker-june-2026#06-07-2026,Rep,43.0
 gen202harde8dec3f,generic,US,0,HarrisX,2026-05-20,2026-06-07,2010.0,a,,https://www.harrisx.com/content/forbes-harrisx-american-confidence-tracker-june-2026#06-07-2026,Dem,43.0
 gen202harde8dec3f,generic,US,0,HarrisX,2026-05-20,2026-06-07,2010.0,a,,https://www.harrisx.com/content/forbes-harrisx-american-confidence-tracker-june-2026#06-07-2026,Rep,42.0
 gen202har3111816f,generic,US,0,HarrisX,2026-05-20,2026-06-07,1137.0,lv,,https://www.harrisx.com/content/forbes-harrisx-american-confidence-tracker-june-2026#06-07-2026,Dem,46.0
 gen202har3111816f,generic,US,0,HarrisX,2026-05-20,2026-06-07,1137.0,lv,,https://www.harrisx.com/content/forbes-harrisx-american-confidence-tracker-june-2026#06-07-2026,Rep,45.0
+gen202har8f24bc9e,generic,US,0,HarrisX,2026-05-20,2026-06-07,1392.0,rv,,https://www.harrisx.com/content/forbes-harrisx-american-confidence-tracker-june-2026#06-07-2026,Dem,44.0
+gen202har8f24bc9e,generic,US,0,HarrisX,2026-05-20,2026-06-07,1392.0,rv,,https://www.harrisx.com/content/forbes-harrisx-american-confidence-tracker-june-2026#06-07-2026,Rep,43.0
 gen202mor2b525ceb,generic,US,0,Morning Consult,2026-06-01,2026-06-07,24849.0,rv,,https://intel.morningconsult.com/mc-content/trackers/2026-midterm-election-generic-ballot-polls#06-07-2026,Dem,46.0
 gen202mor2b525ceb,generic,US,0,Morning Consult,2026-06-01,2026-06-07,24849.0,rv,,https://intel.morningconsult.com/mc-content/trackers/2026-midterm-election-generic-ballot-polls#06-07-2026,Rep,42.0
 gen202res9438765a,generic,US,0,Research Co.,2026-06-04,2026-06-06,1001.0,a,,https://researchco.ca/wp-content/uploads/2026/06/Tables_Politics_USA_15Jun2026.pdf,Dem,38.0
@@ -507,12 +507,12 @@ gen202cygbfde610f,generic,US,0,Cygnal,2026-06-02,2026-06-03,1500.0,lv,,https://w
 gen202cygbfde610f,generic,US,0,Cygnal,2026-06-02,2026-06-03,1500.0,lv,,https://www.cygn.al/news/poll-independents-arent-who-you-think-they-are-the-left-americas-250-and-who-trump-has-lost-since-the-inauguration,Rep,44.0
 gen202thef222ecc9,generic,US,0,The Winston Group,2026-05-30,2026-06-02,1000.0,rv,R,https://www.winningtheissues.org/wp-content/uploads/2026/06/May-2026-Winning-the-Issues-Survey.pdf,Dem,48.0
 gen202thef222ecc9,generic,US,0,The Winston Group,2026-05-30,2026-06-02,1000.0,rv,R,https://www.winningtheissues.org/wp-content/uploads/2026/06/May-2026-Winning-the-Issues-Survey.pdf,Rep,41.0
+gen202the6afca19c,generic,US,0,The Bullfinch Group,2026-05-29,2026-06-02,1200.0,a,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q2-nationwide-survey-4,Dem,41.0
+gen202the6afca19c,generic,US,0,The Bullfinch Group,2026-05-29,2026-06-02,1200.0,a,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q2-nationwide-survey-4,Rep,34.0
 gen202qua8d4f16f1,generic,US,0,Quantus Insights,2026-06-01,2026-06-02,1050.0,lv,,https://drive.google.com/file/d/170FM0UjFJmSccdmQqJKxbqhw-wsWDtdi/view,Dem,47.0
 gen202qua8d4f16f1,generic,US,0,Quantus Insights,2026-06-01,2026-06-02,1050.0,lv,,https://drive.google.com/file/d/170FM0UjFJmSccdmQqJKxbqhw-wsWDtdi/view,Rep,42.0
 gen202thea1a0afb2,generic,US,0,The Bullfinch Group,2026-05-29,2026-06-02,1000.0,rv,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q2-nationwide-survey-4,Dem,42.0
 gen202thea1a0afb2,generic,US,0,The Bullfinch Group,2026-05-29,2026-06-02,1000.0,rv,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q2-nationwide-survey-4,Rep,36.0
-gen202the6afca19c,generic,US,0,The Bullfinch Group,2026-05-29,2026-06-02,1200.0,a,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q2-nationwide-survey-4,Dem,41.0
-gen202the6afca19c,generic,US,0,The Bullfinch Group,2026-05-29,2026-06-02,1200.0,a,,https://www.thebullfinchgroup.com/post/public-release-of-bullfinch-q2-nationwide-survey-4,Rep,34.0
 gen202focde986d92,generic,US,0,Focaldata,2026-05-29,2026-06-01,1537.0,rv,,http://focaldata.com/blog/trump-inflation-approval-crashes-to-record-low,Dem,48.0
 gen202focde986d92,generic,US,0,Focaldata,2026-05-29,2026-06-01,1537.0,rv,,http://focaldata.com/blog/trump-inflation-approval-crashes-to-record-low,Rep,43.0
 gen202foc42312cd7,generic,US,0,Focaldata,2026-05-29,2026-06-01,1719.0,a,,http://focaldata.com/blog/trump-inflation-approval-crashes-to-record-low,Dem,45.0
@@ -533,16 +533,16 @@ gen202bigb5540448,generic,US,0,Big Data Poll,2026-05-24,2026-05-27,2874.0,lv,,ht
 gen202bigb5540448,generic,US,0,Big Data Poll,2026-05-24,2026-05-27,2874.0,lv,,https://www.bigdatapoll.com/blog/democrats-expand-lead-in-may-as-voters-sour-further-on-the-iran-war,Rep,39.4
 gen202pen573f413b,generic,US,0,Pennsylvania State University McCourtney Institute for Democracy/YouGov,2026-05-19,2026-05-26,862.0,rv,,https://democracy.psu.edu/wp-content/uploads/sites/14/2026/06/MOTN-GoodJobJune2026v2.pdf,Dem,41.0
 gen202pen573f413b,generic,US,0,Pennsylvania State University McCourtney Institute for Democracy/YouGov,2026-05-19,2026-05-26,862.0,rv,,https://democracy.psu.edu/wp-content/uploads/sites/14/2026/06/MOTN-GoodJobJune2026v2.pdf,Rep,37.0
-gen202mar6d2d2b89,generic,US,0,Marquette University Law School,2026-05-20,2026-05-26,857.0,rv,,https://law.marquette.edu/assets/community/poll/MLSPSC32/MLSPSC32Toplines_NationalIssues.html,Dem,46.0
-gen202mar6d2d2b89,generic,US,0,Marquette University Law School,2026-05-20,2026-05-26,857.0,rv,,https://law.marquette.edu/assets/community/poll/MLSPSC32/MLSPSC32Toplines_NationalIssues.html,Rep,45.0
 gen202mar7ecb1694,generic,US,0,Marquette University Law School,2026-05-20,2026-05-26,576.0,lv,,https://law.marquette.edu/assets/community/poll/MLSPSC32/MLSPSC32Toplines_NationalIssues.html,Dem,49.0
 gen202mar7ecb1694,generic,US,0,Marquette University Law School,2026-05-20,2026-05-26,576.0,lv,,https://law.marquette.edu/assets/community/poll/MLSPSC32/MLSPSC32Toplines_NationalIssues.html,Rep,48.0
 gen202mar66597189,generic,US,0,Marquette University Law School,2026-05-20,2026-05-26,1001.0,a,,https://law.marquette.edu/assets/community/poll/MLSPSC32/MLSPSC32Toplines_NationalIssues.html,Dem,45.0
 gen202mar66597189,generic,US,0,Marquette University Law School,2026-05-20,2026-05-26,1001.0,a,,https://law.marquette.edu/assets/community/poll/MLSPSC32/MLSPSC32Toplines_NationalIssues.html,Rep,41.0
-gen202youa845f411,generic,US,0,YouGov,2026-05-22,2026-05-26,1393.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_aWdgoE7.pdf#page=51,Dem,46.0
-gen202youa845f411,generic,US,0,YouGov,2026-05-22,2026-05-26,1393.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_aWdgoE7.pdf#page=51,Rep,41.0
+gen202mar6d2d2b89,generic,US,0,Marquette University Law School,2026-05-20,2026-05-26,857.0,rv,,https://law.marquette.edu/assets/community/poll/MLSPSC32/MLSPSC32Toplines_NationalIssues.html,Dem,46.0
+gen202mar6d2d2b89,generic,US,0,Marquette University Law School,2026-05-20,2026-05-26,857.0,rv,,https://law.marquette.edu/assets/community/poll/MLSPSC32/MLSPSC32Toplines_NationalIssues.html,Rep,45.0
 gen202youa317f770,generic,US,0,YouGov,2026-05-22,2026-05-26,1514.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_aWdgoE7.pdf#page=51,Dem,39.0
 gen202youa317f770,generic,US,0,YouGov,2026-05-22,2026-05-26,1514.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_aWdgoE7.pdf#page=51,Rep,33.0
+gen202youa845f411,generic,US,0,YouGov,2026-05-22,2026-05-26,1393.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_aWdgoE7.pdf#page=51,Dem,46.0
+gen202youa845f411,generic,US,0,YouGov,2026-05-22,2026-05-26,1393.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_aWdgoE7.pdf#page=51,Rep,41.0
 gen202emefa66ea0d,generic,US,0,Emerson College,2026-05-24,2026-05-25,1000.0,lv,,https://docs.google.com/spreadsheets/d/1Tw_zIv2JLeRPiZVOfoLA82rZY_RpNY9-/edit?rtpof=true&sd=true&gid=1557082126#gid=1557082126,Dem,49.8
 gen202emefa66ea0d,generic,US,0,Emerson College,2026-05-24,2026-05-25,1000.0,lv,,https://docs.google.com/spreadsheets/d/1Tw_zIv2JLeRPiZVOfoLA82rZY_RpNY9-/edit?rtpof=true&sd=true&gid=1557082126#gid=1557082126,Rep,41.3
 gen202mor1bc36679,generic,US,0,Morning Consult,2026-05-18,2026-05-24,24849.0,rv,,https://intel.morningconsult.com/mc-content/trackers/2026-midterm-election-generic-ballot-polls#05-24-2026,Dem,46.0
@@ -577,16 +577,16 @@ gen202ips8e4643b0,generic,US,0,Ipsos,2026-05-15,2026-05-18,984.0,rv,,https://www
 gen202ips8e4643b0,generic,US,0,Ipsos,2026-05-15,2026-05-18,984.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-05/Reuters%20Ipsos%20Core%20Political%20May%20Topline_1.pdf,Rep,38.0
 gen202ech92b1793f,generic,US,0,Echelon Insights,2026-05-14,2026-05-18,1008.0,lv,,https://echeloninsights.com/hubfs/_Media%20for%20Insights%20Blog/May%202026%20Voter%20Omnibus%20Topline%20-%20External.pdf,Dem,51.0
 gen202ech92b1793f,generic,US,0,Echelon Insights,2026-05-14,2026-05-18,1008.0,lv,,https://echeloninsights.com/hubfs/_Media%20for%20Insights%20Blog/May%202026%20Voter%20Omnibus%20Topline%20-%20External.pdf,Rep,43.0
-gen202ipsb55f0d9f,generic,US,0,Ipsos,2026-05-15,2026-05-18,1271.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-05/Reuters%20Ipsos%20Core%20Political%20May%20Topline_1.pdf,Dem,35.0
-gen202ipsb55f0d9f,generic,US,0,Ipsos,2026-05-15,2026-05-18,1271.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-05/Reuters%20Ipsos%20Core%20Political%20May%20Topline_1.pdf,Rep,31.0
-gen202youedd3df25,generic,US,0,YouGov,2026-05-15,2026-05-18,1543.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_YTE4G2g.pdf#page=49,Dem,40.0
-gen202youedd3df25,generic,US,0,YouGov,2026-05-15,2026-05-18,1543.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_YTE4G2g.pdf#page=49,Rep,35.0
 gen202you10817016,generic,US,0,YouGov,2026-05-15,2026-05-18,1375.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_YTE4G2g.pdf#page=49,Dem,46.0
 gen202you10817016,generic,US,0,YouGov,2026-05-15,2026-05-18,1375.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_YTE4G2g.pdf#page=49,Rep,43.0
-gen202mor0eb6c381,generic,US,0,Morning Consult,2026-05-11,2026-05-17,28525.0,rv,,https://intel.morningconsult.com/mc-content/trackers/2026-midterm-election-generic-ballot-polls#05-17-2026,Dem,46.0
-gen202mor0eb6c381,generic,US,0,Morning Consult,2026-05-11,2026-05-17,28525.0,rv,,https://intel.morningconsult.com/mc-content/trackers/2026-midterm-election-generic-ballot-polls#05-17-2026,Rep,42.0
+gen202youedd3df25,generic,US,0,YouGov,2026-05-15,2026-05-18,1543.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_YTE4G2g.pdf#page=49,Dem,40.0
+gen202youedd3df25,generic,US,0,YouGov,2026-05-15,2026-05-18,1543.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_YTE4G2g.pdf#page=49,Rep,35.0
+gen202ipsb55f0d9f,generic,US,0,Ipsos,2026-05-15,2026-05-18,1271.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-05/Reuters%20Ipsos%20Core%20Political%20May%20Topline_1.pdf,Dem,35.0
+gen202ipsb55f0d9f,generic,US,0,Ipsos,2026-05-15,2026-05-18,1271.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-05/Reuters%20Ipsos%20Core%20Political%20May%20Topline_1.pdf,Rep,31.0
 gen202morf843d467,generic,US,0,Morning Consult,2026-05-15,2026-05-17,2203.0,rv,,https://intel.morningconsult.com/mc-content/trackers/donald-trump-congress-policy-republicans-polling#05-17-2026,Dem,47.0
 gen202morf843d467,generic,US,0,Morning Consult,2026-05-15,2026-05-17,2203.0,rv,,https://intel.morningconsult.com/mc-content/trackers/donald-trump-congress-policy-republicans-polling#05-17-2026,Rep,41.0
+gen202mor0eb6c381,generic,US,0,Morning Consult,2026-05-11,2026-05-17,28525.0,rv,,https://intel.morningconsult.com/mc-content/trackers/2026-midterm-election-generic-ballot-polls#05-17-2026,Dem,46.0
+gen202mor0eb6c381,generic,US,0,Morning Consult,2026-05-11,2026-05-17,28525.0,rv,,https://intel.morningconsult.com/mc-content/trackers/2026-midterm-election-generic-ballot-polls#05-17-2026,Rep,42.0
 gen202you5072b560,generic,US,0,YouGov,2026-05-13,2026-05-15,1397.0,rv,,https://assets1.cbsnewsstatic.com/hub/cms/prod_cms_alt/file/2026/05/19/9b11ffab-4f11-440c-aec4-cb02ac525257/cbs_20260517_rv.pdf,Dem,45.0
 gen202you5072b560,generic,US,0,YouGov,2026-05-13,2026-05-15,1397.0,rv,,https://assets1.cbsnewsstatic.com/hub/cms/prod_cms_alt/file/2026/05/19/9b11ffab-4f11-440c-aec4-cb02ac525257/cbs_20260517_rv.pdf,Rep,40.0
 gen202thee6468149,generic,US,0,The New York Times/Siena University,2026-05-11,2026-05-15,1507.0,rv,,https://www.nytimes.com/interactive/2026/05/18/polls/times-siena-national-poll-crosstabs.html,Dem,49.5
@@ -617,16 +617,16 @@ gen202foc290a9926,generic,US,0,Focaldata,2026-05-01,2026-05-05,3612.0,a,,https:/
 gen202foc290a9926,generic,US,0,Focaldata,2026-05-01,2026-05-05,3612.0,a,,https://www.focaldata.com/blog/democrats-lead-economy-focaldata-financial-times-poll,Dem,46.436
 gen202har68e5c022,generic,US,0,HarrisX,2026-04-29,2026-05-05,2359.0,rv,,https://www.harrisx.com/posts/forbes-and-harrisx-partner-on-new-american-confidence-survey-as-gallup-ends-approval-polling,Dem,46.0
 gen202har68e5c022,generic,US,0,HarrisX,2026-04-29,2026-05-05,2359.0,rv,,https://www.harrisx.com/posts/forbes-and-harrisx-partner-on-new-american-confidence-survey-as-gallup-ends-approval-polling,Rep,45.0
-gen202har76cd5463,generic,US,0,HarrisX,2026-04-29,2026-05-05,2569.0,a,,https://www.harrisx.com/posts/forbes-and-harrisx-partner-on-new-american-confidence-survey-as-gallup-ends-approval-polling,Dem,46.0
-gen202har76cd5463,generic,US,0,HarrisX,2026-04-29,2026-05-05,2569.0,a,,https://www.harrisx.com/posts/forbes-and-harrisx-partner-on-new-american-confidence-survey-as-gallup-ends-approval-polling,Rep,45.0
 gen202harfa03dff7,generic,US,0,HarrisX,2026-04-29,2026-05-05,1891.0,lv,,https://www.harrisx.com/posts/forbes-and-harrisx-partner-on-new-american-confidence-survey-as-gallup-ends-approval-polling,Dem,48.0
 gen202harfa03dff7,generic,US,0,HarrisX,2026-04-29,2026-05-05,1891.0,lv,,https://www.harrisx.com/posts/forbes-and-harrisx-partner-on-new-american-confidence-survey-as-gallup-ends-approval-polling,Rep,46.0
+gen202har76cd5463,generic,US,0,HarrisX,2026-04-29,2026-05-05,2569.0,a,,https://www.harrisx.com/posts/forbes-and-harrisx-partner-on-new-american-confidence-survey-as-gallup-ends-approval-polling,Dem,46.0
+gen202har76cd5463,generic,US,0,HarrisX,2026-04-29,2026-05-05,2569.0,a,,https://www.harrisx.com/posts/forbes-and-harrisx-partner-on-new-american-confidence-survey-as-gallup-ends-approval-polling,Rep,45.0
 gen202cnn284290e8,generic,US,0,CNN/SSRS,2026-04-30,2026-05-04,,rv,,https://www.documentcloud.org/documents/28114951-cnn-poll-conducted-by-ssrs-affordability,Dem,45.0
 gen202cnn284290e8,generic,US,0,CNN/SSRS,2026-04-30,2026-05-04,,rv,,https://www.documentcloud.org/documents/28114951-cnn-poll-conducted-by-ssrs-affordability,Rep,42.0
-gen202you3b7f3c42,generic,US,0,YouGov,2026-05-01,2026-05-04,1406.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Zi1MEwp.pdf#page=32,Dem,44.0
-gen202you3b7f3c42,generic,US,0,YouGov,2026-05-01,2026-05-04,1406.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Zi1MEwp.pdf#page=32,Rep,41.0
 gen202youb0c541de,generic,US,0,YouGov,2026-05-01,2026-05-04,1570.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Zi1MEwp.pdf#page=32,Dem,38.0
 gen202youb0c541de,generic,US,0,YouGov,2026-05-01,2026-05-04,1570.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Zi1MEwp.pdf#page=32,Rep,34.0
+gen202you3b7f3c42,generic,US,0,YouGov,2026-05-01,2026-05-04,1406.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Zi1MEwp.pdf#page=32,Dem,44.0
+gen202you3b7f3c42,generic,US,0,YouGov,2026-05-01,2026-05-04,1406.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Zi1MEwp.pdf#page=32,Rep,41.0
 gen202mor950d8ecd,generic,US,0,Morning Consult,2026-04-27,2026-05-03,24000.0,rv,,https://pro-assets.morningconsult.com/wp-uploads/2026/08/MCPI-PI-Weekly.html#05-03-2026,Dem,46.0
 gen202mor950d8ecd,generic,US,0,Morning Consult,2026-04-27,2026-05-03,24000.0,rv,,https://pro-assets.morningconsult.com/wp-uploads/2026/08/MCPI-PI-Weekly.html#05-03-2026,Rep,43.0
 gen202morfece680f,generic,US,0,Morning Consult,2026-04-30,2026-05-03,2200.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#05-03-2026,Dem,46.0
@@ -643,14 +643,14 @@ gen202pub024ad9fb,generic,US,0,Public Opinion Strategies,2026-04-21,2026-04-27,1
 gen202pub024ad9fb,generic,US,0,Public Opinion Strategies,2026-04-21,2026-04-27,1000.0,rv,,https://www.coindesk.com/policy/2026/05/03/crypto-is-at-the-bottom-of-u-s-voters-priorities-heading-into-the-midterm-coindesk-survey-shows,Rep,41.0
 gen202ipsefd2e293,generic,US,0,Ipsos,2026-04-24,2026-04-27,1269.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Core%20Political%20April%202026%20Topline.pdf,Dem,36.0
 gen202ipsefd2e293,generic,US,0,Ipsos,2026-04-24,2026-04-27,1269.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Core%20Political%20April%202026%20Topline.pdf,Rep,31.0
-gen202ips0bc2dcd0,generic,US,0,Ipsos,2026-04-24,2026-04-27,1014.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Core%20Political%20April%202026%20Topline.pdf,Dem,41.0
-gen202ips0bc2dcd0,generic,US,0,Ipsos,2026-04-24,2026-04-27,1014.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Core%20Political%20April%202026%20Topline.pdf,Rep,37.0
 gen202you3de5efa3,generic,US,0,YouGov,2026-04-24,2026-04-27,1834.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Ty7ikPd.pdf#page=52,Dem,39.0
 gen202you3de5efa3,generic,US,0,YouGov,2026-04-24,2026-04-27,1834.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Ty7ikPd.pdf#page=52,Rep,34.0
-gen202you2ae6f378,generic,US,0,YouGov,2026-04-24,2026-04-27,1645.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Ty7ikPd.pdf#page=52,Dem,46.0
-gen202you2ae6f378,generic,US,0,YouGov,2026-04-24,2026-04-27,1645.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Ty7ikPd.pdf#page=52,Rep,41.0
 gen202moraf812e1e,generic,US,0,Morning Consult,2026-04-24,2026-04-27,2201.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#04-27-2026,Dem,45.0
 gen202moraf812e1e,generic,US,0,Morning Consult,2026-04-24,2026-04-27,2201.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#04-27-2026,Rep,42.0
+gen202you2ae6f378,generic,US,0,YouGov,2026-04-24,2026-04-27,1645.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Ty7ikPd.pdf#page=52,Dem,46.0
+gen202you2ae6f378,generic,US,0,YouGov,2026-04-24,2026-04-27,1645.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Ty7ikPd.pdf#page=52,Rep,41.0
+gen202ips0bc2dcd0,generic,US,0,Ipsos,2026-04-24,2026-04-27,1014.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Core%20Political%20April%202026%20Topline.pdf,Dem,41.0
+gen202ips0bc2dcd0,generic,US,0,Ipsos,2026-04-24,2026-04-27,1014.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Core%20Political%20April%202026%20Topline.pdf,Rep,37.0
 gen202eme52b01f0e,generic,US,0,Emerson College,2026-04-24,2026-04-26,1000.0,lv,,https://docs.google.com/spreadsheets/d/1FsVoQjT-tHeejavmtPp3dWF2UpdwGBOe/edit?gid=148203681#gid=148203681,Dem,50.3
 gen202eme52b01f0e,generic,US,0,Emerson College,2026-04-24,2026-04-26,1000.0,lv,,https://docs.google.com/spreadsheets/d/1FsVoQjT-tHeejavmtPp3dWF2UpdwGBOe/edit?gid=148203681#gid=148203681,Rep,40.2
 gen202har524f07a0,generic,US,0,HarrisX/Harris,2026-04-23,2026-04-26,,lv,,https://harvardharrispoll.com/wp-content/uploads/2026/04/HHP_Apr2026_KeyResults.pdf,Dem,50.0
@@ -669,20 +669,20 @@ gen202leg6734532b,generic,US,0,Leger,2026-04-17,2026-04-20,1004.0,a,,https://doc
 gen202leg6734532b,generic,US,0,Leger,2026-04-17,2026-04-20,1004.0,a,,https://documents.leger360.com/hubfs/%C3%89tudes%20M%C3%A9diatiques/%C3%89tudes%20M%C3%A9diatiques%20-%202026/4.%20%C3%89M%20-%20Avril%202026/20260428%20-%20US%20Poll%20April%202026/US_POL_April_2026_338Canada_VF.pdf,Rep,42.0
 gen202beab54fecf9,generic,US,0,Beacon Research/Shaw & Co. Research,2026-04-17,2026-04-20,1001.0,rv,,https://static.foxnews.com/foxnews.com/content/uploads/2026/04/fox_april-17-20-2026_national_topline_april-22-release.pdf,Dem,52.0
 gen202beab54fecf9,generic,US,0,Beacon Research/Shaw & Co. Research,2026-04-17,2026-04-20,1001.0,rv,,https://static.foxnews.com/foxnews.com/content/uploads/2026/04/fox_april-17-20-2026_national_topline_april-22-release.pdf,Rep,47.0
-gen202you1706e723,generic,US,0,YouGov,2026-04-17,2026-04-20,1703.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_I24AWdp.pdf#page=65,Dem,39.0
-gen202you1706e723,generic,US,0,YouGov,2026-04-17,2026-04-20,1703.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_I24AWdp.pdf#page=65,Rep,33.0
-gen202ipse8884e79,generic,US,0,Ipsos,2026-04-15,2026-04-20,4557.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Large%20Issue%20April%202026%20Topline%204.21%20Release_1.pdf,Dem,35.0
-gen202ipse8884e79,generic,US,0,Ipsos,2026-04-15,2026-04-20,4557.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Large%20Issue%20April%202026%20Topline%204.21%20Release_1.pdf,Rep,31.0
-gen202mor572d6544,generic,US,0,Morning Consult,2026-04-17,2026-04-20,2203.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#04-20-2026,Dem,45.0
-gen202mor572d6544,generic,US,0,Morning Consult,2026-04-17,2026-04-20,2203.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#04-20-2026,Rep,42.0
+gen202ech75567eb0,generic,US,0,Echelon Insights,2026-04-17,2026-04-20,1012.0,lv,,https://echeloninsights.com/hubfs/_Media%20for%20Insights%20Blog/April%202026%20Voter%20Omnibus%20Topline%20-%20External.pdf,Dem,50.0
+gen202ech75567eb0,generic,US,0,Echelon Insights,2026-04-17,2026-04-20,1012.0,lv,,https://echeloninsights.com/hubfs/_Media%20for%20Insights%20Blog/April%202026%20Voter%20Omnibus%20Topline%20-%20External.pdf,Rep,44.0
 gen202ipsf49cf96d,generic,US,0,Ipsos,2026-04-15,2026-04-20,3577.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Large%20Issue%20April%202026%20Topline%204.21%20Release_1.pdf,Dem,41.0
 gen202ipsf49cf96d,generic,US,0,Ipsos,2026-04-15,2026-04-20,3577.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Large%20Issue%20April%202026%20Topline%204.21%20Release_1.pdf,Rep,38.0
 gen202ips723b2f06,generic,US,0,Ipsos,2026-04-15,2026-04-20,3577.0,rv,,https://www.reuters.com/world/us/many-americans-question-trumps-temperament-amid-iran-war-pope-spat-reutersipsos-2026-04-21,Dem,41.0
 gen202ips723b2f06,generic,US,0,Ipsos,2026-04-15,2026-04-20,3577.0,rv,,https://www.reuters.com/world/us/many-americans-question-trumps-temperament-amid-iran-war-pope-spat-reutersipsos-2026-04-21,Rep,38.0
+gen202you1706e723,generic,US,0,YouGov,2026-04-17,2026-04-20,1703.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_I24AWdp.pdf#page=65,Dem,39.0
+gen202you1706e723,generic,US,0,YouGov,2026-04-17,2026-04-20,1703.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_I24AWdp.pdf#page=65,Rep,33.0
 gen202you2142fbd8,generic,US,0,YouGov,2026-04-17,2026-04-20,1549.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_I24AWdp.pdf#page=65,Dem,45.0
 gen202you2142fbd8,generic,US,0,YouGov,2026-04-17,2026-04-20,1549.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_I24AWdp.pdf#page=65,Rep,40.0
-gen202ech75567eb0,generic,US,0,Echelon Insights,2026-04-17,2026-04-20,1012.0,lv,,https://echeloninsights.com/hubfs/_Media%20for%20Insights%20Blog/April%202026%20Voter%20Omnibus%20Topline%20-%20External.pdf,Dem,50.0
-gen202ech75567eb0,generic,US,0,Echelon Insights,2026-04-17,2026-04-20,1012.0,lv,,https://echeloninsights.com/hubfs/_Media%20for%20Insights%20Blog/April%202026%20Voter%20Omnibus%20Topline%20-%20External.pdf,Rep,44.0
+gen202mor572d6544,generic,US,0,Morning Consult,2026-04-17,2026-04-20,2203.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#04-20-2026,Dem,45.0
+gen202mor572d6544,generic,US,0,Morning Consult,2026-04-17,2026-04-20,2203.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#04-20-2026,Rep,42.0
+gen202ipse8884e79,generic,US,0,Ipsos,2026-04-15,2026-04-20,4557.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Large%20Issue%20April%202026%20Topline%204.21%20Release_1.pdf,Dem,35.0
+gen202ipse8884e79,generic,US,0,Ipsos,2026-04-15,2026-04-20,4557.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-04/Reuters%20Ipsos%20Large%20Issue%20April%202026%20Topline%204.21%20Release_1.pdf,Rep,31.0
 gen202kff582c6691,generic,US,0,KFF,2026-04-14,2026-04-19,1107.0,rv,,https://www.kff.org/public-opinion/kff-health-tracking-poll-health-care-costs-and-the-midterms,Dem,43.0
 gen202kff582c6691,generic,US,0,KFF,2026-04-14,2026-04-19,1107.0,rv,,https://www.kff.org/public-opinion/kff-health-tracking-poll-health-care-costs-and-the-midterms,Rep,34.0
 gen202hare0f9b514,generic,US,0,Hart Research Associates/Public Opinion Strategies,2026-04-15,2026-04-19,1000.0,rv,,https://fm.cnbc.com/applications/cnbc.com/resources/editorialfiles/2026/04/23/Toplines_260142_CNBC_AAES_Q1_2026_Topline.pdf,Dem,49.0
@@ -691,26 +691,26 @@ gen202mor74921d58,generic,US,0,Morning Consult,2026-04-13,2026-04-19,27869.0,rv,
 gen202mor74921d58,generic,US,0,Morning Consult,2026-04-13,2026-04-19,27869.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#04-19-2026,Rep,42.0
 gen202joh0a1e6aef,generic,US,0,John Zogby Strategies,2026-04-17,2026-04-18,1001.0,lv,,https://x.com/zogbystrategies/status/2047123700990767164?s=20,Dem,48.0
 gen202joh0a1e6aef,generic,US,0,John Zogby Strategies,2026-04-17,2026-04-18,1001.0,lv,,https://x.com/zogbystrategies/status/2047123700990767164?s=20,Rep,44.0
-gen202mardb2854b7,generic,US,0,Marquette University Law School,2026-04-08,2026-04-16,870.0,rv,,https://law.marquette.edu/assets/community/poll/MLSPSC31/MLSPSC31Crosstabs_NationalIssues.html,Dem,48.0
-gen202mardb2854b7,generic,US,0,Marquette University Law School,2026-04-08,2026-04-16,870.0,rv,,https://law.marquette.edu/assets/community/poll/MLSPSC31/MLSPSC31Crosstabs_NationalIssues.html,Rep,44.0
 gen202marea9f7806,generic,US,0,Marquette University Law School,2026-04-08,2026-04-16,982.0,a,,https://law.marquette.edu/assets/community/poll/MLSPSC31/MLSPSC31Crosstabs_NationalIssues.html,Dem,44.0
 gen202marea9f7806,generic,US,0,Marquette University Law School,2026-04-08,2026-04-16,982.0,a,,https://law.marquette.edu/assets/community/poll/MLSPSC31/MLSPSC31Crosstabs_NationalIssues.html,Rep,41.0
+gen202mardb2854b7,generic,US,0,Marquette University Law School,2026-04-08,2026-04-16,870.0,rv,,https://law.marquette.edu/assets/community/poll/MLSPSC31/MLSPSC31Crosstabs_NationalIssues.html,Dem,48.0
+gen202mardb2854b7,generic,US,0,Marquette University Law School,2026-04-08,2026-04-16,870.0,rv,,https://law.marquette.edu/assets/community/poll/MLSPSC31/MLSPSC31Crosstabs_NationalIssues.html,Rep,44.0
 gen202marb1e8baaf,generic,US,0,Marquette University Law School,2026-04-08,2026-04-16,576.0,lv,,https://law.marquette.edu/assets/community/poll/MLSPSC31/MLSPSC31Crosstabs_NationalIssues.html,Dem,53.0
 gen202marb1e8baaf,generic,US,0,Marquette University Law School,2026-04-08,2026-04-16,576.0,lv,,https://law.marquette.edu/assets/community/poll/MLSPSC31/MLSPSC31Crosstabs_NationalIssues.html,Rep,43.0
 gen202gbaefbb746a,generic,US,0,GBAO Strategies,2026-04-08,2026-04-15,2000.0,rv,,https://www.thirdway.org/memo/the-cost-of-misplaced-priorities-trumps-coalition-frays,Dem,48.0
 gen202gbaefbb746a,generic,US,0,GBAO Strategies,2026-04-08,2026-04-15,2000.0,rv,,https://www.thirdway.org/memo/the-cost-of-misplaced-priorities-trumps-coalition-frays,Rep,40.0
 gen202mcl73db4894,generic,US,0,McLaughlin & Associates,2026-04-08,2026-04-15,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2026/04/National-April-Release-Presentation-4-16-26.pdf,Dem,47.0
 gen202mcl73db4894,generic,US,0,McLaughlin & Associates,2026-04-08,2026-04-15,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2026/04/National-April-Release-Presentation-4-16-26.pdf,Rep,43.0
-gen202ver9645121a,generic,US,0,Verasight,2026-04-10,2026-04-14,1386.0,rv,,https://www.gelliottmorris.com/p/2026-04-21-april-strength-in-numbers-verasight-poll,Dem,50.0
-gen202ver9645121a,generic,US,0,Verasight,2026-04-10,2026-04-14,1386.0,rv,,https://www.gelliottmorris.com/p/2026-04-21-april-strength-in-numbers-verasight-poll,Rep,43.0
 gen202ver06de9dc4,generic,US,0,Verasight,2026-04-10,2026-04-14,1514.0,a,,https://www.gelliottmorris.com/p/2026-04-21-april-strength-in-numbers-verasight-poll,Dem,49.0
 gen202ver06de9dc4,generic,US,0,Verasight,2026-04-10,2026-04-14,1514.0,a,,https://www.gelliottmorris.com/p/2026-04-21-april-strength-in-numbers-verasight-poll,Rep,41.0
+gen202ver9645121a,generic,US,0,Verasight,2026-04-10,2026-04-14,1386.0,rv,,https://www.gelliottmorris.com/p/2026-04-21-april-strength-in-numbers-verasight-poll,Dem,50.0
+gen202ver9645121a,generic,US,0,Verasight,2026-04-10,2026-04-14,1386.0,rv,,https://www.gelliottmorris.com/p/2026-04-21-april-strength-in-numbers-verasight-poll,Rep,43.0
 gen202sur62e6d9ea,generic,US,0,Survey 160,2026-04-08,2026-04-13,1539.0,rv,,https://www.survey160.com/methodological-research-blog/survey-160-tracking-poll-april-2026,Dem,47.0
 gen202sur62e6d9ea,generic,US,0,Survey 160,2026-04-08,2026-04-13,1539.0,rv,,https://www.survey160.com/methodological-research-blog/survey-160-tracking-poll-april-2026,Rep,37.0
-gen202youc2d75ff6,generic,US,0,YouGov,2026-04-10,2026-04-13,1745.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_G1zNgZq.pdf#page=49,Dem,38.0
-gen202youc2d75ff6,generic,US,0,YouGov,2026-04-10,2026-04-13,1745.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_G1zNgZq.pdf#page=49,Rep,35.0
 gen202you200a062e,generic,US,0,YouGov,2026-04-10,2026-04-13,1571.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_G1zNgZq.pdf#page=49,Dem,45.0
 gen202you200a062e,generic,US,0,YouGov,2026-04-10,2026-04-13,1571.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_G1zNgZq.pdf#page=49,Rep,40.0
+gen202youc2d75ff6,generic,US,0,YouGov,2026-04-10,2026-04-13,1745.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_G1zNgZq.pdf#page=49,Dem,38.0
+gen202youc2d75ff6,generic,US,0,YouGov,2026-04-10,2026-04-13,1745.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_G1zNgZq.pdf#page=49,Rep,35.0
 gen202mor32544209,generic,US,0,Morning Consult,2026-04-06,2026-04-12,12505.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#04-12-2026,Dem,46.0
 gen202mor32544209,generic,US,0,Morning Consult,2026-04-06,2026-04-12,12505.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#04-12-2026,Rep,42.0
 gen202tav4385f790,generic,US,0,Tavern Research,2026-04-06,2026-04-09,502.0,lv,,https://www.tavernresearch.com/research-and-writings/cutting-room-floor-april-10-2026,Dem,44.0
@@ -723,12 +723,12 @@ gen202rmga44f828f,generic,US,0,RMG Research,2026-04-06,2026-04-09,2000.0,rv,,htt
 gen202rmga44f828f,generic,US,0,RMG Research,2026-04-06,2026-04-09,2000.0,rv,,https://napolitannews.org/posts/generic-ballot-dem-45-percent-gop-42-dems-also-more-enthusiastic,Rep,44.0
 gen202cha3a50e664,generic,US,0,Change Research,2026-04-03,2026-04-07,2702.0,rv,,https://portal.changeresearch.com/portal/projects/25b5e88c-5e8c-4f1b-9d0e-340163792181,Dem,47.0
 gen202cha3a50e664,generic,US,0,Change Research,2026-04-03,2026-04-07,2702.0,rv,,https://portal.changeresearch.com/portal/projects/25b5e88c-5e8c-4f1b-9d0e-340163792181,Rep,42.0
+gen202morb92de0d5,generic,US,0,Morning Consult,2026-04-03,2026-04-06,2200.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#04-06-2026,Dem,45.0
+gen202morb92de0d5,generic,US,0,Morning Consult,2026-04-03,2026-04-06,2200.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#04-06-2026,Rep,42.0
 gen202you47b39b9a,generic,US,0,YouGov,2026-04-03,2026-04-06,1558.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_SVRZJH8.pdf#page=30,Dem,44.0
 gen202you47b39b9a,generic,US,0,YouGov,2026-04-03,2026-04-06,1558.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_SVRZJH8.pdf#page=30,Rep,42.0
 gen202youd8d72505,generic,US,0,YouGov,2026-04-03,2026-04-06,1745.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_SVRZJH8.pdf#page=30,Dem,38.0
 gen202youd8d72505,generic,US,0,YouGov,2026-04-03,2026-04-06,1745.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_SVRZJH8.pdf#page=30,Rep,36.0
-gen202morb92de0d5,generic,US,0,Morning Consult,2026-04-03,2026-04-06,2200.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#04-06-2026,Dem,45.0
-gen202morb92de0d5,generic,US,0,Morning Consult,2026-04-03,2026-04-06,2200.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#04-06-2026,Rep,42.0
 gen202mor77813195,generic,US,0,Morning Consult,2026-03-30,2026-04-05,12505.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#04-05-2026,Dem,45.0
 gen202mor77813195,generic,US,0,Morning Consult,2026-03-30,2026-04-05,12505.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#04-05-2026,Rep,42.0
 gen202cyg5dc20dbb,generic,US,0,Cygnal,2026-04-02,2026-04-03,1500.0,lv,,https://www.cygn.al/wp-content/uploads/2026/04/23738-Cygnal-National-Apr26-NVT-Deck-Public.pdf,Dem,49.0
@@ -745,10 +745,10 @@ gen202mor2e2d0029,generic,US,0,Morning Consult,2026-03-23,2026-03-29,26725.0,rv,
 gen202mor2e2d0029,generic,US,0,Morning Consult,2026-03-23,2026-03-29,26725.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#03-29-2026,Rep,42.0
 gen202mor1a15291a,generic,US,0,Morning Consult,2026-03-23,2026-03-29,26725.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#03-29-2026,Dem,45.0
 gen202mor1a15291a,generic,US,0,Morning Consult,2026-03-23,2026-03-29,26725.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#03-29-2026,Rep,42.0
-gen202hara9a84ddc,generic,US,0,HarrisX/Harris,2026-03-25,2026-03-26,,lv,,https://x.com/IAPolls2022/status/2038696085267394990?s=20,Dem,52.0
-gen202hara9a84ddc,generic,US,0,HarrisX/Harris,2026-03-25,2026-03-26,,lv,,https://x.com/IAPolls2022/status/2038696085267394990?s=20,Rep,48.0
 gen202har6cb5564e,generic,US,0,HarrisX/Harris,2026-03-25,2026-03-26,2009.0,rv,,https://x.com/IAPolls2022/status/2038692771830063336?s=20,Dem,51.0
 gen202har6cb5564e,generic,US,0,HarrisX/Harris,2026-03-25,2026-03-26,2009.0,rv,,https://x.com/IAPolls2022/status/2038692771830063336?s=20,Rep,49.0
+gen202hara9a84ddc,generic,US,0,HarrisX/Harris,2026-03-25,2026-03-26,,lv,,https://x.com/IAPolls2022/status/2038696085267394990?s=20,Dem,52.0
+gen202hara9a84ddc,generic,US,0,HarrisX/Harris,2026-03-25,2026-03-26,,lv,,https://x.com/IAPolls2022/status/2038696085267394990?s=20,Rep,48.0
 gen202quaf01fa8df,generic,US,0,Quantus Insights,2026-03-25,2026-03-26,1470.0,lv,,https://docs.google.com/spreadsheets/d/1_Fz7pWK_RfSVQ__18QujNi-QPw5jJIqX/edit?gid=1786900467#gid=1786900467,Dem,47.0
 gen202quaf01fa8df,generic,US,0,Quantus Insights,2026-03-25,2026-03-26,1470.0,lv,,https://docs.google.com/spreadsheets/d/1_Fz7pWK_RfSVQ__18QujNi-QPw5jJIqX/edit?gid=1786900467#gid=1786900467,Rep,41.3
 gen202bigb03ecf05,generic,US,0,Big Data Poll,2026-03-22,2026-03-24,3003.0,rv,,https://www.bigdatapoll.com/blog/trump-disapproval-rating-hits-new-high-in-march-amid-unpopular-war/,Dem,48.0
@@ -781,10 +781,10 @@ gen202echa62b259e,generic,US,0,Echelon Insights,2026-03-12,2026-03-16,1033.0,lv,
 gen202echa62b259e,generic,US,0,Echelon Insights,2026-03-12,2026-03-16,1033.0,lv,,https://docs.google.com/spreadsheets/d/1KWEl_e6oGvnVZFbCnbJjk9MHy9OAE0y_/edit?gid=537850620#gid=537850620,Rep,44.0
 gen202you3180bc85,generic,US,0,YouGov,2026-03-13,2026-03-16,1593.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_CwWXhS2.pdf#page=58,Dem,39.0
 gen202you3180bc85,generic,US,0,YouGov,2026-03-13,2026-03-16,1593.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_CwWXhS2.pdf#page=58,Rep,35.0
-gen202you5eb0a81f,generic,US,0,YouGov,2026-03-13,2026-03-16,1427.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_CwWXhS2.pdf#page=58,Dem,43.0
-gen202you5eb0a81f,generic,US,0,YouGov,2026-03-13,2026-03-16,1427.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_CwWXhS2.pdf#page=58,Rep,41.0
 gen202mor25e7b4e1,generic,US,0,Morning Consult,2026-03-13,2026-03-16,2201.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#03-16-2026,Dem,48.0
 gen202mor25e7b4e1,generic,US,0,Morning Consult,2026-03-13,2026-03-16,2201.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#03-16-2026,Rep,40.0
+gen202you5eb0a81f,generic,US,0,YouGov,2026-03-13,2026-03-16,1427.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_CwWXhS2.pdf#page=58,Dem,43.0
+gen202you5eb0a81f,generic,US,0,YouGov,2026-03-13,2026-03-16,1427.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_CwWXhS2.pdf#page=58,Rep,41.0
 gen202surc38b2f8a,generic,US,0,Survey 160,2026-03-09,2026-03-15,1546.0,rv,,https://www.survey160.com/methodological-research-blog/survey-160-tracking-poll-march-2026,Dem,48.0
 gen202surc38b2f8a,generic,US,0,Survey 160,2026-03-09,2026-03-15,1546.0,rv,,https://www.survey160.com/methodological-research-blog/survey-160-tracking-poll-march-2026,Rep,38.0
 gen202morb582e7f4,generic,US,0,Morning Consult,2026-03-09,2026-03-15,26634.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#03-15-2026,Dem,45.0
@@ -831,22 +831,22 @@ gen202you5d81f482,generic,US,0,YouGov,2026-02-25,2026-02-27,1523.0,rv,,https://a
 gen202you5d81f482,generic,US,0,YouGov,2026-02-25,2026-02-27,1523.0,rv,,https://assets1.cbsnewsstatic.com/hub/cms/prod_cms_alt/file/2026/03/02/19e472d6-ce4d-4193-b4cc-0e5086fb97f7/cbsnews_20260301_parties-tues.pdf,Rep,40.0
 gen202cyg042f1e59,generic,US,0,Cygnal,2026-02-24,2026-02-26,1048.0,lv,R,https://act.americanprinciplesproject.org/p/protect-kids-online/results?access=press,Dem,48.0
 gen202cyg042f1e59,generic,US,0,Cygnal,2026-02-24,2026-02-26,1048.0,lv,R,https://act.americanprinciplesproject.org/p/protect-kids-online/results?access=press,Rep,45.0
-gen202har6b357806,generic,US,0,HarrisX/Harris,2026-02-25,2026-02-26,1999.0,rv,,https://harvardharrispoll.com/wp-content/uploads/2026/03/HHP_Feb2026_KeyResults_Mon.pdf,Dem,50.0
-gen202har6b357806,generic,US,0,HarrisX/Harris,2026-02-25,2026-02-26,1999.0,rv,,https://harvardharrispoll.com/wp-content/uploads/2026/03/HHP_Feb2026_KeyResults_Mon.pdf,Rep,50.0
 gen202harb82e0a2b,generic,US,0,HarrisX/Harris,2026-02-25,2026-02-26,,lv,,https://harvardharrispoll.com/wp-content/uploads/2026/03/HHP_Feb2026_KeyResults_Mon.pdf,Dem,50.0
 gen202harb82e0a2b,generic,US,0,HarrisX/Harris,2026-02-25,2026-02-26,,lv,,https://harvardharrispoll.com/wp-content/uploads/2026/03/HHP_Feb2026_KeyResults_Mon.pdf,Rep,50.0
+gen202har6b357806,generic,US,0,HarrisX/Harris,2026-02-25,2026-02-26,1999.0,rv,,https://harvardharrispoll.com/wp-content/uploads/2026/03/HHP_Feb2026_KeyResults_Mon.pdf,Dem,50.0
+gen202har6b357806,generic,US,0,HarrisX/Harris,2026-02-25,2026-02-26,1999.0,rv,,https://harvardharrispoll.com/wp-content/uploads/2026/03/HHP_Feb2026_KeyResults_Mon.pdf,Rep,50.0
 gen202pen388f5658,generic,US,0,Pennsylvania State University McCourtney Institute for Democracy/YouGov,2026-02-18,2026-02-23,824.0,rv,,https://democracy.psu.edu/wp-content/uploads/sites/14/2026/03/MOTN-GenericBallotFeb2026.pdf,Dem,42.0
 gen202pen388f5658,generic,US,0,Pennsylvania State University McCourtney Institute for Democracy/YouGov,2026-02-18,2026-02-23,824.0,rv,,https://democracy.psu.edu/wp-content/uploads/sites/14/2026/03/MOTN-GenericBallotFeb2026.pdf,Rep,37.0
-gen202ipse467faa1,generic,US,0,Ipsos,2026-02-18,2026-02-23,4638.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-03/Reuters%20Ipsos%20Large%20Issue%20Topline%20Feb%202026.pdf,Dem,35.0
-gen202ipse467faa1,generic,US,0,Ipsos,2026-02-18,2026-02-23,4638.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-03/Reuters%20Ipsos%20Large%20Issue%20Topline%20Feb%202026.pdf,Rep,32.0
-gen202ips5a0ed2e7,generic,US,0,Ipsos,2026-02-18,2026-02-23,3686.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-03/Reuters%20Ipsos%20Large%20Issue%20Topline%20Feb%202026.pdf,Dem,40.0
-gen202ips5a0ed2e7,generic,US,0,Ipsos,2026-02-18,2026-02-23,3686.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-03/Reuters%20Ipsos%20Large%20Issue%20Topline%20Feb%202026.pdf,Rep,38.0
 gen202gra2275cae0,generic,US,0,Grayhouse,2026-02-20,2026-02-23,1394.0,rv,R,https://cdn.prod.website-files.com/5d02aaade6188137a65c8441/69a9b8dd9009aa1372749a66_Iran%20and%20Affordability%20Deck_0305.pdf,Dem,43.0
 gen202gra2275cae0,generic,US,0,Grayhouse,2026-02-20,2026-02-23,1394.0,rv,R,https://cdn.prod.website-files.com/5d02aaade6188137a65c8441/69a9b8dd9009aa1372749a66_Iran%20and%20Affordability%20Deck_0305.pdf,Rep,40.0
-gen202you4cb58744,generic,US,0,YouGov,2026-02-20,2026-02-23,1551.0,a,,https://yougov.com/en-us/articles/54156-two-thirds-independents-disapprove-donald-trump-job-performance-february-20-23-2026-economist-yougov-poll,Dem,39.0
-gen202you4cb58744,generic,US,0,YouGov,2026-02-20,2026-02-23,1551.0,a,,https://yougov.com/en-us/articles/54156-two-thirds-independents-disapprove-donald-trump-job-performance-february-20-23-2026-economist-yougov-poll,Rep,34.0
+gen202ips5a0ed2e7,generic,US,0,Ipsos,2026-02-18,2026-02-23,3686.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-03/Reuters%20Ipsos%20Large%20Issue%20Topline%20Feb%202026.pdf,Dem,40.0
+gen202ips5a0ed2e7,generic,US,0,Ipsos,2026-02-18,2026-02-23,3686.0,rv,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-03/Reuters%20Ipsos%20Large%20Issue%20Topline%20Feb%202026.pdf,Rep,38.0
+gen202ipse467faa1,generic,US,0,Ipsos,2026-02-18,2026-02-23,4638.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-03/Reuters%20Ipsos%20Large%20Issue%20Topline%20Feb%202026.pdf,Dem,35.0
+gen202ipse467faa1,generic,US,0,Ipsos,2026-02-18,2026-02-23,4638.0,a,,https://www.ipsos.com/sites/default/files/ct/news/documents/2026-03/Reuters%20Ipsos%20Large%20Issue%20Topline%20Feb%202026.pdf,Rep,32.0
 gen202youc7574fda,generic,US,0,YouGov,2026-02-20,2026-02-23,1402.0,rv,,https://yougov.com/en-us/articles/54156-two-thirds-independents-disapprove-donald-trump-job-performance-february-20-23-2026-economist-yougov-poll,Dem,45.0
 gen202youc7574fda,generic,US,0,YouGov,2026-02-20,2026-02-23,1402.0,rv,,https://yougov.com/en-us/articles/54156-two-thirds-independents-disapprove-donald-trump-job-performance-february-20-23-2026-economist-yougov-poll,Rep,41.0
+gen202you4cb58744,generic,US,0,YouGov,2026-02-20,2026-02-23,1551.0,a,,https://yougov.com/en-us/articles/54156-two-thirds-independents-disapprove-donald-trump-job-performance-february-20-23-2026-economist-yougov-poll,Dem,39.0
+gen202you4cb58744,generic,US,0,YouGov,2026-02-20,2026-02-23,1551.0,a,,https://yougov.com/en-us/articles/54156-two-thirds-independents-disapprove-donald-trump-job-performance-february-20-23-2026-economist-yougov-poll,Rep,34.0
 gen202youf1935f54,generic,US,0,YouGov,2026-02-20,2026-02-23,1402.0,rv,,https://yougov.com/en-us/articles/54156-two-thirds-independents-disapprove-donald-trump-job-performance-february-20-23-2026-economist-yougov-poll,Dem,45.0
 gen202youf1935f54,generic,US,0,YouGov,2026-02-20,2026-02-23,1402.0,rv,,https://yougov.com/en-us/articles/54156-two-thirds-independents-disapprove-donald-trump-job-performance-february-20-23-2026-economist-yougov-poll,Rep,41.0
 gen202ips899bee43,generic,US,0,Ipsos,2026-02-18,2026-02-23,3686.0,rv,,https://www.reuters.com/world/us/most-americans-say-trump-is-growing-erratic-with-age-reutersipsos-poll-finds-2026-02-24,Dem,40.0
@@ -875,14 +875,14 @@ gen202big82c2050f,generic,US,0,Big Data Poll,2026-02-16,2026-02-18,2012.0,rv,,ht
 gen202big82c2050f,generic,US,0,Big Data Poll,2026-02-16,2026-02-18,2012.0,rv,,https://application.marketsight.com/app/ItemView.aspx?SharedFor=public%40bigdatapoll.com&SharedBy=34090&id=85c98324-ccc5-43dc-93e6-b3f60172d1fe,Rep,40.0
 gen202ipsb162ebc2,generic,US,0,Ipsos,2026-02-12,2026-02-17,2087.0,rv,,https://www.washingtonpost.com/politics/2026/02/25/poll-democrats-trump-republicans-midterms,Dem,47.0
 gen202ipsb162ebc2,generic,US,0,Ipsos,2026-02-12,2026-02-17,2087.0,rv,,https://www.washingtonpost.com/politics/2026/02/25/poll-democrats-trump-republicans-midterms,Rep,45.0
-gen202ips1b69c5aa,generic,US,0,Ipsos,2026-02-13,2026-02-16,1117.0,a,,https://www.reuters.com/world/us/trumps-immigration-approval-hits-new-low-according-reutersipsos-poll-2026-02-17,Dem,36.0
-gen202ips1b69c5aa,generic,US,0,Ipsos,2026-02-13,2026-02-16,1117.0,a,,https://www.reuters.com/world/us/trumps-immigration-approval-hits-new-low-according-reutersipsos-poll-2026-02-17,Rep,32.0
 gen202ips5480e8db,generic,US,0,Ipsos,2026-02-13,2026-02-16,846.0,rv,,https://www.reuters.com/world/us/trumps-immigration-approval-hits-new-low-according-reutersipsos-poll-2026-02-17,Dem,41.0
 gen202ips5480e8db,generic,US,0,Ipsos,2026-02-13,2026-02-16,846.0,rv,,https://www.reuters.com/world/us/trumps-immigration-approval-hits-new-low-according-reutersipsos-poll-2026-02-17,Rep,37.0
-gen202you396f2cec,generic,US,0,YouGov,2026-02-13,2026-02-16,1509.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_usZL1Jt.pdf,Dem,47.0
-gen202you396f2cec,generic,US,0,YouGov,2026-02-13,2026-02-16,1509.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_usZL1Jt.pdf,Rep,40.0
+gen202ips1b69c5aa,generic,US,0,Ipsos,2026-02-13,2026-02-16,1117.0,a,,https://www.reuters.com/world/us/trumps-immigration-approval-hits-new-low-according-reutersipsos-poll-2026-02-17,Dem,36.0
+gen202ips1b69c5aa,generic,US,0,Ipsos,2026-02-13,2026-02-16,1117.0,a,,https://www.reuters.com/world/us/trumps-immigration-approval-hits-new-low-according-reutersipsos-poll-2026-02-17,Rep,32.0
 gen202you519cb5b0,generic,US,0,YouGov,2026-02-13,2026-02-16,1682.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_usZL1Jt.pdf,Dem,39.0
 gen202you519cb5b0,generic,US,0,YouGov,2026-02-13,2026-02-16,1682.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_usZL1Jt.pdf,Rep,33.0
+gen202you396f2cec,generic,US,0,YouGov,2026-02-13,2026-02-16,1509.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_usZL1Jt.pdf,Dem,47.0
+gen202you396f2cec,generic,US,0,YouGov,2026-02-13,2026-02-16,1509.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_usZL1Jt.pdf,Rep,40.0
 gen202moredea7e96,generic,US,0,Morning Consult,2026-02-09,2026-02-15,12505.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#02-15-2026,Dem,45.0
 gen202moredea7e96,generic,US,0,Morning Consult,2026-02-09,2026-02-15,12505.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#02-15-2026,Rep,42.0
 gen202qua250cbc5a,generic,US,0,Quantus Insights,2026-02-12,2026-02-13,1515.0,lv,,https://drive.google.com/file/d/1oJf00_QCTUCxMvNoNnRMRKj97lQ5S5pP/view,Dem,48.0
@@ -891,16 +891,16 @@ gen202you0acd1884,generic,US,0,YouGov,2026-02-09,2026-02-12,1149.0,rv,,https://w
 gen202you0acd1884,generic,US,0,YouGov,2026-02-09,2026-02-12,1149.0,rv,,https://www.yahoo.com/news/politics/article/poll-trumps-approval-rating-hits-new-low-as-immigration-backlash-grows-and-ice-withdraws-from-minnesota-204723473.html,Rep,41.0
 gen202rmg8840c11c,generic,US,0,RMG Research,2026-02-09,2026-02-12,2000.0,rv,,https://napolitannews.org/posts/generic-ballot-gop-44-percent-dem-41-but-dems-more-enthusiastic#02-12-2026,Dem,45.0
 gen202rmg8840c11c,generic,US,0,RMG Research,2026-02-09,2026-02-12,2000.0,rv,,https://napolitannews.org/posts/generic-ballot-gop-44-percent-dem-41-but-dems-more-enthusiastic#02-12-2026,Rep,47.0
-gen202the46f080ee,generic,US,0,The Argument/Verasight,2026-02-04,2026-02-10,,lv,,https://www.theargumentmag.com/p/the-trans-rights-backlash-is-real,Dem,53.0
-gen202the46f080ee,generic,US,0,The Argument/Verasight,2026-02-04,2026-02-10,,lv,,https://www.theargumentmag.com/p/the-trans-rights-backlash-is-real,Rep,47.0
 gen202thea1c3940a,generic,US,0,The Argument/Verasight,2026-02-04,2026-02-10,3003.0,rv,,https://www.theargumentmag.com/p/the-trans-rights-backlash-is-real,Dem,53.0
 gen202thea1c3940a,generic,US,0,The Argument/Verasight,2026-02-04,2026-02-10,3003.0,rv,,https://www.theargumentmag.com/p/the-trans-rights-backlash-is-real,Rep,47.0
-gen202focec036b61,generic,US,0,Focaldata,2026-02-10,2026-02-10,,rv,,https://www.focaldata.com/blog/cost-of-living-fuelling-democrat-strength-in-new-midterms-polling,Dem,46.0
-gen202focec036b61,generic,US,0,Focaldata,2026-02-10,2026-02-10,,rv,,https://www.focaldata.com/blog/cost-of-living-fuelling-democrat-strength-in-new-midterms-polling,Rep,42.0
+gen202the46f080ee,generic,US,0,The Argument/Verasight,2026-02-04,2026-02-10,,lv,,https://www.theargumentmag.com/p/the-trans-rights-backlash-is-real,Dem,53.0
+gen202the46f080ee,generic,US,0,The Argument/Verasight,2026-02-04,2026-02-10,,lv,,https://www.theargumentmag.com/p/the-trans-rights-backlash-is-real,Rep,47.0
 gen202foc64195cbb,generic,US,0,Focaldata,2026-02-10,2026-02-10,1148.0,a,,https://www.focaldata.com/blog/cost-of-living-fuelling-democrat-strength-in-new-midterms-polling,Dem,42.0
 gen202foc64195cbb,generic,US,0,Focaldata,2026-02-10,2026-02-10,1148.0,a,,https://www.focaldata.com/blog/cost-of-living-fuelling-democrat-strength-in-new-midterms-polling,Rep,38.0
 gen202foc9688c25e,generic,US,0,Focaldata,2026-02-10,2026-02-10,,lv,,https://www.focaldata.com/blog/cost-of-living-fuelling-democrat-strength-in-new-midterms-polling,Dem,51.0
 gen202foc9688c25e,generic,US,0,Focaldata,2026-02-10,2026-02-10,,lv,,https://www.focaldata.com/blog/cost-of-living-fuelling-democrat-strength-in-new-midterms-polling,Rep,44.0
+gen202focec036b61,generic,US,0,Focaldata,2026-02-10,2026-02-10,,rv,,https://www.focaldata.com/blog/cost-of-living-fuelling-democrat-strength-in-new-midterms-polling,Dem,46.0
+gen202focec036b61,generic,US,0,Focaldata,2026-02-10,2026-02-10,,rv,,https://www.focaldata.com/blog/cost-of-living-fuelling-democrat-strength-in-new-midterms-polling,Rep,42.0
 gen202mor0b96b326,generic,US,0,Morning Consult,2026-02-06,2026-02-09,2200.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#02-09-2026,Dem,45.0
 gen202mor0b96b326,generic,US,0,Morning Consult,2026-02-06,2026-02-09,2200.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#02-09-2026,Rep,41.0
 gen202youxi2k24mg,generic,US,0,YouGov,2026-02-06,2026-02-09,1730.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_vNnwPx2.pdf,Dem,39.0
@@ -927,30 +927,30 @@ gen202tip00f8b387,generic,US,0,TIPP Insights,2026-01-27,2026-01-29,1126.0,rv,,ht
 gen202tip00f8b387,generic,US,0,TIPP Insights,2026-01-27,2026-01-29,1126.0,rv,,https://issuesinsights.com/2026/02/16/who-leads-in-2028-presidential-race-and-in-2026-midterm-elections-ii-tipp-poll,Rep,42.0
 gen202hary979p4hg,generic,US,0,HarrisX/Harris Poll,2026-01-28,2026-01-29,2000.0,lv,,https://harvardharrispoll.com/wp-content/uploads/2026/02/HHP_Jan2026_KeyResults.pdf,Dem,52.0
 gen202hary979p4hg,generic,US,0,HarrisX/Harris Poll,2026-01-28,2026-01-29,2000.0,lv,,https://harvardharrispoll.com/wp-content/uploads/2026/02/HHP_Jan2026_KeyResults.pdf,Rep,48.0
+gen202mar1mmhk54j,generic,US,0,Marquette University Law School,2026-01-21,2026-01-28,1003.0,a,,https://law.marquette.edu/assets/community/poll/MLSPSC30/MLSPSC30Crosstabs_NationalIssues.html,Dem,45.0
+gen202mar1mmhk54j,generic,US,0,Marquette University Law School,2026-01-21,2026-01-28,1003.0,a,,https://law.marquette.edu/assets/community/poll/MLSPSC30/MLSPSC30Crosstabs_NationalIssues.html,Rep,39.0
 gen202maro1vul0lx,generic,US,0,Marquette University Law School,2026-01-21,2026-01-28,577.0,lv,,https://law.marquette.edu/assets/community/poll/MLSPSC30/MLSPSC30Crosstabs_NationalIssues.html,Dem,52.0
 gen202maro1vul0lx,generic,US,0,Marquette University Law School,2026-01-21,2026-01-28,577.0,lv,,https://law.marquette.edu/assets/community/poll/MLSPSC30/MLSPSC30Crosstabs_NationalIssues.html,Rep,45.0
 gen202marfa6kqh0m,generic,US,0,Marquette University Law School,2026-01-21,2026-01-28,869.0,rv,,https://law.marquette.edu/assets/community/poll/MLSPSC30/MLSPSC30Crosstabs_NationalIssues.html,Dem,48.0
 gen202marfa6kqh0m,generic,US,0,Marquette University Law School,2026-01-21,2026-01-28,869.0,rv,,https://law.marquette.edu/assets/community/poll/MLSPSC30/MLSPSC30Crosstabs_NationalIssues.html,Rep,44.0
-gen202mar1mmhk54j,generic,US,0,Marquette University Law School,2026-01-21,2026-01-28,1003.0,a,,https://law.marquette.edu/assets/community/poll/MLSPSC30/MLSPSC30Crosstabs_NationalIssues.html,Dem,45.0
-gen202mar1mmhk54j,generic,US,0,Marquette University Law School,2026-01-21,2026-01-28,1003.0,a,,https://law.marquette.edu/assets/community/poll/MLSPSC30/MLSPSC30Crosstabs_NationalIssues.html,Rep,39.0
 gen202cyggq1ns3i7,generic,US,0,Cygnal,2026-01-27,2026-01-28,1004.0,lv,,https://www.cygn.al/wp-content/uploads/2026/02/Cygnal-Deportation-Poll-Data.pdf,Dem,48.0
 gen202cyggq1ns3i7,generic,US,0,Cygnal,2026-01-27,2026-01-28,1004.0,lv,,https://www.cygn.al/wp-content/uploads/2026/02/Cygnal-Deportation-Poll-Data.pdf,Rep,44.0
 gen202mcl0f670da2,generic,US,0,McLaughlin & Associates,2026-01-21,2026-01-27,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2026/02/National-January-2026-Presentation-RELEASE-1-1.pdf,Dem,46.0
 gen202mcl0f670da2,generic,US,0,McLaughlin & Associates,2026-01-21,2026-01-27,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2026/02/National-January-2026-Presentation-RELEASE-1-1.pdf,Rep,44.0
-gen202theea14xh0m,generic,US,0,The Argument/Verasight,2026-01-26,2026-01-27,1515.0,rv,,https://www.theargumentmag.com/p/immigration-is-turning-into-a-disaster,Rep,48.0
-gen202theea14xh0m,generic,US,0,The Argument/Verasight,2026-01-26,2026-01-27,1515.0,rv,,https://www.theargumentmag.com/p/immigration-is-turning-into-a-disaster,Dem,52.0
 gen202thew0pr38sc,generic,US,0,The Argument/Verasight,2026-01-26,2026-01-27,,lv,,https://www.theargumentmag.com/p/immigration-is-turning-into-a-disaster,Dem,55.0
 gen202thew0pr38sc,generic,US,0,The Argument/Verasight,2026-01-26,2026-01-27,,lv,,https://www.theargumentmag.com/p/immigration-is-turning-into-a-disaster,Rep,45.0
+gen202theea14xh0m,generic,US,0,The Argument/Verasight,2026-01-26,2026-01-27,1515.0,rv,,https://www.theargumentmag.com/p/immigration-is-turning-into-a-disaster,Rep,48.0
+gen202theea14xh0m,generic,US,0,The Argument/Verasight,2026-01-26,2026-01-27,1515.0,rv,,https://www.theargumentmag.com/p/immigration-is-turning-into-a-disaster,Dem,52.0
 gen202foc331c995c,generic,US,0,Focaldata,2026-01-23,2026-01-26,2037.0,a,,https://www.focaldata.com/blog/cost-of-living-fuelling-democrat-strength-in-new-midterms-polling,Dem,39.0
 gen202foc331c995c,generic,US,0,Focaldata,2026-01-23,2026-01-26,2037.0,a,,https://www.focaldata.com/blog/cost-of-living-fuelling-democrat-strength-in-new-midterms-polling,Rep,35.0
 gen202bea1zjzpg64,generic,US,0,Beacon Research/Shaw & Co. Research,2026-01-23,2026-01-26,1005.0,rv,,https://static.foxnews.com/foxnews.com/content/uploads/2026/01/fox_january-23-26_national_topline_january-28-release.pdf,Dem,52.0
 gen202bea1zjzpg64,generic,US,0,Beacon Research/Shaw & Co. Research,2026-01-23,2026-01-26,1005.0,rv,,https://static.foxnews.com/foxnews.com/content/uploads/2026/01/fox_january-23-26_national_topline_january-28-release.pdf,Rep,46.0
-gen202younb0uckie,generic,US,0,YouGov,2026-01-23,2026-01-26,1684.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_8FWGyNz.pdf#page=83,Dem,38.0
-gen202younb0uckie,generic,US,0,YouGov,2026-01-23,2026-01-26,1684.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_8FWGyNz.pdf#page=83,Rep,35.0
 gen202echg6wqrhp3,generic,US,0,Echelon Insights,2026-01-22,2026-01-26,1029.0,lv,,https://echelonin.wpenginepowered.com/wp-content/uploads/January-2026-Voter-Omnibus-Topline.pdf,Dem,49.0
 gen202echg6wqrhp3,generic,US,0,Echelon Insights,2026-01-22,2026-01-26,1029.0,lv,,https://echelonin.wpenginepowered.com/wp-content/uploads/January-2026-Voter-Omnibus-Topline.pdf,Rep,44.0
 gen202you9a9g9olg,generic,US,0,YouGov,2026-01-23,2026-01-26,1520.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_8FWGyNz.pdf#page=83,Dem,43.0
 gen202you9a9g9olg,generic,US,0,YouGov,2026-01-23,2026-01-26,1520.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_8FWGyNz.pdf#page=83,Rep,38.0
+gen202younb0uckie,generic,US,0,YouGov,2026-01-23,2026-01-26,1684.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_8FWGyNz.pdf#page=83,Dem,38.0
+gen202younb0uckie,generic,US,0,YouGov,2026-01-23,2026-01-26,1684.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_8FWGyNz.pdf#page=83,Rep,35.0
 gen202mord7yx3hp4,generic,US,0,Morning Consult,2026-01-19,2026-01-25,12505.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#01-25-2026,Dem,44.0
 gen202mord7yx3hp4,generic,US,0,Morning Consult,2026-01-19,2026-01-25,12505.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#01-25-2026,Rep,43.0
 gen202mor40wu93uh,generic,US,0,Morning Consult,2026-01-23,2026-01-25,2201.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#01-25-2026,Dem,45.0
@@ -995,10 +995,10 @@ gen202cnnv1jpahum,generic,US,0,CNN/SSRS,2026-01-09,2026-01-12,968.0,rv,,https://
 gen202cnnv1jpahum,generic,US,0,CNN/SSRS,2026-01-09,2026-01-12,968.0,rv,,https://s3.documentcloud.org/documents/26491962/cnn-poll-conducted-by-ssrs-2026-midterms-congress.pdf,Rep,41.0
 gen202you0k6m7yg7,generic,US,0,YouGov,2026-01-08,2026-01-12,1148.0,rv,,https://www.scribd.com/document/980617250/Yahoo-YouGov-ICE-Poll-January-2026,Dem,45.0
 gen202you0k6m7yg7,generic,US,0,YouGov,2026-01-08,2026-01-12,1148.0,rv,,https://www.scribd.com/document/980617250/Yahoo-YouGov-ICE-Poll-January-2026,Rep,40.0
-gen202you85czczs0,generic,US,0,YouGov,2026-01-09,2026-01-12,1437.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_YpmxDW2.pdf,Dem,44.0
-gen202you85czczs0,generic,US,0,YouGov,2026-01-09,2026-01-12,1437.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_YpmxDW2.pdf,Rep,40.0
 gen202you6o1nsb1w,generic,US,0,YouGov,2026-01-09,2026-01-12,1602.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_YpmxDW2.pdf,Dem,39.0
 gen202you6o1nsb1w,generic,US,0,YouGov,2026-01-09,2026-01-12,1602.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_YpmxDW2.pdf,Rep,33.0
+gen202you85czczs0,generic,US,0,YouGov,2026-01-09,2026-01-12,1437.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_YpmxDW2.pdf,Dem,44.0
+gen202you85czczs0,generic,US,0,YouGov,2026-01-09,2026-01-12,1437.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_YpmxDW2.pdf,Rep,40.0
 gen202mor4n710c21,generic,US,0,Morning Consult,2026-01-09,2026-01-12,2201.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#01-12-2026,Dem,46.0
 gen202mor4n710c21,generic,US,0,Morning Consult,2026-01-09,2026-01-12,2201.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#01-12-2026,Rep,43.0
 gen202moraq07xnwv,generic,US,0,Morning Consult,2026-01-05,2026-01-11,19675.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#01-11-2026,Dem,45.0
@@ -1047,24 +1047,24 @@ gen202quayrux711g,generic,US,0,Quantus Insights,2025-12-15,2025-12-16,1000.0,lv,
 gen202quayrux711g,generic,US,0,Quantus Insights,2025-12-15,2025-12-16,1000.0,lv,,https://drive.google.com/file/d/14uRV2kwTVNEO4EIXGv7TCQZtmlMK0owX/view,Rep,41.0
 gen202quisv6i8kb4,generic,US,0,Quinnipiac University,2025-12-11,2025-12-15,1035.0,rv,,https://poll.qu.edu/images/polling/us/us12172025_ugli25.pdf,Dem,47.0
 gen202quisv6i8kb4,generic,US,0,Quinnipiac University,2025-12-11,2025-12-15,1035.0,rv,,https://poll.qu.edu/images/polling/us/us12172025_ugli25.pdf,Rep,43.0
-gen202youkht853yu,generic,US,0,YouGov,2025-12-12,2025-12-15,1632.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Z19KY8S.pdf,Dem,37.0
-gen202youkht853yu,generic,US,0,YouGov,2025-12-12,2025-12-15,1632.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Z19KY8S.pdf,Rep,33.0
-gen202ech9vgw0ths,generic,US,0,Echelon Insights,2025-12-11,2025-12-15,1011.0,lv,,https://echelonin.wpenginepowered.com/wp-content/uploads/December-2025-Omnibus-Topline-External.pdf,Dem,48.0
-gen202ech9vgw0ths,generic,US,0,Echelon Insights,2025-12-11,2025-12-15,1011.0,lv,,https://echelonin.wpenginepowered.com/wp-content/uploads/December-2025-Omnibus-Topline-External.pdf,Rep,45.0
-gen202morav9t1tpv,generic,US,0,Morning Consult,2025-12-12,2025-12-15,2201.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#12-15-2025,Dem,45.0
-gen202morav9t1tpv,generic,US,0,Morning Consult,2025-12-12,2025-12-15,2201.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#12-15-2025,Rep,44.0
 gen202youtqbpl5wi,generic,US,0,YouGov,2025-12-12,2025-12-15,1453.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Z19KY8S.pdf,Dem,43.0
 gen202youtqbpl5wi,generic,US,0,YouGov,2025-12-12,2025-12-15,1453.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Z19KY8S.pdf,Rep,39.0
+gen202youkht853yu,generic,US,0,YouGov,2025-12-12,2025-12-15,1632.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Z19KY8S.pdf,Dem,37.0
+gen202youkht853yu,generic,US,0,YouGov,2025-12-12,2025-12-15,1632.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Z19KY8S.pdf,Rep,33.0
+gen202morav9t1tpv,generic,US,0,Morning Consult,2025-12-12,2025-12-15,2201.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#12-15-2025,Dem,45.0
+gen202morav9t1tpv,generic,US,0,Morning Consult,2025-12-12,2025-12-15,2201.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#12-15-2025,Rep,44.0
+gen202ech9vgw0ths,generic,US,0,Echelon Insights,2025-12-11,2025-12-15,1011.0,lv,,https://echelonin.wpenginepowered.com/wp-content/uploads/December-2025-Omnibus-Topline-External.pdf,Dem,48.0
+gen202ech9vgw0ths,generic,US,0,Echelon Insights,2025-12-11,2025-12-15,1011.0,lv,,https://echelonin.wpenginepowered.com/wp-content/uploads/December-2025-Omnibus-Topline-External.pdf,Rep,45.0
 gen202morhqrpcr9z,generic,US,0,Morning Consult,2025-12-08,2025-12-14,19954.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#12-14-2025,Dem,44.0
 gen202morhqrpcr9z,generic,US,0,Morning Consult,2025-12-08,2025-12-14,19954.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-election-generic-ballot-polls#12-14-2025,Rep,43.0
 gen202bigu771x3r1,generic,US,0,Big Data Poll,2025-12-10,2025-12-12,3004.0,rv,,https://application.marketsight.com/app/ItemView.aspx?SharedFor=public%40bigdatapoll.com&SharedBy=34090&id=d44d9751-22bd-489a-a372-b3b3002c437f,Dem,44.1
 gen202bigu771x3r1,generic,US,0,Big Data Poll,2025-12-10,2025-12-12,3004.0,rv,,https://application.marketsight.com/app/ItemView.aspx?SharedFor=public%40bigdatapoll.com&SharedBy=34090&id=d44d9751-22bd-489a-a372-b3b3002c437f,Rep,40.6
-gen202cla48neovgl,generic,US,0,Clarity Campaign Labs,2025-12-04,2025-12-11,1000.0,lv,,https://www.claritycampaigns.com/clarity-omnibus-dec-2025,Dem,49.0
-gen202cla48neovgl,generic,US,0,Clarity Campaign Labs,2025-12-04,2025-12-11,1000.0,lv,,https://www.claritycampaigns.com/clarity-omnibus-dec-2025,Rep,44.0
-gen202thet8h94b7k,generic,US,0,The Argument/Verasight,2025-12-05,2025-12-11,,lv,,https://www.theargumentmag.com/p/have-democrats-lost-their-education,Dem,52.4
-gen202thet8h94b7k,generic,US,0,The Argument/Verasight,2025-12-05,2025-12-11,,lv,,https://www.theargumentmag.com/p/have-democrats-lost-their-education,Rep,47.6
 gen202theit3vqxax,generic,US,0,The Argument/Verasight,2025-12-05,2025-12-11,1521.0,rv,,https://www.theargumentmag.com/p/have-democrats-lost-their-education,Dem,50.6
 gen202theit3vqxax,generic,US,0,The Argument/Verasight,2025-12-05,2025-12-11,1521.0,rv,,https://www.theargumentmag.com/p/have-democrats-lost-their-education,Rep,49.4
+gen202thet8h94b7k,generic,US,0,The Argument/Verasight,2025-12-05,2025-12-11,,lv,,https://www.theargumentmag.com/p/have-democrats-lost-their-education,Dem,52.4
+gen202thet8h94b7k,generic,US,0,The Argument/Verasight,2025-12-05,2025-12-11,,lv,,https://www.theargumentmag.com/p/have-democrats-lost-their-education,Rep,47.6
+gen202cla48neovgl,generic,US,0,Clarity Campaign Labs,2025-12-04,2025-12-11,1000.0,lv,,https://www.claritycampaigns.com/clarity-omnibus-dec-2025,Dem,49.0
+gen202cla48neovgl,generic,US,0,Clarity Campaign Labs,2025-12-04,2025-12-11,1000.0,lv,,https://www.claritycampaigns.com/clarity-omnibus-dec-2025,Rep,44.0
 gen202gra16882fe7,generic,US,0,Grayhouse,2025-12-06,2025-12-08,2058.0,rv,R,https://cdn.prod.website-files.com/5d02aaade6188137a65c8441/69407765111c88bd09a7f919_Senate%20Healthcare%20Polling%20Deck.pdf,Dem,45.0
 gen202gra16882fe7,generic,US,0,Grayhouse,2025-12-06,2025-12-08,2058.0,rv,R,https://cdn.prod.website-files.com/5d02aaade6188137a65c8441/69407765111c88bd09a7f919_Senate%20Healthcare%20Polling%20Deck.pdf,Rep,41.0
 gen202harf7u1dop3,generic,US,0,Hart Research Associates/Public Opinion Strategies,2025-12-04,2025-12-08,800.0,rv,,https://fm.cnbc.com/applications/cnbc.com/resources/editorialfiles/2025/12/16/TOPLINES_250313_CNBC_AAES_Q4_2025_new.pdf,Dem,50.0
@@ -1115,16 +1115,16 @@ gen202theaccdd393,generic,US,0,The Winston Group,2025-11-15,2025-11-17,1000.0,rv
 gen202theaccdd393,generic,US,0,The Winston Group,2025-11-15,2025-11-17,1000.0,rv,R,https://www.winningtheissues.org/wp-content/uploads/2026/01/November-2025-WTI-Survey.pdf,Rep,42.0
 gen202ipsgz4jzn1r,generic,US,0,Ipsos,2025-11-14,2025-11-17,,a,,https://www.reuters.com/data/which-party-do-americans-want-run-congress-2025-11-05#11-17-2025,Dem,38.0
 gen202ipsgz4jzn1r,generic,US,0,Ipsos,2025-11-14,2025-11-17,,a,,https://www.reuters.com/data/which-party-do-americans-want-run-congress-2025-11-05#11-17-2025,Rep,36.0
-gen202thelkg0oyr4,generic,US,0,The Argument/Verasight,2025-11-10,2025-11-17,1508.0,rv,,https://www.theargumentmag.com/p/2026-is-looking-terrible-for-republicans,Dem,53.0
-gen202thelkg0oyr4,generic,US,0,The Argument/Verasight,2025-11-10,2025-11-17,1508.0,rv,,https://www.theargumentmag.com/p/2026-is-looking-terrible-for-republicans,Rep,47.0
 gen202theoqmu5rw8,generic,US,0,The Argument/Verasight,2025-11-10,2025-11-17,,lv,,https://www.theargumentmag.com/p/2026-is-looking-terrible-for-republicans,Dem,53.8
 gen202theoqmu5rw8,generic,US,0,The Argument/Verasight,2025-11-10,2025-11-17,,lv,,https://www.theargumentmag.com/p/2026-is-looking-terrible-for-republicans,Rep,46.2
-gen202you0di212ea,generic,US,0,YouGov,2025-11-15,2025-11-17,1382.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Wnui9DE.pdf,Dem,43.0
-gen202you0di212ea,generic,US,0,YouGov,2025-11-15,2025-11-17,1382.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Wnui9DE.pdf,Rep,40.0
-gen202you0nji2mdw,generic,US,0,YouGov,2025-11-15,2025-11-17,1549.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Wnui9DE.pdf,Dem,38.0
-gen202you0nji2mdw,generic,US,0,YouGov,2025-11-15,2025-11-17,1549.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Wnui9DE.pdf,Rep,35.0
+gen202thelkg0oyr4,generic,US,0,The Argument/Verasight,2025-11-10,2025-11-17,1508.0,rv,,https://www.theargumentmag.com/p/2026-is-looking-terrible-for-republicans,Dem,53.0
+gen202thelkg0oyr4,generic,US,0,The Argument/Verasight,2025-11-10,2025-11-17,1508.0,rv,,https://www.theargumentmag.com/p/2026-is-looking-terrible-for-republicans,Rep,47.0
 gen202echcrpejs8g,generic,US,0,Echelon Insights,2025-11-13,2025-11-17,1051.0,lv,,https://echelonin.wpenginepowered.com/wp-content/uploads/November-2025-Voter-Omnibus-Topline-External.pdf,Dem,49.0
 gen202echcrpejs8g,generic,US,0,Echelon Insights,2025-11-13,2025-11-17,1051.0,lv,,https://echelonin.wpenginepowered.com/wp-content/uploads/November-2025-Voter-Omnibus-Topline-External.pdf,Rep,45.0
+gen202you0nji2mdw,generic,US,0,YouGov,2025-11-15,2025-11-17,1549.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Wnui9DE.pdf,Dem,38.0
+gen202you0nji2mdw,generic,US,0,YouGov,2025-11-15,2025-11-17,1549.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Wnui9DE.pdf,Rep,35.0
+gen202you0di212ea,generic,US,0,YouGov,2025-11-15,2025-11-17,1382.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Wnui9DE.pdf,Dem,43.0
+gen202you0di212ea,generic,US,0,YouGov,2025-11-15,2025-11-17,1382.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_Wnui9DE.pdf,Rep,40.0
 gen202moriofdcbee,generic,US,0,Morning Consult,2025-11-10,2025-11-16,19675.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-elections-tracker-generic-ballot#11-16-2025,Dem,44.0
 gen202moriofdcbee,generic,US,0,Morning Consult,2025-11-10,2025-11-16,19675.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-elections-tracker-generic-ballot#11-16-2025,Rep,43.0
 gen202higz24262eu,generic,US,0,High Point University Survey Research Center,2025-11-10,2025-11-14,837.0,rv,,https://www.highpoint.edu/src/files/2023/08/HPUPoll-115-and-116-Registered-Voters.pdf,Dem,48.0
@@ -1139,12 +1139,12 @@ gen202mart725c1lc,generic,US,0,Marist College,2025-11-10,2025-11-13,1291.0,rv,,h
 gen202mart725c1lc,generic,US,0,Marist College,2025-11-10,2025-11-13,1291.0,rv,,https://maristpoll.marist.edu/wp-content/uploads/2025/11/NPR_PBS-News_Marist-Poll_USA-NOS-and-Tables_202511141156-1.pdf,Rep,41.0
 gen202sur6qvftmu9,generic,US,0,Survey 160,2025-11-06,2025-11-12,1513.0,rv,,https://www.survey160.com/methodological-research-blog/survey-160-tracking-poll-november-2025-update,Dem,46.0
 gen202sur6qvftmu9,generic,US,0,Survey 160,2025-11-06,2025-11-12,1513.0,rv,,https://www.survey160.com/methodological-research-blog/survey-160-tracking-poll-november-2025-update,Rep,39.0
-gen202maroindbw0q,generic,US,0,Marquette University Law School,2025-11-05,2025-11-12,1052.0,a,,https://law.marquette.edu/poll/wp-content/uploads/2025/11/MLSPSC29Toplines_NationalIssues.html,Dem,46.0
-gen202maroindbw0q,generic,US,0,Marquette University Law School,2025-11-05,2025-11-12,1052.0,a,,https://law.marquette.edu/poll/wp-content/uploads/2025/11/MLSPSC29Toplines_NationalIssues.html,Rep,41.0
-gen202marsb7pbzop,generic,US,0,Marquette University Law School,2025-11-05,2025-11-12,903.0,rv,,https://law.marquette.edu/poll/wp-content/uploads/2025/11/MLSPSC29Toplines_NationalIssues.html,Dem,49.0
-gen202marsb7pbzop,generic,US,0,Marquette University Law School,2025-11-05,2025-11-12,903.0,rv,,https://law.marquette.edu/poll/wp-content/uploads/2025/11/MLSPSC29Toplines_NationalIssues.html,Rep,44.0
 gen202marmf1y26jw,generic,US,0,Marquette University Law School,2025-11-05,2025-11-12,602.0,lv,,https://law.marquette.edu/poll/wp-content/uploads/2025/11/MLSPSC29Toplines_NationalIssues.html,Dem,53.0
 gen202marmf1y26jw,generic,US,0,Marquette University Law School,2025-11-05,2025-11-12,602.0,lv,,https://law.marquette.edu/poll/wp-content/uploads/2025/11/MLSPSC29Toplines_NationalIssues.html,Rep,44.0
+gen202marsb7pbzop,generic,US,0,Marquette University Law School,2025-11-05,2025-11-12,903.0,rv,,https://law.marquette.edu/poll/wp-content/uploads/2025/11/MLSPSC29Toplines_NationalIssues.html,Dem,49.0
+gen202marsb7pbzop,generic,US,0,Marquette University Law School,2025-11-05,2025-11-12,903.0,rv,,https://law.marquette.edu/poll/wp-content/uploads/2025/11/MLSPSC29Toplines_NationalIssues.html,Rep,44.0
+gen202maroindbw0q,generic,US,0,Marquette University Law School,2025-11-05,2025-11-12,1052.0,a,,https://law.marquette.edu/poll/wp-content/uploads/2025/11/MLSPSC29Toplines_NationalIssues.html,Dem,46.0
+gen202maroindbw0q,generic,US,0,Marquette University Law School,2025-11-05,2025-11-12,1052.0,a,,https://law.marquette.edu/poll/wp-content/uploads/2025/11/MLSPSC29Toplines_NationalIssues.html,Rep,41.0
 gen202qua2uog9zfw,generic,US,0,Quantus Insights,2025-11-11,2025-11-12,1000.0,rv,,https://docs.google.com/spreadsheets/d/1hWBzli7svmD7m4Ew3enKOh6A8FtTDJRaQ-fMniwlXIc/edit?gid=1563426900#gid=1563426900,Dem,43.7
 gen202qua2uog9zfw,generic,US,0,Quantus Insights,2025-11-11,2025-11-12,1000.0,rv,,https://docs.google.com/spreadsheets/d/1hWBzli7svmD7m4Ew3enKOh6A8FtTDJRaQ-fMniwlXIc/edit?gid=1563426900#gid=1563426900,Rep,39.3
 gen202ipsoltvkyn1,generic,US,0,Ipsos,2025-11-07,2025-11-12,938.0,rv,,https://www.reuters.com/world/us/democrats-more-energized-2026-elections-than-republicans-reutersipsos-poll-finds-2025-11-13,Dem,41.0
@@ -1175,10 +1175,10 @@ gen202morjcfai245,generic,US,0,Morning Consult,2025-10-27,2025-11-02,19675.0,rv,
 gen202morjcfai245,generic,US,0,Morning Consult,2025-10-27,2025-11-02,19675.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-elections-tracker-generic-ballot#11-02-2025,Rep,43.0
 gen202cnn5odn7vb2,generic,US,0,CNN/SSRS,2025-10-27,2025-10-30,954.0,rv,,https://www.cnn.com/2025/11/03/politics/cnn-poll-democrats-trump-midterms,Dem,47.0
 gen202cnn5odn7vb2,generic,US,0,CNN/SSRS,2025-10-27,2025-10-30,954.0,rv,,https://www.cnn.com/2025/11/03/politics/cnn-poll-democrats-trump-midterms,Rep,42.0
-gen202newox3d7bq2,generic,US,0,NewsNation/Decision Desk HQ,2025-10-27,2025-10-29,1609.0,rv,,https://www.newsnationnow.com/polls/full-poll-results-newsnation-national-survey-trump,Dem,45.0
-gen202newox3d7bq2,generic,US,0,NewsNation/Decision Desk HQ,2025-10-27,2025-10-29,1609.0,rv,,https://www.newsnationnow.com/polls/full-poll-results-newsnation-national-survey-trump,Rep,44.0
 gen202new6qw03vmk,generic,US,0,NewsNation/Decision Desk HQ,2025-10-27,2025-10-29,1158.0,lv,,https://www.newsnationnow.com/polls/full-poll-results-newsnation-national-survey-trump,Dem,47.0
 gen202new6qw03vmk,generic,US,0,NewsNation/Decision Desk HQ,2025-10-27,2025-10-29,1158.0,lv,,https://www.newsnationnow.com/polls/full-poll-results-newsnation-national-survey-trump,Rep,47.0
+gen202newox3d7bq2,generic,US,0,NewsNation/Decision Desk HQ,2025-10-27,2025-10-29,1609.0,rv,,https://www.newsnationnow.com/polls/full-poll-results-newsnation-national-survey-trump,Dem,45.0
+gen202newox3d7bq2,generic,US,0,NewsNation/Decision Desk HQ,2025-10-27,2025-10-29,1609.0,rv,,https://www.newsnationnow.com/polls/full-poll-results-newsnation-national-survey-trump,Rep,44.0
 gen202verl2j6ull5,generic,US,0,Verasight,2025-10-24,2025-10-29,1567.0,a,,https://www.gelliottmorris.com/p/new-poll-voters-want-democrats-to,Dem,49.0
 gen202verl2j6ull5,generic,US,0,Verasight,2025-10-24,2025-10-29,1567.0,a,,https://www.gelliottmorris.com/p/new-poll-voters-want-democrats-to,Rep,41.0
 gen202bigdzhzvp2p,generic,US,0,Big Data Poll,2025-10-26,2025-10-28,2984.0,rv,,https://www.bigdatapoll.com/blog/trumps-third-world-immigration-moratorium-widely-popular/,Dem,43.0
@@ -1191,10 +1191,10 @@ gen202mclzpy7tp0x,generic,US,0,McLaughlin & Associates,2025-10-21,2025-10-27,100
 gen202mclzpy7tp0x,generic,US,0,McLaughlin & Associates,2025-10-21,2025-10-27,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2025/10/National-October-Presentation-RELEASE.pdf,Rep,46.0
 gen202youpwe26mar,generic,US,0,YouGov,2025-10-23,2025-10-27,1197.0,rv,,https://www.scribd.com/document/940273112/Yahoo-YouGov-Shutdown-Poll-October-2025,Dem,45.0
 gen202youpwe26mar,generic,US,0,YouGov,2025-10-23,2025-10-27,1197.0,rv,,https://www.scribd.com/document/940273112/Yahoo-YouGov-Shutdown-Poll-October-2025,Rep,40.0
-gen202youo7qshven,generic,US,0,YouGov,2025-10-24,2025-10-27,1476.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_6P3FccQ.pdf,Dem,43.0
-gen202youo7qshven,generic,US,0,YouGov,2025-10-24,2025-10-27,1476.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_6P3FccQ.pdf,Rep,40.0
 gen202youn7fgtk5t,generic,US,0,YouGov,2025-10-24,2025-10-27,1623.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_6P3FccQ.pdf,Dem,39.0
 gen202youn7fgtk5t,generic,US,0,YouGov,2025-10-24,2025-10-27,1623.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_6P3FccQ.pdf,Rep,34.0
+gen202youo7qshven,generic,US,0,YouGov,2025-10-24,2025-10-27,1476.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_6P3FccQ.pdf,Dem,43.0
+gen202youo7qshven,generic,US,0,YouGov,2025-10-24,2025-10-27,1476.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_6P3FccQ.pdf,Rep,40.0
 gen202ips4tl5wi4t,generic,US,0,Ipsos,2025-10-24,2025-10-26,,a,,https://www.reuters.com/data/which-party-do-americans-want-run-congress-2025-11-05#10-26-2025,Dem,39.0
 gen202ips4tl5wi4t,generic,US,0,Ipsos,2025-10-24,2025-10-26,,a,,https://www.reuters.com/data/which-party-do-americans-want-run-congress-2025-11-05#10-26-2025,Rep,39.0
 gen202manknsqluca,generic,US,0,Manhattan Institute,2025-10-15,2025-10-26,500.0,rv,,https://media4.manhattan-institute.org/wp-content/uploads/MI-GOP-Trump-Voters-Toplines-FULL-11.19.pdf,Dem,47.0
@@ -1211,10 +1211,10 @@ gen202quiuhrq4f2e,generic,US,0,Quinnipiac University,2025-10-16,2025-10-20,1327.
 gen202quiuhrq4f2e,generic,US,0,Quinnipiac University,2025-10-16,2025-10-20,1327.0,rv,,https://poll.qu.edu/poll-release?releaseid=3938,Rep,41.0
 gen202you0v0ouios,generic,US,0,YouGov,2025-10-17,2025-10-20,1448.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_9BPkYGS.pdf,Dem,45.0
 gen202you0v0ouios,generic,US,0,YouGov,2025-10-17,2025-10-20,1448.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_9BPkYGS.pdf,Rep,40.0
-gen202youslkef7gy,generic,US,0,YouGov,2025-10-17,2025-10-20,1621.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_9BPkYGS.pdf,Dem,40.0
-gen202youslkef7gy,generic,US,0,YouGov,2025-10-17,2025-10-20,1621.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_9BPkYGS.pdf,Rep,35.0
 gen202ech0gads5m7,generic,US,0,Echelon Insights,2025-10-16,2025-10-20,1010.0,lv,,https://echelonin.wpenginepowered.com/wp-content/uploads/October-2025-Voter-Omnibus-Topline-External-2.pdf,Dem,48.0
 gen202ech0gads5m7,generic,US,0,Echelon Insights,2025-10-16,2025-10-20,1010.0,lv,,https://echelonin.wpenginepowered.com/wp-content/uploads/October-2025-Voter-Omnibus-Topline-External-2.pdf,Rep,46.0
+gen202youslkef7gy,generic,US,0,YouGov,2025-10-17,2025-10-20,1621.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_9BPkYGS.pdf,Dem,40.0
+gen202youslkef7gy,generic,US,0,YouGov,2025-10-17,2025-10-20,1621.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_9BPkYGS.pdf,Rep,35.0
 gen202mor7d2ev6j8,generic,US,0,Morning Consult,2025-10-13,2025-10-19,19675.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-elections-tracker-generic-ballot#10-19-2025,Dem,44.0
 gen202mor7d2ev6j8,generic,US,0,Morning Consult,2025-10-13,2025-10-19,19675.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-elections-tracker-generic-ballot#10-19-2025,Rep,42.0
 gen202morcz732988,generic,US,0,Morning Consult,2025-10-17,2025-10-19,2200.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#10-19-2025,Dem,46.0
@@ -1227,10 +1227,10 @@ gen202j.lmx2bwz2t,generic,US,0,J.L. Partners,2025-10-14,2025-10-15,1004.0,rv,,ht
 gen202j.lmx2bwz2t,generic,US,0,J.L. Partners,2025-10-14,2025-10-15,1004.0,rv,,https://jlpartners.com/s/DailyMail_Crosstabs_Oct25_MiddleEast.xlsx,Rep,37.0
 gen202eme09e7vdrr,generic,US,0,Emerson College,2025-10-13,2025-10-14,1000.0,rv,,https://docs.google.com/spreadsheets/d/1OH0jUjsnk6GYnBZgR648Qenu3UpslqAW/edit?gid=329128904#gid=329128904,Dem,43.9
 gen202eme09e7vdrr,generic,US,0,Emerson College,2025-10-13,2025-10-14,1000.0,rv,,https://docs.google.com/spreadsheets/d/1OH0jUjsnk6GYnBZgR648Qenu3UpslqAW/edit?gid=329128904#gid=329128904,Rep,42.5
-gen202youcq6fiamj,generic,US,0,YouGov,2025-10-10,2025-10-13,1467.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_GWBYlDD.pdf,Dem,43.0
-gen202youcq6fiamj,generic,US,0,YouGov,2025-10-10,2025-10-13,1467.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_GWBYlDD.pdf,Rep,40.0
 gen202youpmtm80jk,generic,US,0,YouGov,2025-10-10,2025-10-13,1622.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_GWBYlDD.pdf,Dem,39.0
 gen202youpmtm80jk,generic,US,0,YouGov,2025-10-10,2025-10-13,1622.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_GWBYlDD.pdf,Rep,34.0
+gen202youcq6fiamj,generic,US,0,YouGov,2025-10-10,2025-10-13,1467.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_GWBYlDD.pdf,Dem,43.0
+gen202youcq6fiamj,generic,US,0,YouGov,2025-10-10,2025-10-13,1467.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_GWBYlDD.pdf,Rep,40.0
 gen202morccd4ont3,generic,US,0,Morning Consult,2025-10-06,2025-10-12,19675.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-elections-tracker-generic-ballot#10-12-2025,Dem,44.0
 gen202morccd4ont3,generic,US,0,Morning Consult,2025-10-06,2025-10-12,19675.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-elections-tracker-generic-ballot#10-12-2025,Rep,43.0
 gen202har96803jy9,generic,US,0,Hart Research Associates/Public Opinion Strategies,2025-10-08,2025-10-12,1000.0,a,,https://www.cnbc.com/2025/10/17/trumps-economic-approval-rating-drops-says-cnbc-survey.html,Dem,48.0
@@ -1249,12 +1249,12 @@ gen202morzjhstweo,generic,US,0,Morning Consult,2025-09-29,2025-10-05,19675.0,rv,
 gen202morzjhstweo,generic,US,0,Morning Consult,2025-09-29,2025-10-05,19675.0,rv,,https://pro.morningconsult.com/trackers/2026-midterm-elections-tracker-generic-ballot#10-05-2025,Rep,43.0
 gen202morqcn8uhs5,generic,US,0,Morning Consult,2025-10-03,2025-10-05,2200.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#10-05-2025,Dem,46.0
 gen202morqcn8uhs5,generic,US,0,Morning Consult,2025-10-03,2025-10-05,2200.0,rv,,https://pro.morningconsult.com/trackers/donald-trump-congress-policy-republicans-polling#10-05-2025,Rep,43.0
+gen202youo39xn1pc,generic,US,0,YouGov,2025-09-25,2025-09-29,1126.0,rv,,https://www.scribd.com/document/925455404/Combined-Kimmel,Dem,44.0
+gen202youo39xn1pc,generic,US,0,YouGov,2025-09-25,2025-09-29,1126.0,rv,,https://www.scribd.com/document/925455404/Combined-Kimmel,Rep,40.0
 gen202youfc649q73,generic,US,0,YouGov,2025-09-26,2025-09-29,1518.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_5xxkX0x.pdf,Dem,44.0
 gen202youfc649q73,generic,US,0,YouGov,2025-09-26,2025-09-29,1518.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_5xxkX0x.pdf,Rep,41.0
 gen202youmu5vzabb,generic,US,0,YouGov,2025-09-26,2025-09-29,1656.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_5xxkX0x.pdf,Dem,41.0
 gen202youmu5vzabb,generic,US,0,YouGov,2025-09-26,2025-09-29,1656.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_5xxkX0x.pdf,Rep,35.0
-gen202youo39xn1pc,generic,US,0,YouGov,2025-09-25,2025-09-29,1126.0,rv,,https://www.scribd.com/document/925455404/Combined-Kimmel,Dem,44.0
-gen202youo39xn1pc,generic,US,0,YouGov,2025-09-25,2025-09-29,1126.0,rv,,https://www.scribd.com/document/925455404/Combined-Kimmel,Rep,40.0
 gen202the5q6hvdvt,generic,US,0,The New York Times/Siena College,2025-09-22,2025-09-27,1313.0,rv,,https://www.nytimes.com/interactive/2025/09/30/polls/times-siena-poll-registered-voter-crosstabs.html,Dem,47.0
 gen202the5q6hvdvt,generic,US,0,The New York Times/Siena College,2025-09-22,2025-09-27,1313.0,rv,,https://www.nytimes.com/interactive/2025/09/30/polls/times-siena-poll-registered-voter-crosstabs.html,Rep,45.0
 gen202rmgbqgqn651,generic,US,0,RMG Research,2025-09-22,2025-09-24,2000.0,rv,,https://napolitannews.org/posts/generic-ballot-gop-43-percent-dem-41,Dem,45.0
@@ -1275,10 +1275,10 @@ gen202norfk3u33ni,generic,US,0,"Normington, Petts & Associates",2025-09-11,2025-
 gen202norfk3u33ni,generic,US,0,"Normington, Petts & Associates",2025-09-11,2025-09-16,800.0,lv,,https://thirdway.imgix.net/downloads/americans-caught-between-trumps-cruelty-and-democrats-chaos/Third-Way-and-Normington-Petts-National-Immigration-Survey-Toplines.pdf,Rep,49.0
 gen202atlrgkgae5p,generic,US,0,AtlasIntel,2025-09-12,2025-09-16,1066.0,a,,https://cdn.atlasintel.org/e734ffb6-e175-4467-b745-bd32bf1aca9a.pdf,Dem,51.8
 gen202atlrgkgae5p,generic,US,0,AtlasIntel,2025-09-12,2025-09-16,1066.0,a,,https://cdn.atlasintel.org/e734ffb6-e175-4467-b745-bd32bf1aca9a.pdf,Rep,43.5
-gen202you3zqd80t3,generic,US,0,YouGov,2025-09-12,2025-09-15,1420.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jmHpS1k.pdf,Dem,43.0
-gen202you3zqd80t3,generic,US,0,YouGov,2025-09-12,2025-09-15,1420.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jmHpS1k.pdf,Rep,41.0
 gen202you3zywlqvj,generic,US,0,YouGov,2025-09-12,2025-09-15,1567.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jmHpS1k.pdf,Dem,37.0
 gen202you3zywlqvj,generic,US,0,YouGov,2025-09-12,2025-09-15,1567.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jmHpS1k.pdf,Rep,33.0
+gen202you3zqd80t3,generic,US,0,YouGov,2025-09-12,2025-09-15,1420.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jmHpS1k.pdf,Dem,43.0
+gen202you3zqd80t3,generic,US,0,YouGov,2025-09-12,2025-09-15,1420.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_jmHpS1k.pdf,Rep,41.0
 gen202claqz8c6eq2,generic,US,0,Clarity Campaign Labs,2025-09-04,2025-09-11,1001.0,rv,,https://www.claritycampaigns.com/clarity-omnibus-september-2025,Dem,50.0
 gen202claqz8c6eq2,generic,US,0,Clarity Campaign Labs,2025-09-04,2025-09-11,1001.0,rv,,https://www.claritycampaigns.com/clarity-omnibus-september-2025,Rep,44.0
 gen202pubiit67q1r,generic,US,0,Public Religion Research Institute,2025-08-15,2025-09-08,5543.0,a,,https://prri.org/wp-content/uploads/2025/10/2025-PRRI-American-Values-Survey-Topline.pdf,Dem,33.0
@@ -1305,10 +1305,10 @@ gen202mclotv6jiyc,generic,US,0,McLaughlin & Associates,2025-08-21,2025-08-26,100
 gen202mclotv6jiyc,generic,US,0,McLaughlin & Associates,2025-08-21,2025-08-26,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2025/09/National-August-Presentation-RELEASE-8-27-25.pdf,Rep,47.0
 gen202emecljgqucw,generic,US,0,Emerson College,2025-08-25,2025-08-26,1000.0,rv,,https://docs.google.com/spreadsheets/d/11Pmwdv5G5pCF8yTyrQo6e2oIdwHB97rD/edit?usp=sharing&ouid=107857247170786005927&rtpof=true&sd=true,Dem,43.3
 gen202emecljgqucw,generic,US,0,Emerson College,2025-08-25,2025-08-26,1000.0,rv,,https://docs.google.com/spreadsheets/d/11Pmwdv5G5pCF8yTyrQo6e2oIdwHB97rD/edit?usp=sharing&ouid=107857247170786005927&rtpof=true&sd=true,Rep,43.0
-gen202youn5v2en4c,generic,US,0,YouGov,2025-08-22,2025-08-25,1377.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_otzzSNZ.pdf,Dem,43.0
-gen202youn5v2en4c,generic,US,0,YouGov,2025-08-22,2025-08-25,1377.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_otzzSNZ.pdf,Rep,41.0
 gen202youo8x4q0vn,generic,US,0,YouGov,2025-08-22,2025-08-25,1523.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_otzzSNZ.pdf,Dem,41.0
 gen202youo8x4q0vn,generic,US,0,YouGov,2025-08-22,2025-08-25,1523.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_otzzSNZ.pdf,Rep,36.0
+gen202youn5v2en4c,generic,US,0,YouGov,2025-08-22,2025-08-25,1377.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_otzzSNZ.pdf,Dem,43.0
+gen202youn5v2en4c,generic,US,0,YouGov,2025-08-22,2025-08-25,1377.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_otzzSNZ.pdf,Rep,41.0
 gen202verlm7t42sj,generic,US,0,Verasight,2025-08-18,2025-08-21,1500.0,a,,https://www.gelliottmorris.com/p/democrats-lead-the-us-house-generic,Dem,49.0
 gen202verlm7t42sj,generic,US,0,Verasight,2025-08-18,2025-08-21,1500.0,a,,https://www.gelliottmorris.com/p/democrats-lead-the-us-house-generic,Rep,41.0
 gen202rmg0qu6vxjv,generic,US,0,RMG Research,2025-08-13,2025-08-21,2000.0,rv,,https://napolitannews.org/jobapproval#08-21-2025,Dem,47.0
@@ -1319,10 +1319,10 @@ gen202ver7h9q7ohb,generic,US,0,The Argument/Verasight,2025-08-08,2025-08-17,1562
 gen202ver7h9q7ohb,generic,US,0,The Argument/Verasight,2025-08-08,2025-08-17,1562.0,rv,,https://www.theargumentmag.com/p/when-americans-bite-their-tongues,Rep,49.3
 gen202quajdyo7pkq,generic,US,0,Quantus Insights,2025-08-11,2025-08-13,1000.0,rv,,https://drive.google.com/file/d/1p5seXSsPUMcdYt5QC_x_ViSrSEWF261z/view?usp=sharing,Dem,45.0
 gen202quajdyo7pkq,generic,US,0,Quantus Insights,2025-08-11,2025-08-13,1000.0,rv,,https://drive.google.com/file/d/1p5seXSsPUMcdYt5QC_x_ViSrSEWF261z/view?usp=sharing,Rep,42.0
-gen202youqy708wzr,generic,US,0,YouGov,2025-08-09,2025-08-11,1474.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Y7xe8fY.pdf,Dem,42.0
-gen202youqy708wzr,generic,US,0,YouGov,2025-08-09,2025-08-11,1474.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Y7xe8fY.pdf,Rep,40.0
 gen202youdt2jed2r,generic,US,0,YouGov,2025-08-09,2025-08-11,1635.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Y7xe8fY.pdf,Dem,38.0
 gen202youdt2jed2r,generic,US,0,YouGov,2025-08-09,2025-08-11,1635.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Y7xe8fY.pdf,Rep,35.0
+gen202youqy708wzr,generic,US,0,YouGov,2025-08-09,2025-08-11,1474.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Y7xe8fY.pdf,Dem,42.0
+gen202youqy708wzr,generic,US,0,YouGov,2025-08-09,2025-08-11,1474.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_Y7xe8fY.pdf,Rep,40.0
 gen202cygx97a37q3,generic,US,0,Cygnal,2025-08-07,2025-08-09,1500.0,lv,,https://www.cygn.al/wp-content/uploads/2025/08/23190-Cygnal-National-Aug25-NVT-Deck-Public.pdf,Dem,47.4
 gen202cygx97a37q3,generic,US,0,Cygnal,2025-08-07,2025-08-09,1500.0,lv,,https://www.cygn.al/wp-content/uploads/2025/08/23190-Cygnal-National-Aug25-NVT-Deck-Public.pdf,Rep,46.4
 gen202you5nvjdg0d,generic,US,0,YouGov,2025-08-01,2025-08-04,1528.0,rv,,https://today.yougov.com/topics/politics/trackers/congressional-ballot-voting-intention#08-04-2025,Dem,43.7
@@ -1337,20 +1337,20 @@ gen202youpi8ec2w9,generic,US,0,YouGov,2025-07-24,2025-07-28,1167.0,rv,,https://d
 gen202youpi8ec2w9,generic,US,0,YouGov,2025-07-24,2025-07-28,1167.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/20250728_yahoo.pdf,Rep,39.0
 gen202you17ay13jf,generic,US,0,YouGov,2025-07-25,2025-07-28,1610.0,rv,,https://today.yougov.com/topics/politics/trackers/congressional-ballot-voting-intention#07-28-2025,Dem,43.0
 gen202you17ay13jf,generic,US,0,YouGov,2025-07-25,2025-07-28,1610.0,rv,,https://today.yougov.com/topics/politics/trackers/congressional-ballot-voting-intention#07-28-2025,Rep,41.0
-gen202mclohlxon8b,generic,US,0,McLaughlin & Associates,2025-07-21,2025-07-24,2000.0,rv,R,https://americasnewmajorityproject.com/wp-content/uploads/2025/07/20250724-NationalANMP-Tabs.pdf,Dem,45.5
-gen202mclohlxon8b,generic,US,0,McLaughlin & Associates,2025-07-21,2025-07-24,2000.0,rv,R,https://americasnewmajorityproject.com/wp-content/uploads/2025/07/20250724-NationalANMP-Tabs.pdf,Rep,42.8
 gen202mcloyh3lgu2,generic,US,0,McLaughlin & Associates,2025-07-21,2025-07-24,1633.0,lv,R,https://americasnewmajorityproject.com/wp-content/uploads/2025/07/20250724-NationalANMP-Tabs.pdf,Dem,48.0
 gen202mcloyh3lgu2,generic,US,0,McLaughlin & Associates,2025-07-21,2025-07-24,1633.0,lv,R,https://americasnewmajorityproject.com/wp-content/uploads/2025/07/20250724-NationalANMP-Tabs.pdf,Rep,43.9
+gen202mclohlxon8b,generic,US,0,McLaughlin & Associates,2025-07-21,2025-07-24,2000.0,rv,R,https://americasnewmajorityproject.com/wp-content/uploads/2025/07/20250724-NationalANMP-Tabs.pdf,Dem,45.5
+gen202mclohlxon8b,generic,US,0,McLaughlin & Associates,2025-07-21,2025-07-24,2000.0,rv,R,https://americasnewmajorityproject.com/wp-content/uploads/2025/07/20250724-NationalANMP-Tabs.pdf,Rep,42.8
 gen202emebeodreqf,generic,US,0,Emerson College,2025-07-21,2025-07-22,1400.0,rv,,https://docs.google.com/spreadsheets/d/1iZsOtBWxln95TjYfOOGE6cfqX6WC86M8/edit?usp=drivesdk&ouid=114621343622731351074&rtpof=true&sd=true,Dem,44.0
 gen202emebeodreqf,generic,US,0,Emerson College,2025-07-21,2025-07-22,1400.0,rv,,https://docs.google.com/spreadsheets/d/1iZsOtBWxln95TjYfOOGE6cfqX6WC86M8/edit?usp=drivesdk&ouid=114621343622731351074&rtpof=true&sd=true,Rep,41.5
 gen202fab0x8kfit6,generic,US,0,"Fabrizio, Lee & Associates/Impact Research",2025-07-16,2025-07-20,1500.0,rv,,https://prod-i.a.dj.com/public/resources/documents/Redacted1WSJPollJuly2025.pdf,Dem,46.0
 gen202fab0x8kfit6,generic,US,0,"Fabrizio, Lee & Associates/Impact Research",2025-07-16,2025-07-20,1500.0,rv,,https://prod-i.a.dj.com/public/resources/documents/Redacted1WSJPollJuly2025.pdf,Rep,43.0
 gen202atlo0aotwuu,generic,US,0,AtlasIntel,2025-07-13,2025-07-18,1435.0,a,,https://cdn.atlasintel.org/20e36f18-42bd-4a28-85f4-9f623905ba71.pdf?_gl=1*3tf2cu*_ga*Nzg1NTgxMTM2LjE3NTI4ODY1ODc.*_ga_W78QD5CNP1*czE3NTI4ODY1ODckbzEkZzAkdDE3NTI4ODY1OTQkajUzJGwwJGgw,Dem,51.3
 gen202atlo0aotwuu,generic,US,0,AtlasIntel,2025-07-13,2025-07-18,1435.0,a,,https://cdn.atlasintel.org/20e36f18-42bd-4a28-85f4-9f623905ba71.pdf?_gl=1*3tf2cu*_ga*Nzg1NTgxMTM2LjE3NTI4ODY1ODc.*_ga_W78QD5CNP1*czE3NTI4ODY1ODckbzEkZzAkdDE3NTI4ODY1OTQkajUzJGwwJGgw,Rep,42.7
-gen202rmgc9ozdjxa,generic,US,0,RMG Research,2025-07-14,2025-07-16,2000.0,rv,,https://napolitannews.org/posts/generic-ballot-july-2025-republicans-46-percent-democrats-42,Dem,45.0
-gen202rmgc9ozdjxa,generic,US,0,RMG Research,2025-07-14,2025-07-16,2000.0,rv,,https://napolitannews.org/posts/generic-ballot-july-2025-republicans-46-percent-democrats-42,Rep,49.0
 gen202vero2bmi16u,generic,US,0,Verasight,2025-07-14,2025-07-16,1500.0,a,,https://www.gelliottmorris.com/p/new-poll-dems-lead-house-generic#07-16-2025,Dem,47.0
 gen202vero2bmi16u,generic,US,0,Verasight,2025-07-14,2025-07-16,1500.0,a,,https://www.gelliottmorris.com/p/new-poll-dems-lead-house-generic#07-16-2025,Rep,43.0
+gen202rmgc9ozdjxa,generic,US,0,RMG Research,2025-07-14,2025-07-16,2000.0,rv,,https://napolitannews.org/posts/generic-ballot-july-2025-republicans-46-percent-democrats-42,Dem,45.0
+gen202rmgc9ozdjxa,generic,US,0,RMG Research,2025-07-14,2025-07-16,2000.0,rv,,https://napolitannews.org/posts/generic-ballot-july-2025-republicans-46-percent-democrats-42,Rep,49.0
 gen202quak5gyiggj,generic,US,0,Quantus Insights,2025-07-14,2025-07-16,1000.0,rv,,https://drive.google.com/file/d/1itHIYE8XQgWu6RGm_NXhcWK2amJjONku/view,Dem,44.0
 gen202quak5gyiggj,generic,US,0,Quantus Insights,2025-07-14,2025-07-16,1000.0,rv,,https://drive.google.com/file/d/1itHIYE8XQgWu6RGm_NXhcWK2amJjONku/view,Rep,42.0
 gen202mclgsxu2e9s,generic,US,0,McLaughlin & Associates,2025-07-09,2025-07-14,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2025/07/National-July-Presentation-RELEASE-07-15-25.pdf,Dem,42.0
@@ -1397,10 +1397,10 @@ gen202cyg8kwfijqm,generic,US,0,Cygnal,2025-06-03,2025-06-04,1500.0,lv,,https://w
 gen202cyg8kwfijqm,generic,US,0,Cygnal,2025-06-03,2025-06-04,1500.0,lv,,https://www.cygn.al/wp-content/uploads/2025/06/Cygnal-National-NVT-June25-Deck.pdf,Rep,46.9
 gen202qua2ni0aq5i,generic,US,0,Quantus Insights,2025-06-01,2025-06-04,1000.0,rv,R,https://drive.google.com/file/d/1SFF1dEYQckjhF-RcJscsORgjYaM1hkOT/view,Dem,46.0
 gen202qua2ni0aq5i,generic,US,0,Quantus Insights,2025-06-01,2025-06-04,1000.0,rv,R,https://drive.google.com/file/d/1SFF1dEYQckjhF-RcJscsORgjYaM1hkOT/view,Rep,45.0
-gen202youka5tphmn,generic,US,0,YouGov,2025-05-30,2025-06-02,1610.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_MV984ah.pdf,Dem,39.0
-gen202youka5tphmn,generic,US,0,YouGov,2025-05-30,2025-06-02,1610.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_MV984ah.pdf,Rep,36.0
 gen202youd9o38mxk,generic,US,0,YouGov,2025-05-30,2025-06-02,1436.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_MV984ah.pdf,Dem,44.0
 gen202youd9o38mxk,generic,US,0,YouGov,2025-05-30,2025-06-02,1436.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_MV984ah.pdf,Rep,42.0
+gen202youka5tphmn,generic,US,0,YouGov,2025-05-30,2025-06-02,1610.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_MV984ah.pdf,Dem,39.0
+gen202youka5tphmn,generic,US,0,YouGov,2025-05-30,2025-06-02,1610.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_MV984ah.pdf,Rep,36.0
 gen202atld6aqnb7h,generic,US,0,AtlasIntel,2025-05-21,2025-05-27,3469.0,rv,,https://atlasintel.org/poll/usa-national-2025-05-30,Dem,50.9
 gen202atld6aqnb7h,generic,US,0,AtlasIntel,2025-05-21,2025-05-27,3469.0,rv,,https://atlasintel.org/poll/usa-national-2025-05-30,Rep,41.7
 gen202mcljanjojb4,generic,US,0,McLaughlin & Associates,2025-05-21,2025-05-26,1000.0,rv,,https://mclaughlinonline.com/pols/wp-content/uploads/2025/05/National-May-Presentation-RELEASE-05-27-25.pdf,Dem,43.0
@@ -1443,10 +1443,10 @@ gen202hara7z5ongq,generic,US,0,Hart Research Associates/Public Opinion Strategie
 gen202hara7z5ongq,generic,US,0,Hart Research Associates/Public Opinion Strategies,2025-04-09,2025-04-13,1000.0,a,,https://www.cnbc.com/video/2025/04/17/tariffs-weight-on-trump-approval-cnbc-survey-finds.html,Rep,46.0
 gen202reaoc9iug5s,generic,US,0,RealClear Opinion Research,2025-04-10,2025-04-12,1000.0,rv,,https://www.realclearpolitics.com/articles/2025/04/18/rcp_poll_voters_see_campus_bias_reject_trumps_tariff_pitch_152678.html,Dem,40.0
 gen202reaoc9iug5s,generic,US,0,RealClear Opinion Research,2025-04-10,2025-04-12,1000.0,rv,,https://www.realclearpolitics.com/articles/2025/04/18/rcp_poll_voters_see_campus_bias_reject_trumps_tariff_pitch_152678.html,Rep,39.0
-gen202youop519jwx,generic,US,0,YouGov,2025-04-05,2025-04-08,1558.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_pXJ0PxA.pdf#page31,Dem,43.0
-gen202youop519jwx,generic,US,0,YouGov,2025-04-05,2025-04-08,1558.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_pXJ0PxA.pdf#page31,Rep,42.0
 gen202youc23q9p7i,generic,US,0,YouGov,2025-04-05,2025-04-08,1735.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_pXJ0PxA.pdf#page31,Dem,39.0
 gen202youc23q9p7i,generic,US,0,YouGov,2025-04-05,2025-04-08,1735.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_pXJ0PxA.pdf#page31,Rep,36.0
+gen202youop519jwx,generic,US,0,YouGov,2025-04-05,2025-04-08,1558.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_pXJ0PxA.pdf#page31,Dem,43.0
+gen202youop519jwx,generic,US,0,YouGov,2025-04-05,2025-04-08,1558.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_pXJ0PxA.pdf#page31,Rep,42.0
 gen202yalkd7y97xk,generic,US,0,Yale University Institution for Social and Policy Studies,2025-04-01,2025-04-03,4100.0,rv,,https://docs.google.com/spreadsheets/d/1JhSWPVcKK6tdufsa52TeRk3JRwSsgtglVQP1ZAa8fg4/edit?gid=856853932#gid=856853932,Dem,43.3
 gen202yalkd7y97xk,generic,US,0,Yale University Institution for Social and Policy Studies,2025-04-01,2025-04-03,4100.0,rv,,https://docs.google.com/spreadsheets/d/1JhSWPVcKK6tdufsa52TeRk3JRwSsgtglVQP1ZAa8fg4/edit?gid=856853932#gid=856853932,Rep,41.7
 gen202cyg94pl7ubt,generic,US,0,Cygnal,2025-04-01,2025-04-03,1500.0,lv,,https://www.cygn.al/poll-democrats-continue-to-struggle-as-trump-maintains-strong-approval-even-in-light-of-tariffs/,Dem,48.0
@@ -1471,12 +1471,12 @@ genconpubv3i0h704,generic,US,0,Public Opinion Strategies,2025-02-25,2025-03-02,1
 genconpubv3i0h704,generic,US,0,Public Opinion Strategies,2025-02-25,2025-03-02,1000.0,rv,,https://paragoninstitute.org/medicaid/paragon-health-policy-survey-2025/,Rep,46.0
 gen202rmgio02rlo0,generic,US,0,RMG Research,2025-02-20,2025-02-21,1000.0,rv,,https://x.com/ScottWRasmussen/status/1894720317291114920,Dem,46.0
 gen202rmgio02rlo0,generic,US,0,RMG Research,2025-02-20,2025-02-21,1000.0,rv,,https://x.com/ScottWRasmussen/status/1894720317291114920,Rep,48.0
+gen202youkoep0g85,generic,US,0,YouGov,2025-02-16,2025-02-18,1603.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_KfNmvTk.pdf,Dem,35.0
+gen202youkoep0g85,generic,US,0,YouGov,2025-02-16,2025-02-18,1603.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_KfNmvTk.pdf,Rep,37.0
 gen202mcl17umhafe,generic,US,0,McLaughlin & Associates,2025-02-11,2025-02-18,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2025/02/National-February-Presentation-RELEASE-02-18-25.pdf,Dem,41.0
 gen202mcl17umhafe,generic,US,0,McLaughlin & Associates,2025-02-11,2025-02-18,1000.0,lv,,https://mclaughlinonline.com/pols/wp-content/uploads/2025/02/National-February-Presentation-RELEASE-02-18-25.pdf,Rep,48.0
 gen202youxm9gp3wb,generic,US,0,YouGov,2025-02-16,2025-02-18,1451.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_OFVhPxp.pdf,Dem,42.0
 gen202youxm9gp3wb,generic,US,0,YouGov,2025-02-16,2025-02-18,1451.0,rv,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econTabReport_OFVhPxp.pdf,Rep,41.0
-gen202youkoep0g85,generic,US,0,YouGov,2025-02-16,2025-02-18,1603.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_KfNmvTk.pdf,Dem,35.0
-gen202youkoep0g85,generic,US,0,YouGov,2025-02-16,2025-02-18,1603.0,a,,https://d3nkl3psvxxpe9.cloudfront.net/documents/econtoplines_KfNmvTk.pdf,Rep,37.0
 gen202co/gegk2uur,generic,US,0,co/efficient,2025-02-15,2025-02-17,2063.0,lv,R,https://coefficient.org/doge-part-2/,Dem,44.0
 gen202co/gegk2uur,generic,US,0,co/efficient,2025-02-15,2025-02-17,2063.0,lv,R,https://coefficient.org/doge-part-2/,Rep,46.0
 gen202ech0mh719m0,generic,US,0,Echelon Insights,2025-02-10,2025-02-13,1010.0,lv,,https://echeloninsights.com/in-the-news/feb-2025-verified-voter-omnibus-2-2/,Dem,46.0
