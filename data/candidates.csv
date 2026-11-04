@@ -252,12 +252,12 @@ H-FL-17,Greg Steube,R,Republican,True
 H-FL-18,Scott Franklin,R,Republican,True
 H-FL-18,Curtis Gibson,D,Democratic,False
 H-FL-18,Deva Simmons,O,Independent,False
+H-FL-19,Jim Schwartzel,R,Republican,False
 H-FL-19,Victor Arias,D,Democratic,False
 H-FL-19,Seth Haskin,O,Independent,False
-H-FL-19,Jim Schwartzel,R,Republican,False
+H-FL-20,Debbie Wasserman Schultz,D,Democratic,False
 H-FL-20,Brent Andersen,R,Republican,False
 H-FL-20,Kedner Maxime,O,Independent Party of Florida,False
-H-FL-20,Debbie Wasserman Schultz,D,Democratic,False
 H-FL-21,Alexander Cooke,O,Independent,False
 H-FL-21,James Martin,D,Democratic,False
 H-FL-21,Brian Mast,R,Republican,True
@@ -265,8 +265,8 @@ H-FL-22,Casey Askar,R,Republican,False
 H-FL-22,Pia Dandiya,D,Democratic,False
 H-FL-23,Deborah Adeimy,R,Republican,False
 H-FL-23,Lois Frankel,D,Democratic,True
-H-FL-24,Te Mayonna Brown,R,Republican,False
 H-FL-24,Oliver Gilbert,D,Democratic,False
+H-FL-24,Te Mayonna Brown,R,Republican,False
 H-FL-25,Peter Jassenoff,O,Libertarian,False
 H-FL-25,Jared Moskowitz,D,Democratic,True
 H-FL-25,Scott Singer,R,Republican,False
@@ -284,12 +284,12 @@ H-GA-02,Sanford Bishop,D,Democratic,True
 H-GA-02,Matt Day,R,Republican,False
 H-GA-03,Brian Jack,R,Republican,True
 H-GA-03,Maura Keller,D,Democratic,False
-H-GA-04,James Duffie,R,Republican,False
 H-GA-04,Hank Johnson,D,Democratic,True
-H-GA-05,John Oscar Salvesen,R,Republican,False
+H-GA-04,James Duffie,R,Republican,False
 H-GA-05,Nikema Williams,D,Democratic,True
-H-GA-06,Kevin Martin,R,Republican,False
+H-GA-05,John Oscar Salvesen,R,Republican,False
 H-GA-06,Lucy McBath,D,Democratic,True
+H-GA-06,Kevin Martin,R,Republican,False
 H-GA-07,Tony Kozycki,D,Democratic,False
 H-GA-07,Rich McCormick,R,Republican,True
 H-GA-08,Kelly Esti,D,Democratic,False
@@ -302,8 +302,8 @@ H-GA-11,John Cowan,R,Republican,False
 H-GA-11,Chris Harden,D,Democratic,False
 H-GA-12,Rick Allen,R,Republican,True
 H-GA-12,Ceretta Smith,D,Democratic,False
-H-GA-13,Jonathan Chavez,R,Republican,False
 H-GA-13,Jasmine Clark,D,Democratic,False
+H-GA-13,Jonathan Chavez,R,Republican,False
 H-GA-14,Clay Fuller,R,Republican,True
 H-GA-14,Shawn Harris,D,Democratic,False
 H-HI-01,Nathan Berning,O,Independent,False
@@ -411,8 +411,8 @@ H-KY-03,Maria Rodriquez,R,Republican,False
 H-KY-04,Ed Gallrein,R,Republican,False
 H-KY-04,Melissa Strange,D,Democratic,False
 H-KY-04,Jeremy Todd,O,Libertarian,False
-H-KY-05,Ned Pillersdorf,D,Democratic,False
 H-KY-05,Hal Rogers,R,Republican,True
+H-KY-05,Ned Pillersdorf,D,Democratic,False
 H-KY-05,Gerardo Serrano,O,Independent,False
 H-KY-05,Mikel Wein,O,Independent,False
 H-KY-06,Ralph Alvarado,R,Republican,False
@@ -481,16 +481,16 @@ H-MD-02,Johnny Olszewski,D,Democratic,True
 H-MD-02,Dave Wallace,R,Republican,False
 H-MD-03,Sarah Elfreth,D,Democratic,True
 H-MD-03,Berney Flowers,R,Republican,False
-H-MD-04,Sam Husseini,O,Green,False
 H-MD-04,Glenn Ivey,D,Democratic,True
 H-MD-04,George McDermott,R,Republican,False
+H-MD-04,Sam Husseini,O,Green,False
 H-MD-05,Adrian Boafo,D,Democratic,False
 H-MD-05,Chris Chaffee,R,Republican,False
+H-MD-06,April McClain Delaney,D,Democratic,True
 H-MD-06,Robin Ficker,R,Republican,False
 H-MD-06,Moshe Landman,O,Green,False
-H-MD-06,April McClain Delaney,D,Democratic,True
-H-MD-07,Scott Collier,R,Republican,False
 H-MD-07,Kweisi Mfume,D,Democratic,True
+H-MD-07,Scott Collier,R,Republican,False
 H-MD-08,Jamie Raskin,D,Democratic,True
 H-MD-08,Cheryl Riley,R,Republican,False
 H-MD-08,Nancy Wallace,O,Green,False
@@ -822,9 +822,9 @@ H-OH-11,Shontel Brown,D,Democratic,True
 H-OH-11,Mike Kirchner,R,Republican,False
 H-OH-12,Troy Balderson,R,Republican,True
 H-OH-12,Jerrad Christian,D,Democratic,False
+H-OH-13,Emilia Sykes,D,Democratic,True
 H-OH-13,Carey Coleman,R,Republican,False
 H-OH-13,Sandeep Dixit,O,Independent,False
-H-OH-13,Emilia Sykes,D,Democratic,True
 H-OH-14,David Joyce,R,Republican,True
 H-OH-14,Maria Jukic,D,Democratic,False
 H-OH-15,Brennan Barrington,O,Libertarian,False
@@ -1167,43 +1167,42 @@ S-AL,Everett Wess,D,Democratic,False
 S-AR,Tom Cotton,R,Republican,True
 S-AR,Hallie Shoffner,D,Democratic,False
 S-AR,Jeff Wadlin,O,Libertarian,False
-S-CO,Mark Baisley,R,Republican,False
-S-CO,Christopher Baum,O,Approval Voting,False
-S-CO,Bob Chew,O,Forward,False
 S-CO,John Hickenlooper,D,Democratic,True
+S-CO,Mark Baisley,R,Republican,False
+S-CO,Bob Chew,O,Forward,False
 S-CO,Blake Huber,O,Libertarian,False
 S-CO,Adam Withrow,O,Unity,False
 S-DE,Chris Coons,D,Democratic,True
 S-DE,Michael Katz,R,Republican,False
-S-FL,Neil Gillespie,O,Independent,False
 S-FL,Ashley Moody,R,Republican,True
 S-FL,Angie Nixon,D,Democratic,False
-S-GA,Mike Collins,R,Republican,False
+S-FL,Neil Gillespie,O,Independent,False
 S-GA,Jon Ossoff,D,Democratic,True
+S-GA,Mike Collins,R,Republican,False
+S-IA,Josh Turek,D,Democratic,False
 S-IA,Ashley Hinson,R,Republican,False
 S-IA,Thomas Laehn,O,Libertarian,False
-S-IA,Josh Turek,D,Democratic,False
 S-ID,Todd Achilles,O,Independent,False
 S-ID,Natalie Fleming,O,Independent,False
 S-ID,Matt Loesby,O,Libertarian,False
 S-ID,Jim Risch,R,Republican,True
-S-IL,Whitfield Harrington Jr.,O,Independent,False
 S-IL,Juliana Stratton,D,Democratic,False
 S-IL,Don Tracy,R,Republican,False
-S-KS,David Graham,O,Libertarian,False
+S-IL,Whitfield Harrington Jr.,O,Independent,False
 S-KS,Adam Hamilton,D,Democratic,False
 S-KS,Roger Marshall,R,Republican,True
+S-KS,David Graham,O,Libertarian,False
 S-KY,Andy Barr,R,Republican,False
 S-KY,Charles Booker,D,Democratic,False
 S-KY,Christopher Campbell,O,Independent,False
-S-LA,Jamie Davis,D,Democratic,False
 S-LA,Julia Letlow,R,Republican,False
-S-MA,Shiva Ayyadurai,O,Independent,False
-S-MA,John Deaton,R,Republican,False
+S-LA,Jamie Davis,D,Democratic,False
 S-MA,Ed Markey,D,Democratic,True
+S-MA,John Deaton,R,Republican,False
+S-MA,Shiva Ayyadurai,O,Independent,False
 S-MA,Joe Tache,O,Socialism and Liberation,False
-S-ME,Susan Collins,R,Republican,True
 S-ME,Troy Jackson,D,Democratic,False
+S-ME,Susan Collins,R,Republican,True
 S-MI,Lydia Christensen,O,Libertarian,False
 S-MI,Abdul El-Sayed,D,Democratic,False
 S-MI,Walter P. Kristy,O,Natural Law,False
@@ -1211,8 +1210,8 @@ S-MI,Tim Long,O,U.S. Taxpayers,False
 S-MI,Douglas P. Marsh,O,Green,False
 S-MI,Mike Rogers,R,Republican,False
 S-MN,Peggy Flanagan,D,DFL,False
-S-MN,Marisa Simonetti,O,Independent,False
 S-MN,Michele Tafoya,R,Republican,False
+S-MN,Marisa Simonetti,O,Independent,False
 S-MN,Rebecca Whiting,O,Libertarian,False
 S-MS,Scott Colom,D,Democratic,False
 S-MS,Cindy Hyde-Smith,R,Republican,True
@@ -1221,22 +1220,22 @@ S-MT,Kurt Alme,R,Republican,False
 S-MT,Kyle Austin,O,Libertarian,False
 S-MT,Alani Bankhead,D,Democratic,False
 S-MT,Seth Bodnar,O,Independent,False
-S-NC,Shannon Bray,O,Libertarian,False
 S-NC,Roy Cooper,D,Democratic,False
-S-NC,Michael Dublin,O,Green,False
 S-NC,Michael Whatley,R,Republican,False
+S-NC,Shannon Bray,O,Libertarian,False
+S-NC,Michael Dublin,O,Green,False
 S-NE,Chuck Conboy,O,America First,False
 S-NE,Mike Marvin,O,Legal Marijuana Now,False
 S-NE,Dan Osborn,O,Independent,False
 S-NE,Robin Richards,O,Working People,False
 S-NE,Pete Ricketts,R,Republican,True
-S-NH,Edmond LaPlante,O,Constitution,False
 S-NH,Chris Pappas,D,Democratic,False
 S-NH,John E. Sununu,R,Republican,False
+S-NH,Edmond LaPlante,O,Constitution,False
 S-NJ,Cory Booker,D,Democratic,True
+S-NJ,Justin Murphy,R,Republican,False
 S-NJ,Veronica Fernandez,O,Independent,False
 S-NJ,Joanne Kuniansky,O,Socialist Workers,False
-S-NJ,Justin Murphy,R,Republican,False
 S-NM,Ben Ray Luján,D,Democratic,True
 S-NM,Larry Marker,R,Republican,False
 S-OH,Sherrod Brown,D,Democratic,False
@@ -1244,43 +1243,43 @@ S-OH,Jon Husted,R,Republican,True
 S-OH,Greg Levy,O,Independent,False
 S-OH,William Redpath,O,Libertarian,False
 S-OK,Kevin Hern,R,Republican,False
+S-OK,N'Kiyla Jasmine Thomas,D,Democratic,False
 S-OK,Ron Meinhardt,O,Independent,False
 S-OK,Curtis Stinnett,O,Independent,False
-S-OK,N'Kiyla Jasmine Thomas,D,Democratic,False
 S-OK,Sevier White,O,Libertarian,False
-S-OR,Gary Lyndon Dye,O,Libertarian,False
-S-OR,Chris Henry,O,Progressive,False
 S-OR,Jeff Merkley,D,Democratic,True
 S-OR,David Brock Smith,R,Republican,False
-S-RI,Michael Bahry,O,Independent,False
-S-RI,Raymond McKay,R,Republican,False
+S-OR,Gary Lyndon Dye,O,Libertarian,False
+S-OR,Chris Henry,O,Progressive,False
 S-RI,Jack Reed,D,Democratic,True
+S-RI,Raymond McKay,R,Republican,False
+S-RI,Michael Bahry,O,Independent,False
 S-SC,Annie Andrews,D,Democratic,False
 S-SC,Darline Graham,R,Republican,True
 S-SC,Mark Hackett,O,Constitution,False
 S-SC,Kasie Whitener,O,Libertarian,False
-S-SD,Brian Bengs,O,Independent,False
 S-SD,Mike Rounds,R,Republican,True
+S-SD,Brian Bengs,O,Independent,False
+S-TN,Bill Hagerty,R,Republican,True
 S-TN,Marquita Bradshaw,D,Democratic,False
 S-TN,Tharon Chandler,O,Independent,False
 S-TN,Andrew Gerena,O,Independent,False
-S-TN,Bill Hagerty,R,Republican,True
 S-TN,Jeremy Hearn,O,Independent,False
 S-TN,Robert Jones,O,Independent,False
 S-TN,James Macon III,O,Independent,False
 S-TN,Yoshi Matthews,O,Independent,False
 S-TN,David Sutman Jr.,O,Independent,False
 S-TN,Catherine Whitson,O,Independent,False
+S-TX,James Talarico,D,Democratic,False
 S-TX,Ted Brown,O,Libertarian,False
 S-TX,Ken Paxton,R,Republican,False
-S-TX,James Talarico,D,Democratic,False
-S-VA,Bert Mizusawa,R,Republican,False
 S-VA,Mark Warner,D,Democratic,True
-S-WV,Rachel Fetty Anderson,D,Democratic,False
+S-VA,Bert Mizusawa,R,Republican,False
 S-WV,Shelley Moore Capito,R,Republican,True
+S-WV,Rachel Fetty Anderson,D,Democratic,False
 S-WV,S. Marshall Wilson,O,Constitution,False
-S-WY,James W. Byrd,D,Democratic,False
 S-WY,Harriet Hageman,R,Republican,False
+S-WY,James W. Byrd,D,Democratic,False
 G-AK,Dave Bronson,R,Republican,False
 G-AK,Jonathan Kreiss-Tomkins,D,Democratic,False
 G-AK,Treg Taylor,R,Republican,False
@@ -1296,46 +1295,45 @@ G-AZ,Teri Hourihan,O,No Labels,False
 G-AZ,Risa Lombardo,O,Green,False
 G-CA,Xavier Becerra,D,Democratic,False
 G-CA,Steve Hilton,R,Republican,False
+G-CO,Phil Weiser,D,Democratic,False
+G-CO,Victor Marx,R,Republican,False
 G-CO,Stephen Hamilton,O,American Constitution,False
 G-CO,Greg Lopez,O,Independent,False
-G-CO,Victor Marx,R,Republican,False
 G-CO,Eric Mulder,O,Libertarian,False
 G-CO,Jeff Peckman,O,Unity,False
 G-CO,Erik Underwood,O,Approval Voting,False
-G-CO,Phil Weiser,D,Democratic,False
-G-CT,Ryan Fazio,R,Republican,False
 G-CT,Ned Lamont,D,Democratic,True
+G-CT,Ryan Fazio,R,Republican,False
+G-FL,Byron Donalds,R,Republican,False
+G-FL,David Jolly,D,Democratic,False
 G-FL,Dean Abrams,O,Independent,False
 G-FL,Charles Burkett,O,Independent,False
 G-FL,Jeffrey Datto,O,Independent,False
 G-FL,Moe Dimanche,O,Independent,False
-G-FL,Byron Donalds,R,Republican,False
 G-FL,Scott Jewett,O,Libertarian,False
-G-FL,David Jolly,D,Democratic,False
 G-FL,Frank Russo,O,Independent,False
 G-GA,Keisha Lance Bottoms,D,Democratic,False
 G-GA,Rick Jackson,R,Republican,False
 G-HI,Gary Cordery,R,Republican,False
 G-HI,Josh Green,D,Democratic,True
-G-IA,Zach Lahn,R,Republican,False
 G-IA,Rob Sand,D,Democratic,False
-G-IA,Sondra Wilson,O,Independent,False
+G-IA,Zach Lahn,R,Republican,False
 G-ID,Brad Little,R,Republican,True
 G-ID,Terri Pickens,D,Democratic,False
 G-ID,Pro-Life,O,Constitution,False
 G-ID,Paul Sand,O,Libertarian,False
 G-ID,John Stegner,O,Independent,False
+G-IL,JB Pritzker,D,Democratic,True
 G-IL,Darren Bailey,R,Republican,False
 G-IL,Collin Corbett,O,Independent,False
-G-IL,JB Pritzker,D,Democratic,True
 G-KS,Cindy Holscher,D,Democratic,False
 G-KS,Ty Masterson,R,Republican,False
 G-MA,Maura Healey,D,Democratic,True
-G-MA,Andrea James,O,Independent,False
 G-MA,Mike Minogue,R,Republican,False
+G-MA,Andrea James,O,Independent,False
+G-MD,Wes Moore,D,Democratic,True
 G-MD,Dan Cox,R,Republican,False
 G-MD,Andy Ellis,O,Green,False
-G-MD,Wes Moore,D,Democratic,True
 G-MD,Cathy White,O,Working Class,False
 G-ME,Rick Bennett,O,Independent,False
 G-ME,Robert B. Charles,R,Republican,False
@@ -1345,8 +1343,8 @@ G-MI,Donna Brandenburg,O,U.S. Taxpayers,False
 G-MI,Douglas Campbell,O,Green,False
 G-MI,Anthony Hudson,O,Libertarian,False
 G-MI,John James,R,Republican,False
-G-MN,Lisa Demuth,R,Republican,False
 G-MN,Amy Klobuchar,D,DFL,False
+G-MN,Lisa Demuth,R,Republican,False
 G-MN,Steven Young,O,Green,False
 G-NE,Rick Beard,O,Legal Marijuana Now,False
 G-NE,Brett Lindstrom,O,America First,False
@@ -1360,33 +1358,33 @@ G-NM,Gregg Hull,R,Republican,False
 G-NV,Aaron Ford,D,Democratic,False
 G-NV,Danielle Ford,O,Independent,False
 G-NV,Joe Lombardo,R,Republican,True
-G-NY,Bruce Blakeman,R,Republican,False
 G-NY,Kathy Hochul,D,Democratic,True
+G-NY,Bruce Blakeman,R,Republican,False
 G-OH,Amy Acton,D,Democratic,False
-G-OH,Donald Kissick,O,Libertarian,False
 G-OH,Vivek Ramaswamy,R,Republican,False
+G-OH,Donald Kissick,O,Libertarian,False
+G-OK,Mike Mazzei,R,Republican,False
+G-OK,Cyndi Munson,D,Democratic,False
 G-OK,Robert Brooks Sr.,O,Independent,False
 G-OK,Orlando Bush,O,Independent,False
 G-OK,Jerry Griffin,O,Independent,False
-G-OK,Mike Mazzei,R,Republican,False
-G-OK,Cyndi Munson,D,Democratic,False
 G-OR,Christine Drazan,R,Republican,False
 G-OR,Tina Kotek,D,Democratic,True
 G-OR,Brett Smith,O,Pacific Green,False
+G-PA,Josh Shapiro,D,Democratic,True
 G-PA,Stacy Garrity,R,Republican,False
 G-PA,Ken Krawchuk,O,Libertarian,False
-G-PA,Josh Shapiro,D,Democratic,True
-G-RI,Ken Block,O,Independent,False
 G-RI,Helena Foulkes,D,Democratic,False
-G-RI,Jasjit Gotra,O,Independent,False
 G-RI,Aaron Guckian,R,Republican,False
+G-RI,Ken Block,O,Independent,False
+G-RI,Jasjit Gotra,O,Independent,False
 G-RI,CD Reynolds,O,Independent,False
-G-SC,Michael Addison,O,United Citizens,False
-G-SC,Walid Hakim,O,Green,False
 G-SC,Jermaine Johnson,D,Democratic,False
 G-SC,Alan Wilson,R,Republican,False
-G-SD,Dan Ahlers,D,Democratic,False
+G-SC,Michael Addison,O,United Citizens,False
+G-SC,Walid Hakim,O,Green,False
 G-SD,Larry Rhoden,R,Republican,True
+G-SD,Dan Ahlers,D,Democratic,False
 G-TN,Misam Abidi,O,Independent,False
 G-TN,Santiago Asconape,O,Independent,False
 G-TN,Marsha Blackburn,R,Republican,False
@@ -1402,13 +1400,13 @@ G-TN,Lauren Pinkston,O,Independent,False
 G-TN,Karl Smithson,O,Independent,False
 G-TN,L. Webb Taylor,O,Independent,False
 G-TN,Robert Vick,O,Independent,False
+G-TX,Gina Hinojosa,D,Democratic,False
 G-TX,Greg Abbott,R,Republican,True
 G-TX,Pat Dixon,O,Libertarian,False
-G-TX,Gina Hinojosa,D,Democratic,False
-G-VT,June Goodband,O,Green Mountain,False
-G-VT,Amanda Janoo,D,Democratic,False
-G-VT,Brian Judd,O,Independent,False
 G-VT,Phil Scott,R,Republican,True
+G-VT,Amanda Janoo,D,Democratic,False
+G-VT,June Goodband,O,Green Mountain,False
+G-VT,Brian Judd,O,Independent,False
 G-VT,Dean Roy,O,Freedom and Unity,False
 G-WI,David Crowley,D,Democratic,False
 G-WI,Tom Tiffany,R,Republican,False
