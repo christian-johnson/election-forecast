@@ -280,6 +280,7 @@ def test_walkthrough_shows_polls_and_replays_the_fit(forecast_doc, likelihood_do
     assert p_d == pytest.approx(likelihood_doc["house"]["p_d"], abs=0.15)
     assert likelihood_doc["history"]["national_miss"] == HISTORY.national_miss
     assert {p["name"] for p in likelihood_doc["pollsters"]} >= {"Acme Polling", "Beta Research"}
+    assert "Wedgewood Polls" not in {p["name"] for p in likelihood_doc["pollsters"]}
 
 
 def test_every_poll_fits_on_its_races_chart(steps_doc, timeline_doc):

@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-from forecast.config import START_DATE
+from forecast.config import BLOCKED_POLLSTERS, START_DATE
 from forecast.races import STATES
 
 POLL_TYPES = {
@@ -48,6 +48,8 @@ def _place(office: str, poll: dict) -> tuple[str, int] | None:
 def flatten_polls(raw: list[dict]) -> pd.DataFrame:
     """Keep 2026 general election and generic ballot polls and flatten them to answer rows.
 
+    Polls by pollsters in config.BLOCKED_POLLSTERS are dropped.
+
     Args:
         raw: Poll records from fetch.fetch_polls.
 
@@ -57,7 +59,11 @@ def flatten_polls(raw: list[dict]) -> pd.DataFrame:
     rows = []
     for poll in raw:
         office = POLL_TYPES.get(poll["poll_type"])
-        if office is None or poll["end_date"] < START_DATE.isoformat():
+        if (
+            office is None
+            or poll["pollster"] in BLOCKED_POLLSTERS
+            or poll["end_date"] < START_DATE.isoformat()
+        ):
             continue
         place = _place(office, poll)
         if place is None:

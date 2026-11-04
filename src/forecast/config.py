@@ -13,6 +13,8 @@ TREND_DAYS = 180
 TREND_STEP_DAYS = 7
 
 OFFICES = ("house", "senate", "governor")
+# Pollsters whose polls are dropped entirely, e.g. for fabricating data.
+BLOCKED_POLLSTERS = frozenset({"Wedgewood Polls"})
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT / "data"

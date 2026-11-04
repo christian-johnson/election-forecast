@@ -192,6 +192,9 @@ def raw_polls() -> list[dict]:
             ("Abdul El-Sayed", 30), ("Haley Stevens", 40)]),
         _poll("hypo", "us-senator", "2026 Michigan", [
             ("Haley Stevens", 50), ("Mike Rogers", 20)]),
+        # Blocked pollster.
+        _poll("fake", "us-senator", "2026 Michigan", [
+            ("Abdul El-Sayed", 20), ("Mike Rogers", 75)], pollster="Wedgewood Polls"),
         # Too old to count.
         _poll("old", "generic-ballot", "2024", [("Dem", 40), ("Rep", 60)], end="2024-10-01"),
     ]  # fmt: skip
